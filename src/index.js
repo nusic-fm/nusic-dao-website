@@ -1,7 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import "./index.css";
-import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import {
   createTheme,
@@ -9,10 +8,14 @@ import {
   responsiveFontSizes,
 } from "@mui/material/styles";
 import WebFont from "webfontloader";
+import { BrowserRouter as Router } from "react-router-dom";
+import { getLibrary } from "./utils/web3React";
+import { Web3ReactProvider } from "@web3-react/core";
+import App from "./App";
 
 WebFont.load({
   google: {
-    families: ["Archivo Black", "Montserrat"],
+    families: ["Nunito"],
   },
 });
 
@@ -30,7 +33,7 @@ const themeSettings = createTheme({
     allVariants: {
       color: "#ffffff",
     },
-    fontFamily: `"Montserrat" , sans-serif`,
+    fontFamily: `"Nunito" , sans-serif`,
   },
 });
 const theme = responsiveFontSizes(themeSettings);
@@ -38,7 +41,11 @@ const theme = responsiveFontSizes(themeSettings);
 ReactDOM.render(
   <React.StrictMode>
     <ThemeProvider theme={theme}>
-      <App />
+      <Router>
+        <Web3ReactProvider getLibrary={getLibrary}>
+          <App />
+        </Web3ReactProvider>
+      </Router>
     </ThemeProvider>
   </React.StrictMode>,
   document.getElementById("root")

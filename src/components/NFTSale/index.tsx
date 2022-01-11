@@ -8,6 +8,8 @@ import {
   TextField,
   Button,
 } from "@mui/material";
+import { useState } from "react";
+import JoinDaoDialog from "../JoinDaoDialog";
 
 const reasons = [
   "Help sustain NUSIC DAO’s operational costs",
@@ -31,13 +33,15 @@ const BorderLinearProgress = styled(LinearProgress)(({ theme }) => ({
 }));
 
 const NFTSale = () => {
+  const [selectedNoOfNFTs, setSelectedNoOfNFTs] = useState(1);
+
   return (
-    <>
-      <Grid container style={{ backgroundColor: "#17172F" }} pt={6} pb={6}>
+    <Box style={{ backgroundColor: "#17172F" }} pb={15}>
+      <Grid container>
         <Grid item xs={false} md={2}></Grid>
         <Grid item xs={12} md={8}>
-          <Box p={4}>
-            <Typography variant="h4" align="center">
+          <Box p={2}>
+            {/* <Typography variant="h4" align="center">
               What is NUSIC DAO?
             </Typography>
             <Box mt={4}>
@@ -48,11 +52,19 @@ const NFTSale = () => {
                 music bonds are the first step to enabling artists to finance
                 projects and introduce music streaming income into our economy.
               </Typography>
-            </Box>
-            <Box mt={6}>
+            </Box> */}
+            <Box>
               <Typography variant="h4" align="center">
                 NUSIC Governance NFT
               </Typography>
+            </Box>
+            <Box mt={4} display="flex" justifyContent="center">
+              <img
+                src="NFT.gif"
+                width={"300px"}
+                height={"300px"}
+                alt="nft"
+              ></img>
             </Box>
             <Box mt={4}>
               <Box display="flex" justifyContent="space-between">
@@ -83,7 +95,12 @@ const NFTSale = () => {
                 <TextField
                   size="small"
                   type="number"
+                  inputProps={{ inputMode: "numeric", pattern: "[0-9]*" }}
                   style={{ width: "150px" }}
+                  value={selectedNoOfNFTs}
+                  onChange={(e) => {
+                    setSelectedNoOfNFTs(parseInt(e.target.value));
+                  }}
                 ></TextField>
               </Box>
               <Box
@@ -91,10 +108,10 @@ const NFTSale = () => {
                 display="flex"
                 alignItems="center"
                 justifyContent="center"
-                mb={10}
               >
                 <Button size="large" variant="contained">
-                  Mint 3 for 18 ETH
+                  Mint {selectedNoOfNFTs} for{" "}
+                  {(selectedNoOfNFTs * 6.25).toFixed(2)} ETH
                 </Button>
               </Box>
             </Box>
@@ -102,7 +119,7 @@ const NFTSale = () => {
         </Grid>
         <Grid item xs={false} md={2}></Grid>
       </Grid>
-      <Grid container style={{ backgroundColor: "#17172F" }} pb={6}>
+      <Grid container mt={8} p={2}>
         <Grid item xs={false} md={2}></Grid>
         <Grid item xs={12} md={8}>
           <Box>
@@ -117,8 +134,9 @@ const NFTSale = () => {
               justifyContent="center"
               mt={4}
             >
-              {reasons.map((reason) => (
+              {reasons.map((reason, i) => (
                 <Box
+                  key={i}
                   p={2}
                   pt={4}
                   pb={4}
@@ -145,7 +163,137 @@ const NFTSale = () => {
         </Grid>
         <Grid item xs={false} md={2}></Grid>
       </Grid>
-    </>
+      <Grid container mt={8} p={2}>
+        <Grid item xs={false} md={2}></Grid>
+        <Grid item xs={12} md={8}>
+          <Box>
+            <Typography variant="h4" align="center">
+              What’s the Initial Governance Offering?
+            </Typography>
+            <Box mt={4}>
+              <Typography align="center">
+                We are offering our governance NFTs in a distributed release
+                across multiple rounds. This is to ensure a fair distribution of
+                governance of NUSIC DAO.
+              </Typography>
+            </Box>
+            <Box mt={4} display={"flex"} justifyContent="center">
+              <img src="rounds.png" alt="rounds" width="100%" />
+            </Box>
+          </Box>
+        </Grid>
+      </Grid>
+      <Grid container mt={8} p={2}>
+        <Grid item xs={false} md={2}></Grid>
+        <Grid item xs={12} md={8}>
+          <Box>
+            <Typography variant="h4" align="center">
+              How are they released?
+            </Typography>
+            <Box mt={4}>
+              <Typography align="center">
+                There is a total of 10,000 Governance NFTs. Once protocol owned
+                liquidity (POL) milestones are achieved, a percentage of supply
+                will be unlocked and available for mint.
+              </Typography>
+            </Box>
+            <Grid container spacing={2} mt={4} p={2}>
+              <Grid item xs={6}>
+                <Box p={2} style={{ background: "#fff", opacity: "90%" }}>
+                  <Typography variant="h5" color="black">
+                    1000 NFTs
+                  </Typography>
+                  <Typography variant="subtitle2" color="black">
+                    10% supply unlocked prior to protocol launch
+                  </Typography>
+                </Box>
+              </Grid>
+              <Grid item xs={6}></Grid>
+
+              <Grid item xs={8}>
+                <Box p={2} style={{ background: "#fff", opacity: "80%" }}>
+                  <Typography variant="h5" color="black">
+                    1500 NFTs
+                  </Typography>
+                  <Typography variant="subtitle2" color="black">
+                    15% of supply unlocked when POL hits $1B
+                  </Typography>
+                </Box>
+              </Grid>
+              <Grid item xs={4}></Grid>
+
+              <Grid item xs={10}>
+                <Box p={2} style={{ background: "#fff", opacity: "70%" }}>
+                  <Typography variant="h5" color="black">
+                    2500 NFTs
+                  </Typography>
+                  <Typography variant="subtitle2" color="black">
+                    25% of supply unlocked when POL hits $10B
+                  </Typography>
+                </Box>
+              </Grid>
+              <Grid item xs={2}></Grid>
+
+              <Grid item xs={12}>
+                <Box p={2} style={{ background: "#fff", opacity: "60%" }}>
+                  <Typography variant="h5" color="black">
+                    5000 NFTs
+                  </Typography>
+                  <Typography variant="subtitle2" color="black">
+                    50% of supply unlocked when POL hits $100B
+                  </Typography>
+                </Box>
+              </Grid>
+            </Grid>
+          </Box>
+        </Grid>
+      </Grid>
+      <Grid container mt={8} p={2}>
+        <Grid item xs={false} md={2}></Grid>
+        <Grid item xs={12} md={8} style={{ backgroundColor: "white" }}>
+          <Box p={4}>
+            <Typography variant="h4" color="black" align="center">
+              Liquidity Accumulation
+            </Typography>
+          </Box>
+          <Box
+            mt={4}
+            display="flex"
+            flexWrap="wrap"
+            justifyContent={"space-around"}
+          >
+            <Box m={2} p={4} style={{ backgroundColor: "#5B21D4" }}>
+              <Typography variant="h6" align="center">
+                Protocol Owned Liquidity Value
+              </Typography>
+              <Typography align="center">Ξ 4,430</Typography>
+            </Box>
+            <Box m={2} p={4} style={{ backgroundColor: "#5B21D4" }}>
+              <Typography variant="h6" align="center">
+                Protocol Owned Liquidity Percentage
+              </Typography>
+              <Typography align="center">50%</Typography>
+            </Box>
+          </Box>
+          <Box mt={4}>
+            <Typography variant="h6" align="center" color="black">
+              The DAO allocation will be split 50/50 between investors and the
+              DAO treasury, where the treasury will require 4 out of 7 multisigs
+              to count as a casting vote. Treasury members are elected by NUSIC
+              DAO on fulfilment of the Seed round.
+            </Typography>
+          </Box>
+        </Grid>
+        <Grid item xs={false} md={2}></Grid>
+      </Grid>
+      <Grid container mt={8} p={2}>
+        <Grid item xs={false} md={2}></Grid>
+        <Grid item xs={12} md={8}>
+          <JoinDaoDialog />
+        </Grid>
+        <Grid item xs={false} md={2}></Grid>
+      </Grid>
+    </Box>
   );
 };
 

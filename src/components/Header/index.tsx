@@ -1,18 +1,25 @@
-import { Typography, AppBar, Box, Toolbar, Grid } from "@mui/material";
+import {
+  Typography,
+  AppBar,
+  Box,
+  Toolbar,
+  Grid,
+  Button,
+  Chip,
+  Tooltip,
+  Popover,
+} from "@mui/material";
 import { makeStyles } from "@mui/styles";
-import TwitterIcon from "@mui/icons-material/Twitter";
+import { useWeb3React } from "@web3-react/core";
+import useAuth from "../../hooks/useAuth";
+import { useMediaQuery, useTheme } from "@material-ui/core";
+import MenuIcon from "@mui/icons-material/Menu";
+import { useState } from "react";
 
 const useStyles = makeStyles({
   appBar: {
     boxShadow: "unset !important",
     backgroundImage: "unset !important",
-    // padding: "20px",
-    backgroundColor: "transparent !important",
-  },
-  withBack: {
-    boxShadow: "unset !important",
-    backgroundImage: "unset !important",
-    // padding: "20px",
     backgroundColor: "black !important",
   },
   title: {
@@ -27,127 +34,155 @@ const useStyles = makeStyles({
   },
 });
 
-const Header = (props: { isBgColor: boolean; onJoinDao: () => void }) => {
-  const { isBgColor, onJoinDao } = props;
-  const classes = useStyles(props);
+const Header = () => {
+  const classes = useStyles();
+  const { login } = useAuth();
+  const { account } = useWeb3React();
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down("xs"));
 
-  if (isBgColor) {
-    return (
-      <AppBar className={classes.withBack}>
-        <Toolbar>
-          <Grid container>
-            <Grid item xs={12} lg={4} mt={2}>
-              <Typography
-                variant="h4"
-                className={classes.title}
-                fontWeight={"1000"}
-                fontFamily="Archivo Black"
-              >
-                NUSIC
-              </Typography>
-            </Grid>
-            <Grid item xs={false} lg={4}></Grid>
-            <Grid item xs={12} lg={4} mt={2} mb={2}>
-              <Box
-                display="flex"
-                justifyContent={"space-evenly"}
-                alignItems="center"
-              >
-                <Typography variant="h6" fontWeight="600">
-                  <a
-                    href="/"
-                    style={{ color: "white", textDecoration: "none" }}
-                  >
-                    Home
-                  </a>
-                </Typography>
-                <Typography
-                  variant="h6"
-                  fontWeight="600"
-                  onClick={onJoinDao}
-                  style={{ cursor: "pointer" }}
-                >
-                  Join DAO
-                </Typography>
-                <Typography variant="h6" fontWeight="600">
-                  <a
-                    href="https://rinkeby.nusic.fm/"
-                    style={{ color: "white", textDecoration: "none" }}
-                    target={"_blank"}
-                    rel="noreferrer"
-                  >
-                    Enter Testnet
-                  </a>
-                </Typography>
-                <a
-                  href="http://twitter.com/nusic_protocol"
-                  target="_blank"
-                  rel="noreferrer"
-                  style={{ color: "white" }}
-                >
-                  <TwitterIcon />
-                </a>
-              </Box>
-            </Grid>
-          </Grid>
-        </Toolbar>
-      </AppBar>
-    );
-  }
+  const [isPopoverOpen, setIsPopoverOpen] = useState(false);
+
+  const connect = async () => {
+    login();
+  };
+
   return (
     <AppBar className={classes.appBar}>
       <Toolbar>
         <Grid container>
-          <Grid item xs={12} lg={4} mt={2}>
+          <Grid item xs={10} lg={2}>
             <Typography
               variant="h4"
               className={classes.title}
               fontWeight={"1000"}
-              fontFamily="Archivo Black"
             >
-              NUSIC
+              <a href="/" style={{ color: "white", textDecoration: "none" }}>
+                NUSIC
+              </a>
             </Typography>
           </Grid>
-          <Grid item xs={false} lg={4}></Grid>
-          <Grid item xs={12} lg={4} mt={2} mb={2}>
-            <Box
-              display="flex"
-              justifyContent={"space-evenly"}
-              alignItems="center"
-            >
-              <Typography variant="h6" fontWeight="600">
-                <a href="/" style={{ color: "white", textDecoration: "none" }}>
-                  Home
-                </a>
-              </Typography>
-              <Typography
-                variant="h6"
-                fontWeight="600"
-                onClick={onJoinDao}
-                style={{ cursor: "pointer" }}
+          {isMobile ? (
+            <Grid item xs={2}>
+              <Box
+                display="flex"
+                justifyContent="center"
+                alignItems="center"
+                height="100%"
               >
-                Join DAO
-              </Typography>
-              <Typography variant="h6" fontWeight="600">
-                <a
-                  href="https://rinkeby.nusic.fm/"
-                  style={{ color: "white", textDecoration: "none" }}
-                  target={"_blank"}
-                  rel="noreferrer"
-                >
-                  Enter Testnet
-                </a>
-              </Typography>
-              <a
-                href="http://twitter.com/nusic_protocol"
-                target="_blank"
-                rel="noreferrer"
-                style={{ color: "white" }}
+                <MenuIcon onClick={() => setIsPopoverOpen(true)} />
+              </Box>
+              <Popover
+                open={isPopoverOpen}
+                // anchorEl={anchorEl}
+                onClose={() => setIsPopoverOpen(false)}
+                anchorOrigin={{
+                  vertical: "top",
+                  horizontal: "right",
+                }}
               >
-                <TwitterIcon />
-              </a>
-            </Box>
-          </Grid>
+                <Box style={{ backgroundColor: "#2E2E44" }}>
+                  <Typography sx={{ p: 2 }} color="#D1D1D5">
+                    <a
+                      href="/about"
+                      style={{ color: "white", textDecoration: "none" }}
+                    >
+                      About
+                    </a>
+                  </Typography>
+                  <Typography sx={{ p: 2 }} color="#D1D1D5">
+                    Mint Governance NFT
+                  </Typography>
+                  <Typography sx={{ p: 2 }} color="#D1D1D5">
+                    <a
+                      href="https://rinkeby.nusic.fm/"
+                      style={{ color: "white", textDecoration: "none" }}
+                      target={"_blank"}
+                      rel="noreferrer"
+                    >
+                      NFT Music Bonds
+                    </a>
+                  </Typography>
+                  <Typography sx={{ p: 2 }} color="#D1D1D5">
+                    {account ? (
+                      <Tooltip title={account}>
+                        <Chip
+                          clickable
+                          label={`${account.slice(0, 6)}...${account.slice(
+                            account.length - 4
+                          )}`}
+                          style={{ marginLeft: "auto" }}
+                        />
+                      </Tooltip>
+                    ) : (
+                      <Button
+                        variant="contained"
+                        color="primary"
+                        size="small"
+                        onClick={connect}
+                      >
+                        Connect Wallet
+                      </Button>
+                    )}
+                  </Typography>
+                </Box>
+              </Popover>
+            </Grid>
+          ) : (
+            <Grid item lg={10}>
+              <Box
+                display="flex"
+                justifyContent={"flex-end"}
+                alignItems="center"
+                height="100%"
+              >
+                <Box mr={4}>
+                  <Typography variant="h6">
+                    <a
+                      href="/about"
+                      style={{ color: "white", textDecoration: "none" }}
+                    >
+                      About
+                    </a>
+                  </Typography>
+                </Box>
+                <Box mr={4}>
+                  <Typography variant="h6">
+                    <a
+                      href="https://rinkeby.nusic.fm/"
+                      style={{ color: "white", textDecoration: "none" }}
+                      target={"_blank"}
+                      rel="noreferrer"
+                    >
+                      NFT Music Bonds
+                    </a>
+                  </Typography>
+                </Box>
+                <Box>
+                  {account ? (
+                    <Tooltip title={account}>
+                      <Chip
+                        clickable
+                        label={`${account.slice(0, 6)}...${account.slice(
+                          account.length - 4
+                        )}`}
+                        style={{ marginLeft: "auto" }}
+                      />
+                    </Tooltip>
+                  ) : (
+                    <Button
+                      variant="contained"
+                      color="primary"
+                      size="small"
+                      onClick={connect}
+                    >
+                      Connect Wallet
+                    </Button>
+                  )}
+                </Box>
+              </Box>
+            </Grid>
+          )}
         </Grid>
       </Toolbar>
     </AppBar>

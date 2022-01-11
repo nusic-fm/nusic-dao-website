@@ -1,29 +1,10 @@
-import {
-  Button,
-  Dialog,
-  DialogActions,
-  DialogContent,
-  DialogContentText,
-  DialogTitle,
-  Grid,
-  TextField,
-  Typography,
-} from "@mui/material";
-import { styled } from "@mui/material/styles";
+import { Box, Button, Grid, TextField, Typography } from "@mui/material";
 import axios from "axios";
 import { useState } from "react";
 
-const BootstrapDialog = styled(Dialog)(({ theme }) => ({
-  "& .MuiDialog-paperFullWidth": {
-    backgroundColor: "#e9e9f3",
-  },
-}));
-
 const REVUE_BASE_URL = "https://www.getrevue.co/api/v2/subscribers";
 
-const JoinDaoDialog = (props: { isOpen: boolean; onClose: () => void }) => {
-  const { isOpen, onClose } = props;
-
+const JoinDaoDialog = () => {
   const [firstName, setFirstName] = useState<string>("");
   const [lastName, setLastName] = useState<string>("");
   const [email, setEmail] = useState<string>("");
@@ -63,76 +44,63 @@ const JoinDaoDialog = (props: { isOpen: boolean; onClose: () => void }) => {
   };
 
   return (
-    <BootstrapDialog open={isOpen} onClose={onClose} fullWidth>
-      <DialogTitle>
-        <Typography
-          variant="h2"
-          color="black"
-          fontWeight={900}
-          fontFamily={"Archivo Black"}
-        >
-          Join NUSIC DAO
-        </Typography>
-      </DialogTitle>
-      <DialogContent>
-        <DialogContentText color="black">
-          Sign-up here to join the NUSIC DAO and start the music finance
-          revolution…
-        </DialogContentText>
-        <Grid container mt={6}>
-          <Grid item xs={12} md={6} mt={2}>
+    <Box>
+      <Typography variant="h2" fontWeight={900} align="center">
+        Join NUSIC DAO
+      </Typography>
+      <Typography align="center">
+        Sign-up here to join the NUSIC DAO and start the music finance
+        revolution…
+      </Typography>
+      <Grid container mt={6}>
+        <Grid item xs={false} lg={2}></Grid>
+        <Grid item xs={12} lg={4}>
+          <Box display="flex" justifyContent="center">
             <TextField
               variant="outlined"
               label="First Name"
               required
-              autoFocus
               margin="dense"
-              sx={{ input: { color: "black", backgroundColor: "white" } }}
               value={firstName}
               onChange={(e) => setFirstName(e.target.value)}
-              InputLabelProps={{
-                style: { color: "black" },
-              }}
               error={isFirstNameError}
             ></TextField>
-          </Grid>
-          <Grid item xs={12} md={6} mt={2}>
+          </Box>
+        </Grid>
+        <Grid item xs={12} lg={4}>
+          <Box display="flex" justifyContent="center">
             <TextField
               variant="outlined"
               label="Last Name"
+              required
               margin="dense"
-              sx={{ input: { color: "black", backgroundColor: "white" } }}
               value={lastName}
               onChange={(e) => setLastName(e.target.value)}
-              InputLabelProps={{
-                style: { color: "black" },
-              }}
             ></TextField>
-          </Grid>
-          <Grid item xs={12} mt={2}>
+          </Box>
+        </Grid>
+        <Grid item xs={false} lg={2}></Grid>
+        <Grid item xs={12} lg={8}>
+          <Box display="flex" justifyContent="center">
             <TextField
               variant="outlined"
               label="Email"
               required
               type="email"
               margin="dense"
-              sx={{ input: { color: "black", backgroundColor: "white" } }}
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              InputLabelProps={{
-                style: { color: "black" },
-              }}
               error={isEmailError}
             ></TextField>
-          </Grid>
+          </Box>
         </Grid>
-      </DialogContent>
-      <DialogActions sx={{ justifyContent: "center" }}>
+      </Grid>
+      <Box display="flex" justifyContent="center" mt={6}>
         <Button variant="contained" onClick={onJoin}>
           Join
         </Button>
-      </DialogActions>
-    </BootstrapDialog>
+      </Box>
+    </Box>
   );
 };
 
