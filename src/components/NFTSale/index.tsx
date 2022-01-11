@@ -8,7 +8,7 @@ import {
   TextField,
   Button,
 } from "@mui/material";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import JoinDaoDialog from "../JoinDaoDialog";
 
 const reasons = [
@@ -34,7 +34,10 @@ const BorderLinearProgress = styled(LinearProgress)(({ theme }) => ({
 
 const NFTSale = () => {
   const [selectedNoOfNFTs, setSelectedNoOfNFTs] = useState(1);
-
+  const [noOfNFTsSold, setNoOfNFTsSold] = useState(0);
+  useEffect(() => {
+    setNoOfNFTsSold(50);
+  }, []);
   return (
     <Box style={{ backgroundColor: "#17172F" }} pb={15}>
       <Grid container>
@@ -78,11 +81,14 @@ const NFTSale = () => {
             </Box>
             <Box sx={{ display: "flex", alignItems: "center" }}>
               <Box sx={{ width: "100%", mr: 1 }}>
-                <BorderLinearProgress variant="determinate" value={0} />
+                <BorderLinearProgress
+                  variant="determinate"
+                  value={noOfNFTsSold}
+                />
               </Box>
               <Box sx={{ minWidth: 35 }}>
                 <Typography variant="body2" color="text.secondary">
-                  0
+                  {noOfNFTsSold}
                 </Typography>
               </Box>
             </Box>
