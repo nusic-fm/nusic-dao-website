@@ -76,8 +76,15 @@ const NFTSale = () => {
                 <Typography variant="h5">125</Typography>
               </Box>
             </Box>
-            <Box>
-              <BorderLinearProgress variant="determinate" value={50} />
+            <Box sx={{ display: "flex", alignItems: "center" }}>
+              <Box sx={{ width: "100%", mr: 1 }}>
+                <BorderLinearProgress variant="determinate" value={0} />
+              </Box>
+              <Box sx={{ minWidth: 35 }}>
+                <Typography variant="body2" color="text.secondary">
+                  0
+                </Typography>
+              </Box>
             </Box>
             <Box mt={4}>
               <Box display="flex" alignItems="center" justifyContent="center">

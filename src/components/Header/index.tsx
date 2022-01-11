@@ -15,6 +15,7 @@ import useAuth from "../../hooks/useAuth";
 import { useMediaQuery, useTheme } from "@material-ui/core";
 import MenuIcon from "@mui/icons-material/Menu";
 import { useState } from "react";
+import { useHistory } from "react-router-dom";
 
 const useStyles = makeStyles({
   appBar: {
@@ -40,6 +41,7 @@ const Header = () => {
   const { account } = useWeb3React();
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("xs"));
+  const history = useHistory();
 
   const [isPopoverOpen, setIsPopoverOpen] = useState(false);
 
@@ -82,13 +84,12 @@ const Header = () => {
                 }}
               >
                 <Box style={{ backgroundColor: "#2E2E44" }}>
-                  <Typography sx={{ p: 2 }} color="#D1D1D5">
-                    <a
-                      href="/about"
-                      style={{ color: "white", textDecoration: "none" }}
-                    >
-                      About
-                    </a>
+                  <Typography
+                    sx={{ p: 2, cursor: "pointer" }}
+                    color="#D1D1D5"
+                    onClick={() => history.push("/about")}
+                  >
+                    About
                   </Typography>
                   <Typography sx={{ p: 2 }} color="#D1D1D5">
                     Mint Governance NFT
@@ -137,13 +138,12 @@ const Header = () => {
                 height="100%"
               >
                 <Box mr={4}>
-                  <Typography variant="h6">
-                    <a
-                      href="/about"
-                      style={{ color: "white", textDecoration: "none" }}
-                    >
-                      About
-                    </a>
+                  <Typography
+                    variant="h6"
+                    style={{ cursor: "pointer" }}
+                    onClick={() => history.push("/about")}
+                  >
+                    About
                   </Typography>
                 </Box>
                 <Box mr={4}>
