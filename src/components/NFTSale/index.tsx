@@ -8,7 +8,10 @@ import {
   TextField,
   Button,
 } from "@mui/material";
-import { useEffect, useState } from "react";
+import { useWeb3React } from "@web3-react/core";
+import { useState } from "react";
+import useAuth from "../../hooks/useAuth";
+import useGovernance from "../../hooks/useGovernance";
 import JoinDaoDialog from "../JoinDaoDialog";
 
 const reasons = [
@@ -33,11 +36,28 @@ const BorderLinearProgress = styled(LinearProgress)(({ theme }) => ({
 }));
 
 const NFTSale = () => {
-  const [selectedNoOfNFTs, setSelectedNoOfNFTs] = useState(1);
-  const [noOfNFTsSold, setNoOfNFTsSold] = useState(0);
-  useEffect(() => {
-    setNoOfNFTsSold(50);
-  }, []);
+  const [selectedNoOfNFTs, setSelectedNoOfNFTs] = useState<number>(1);
+  const { totalSupply: noOfNFTsSold, mintNFTs } = useGovernance();
+  const { account } = useWeb3React();
+  const [isLoading, setIsLoading] = useState<boolean>(false);
+  const { login } = useAuth();
+
+  const onMintClick = async () => {
+    if (account) {
+      setIsLoading(true);
+      try {
+        const receipt = await mintNFTs(selectedNoOfNFTs);
+        console.log({ receipt });
+      } catch (e) {
+        alert("Something went wrong.");
+        console.error(e);
+      }
+      setIsLoading(false);
+    } else {
+      login();
+    }
+  };
+
   return (
     <Box style={{ backgroundColor: "#17172F" }} pb={15}>
       <Grid container>
@@ -82,7 +102,7 @@ const NFTSale = () => {
             <Box sx={{ display: "flex", alignItems: "center" }}>
               <Box sx={{ width: "100%", mr: 1 }}>
                 <BorderLinearProgress
-                  variant="determinate"
+                  variant={noOfNFTsSold > 0 ? "determinate" : "indeterminate"}
                   value={noOfNFTsSold}
                 />
               </Box>
@@ -122,9 +142,17 @@ const NFTSale = () => {
                 alignItems="center"
                 justifyContent="center"
               >
-                <Button size="large" variant="contained">
-                  Mint {selectedNoOfNFTs} for{" "}
-                  {(selectedNoOfNFTs * 6.25).toFixed(2)} ETH
+                <Button
+                  size="large"
+                  variant="contained"
+                  onClick={onMintClick}
+                  disabled={isLoading}
+                >
+                  {account
+                    ? `Mint ${selectedNoOfNFTs} for ${(
+                        selectedNoOfNFTs * 6.25
+                      ).toFixed(2)} ETH`
+                    : "Connect Wallet"}
                 </Button>
               </Box>
             </Box>

@@ -53,7 +53,7 @@ const Header = () => {
     <AppBar className={classes.appBar}>
       <Toolbar>
         <Grid container>
-          <Grid item xs={10} lg={2}>
+          <Grid item xs={4} md={4} lg={2}>
             <Typography
               variant="h4"
               className={classes.title}
@@ -65,10 +65,10 @@ const Header = () => {
             </Typography>
           </Grid>
           {isMobile ? (
-            <Grid item xs={2}>
+            <Grid item xs={8}>
               <Box
                 display="flex"
-                justifyContent="center"
+                justifyContent="flex-end"
                 alignItems="center"
                 height="100%"
               >
@@ -130,7 +130,7 @@ const Header = () => {
               </Popover>
             </Grid>
           ) : (
-            <Grid item lg={10}>
+            <Grid item xs={8} md={8} lg={10}>
               <Box
                 display="flex"
                 justifyContent={"flex-end"}

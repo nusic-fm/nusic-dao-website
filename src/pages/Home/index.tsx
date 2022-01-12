@@ -1,11 +1,12 @@
 import { Box, Button, Typography } from "@mui/material";
 import { makeStyles } from "@mui/styles";
+import { useRef } from "react";
 import NFTSale from "../../components/NFTSale";
 
 const useStyles = makeStyles((theme: any) => ({
   root: {
     height: "100vh",
-    backgroundImage: "url(NUSIC_record_sun.jpeg)",
+    backgroundImage: "url(Nusic_Sixteenth_Note_Fractal_Still.png)",
     backgroundSize: "cover",
     backgroundPosition: "center center",
 
@@ -19,6 +20,7 @@ const useStyles = makeStyles((theme: any) => ({
 
 const Home = () => {
   const classes = useStyles();
+  const saleElem = useRef<null | HTMLDivElement>(null);
 
   return (
     <Box>
@@ -51,13 +53,15 @@ const Home = () => {
             fontWeight: "bold",
           }}
           onClick={() => {
-            window.scrollTo({ top: 907, behavior: "smooth" });
+            saleElem.current?.scrollIntoView({ behavior: "smooth" });
           }}
         >
           Mint Governance NFT
         </Button>
       </Box>
-      <NFTSale />
+      <Box ref={saleElem}>
+        <NFTSale />
+      </Box>
     </Box>
   );
 };
