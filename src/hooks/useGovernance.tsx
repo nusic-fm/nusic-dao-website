@@ -4,6 +4,7 @@ import { useGovernanceContract } from "./useContract";
 
 const useGovernance = () => {
   const [totalSupply, setTotalSupply] = useState(0);
+  //TODO: Fix multiple contracts
   const governanceContract = useGovernanceContract(
     "0x0f626c776c653b55e6e988bae3821709683530f4"
   );
@@ -33,11 +34,11 @@ const useGovernance = () => {
   };
 
   useEffect(() => {
-    if (governanceContract) {
+    if (governanceContractReadOnly) {
       fetchTotalSupply();
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [governanceContract]);
+  }, []);
 
   return {
     totalSupply,
