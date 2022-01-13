@@ -30,6 +30,7 @@ const Home = () => {
         flexDirection="column"
         justifyContent="center"
         alignItems="center"
+        pt={7}
       >
         <Box mb={1}>
           <Typography variant="h2" fontWeight={900} align="center">
