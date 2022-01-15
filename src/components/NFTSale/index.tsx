@@ -7,6 +7,7 @@ import {
   styled,
   TextField,
   Button,
+  CircularProgress,
 } from "@mui/material";
 import { useWeb3React } from "@web3-react/core";
 import { useState } from "react";
@@ -34,6 +35,8 @@ const BorderLinearProgress = styled(LinearProgress)(({ theme }) => ({
     backgroundColor: theme.palette.mode === "light" ? "#1a90ff" : "#4AAB1A",
   },
 }));
+
+const NFT_PRICE = Number(process.env.REACT_APP_NFT_PRICE || "0.01");
 
 const NFTSale = () => {
   const [selectedNoOfNFTs, setSelectedNoOfNFTs] = useState<number>(1);
@@ -115,7 +118,7 @@ const NFTSale = () => {
               </Box>
               <Box mt={4}>
                 <Box display="flex" alignItems="center" justifyContent="center">
-                  <Typography variant="h4">6.250 ETH</Typography>
+                  <Typography variant="h4">{NFT_PRICE} ETH</Typography>
                   <Box ml={2}>
                     <Typography>per NFT</Typography>
                   </Box>
@@ -149,11 +152,15 @@ const NFTSale = () => {
                     onClick={onMintClick}
                     disabled={isLoading}
                   >
-                    {account
-                      ? `Mint ${selectedNoOfNFTs} for ${(
-                          selectedNoOfNFTs * 6.25
-                        ).toFixed(2)} ETH`
-                      : "Connect Wallet"}
+                    {isLoading ? (
+                      <CircularProgress />
+                    ) : account ? (
+                      `Mint ${selectedNoOfNFTs} for ${(
+                        selectedNoOfNFTs * NFT_PRICE
+                      ).toFixed(2)} ETH`
+                    ) : (
+                      "Connect Wallet"
+                    )}
                   </Button>
                 </Box>
               </Box>

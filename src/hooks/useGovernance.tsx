@@ -1,15 +1,18 @@
 import { useWeb3React } from "@web3-react/core";
+import { ethers } from "ethers";
 import { useEffect, useState } from "react";
 import { useGovernanceContract } from "./useContract";
+
+const NFT_PRICE = process.env.REACT_APP_NFT_PRICE || "0.01";
 
 const useGovernance = () => {
   const [totalSupply, setTotalSupply] = useState(0);
   //TODO: Fix multiple contracts
   const governanceContract = useGovernanceContract(
-    "0x0f626c776c653b55e6e988bae3821709683530f4"
+    process.env.REACT_APP_GOVERNANCE_TOKEN || ""
   );
   const governanceContractReadOnly = useGovernanceContract(
-    "0x0f626c776c653b55e6e988bae3821709683530f4",
+    process.env.REACT_APP_GOVERNANCE_TOKEN || "",
     false
   );
   const { account } = useWeb3React();
@@ -29,7 +32,9 @@ const useGovernance = () => {
   };
 
   const mintNFTs = async (noOfTokens: number) => {
-    const tx = await governanceContract.mint(account, noOfTokens);
+    const tx = await governanceContract.stage1Mint(noOfTokens, {
+      value: ethers.utils.parseEther(NFT_PRICE),
+    });
     return tx.wait();
   };
 

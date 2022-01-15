@@ -1,10 +1,5 @@
 import { ethers } from "ethers";
-
-const GovernanceABI = [
-  "function mint(address _to, uint256 _noOfTokens) public",
-  "function totalSupply() public view returns(uint256)",
-  "event Transfer(address indexed _from, address indexed _to, uint256 indexed _tokenId)",
-];
+import governance from "../abis/Nusic.json";
 
 const getContract = (
   abi: any,
@@ -19,5 +14,5 @@ export const getGovernanceContract = (
   address: string,
   signer?: ethers.Signer | ethers.providers.Provider
 ) => {
-  return getContract(GovernanceABI, address, signer);
+  return getContract(governance.abi, address, signer);
 };
