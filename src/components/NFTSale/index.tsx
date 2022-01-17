@@ -68,18 +68,6 @@ const NFTSale = () => {
           <Grid item xs={false} md={2}></Grid>
           <Grid item xs={12} md={8}>
             <Box p={2}>
-              {/* <Typography variant="h4" align="center">
-              What is NUSIC DAO?
-            </Typography>
-            <Box mt={4}>
-              <Typography align="center">
-                Our goal is to empower musicians with financial freedom, and the
-                mechanism for this the NUSIC DAO which issues a rebasing
-                currency backed by concentrated music streaming income. NFT
-                music bonds are the first step to enabling artists to finance
-                projects and introduce music streaming income into our economy.
-              </Typography>
-            </Box> */}
               <Box>
                 <Typography variant="h4" align="center">
                   NUSIC Governance NFT
@@ -128,18 +116,30 @@ const NFTSale = () => {
                   display="flex"
                   alignItems="center"
                   justifyContent="center"
+                  mb={0.5}
                 >
                   <TextField
                     size="small"
                     type="number"
-                    inputProps={{ inputMode: "numeric", pattern: "[0-9]*" }}
                     style={{ width: "150px" }}
                     value={selectedNoOfNFTs}
                     onChange={(e) => {
-                      setSelectedNoOfNFTs(parseInt(e.target.value));
+                      const noOfNftsEntered = parseInt(e.target.value);
+                      const maxNoAllowed =
+                        noOfNftsEntered >= 5 ? 5 : noOfNftsEntered;
+                      const allowedNos = maxNoAllowed < 0 ? 0 : maxNoAllowed;
+                      setSelectedNoOfNFTs(allowedNos);
                     }}
                   ></TextField>
                 </Box>
+                <Typography
+                  variant="subtitle2"
+                  align="center"
+                  fontSize={"0.7rem"}
+                  color="cornflowerblue"
+                >
+                  Max 5 NFTs per Mint
+                </Typography>
                 <Box
                   mt={4}
                   display="flex"

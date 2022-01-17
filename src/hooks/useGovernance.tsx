@@ -1,4 +1,3 @@
-import { useWeb3React } from "@web3-react/core";
 import { ethers } from "ethers";
 import { useEffect, useState } from "react";
 import { useGovernanceContract } from "./useContract";
@@ -15,7 +14,6 @@ const useGovernance = () => {
     process.env.REACT_APP_GOVERNANCE_TOKEN || "",
     false
   );
-  const { account } = useWeb3React();
 
   const fetchTotalSupply = async () => {
     const totalSupply = await governanceContractReadOnly.totalSupply();
