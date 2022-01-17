@@ -32,8 +32,11 @@ const useGovernance = () => {
   };
 
   const mintNFTs = async (noOfTokens: number) => {
+    const value = ethers.utils.parseEther(
+      (parseFloat(NFT_PRICE) * noOfTokens).toString()
+    );
     const tx = await governanceContract.stage1Mint(noOfTokens, {
-      value: ethers.utils.parseEther(NFT_PRICE),
+      value,
     });
     return tx.wait();
   };

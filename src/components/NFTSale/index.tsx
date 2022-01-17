@@ -51,8 +51,8 @@ const NFTSale = () => {
       try {
         const receipt = await mintNFTs(selectedNoOfNFTs);
         console.log({ receipt });
-      } catch (e) {
-        alert("Something went wrong.");
+      } catch (e: any) {
+        alert(e.data?.message || e.message);
         console.error(e);
       }
       setIsLoading(false);
