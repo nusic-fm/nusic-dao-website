@@ -161,8 +161,14 @@ const About = () => {
           SIC
         </Typography>
       </Box>
-      <Box pt={8}>
-        <JoinDaoDialog />
+      <Box minHeight={"100vh"} display="flex" alignItems="center">
+        <Grid container p={2}>
+          <Grid item xs={false} md={2}></Grid>
+          <Grid item xs={12} md={8}>
+            <JoinDaoDialog />
+          </Grid>
+          <Grid item xs={false} md={2}></Grid>
+        </Grid>
       </Box>
       <Box pt={6} pb={6}>
         <Typography variant="h4" fontWeight={900} align="center">
