@@ -47,7 +47,7 @@ const About = () => {
             </Box>
           </Grid>
           <Grid item xs={false} md={2}></Grid>
-          <Grid item xs={12} md={4}>
+          <Grid item xs={12} md={4} display="flex" flexDirection="column" justifyContent="center">
             <Box display="flex" justifyContent="center">
               <Button
                 color="primary"
