@@ -58,7 +58,9 @@ const About = () => {
                 }}
                 style={{
                   width: "230px",
-                  fontWeight: "bold"
+                  fontWeight: "bold",
+                  borderRadius: "50px",
+                  padding: "10px 20px"
                 }}
               >
                 Mint Governance NFT
@@ -74,7 +76,9 @@ const About = () => {
                 }}
                 style={{
                   width: "230px",
-                  fontWeight: "bold"
+                  fontWeight: "bold",
+                  borderRadius: "50px",
+                  padding: "10px 20px"
                 }}
               >
                 Join the NUSIC DAO

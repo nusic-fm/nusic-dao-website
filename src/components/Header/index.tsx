@@ -16,6 +16,7 @@ import { useMediaQuery, useTheme } from "@material-ui/core";
 import MenuIcon from "@mui/icons-material/Menu";
 import { useState } from "react";
 import { useHistory } from "react-router-dom";
+import AccountBalanceWalletTwoToneIcon from '@mui/icons-material/AccountBalanceWalletTwoTone';
 
 const useStyles = makeStyles({
   appBar: {
@@ -92,7 +93,14 @@ const Header = () => {
                     About
                   </Typography>
                   <Typography sx={{ p: 2 }} color="#D1D1D5">
-                    Mint Governance NFT
+                    <a
+                      href="/"
+                      style={{ color: "white", textDecoration: "none" }}
+                      target={"_blank"}
+                      rel="noreferrer"
+                    >
+                      Mint Governance NFT
+                    </a>
                   </Typography>
                   <Typography sx={{ p: 2 }} color="#D1D1D5">
                     <a
@@ -119,8 +127,10 @@ const Header = () => {
                       <Button
                         variant="contained"
                         color="primary"
-                        size="small"
+                        size="large"
+                        startIcon={<AccountBalanceWalletTwoToneIcon />}
                         onClick={connect}
+                        style={{ fontWeight: "bold", borderRadius: "50px" }}
                       >
                         Connect Wallet
                       </Button>
@@ -139,7 +149,6 @@ const Header = () => {
               >
                 <Box mr={4}>
                   <Typography
-                    variant="h6"
                     style={{ cursor: "pointer" }}
                     onClick={() => history.push("/about")}
                   >
@@ -147,7 +156,19 @@ const Header = () => {
                   </Typography>
                 </Box>
                 <Box mr={4}>
-                  <Typography variant="h6">
+                  <Typography>
+                      <a
+                        href="/"
+                        style={{ color: "white", textDecoration: "none" }}
+                        target={"_blank"}
+                        rel="noreferrer"
+                      >
+                        Mint Governance NFT
+                      </a>
+                    </Typography>
+                </Box>
+                <Box mr={4}>
+                  <Typography>
                     <a
                       href="https://rinkeby.nusic.fm/"
                       style={{ color: "white", textDecoration: "none" }}
@@ -173,8 +194,10 @@ const Header = () => {
                     <Button
                       variant="contained"
                       color="primary"
-                      size="small"
+                      size="medium"
+                      startIcon={<AccountBalanceWalletTwoToneIcon />}
                       onClick={connect}
+                      style={{ fontWeight: "bold", borderRadius: "50px", padding: "10px 20px" }}
                     >
                       Connect Wallet
                     </Button>

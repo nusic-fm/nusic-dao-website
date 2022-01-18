@@ -81,7 +81,7 @@ const NFTSale = () => {
               </Typography>
             </Box> */}
               <Box>
-                <Typography variant="h4" align="center">
+                <Typography variant="h4" align="center" fontWeight="bold">
                   NUSIC Governance NFT
                 </Typography>
               </Box>
@@ -99,8 +99,8 @@ const NFTSale = () => {
                   <Typography variant="caption">Total NFTs</Typography>
                 </Box>
                 <Box display="flex" justifyContent="space-between" mb={4}>
-                  <Typography variant="h5">Seed</Typography>
-                  <Typography variant="h5">125</Typography>
+                  <Typography variant="h5" fontWeight="bold">Seed</Typography>
+                  <Typography variant="h5" fontWeight="bold">125</Typography>
                 </Box>
               </Box>
               <Box sx={{ display: "flex", alignItems: "center" }}>
@@ -118,7 +118,7 @@ const NFTSale = () => {
               </Box>
               <Box mt={4}>
                 <Box display="flex" alignItems="center" justifyContent="center">
-                  <Typography variant="h4">{NFT_PRICE} ETH</Typography>
+                  <Typography variant="h4" fontWeight="bold">{NFT_PRICE} ETH</Typography>
                   <Box ml={2}>
                     <Typography>per NFT</Typography>
                   </Box>
@@ -151,6 +151,7 @@ const NFTSale = () => {
                     variant="contained"
                     onClick={onMintClick}
                     disabled={isLoading}
+                    style={{ fontWeight: "bold", borderRadius: "50px", padding: "10px 20px" }}
                   >
                     {isLoading ? (
                       <CircularProgress />
@@ -175,7 +176,7 @@ const NFTSale = () => {
           <Grid item xs={12} md={8}>
             <Box>
               <Box>
-                <Typography variant="h4" align="center">
+                <Typography variant="h4" align="center" fontWeight="bold">
                   Why mint a NUSIC Governance NFT?
                 </Typography>{" "}
               </Box>
@@ -220,7 +221,7 @@ const NFTSale = () => {
           <Grid item xs={false} md={2}></Grid>
           <Grid item xs={12} md={8}>
             <Box>
-              <Typography variant="h4" align="center">
+              <Typography variant="h4" align="center" fontWeight="bold" >
                 What’s the Initial Governance Offering?
               </Typography>
               <Box mt={4}>
@@ -238,7 +239,7 @@ const NFTSale = () => {
               >
                 <Box m={2}>
                   <Box mt={2} mb={2}>
-                    <Typography align="center" variant="h5">
+                    <Typography align="center" variant="h5" fontWeight="bold">
                       SEED
                     </Typography>
                     <Typography align="center">Ξ6.25</Typography>
@@ -267,7 +268,7 @@ const NFTSale = () => {
                     display="flex"
                     justifyContent={"center"}
                     alignItems="center"
-                    borderRadius="4px"
+                    borderRadius="10px"
                   >
                     <Typography color="black">
                       Setup costs and genesis bond
@@ -276,7 +277,7 @@ const NFTSale = () => {
                 </Box>
                 <Box m={2}>
                   <Box mt={2} mb={2}>
-                    <Typography align="center" variant="h5">
+                    <Typography align="center" variant="h5" fontWeight="bold">
                       PRIVATE
                     </Typography>
                     <Typography align="center">Ξ~</Typography>
@@ -305,7 +306,7 @@ const NFTSale = () => {
                     display="flex"
                     justifyContent={"center"}
                     alignItems="center"
-                    borderRadius="4px"
+                    borderRadius="10px"
                   >
                     <Typography color="black">
                       Rebasing DAO deployment
@@ -314,7 +315,7 @@ const NFTSale = () => {
                 </Box>
                 <Box m={2}>
                   <Box mt={2} mb={2}>
-                    <Typography align="center" variant="h5">
+                    <Typography align="center" variant="h5" fontWeight="bold">
                       PUBLIC
                     </Typography>
                     <Typography align="center">Ξ9</Typography>
@@ -343,7 +344,7 @@ const NFTSale = () => {
                     display="flex"
                     justifyContent={"center"}
                     alignItems="center"
-                    borderRadius="4px"
+                    borderRadius="10px"
                   >
                     <Typography color="black">
                       Catalog acquisition and growth
@@ -363,7 +364,7 @@ const NFTSale = () => {
           <Grid item xs={false} md={2}></Grid>
           <Grid item xs={12} md={8}>
             <Box>
-              <Typography variant="h4" align="center">
+              <Typography variant="h4" align="center" fontWeight="bold">
                 How are they released?
               </Typography>
               <Box mt={4}>
@@ -378,9 +379,9 @@ const NFTSale = () => {
                   <Box
                     p={2}
                     style={{ background: "#fff", opacity: "90%" }}
-                    borderRadius="4px"
+                    borderRadius="15px"
                   >
-                    <Typography variant="h5" color="black">
+                    <Typography variant="h5" color="black" fontWeight="bold">
                       1000 NFTs
                     </Typography>
                     <Typography variant="subtitle2" color="black">
@@ -394,9 +395,9 @@ const NFTSale = () => {
                   <Box
                     p={2}
                     style={{ background: "#fff", opacity: "80%" }}
-                    borderRadius="4px"
+                    borderRadius="15px"
                   >
-                    <Typography variant="h5" color="black">
+                    <Typography variant="h5" color="black" fontWeight="bold">
                       1500 NFTs
                     </Typography>
                     <Typography variant="subtitle2" color="black">
@@ -410,9 +411,9 @@ const NFTSale = () => {
                   <Box
                     p={2}
                     style={{ background: "#fff", opacity: "70%" }}
-                    borderRadius="4px"
+                    borderRadius="15px"
                   >
-                    <Typography variant="h5" color="black">
+                    <Typography variant="h5" color="black" fontWeight="bold">
                       2500 NFTs
                     </Typography>
                     <Typography variant="subtitle2" color="black">
@@ -426,9 +427,9 @@ const NFTSale = () => {
                   <Box
                     p={2}
                     style={{ background: "#fff", opacity: "60%" }}
-                    borderRadius="4px"
+                    borderRadius="15px"
                   >
-                    <Typography variant="h5" color="black">
+                    <Typography variant="h5" color="black" fontWeight="bold">
                       5000 NFTs
                     </Typography>
                     <Typography variant="subtitle2" color="black">
@@ -448,11 +449,11 @@ const NFTSale = () => {
             item
             xs={12}
             md={8}
-            style={{ backgroundColor: "white", borderRadius: "4px" }}
+            style={{ backgroundColor: "white", borderRadius: "20px", padding: "70px 67px" }}
             p={4}
           >
             <Box>
-              <Typography variant="h4" color="black" align="center">
+              <Typography variant="h4" color="black" align="center" fontWeight="bold">
                 Liquidity Accumulation
               </Typography>
             </Box>
@@ -462,14 +463,14 @@ const NFTSale = () => {
               flexWrap="wrap"
               justifyContent={"space-around"}
             >
-              <Box m={2} p={4} style={{ backgroundColor: "#5B21D4" }}>
-                <Typography variant="h6" align="center">
+              <Box m={2} p={4} style={{ backgroundColor: "#5B21D4", borderRadius: "20px", padding: "30px" }}>
+                <Typography variant="h6" align="center" fontWeight="bold">
                   Protocol Owned Liquidity Value
                 </Typography>
                 <Typography align="center">Ξ 4,430</Typography>
               </Box>
-              <Box m={2} p={4} style={{ backgroundColor: "#5B21D4" }}>
-                <Typography variant="h6" align="center">
+              <Box m={2} p={4} style={{ backgroundColor: "#5B21D4", borderRadius: "20px", padding: "30px" }}>
+                <Typography variant="h6" align="center" fontWeight="bold">
                   Protocol Owned Liquidity Percentage
                 </Typography>
                 <Typography align="center">50%</Typography>
