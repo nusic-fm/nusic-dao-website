@@ -56,7 +56,10 @@ const About = () => {
                 onClick={() => {
                   history.push("/");
                 }}
-                style={{ width: "230px" }}
+                style={{
+                  width: "230px",
+                  fontWeight: "bold"
+                }}
               >
                 Mint Governance NFT
               </Button>
@@ -69,7 +72,10 @@ const About = () => {
                 onClick={() => {
                   window.scrollTo({ top: 2700, behavior: "smooth" });
                 }}
-                style={{ width: "230px" }}
+                style={{
+                  width: "230px",
+                  fontWeight: "bold"
+                }}
               >
                 Join the NUSIC DAO
               </Button>
