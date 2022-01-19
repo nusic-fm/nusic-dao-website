@@ -16,6 +16,7 @@ import { useMediaQuery, useTheme } from "@material-ui/core";
 import MenuIcon from "@mui/icons-material/Menu";
 import { useState } from "react";
 import { useHistory } from "react-router-dom";
+import AccountBalanceWalletTwoToneIcon from "@mui/icons-material/AccountBalanceWalletTwoTone";
 
 const useStyles = makeStyles({
   appBar: {
@@ -41,6 +42,8 @@ const Header = () => {
   const { account } = useWeb3React();
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("xs"));
+  const isSmallScreen = useMediaQuery(theme.breakpoints.down("sm"));
+
   const history = useHistory();
 
   const [isPopoverOpen, setIsPopoverOpen] = useState(false);
@@ -52,7 +55,7 @@ const Header = () => {
   return (
     <AppBar className={classes.appBar}>
       <Toolbar>
-        <Grid container>
+        <Grid container alignItems="center">
           <Grid item xs={4} md={4} lg={2}>
             <Typography
               variant="h4"
@@ -92,7 +95,14 @@ const Header = () => {
                     About
                   </Typography>
                   <Typography sx={{ p: 2 }} color="#D1D1D5">
-                    Mint Governance NFT
+                    <a
+                      href="/"
+                      style={{ color: "white", textDecoration: "none" }}
+                      target={"_blank"}
+                      rel="noreferrer"
+                    >
+                      Mint Governance NFT
+                    </a>
                   </Typography>
                   <Typography sx={{ p: 2 }} color="#D1D1D5">
                     <a
@@ -119,8 +129,10 @@ const Header = () => {
                       <Button
                         variant="contained"
                         color="primary"
-                        size="small"
+                        size="large"
+                        startIcon={<AccountBalanceWalletTwoToneIcon />}
                         onClick={connect}
+                        style={{ fontWeight: "bold", borderRadius: "50px" }}
                       >
                         Connect Wallet
                       </Button>
@@ -136,18 +148,30 @@ const Header = () => {
                 justifyContent={"flex-end"}
                 alignItems="center"
                 height="100%"
+                gap="1rem"
               >
-                <Box mr={4}>
+                <Box>
                   <Typography
-                    variant="h6"
                     style={{ cursor: "pointer" }}
                     onClick={() => history.push("/about")}
                   >
                     About
                   </Typography>
                 </Box>
-                <Box mr={4}>
-                  <Typography variant="h6">
+                <Box>
+                  <Typography>
+                    <a
+                      href="/"
+                      style={{ color: "white", textDecoration: "none" }}
+                      target={"_blank"}
+                      rel="noreferrer"
+                    >
+                      Mint Governance NFT
+                    </a>
+                  </Typography>
+                </Box>
+                <Box>
+                  <Typography>
                     <a
                       href="https://rinkeby.nusic.fm/"
                       style={{ color: "white", textDecoration: "none" }}
@@ -173,10 +197,16 @@ const Header = () => {
                     <Button
                       variant="contained"
                       color="primary"
-                      size="small"
+                      size={isSmallScreen ? "small" : "medium"}
+                      startIcon={<AccountBalanceWalletTwoToneIcon />}
                       onClick={connect}
+                      style={{
+                        fontWeight: "bold",
+                        borderRadius: "50px",
+                        padding: "10px 20px",
+                      }}
                     >
-                      Connect Wallet
+                      {isSmallScreen ? "Wallet" : "Connect Wallet"}
                     </Button>
                   )}
                 </Box>
