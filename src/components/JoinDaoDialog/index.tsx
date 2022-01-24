@@ -64,6 +64,7 @@ const JoinDaoDialog = () => {
               value={firstName}
               onChange={(e) => setFirstName(e.target.value)}
               error={isFirstNameError}
+              style={{ width: "250px" }}
             ></TextField>
           </Box>
         </Grid>
@@ -76,6 +77,7 @@ const JoinDaoDialog = () => {
               margin="dense"
               value={lastName}
               onChange={(e) => setLastName(e.target.value)}
+              style={{ width: "250px" }}
             ></TextField>
           </Box>
         </Grid>
@@ -91,12 +93,18 @@ const JoinDaoDialog = () => {
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               error={isEmailError}
+              style={{ width: "250px" }}
             ></TextField>
           </Box>
         </Grid>
       </Grid>
       <Box display="flex" justifyContent="center" mt={6}>
-        <Button variant="contained" onClick={onJoin}>
+        <Button
+          variant="contained"
+          size="medium"
+          onClick={onJoin}
+          style={{ fontWeight: "bold", borderRadius: "50px", padding: "10px 20px" }}
+        >
           Join
         </Button>
       </Box>

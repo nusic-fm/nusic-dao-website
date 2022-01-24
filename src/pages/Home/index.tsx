@@ -47,11 +47,12 @@ const Home = () => {
           variant="contained"
           size="large"
           style={{
-            padding: "30px",
+            padding: "20px 30px",
             background: "transparent",
             border: "2px solid white",
             boxShadow: "none",
             fontWeight: "bold",
+            borderRadius: "50px"
           }}
           onClick={() => {
             saleElem.current?.scrollIntoView({ behavior: "smooth" });
