@@ -14,8 +14,10 @@ import { useWeb3React } from "@web3-react/core";
 import useAuth from "../../hooks/useAuth";
 import { useMediaQuery, useTheme } from "@material-ui/core";
 import MenuIcon from "@mui/icons-material/Menu";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
+import AccountBalanceWalletTwoToneIcon from "@mui/icons-material/AccountBalanceWalletTwoTone";
+import { logFirebaseEvent } from "../../services/firebase.service";
 
 const useStyles = makeStyles({
   appBar: {
@@ -48,6 +50,12 @@ const Header = () => {
   const connect = async () => {
     login();
   };
+
+  useEffect(() => {
+    if (account) {
+      logFirebaseEvent("wallet_connected", { address: `wa-${account}` });
+    }
+  }, [account]);
 
   return (
     <AppBar className={classes.appBar}>

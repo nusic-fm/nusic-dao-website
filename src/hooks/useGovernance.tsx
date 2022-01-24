@@ -20,7 +20,6 @@ const useGovernance = () => {
     setTotalSupply(parseInt(totalSupply.toString()));
     console.log("Total supply of tokens: ", totalSupply.toString());
 
-    // TODO
     governanceContractReadOnly.on("Transfer", async () => {
       console.log("Transfer event triggered.");
       const totalSupply = await governanceContractReadOnly.totalSupply();
