@@ -45,12 +45,13 @@ const JoinDaoDialog = () => {
 
   return (
     <Box>
-      <Typography variant="h2" fontWeight={900} align="center">
-        Join NUSIC DAO
-      </Typography>
+      <Box mb={2}>
+        <Typography variant="h3" fontWeight={900} align="center">
+          Pre-Order NUSIC DAO Governance NFT
+        </Typography>
+      </Box>
       <Typography align="center">
-        Sign-up here to join the NUSIC DAO and start the music finance
-        revolution…
+        Submit your details here to secure your NUSIC DAO Governance NFT
       </Typography>
       <Grid container mt={6}>
         <Grid item xs={false} lg={2}></Grid>
@@ -73,7 +74,6 @@ const JoinDaoDialog = () => {
             <TextField
               variant="outlined"
               label="Last Name"
-              required
               margin="dense"
               value={lastName}
               onChange={(e) => setLastName(e.target.value)}
@@ -101,9 +101,13 @@ const JoinDaoDialog = () => {
       <Box display="flex" justifyContent="center" mt={6}>
         <Button
           variant="contained"
-          size="medium"
+          size="large"
           onClick={onJoin}
-          style={{ fontWeight: "bold", borderRadius: "50px", padding: "10px 20px" }}
+          style={{
+            fontWeight: "bold",
+            borderRadius: "50px",
+            padding: "10px 20px",
+          }}
         >
           Join
         </Button>

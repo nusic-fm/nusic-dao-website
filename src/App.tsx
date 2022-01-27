@@ -1,8 +1,9 @@
 import { Box } from "@mui/material";
 import { Route, Switch } from "react-router-dom";
 import Header from "./components/Header";
-import About from "./pages/About";
+import Legal from "./pages/Legal";
 import Home from "./pages/Home";
+import ArtWork from "./pages/Artwork";
 
 const App = () => {
   return (
@@ -12,8 +13,11 @@ const App = () => {
         <Route exact path="/">
           <Home />
         </Route>
-        <Route path="/about">
-          <About />
+        <Route path="/legal">
+          <Legal />
+        </Route>
+        <Route path="/artWork">
+          <ArtWork />
         </Route>
       </Switch>
     </Box>
