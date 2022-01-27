@@ -13,10 +13,12 @@ import { makeStyles } from "@mui/styles";
 import { useWeb3React } from "@web3-react/core";
 import useAuth from "../../hooks/useAuth";
 import MenuIcon from "@mui/icons-material/Menu";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useHistory } from "react-router-dom";
 import AccountBalanceWalletTwoToneIcon from "@mui/icons-material/AccountBalanceWalletTwoTone";
 import { logFirebaseEvent } from "../../services/firebase.service";
+import axios from "axios";
+import DisclaimerDialog from "../DisclaimerDialog";
 
 const useStyles = makeStyles({
   appBar: {
@@ -44,6 +46,17 @@ const Header = () => {
   const history = useHistory();
 
   const [isPopoverOpen, setIsPopoverOpen] = useState(false);
+  const [isDisclaimerOpen, setIsDisclaimerOpen] = useState(false);
+  const [userCountry, setUserCountry] = useState("");
+
+  const menuRef = useRef();
+  const [anchorEl, setAnchorEl] = useState(null);
+
+  useEffect(() => {
+    if (menuRef.current) {
+      setAnchorEl(menuRef.current);
+    }
+  }, [menuRef]);
 
   const connect = async () => {
     login();
@@ -52,8 +65,29 @@ const Header = () => {
   useEffect(() => {
     if (account) {
       logFirebaseEvent("wallet_connected", { address: `wa-${account}` });
+      const isAcceptedDisclaimer = localStorage.getItem("NUSIC_DISCLAIMER");
+      if (!isAcceptedDisclaimer) {
+        fetchIpInfo();
+      }
     }
   }, [account]);
+
+  const fetchIpInfo = async () => {
+    try {
+      const res = await axios.get(
+        `https://ipgeolocation.abstractapi.com/v1/?api_key=${process.env.REACT_APP_IPINFO_APIKEY}`
+      );
+      setUserCountry(res.data.country);
+      setIsDisclaimerOpen(true);
+    } catch (e) {
+      console.error(e);
+    }
+  };
+
+  const handleDisclaimerClose = () => {
+    localStorage.setItem("NUSIC_DISCLAIMER", "true");
+    setIsDisclaimerOpen(false);
+  };
 
   return (
     <AppBar className={classes.appBar}>
@@ -64,10 +98,10 @@ const Header = () => {
               variant="h4"
               className={classes.title}
               fontWeight={"1000"}
+              onClick={() => history.push("/")}
+              style={{ cursor: "pointer" }}
             >
-              <a href="/" style={{ color: "white", textDecoration: "none" }}>
-                NUSIC
-              </a>
+              NUSIC
             </Typography>
           </Grid>
           <Grid item xs={8} md={8} lg={10}>
@@ -76,8 +110,9 @@ const Header = () => {
               justifyContent="flex-end"
               alignItems="center"
               height="100%"
+              ref={menuRef}
             >
-              <Typography sx={{ p: 2 }} color="#D1D1D5">
+              <Box sx={{ p: 2 }} color="#D1D1D5">
                 {account ? (
                   <Tooltip title={account}>
                     <Chip
@@ -99,17 +134,18 @@ const Header = () => {
                     <AccountBalanceWalletTwoToneIcon />
                   </Button>
                 )}
-              </Typography>
+              </Box>
               <MenuIcon onClick={() => setIsPopoverOpen(true)} />
             </Box>
             <Popover
               open={isPopoverOpen}
-              // anchorEl={anchorEl}
+              anchorEl={anchorEl}
               onClose={() => setIsPopoverOpen(false)}
               anchorOrigin={{
-                vertical: "top",
+                vertical: "bottom",
                 horizontal: "right",
               }}
+              elevation={100}
             >
               <Box style={{ backgroundColor: "#2E2E44" }}>
                 <Typography sx={{ p: 2, cursor: "pointer" }} color="#D1D1D5">
@@ -159,6 +195,11 @@ const Header = () => {
           </Grid>
         </Grid>
       </Toolbar>
+      <DisclaimerDialog
+        isOpen={isDisclaimerOpen}
+        handleClose={handleDisclaimerClose}
+        country={userCountry}
+      />
     </AppBar>
   );
 };

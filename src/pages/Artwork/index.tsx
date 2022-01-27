@@ -3,7 +3,7 @@ import { Box, Typography } from "@mui/material";
 const ArtWork = () => {
   return (
     <Box minHeight="100vh" style={{ backgroundColor: "#17172F" }}>
-      <Box pt={20}>
+      <Box pt={20} px={2}>
         <Typography variant="h3" align="center">
           NUSIC DAO NFT Artwork
         </Typography>
