@@ -43,7 +43,7 @@ const useStyles = makeStyles((theme: any) => ({
     color: "black",
   },
   inputRoot: {
-    color: "black",
+    color: "black !important",
   },
   textFieldNotchedOutline: {
     borderWidth: "1px",
