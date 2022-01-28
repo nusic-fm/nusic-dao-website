@@ -171,17 +171,52 @@ const NFTSale = () => {
                 </Box>
               </Box>
               <Box sx={{ display: "flex", alignItems: "center" }}>
-                <Box sx={{ width: "100%", mr: 1 }}>
+                <Box sx={{ width: "100%" }} position="relative">
+                  <Box
+                    position="absolute"
+                    left={0}
+                    top={0}
+                    zIndex={10}
+                    display="flex"
+                    alignItems="center"
+                    height="100%"
+                    ml={2}
+                  >
+                    <Typography
+                      variant="body2"
+                      color="#2E2E44"
+                      fontWeight="bold"
+                    >
+                      {noOfNFTsSold} minted
+                    </Typography>
+                  </Box>
                   <BorderLinearProgress
                     variant={noOfNFTsSold > 0 ? "determinate" : "indeterminate"}
-                    value={noOfNFTsSold}
-                    style={{ borderRadius: "4px" }}
+                    value={(noOfNFTsSold * 100) / 125}
+                    style={{
+                      borderRadius: "4px",
+                      backgroundColor: "white",
+                      height: "25px",
+                    }}
                   />
-                </Box>
-                <Box sx={{ minWidth: 35 }}>
-                  <Typography variant="body2" color="text.secondary">
-                    {noOfNFTsSold}
-                  </Typography>
+                  <Box
+                    position="absolute"
+                    right={0}
+                    top={0}
+                    zIndex={10}
+                    display="flex"
+                    alignItems="center"
+                    height="100%"
+                    mr={2}
+                  >
+                    <Typography
+                      variant="body2"
+                      color="#2E2E44"
+                      fontWeight="bold"
+                    >
+                      {125 - noOfNFTsSold} remaining
+                    </Typography>
+                  </Box>
                 </Box>
               </Box>
               <Box
@@ -207,11 +242,12 @@ const NFTSale = () => {
                       fontWeight="bold"
                       color="primary.light"
                     >
-                      {NFT_PRICE} ETH
+                      {/* {NFT_PRICE} ETH */}
+                      Try on Testnet
                     </Typography>
-                    <Box ml={2}>
+                    {/* <Box ml={2}>
                       <Typography color="primary.light">per NFT</Typography>
-                    </Box>
+                    </Box> */}
                   </Box>
                   <Box
                     mt={4}
