@@ -20,7 +20,7 @@ const useStyles = makeStyles((theme: any) => ({
     fontSize: "24px",
   },
   button: {
-    backgroundColor: "transparent",
+    backgroundColor: "transparent !important",
     "&:hover": {
       backgroundColor: "rgba(0,0,0,0.3)",
     },
