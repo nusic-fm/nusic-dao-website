@@ -24,7 +24,8 @@ type FirebaseEventTypes =
   | "wallet_connection_failed"
   | "mint_tx_initiated"
   | "mint_tx_failed"
-  | "mint_tx_successful";
+  | "mint_tx_successful"
+  | "revue_subscribers";
 
 const logFirebaseEvent = (type: FirebaseEventTypes, additionalParams: any) => {
   logEvent(analytics, type, additionalParams);

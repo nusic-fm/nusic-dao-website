@@ -1,8 +1,9 @@
 import { Box, Button, Grid, TextField, Typography } from "@mui/material";
-import axios from "axios";
+// import axios from "axios";
 import { useState } from "react";
+import { logFirebaseEvent } from "../../services/firebase.service";
 
-const REVUE_BASE_URL = "https://www.getrevue.co/api/v2/subscribers";
+// const REVUE_BASE_URL = "https://www.getrevue.co/api/v2/subscribers";
 
 const JoinDaoDialog = () => {
   const [firstName, setFirstName] = useState<string>("");
@@ -24,23 +25,27 @@ const JoinDaoDialog = () => {
       setIsEmailError(false);
     }
     if (!firstName || !email) {
+      alert("Kindly fill in first name and email fields!");
       return;
     }
-    const headers = {
-      "Content-Type": "application/json",
-      Authorization: `Token ${process.env.REACT_APP_REVUE_API_TOKEN}`,
-    };
     const data = {
       email,
       firstName,
       lastName,
     };
-    try {
-      await axios.post(REVUE_BASE_URL, data, { headers });
-    } catch (e) {
-      console.error(e);
-      alert("Something went wrong! Please try again in sometime");
-    }
+    logFirebaseEvent("revue_subscribers", data);
+    alert("Thank you!");
+
+    // const headers = {
+    //   "Content-Type": "application/json",
+    //   Authorization: `Token ${process.env.REACT_APP_REVUE_API_TOKEN}`,
+    // };
+    // try {
+    //   await axios.post(REVUE_BASE_URL, data, { headers });
+    // } catch (e) {
+    //   console.error(e);
+    //   alert("Something went wrong! Please try again in sometime");
+    // }
   };
 
   return (
