@@ -9,7 +9,7 @@ import GitHubIcon from "@mui/icons-material/GitHub";
 const useStyles = makeStyles((theme: any) => ({
   root: {
     height: "100vh",
-    backgroundImage: "url(assets/NUSIC-Artwork.png)",
+    backgroundImage: "url(assets/NUSIC-Artwork.webp)",
     backgroundSize: "cover",
     backgroundPosition: "center center",
 
@@ -22,7 +22,7 @@ const useStyles = makeStyles((theme: any) => ({
   button: {
     backgroundColor: "transparent !important",
     "&:hover": {
-      backgroundColor: "rgba(0,0,0,0.3)",
+      backgroundColor: "rgba(0,0,0,0.3) !important",
     },
   },
 }));
@@ -88,9 +88,10 @@ const Home = () => {
         <Grid item xs={12} md={6}>
           <Box px={{ md: 10, lg: 10 }}>
             <img
-              src="assets/NUSIC-Record-Sun.jpeg"
+              src="assets/NUSIC-Record-Sun.webp"
               alt="record"
               width={"100%"}
+              height="100%"
             ></img>
           </Box>
         </Grid>
@@ -128,9 +129,10 @@ const Home = () => {
         <Grid item xs={12} md={6} order={{ xs: 1, md: 2 }}>
           <Box px={{ md: 10, lg: 10 }}>
             <img
-              src="assets/NUSIC-Diamond.jpeg"
+              src="assets/NUSIC-Diamond.webp"
               alt="record"
               width={"100%"}
+              height="100%"
             ></img>
           </Box>
         </Grid>
@@ -174,7 +176,12 @@ const Home = () => {
         </Grid>
       </Box>
       <Box pt={6} pb={6}>
-        <Box p={4} display={"flex"} justifyContent={"center"}>
+        <Box
+          p={4}
+          display={"flex"}
+          justifyContent={"center"}
+          alignItems="center"
+        >
           <Box mr={2}>
             <a
               href="https://discord.gg/auPBu4dAHe"
@@ -183,10 +190,10 @@ const Home = () => {
               style={{ color: "white" }}
             >
               <img
-                src="/assets/Discord-Logo.png"
+                src="/assets/Discord-Logo.webp"
                 alt="discord"
                 width={"24px"}
-                height={"24px"}
+                height={"18px"}
               />
             </a>
           </Box>

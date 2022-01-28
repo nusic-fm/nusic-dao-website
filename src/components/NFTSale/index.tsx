@@ -109,7 +109,9 @@ const NFTSale = () => {
               </Box>
               <Box mt={4} display="flex" justifyContent="center">
                 <Box width="250px" height="250px" position="relative">
-                  <img src="/assets/NUSIC-NFT.gif" width={"100%"} alt="nft" />
+                  <video width="100%" autoPlay muted loop>
+                    <source src="/assets/NUSIC-NFT.webm" type="video/webm" />
+                  </video>
                   <Box
                     position="absolute"
                     style={{ backgroundColor: "rgba(0, 0, 0, 0.5)" }}

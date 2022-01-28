@@ -4,7 +4,7 @@ import { makeStyles } from "@mui/styles";
 const useStyles = makeStyles((theme: any) => ({
   root: {
     height: "100vh",
-    backgroundImage: "url(/assets/NUSIC-DJ.JPG)",
+    backgroundImage: "url(/assets/NUSIC-DJ.webp)",
     backgroundSize: "cover",
     backgroundPosition: "center center",
 
