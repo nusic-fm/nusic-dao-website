@@ -1,10 +1,11 @@
-import { Box, Button, Grid, Typography } from "@mui/material";
+import { Alert, Box, Button, Grid, Typography } from "@mui/material";
 import { makeStyles } from "@mui/styles";
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import JoinDaoDialog from "../../components/JoinDaoDialog";
 import NFTSale from "../../components/NFTSale";
 import TwitterIcon from "@mui/icons-material/Twitter";
 import GitHubIcon from "@mui/icons-material/GitHub";
+import { Snackbar } from "@material-ui/core";
 
 const useStyles = makeStyles((theme: any) => ({
   root: {
@@ -31,6 +32,8 @@ const useStyles = makeStyles((theme: any) => ({
 const Home = () => {
   const classes = useStyles();
   const saleElem = useRef<null | HTMLDivElement>(null);
+
+  const [isSnackbarOpen, setIsSnackbarOpen] = useState(true);
 
   return (
     <Box style={{ backgroundColor: "#17172F" }}>
@@ -68,7 +71,7 @@ const Home = () => {
             saleElem.current?.scrollIntoView({ behavior: "smooth" });
           }}
         >
-          Join Now
+          Mint on Testnet
         </Button>
       </Box>
       <Box minHeight={"50vh"} display="flex" alignItems="center">
@@ -220,6 +223,18 @@ const Home = () => {
           </Box>
         </Box>
       </Box>
+      <Snackbar
+        open={isSnackbarOpen}
+        autoHideDuration={10000}
+        onClose={() => {
+          setIsSnackbarOpen(false);
+        }}
+      >
+        <Alert severity="warning" elevation={6}>
+          Currently we are live on Testnet. Please connect your wallet on
+          Rinkeby Test Network to Mint.
+        </Alert>
+      </Snackbar>
     </Box>
   );
 };

@@ -100,8 +100,8 @@ const Header = () => {
               style={{ cursor: "pointer" }}
               onClick={() => history.push("/")}
             >
-              <img src="favicon.ico" alt="nusic" width="24px" />
-              <Box ml={1}>
+              <img src="/assets/NUSIC-Logo.webp" alt="nusic" height="40px" />
+              <Box>
                 <Typography
                   variant="h4"
                   className={classes.title}
@@ -163,7 +163,7 @@ const Header = () => {
                     target={"_blank"}
                     rel="noreferrer"
                   >
-                    Join NUSIC DAO Now
+                    Join our Discord
                   </a>
                 </Typography>
                 {/* <Typography

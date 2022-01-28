@@ -52,11 +52,11 @@ const JoinDaoDialog = () => {
     <Box>
       <Box mb={2}>
         <Typography variant="h3" fontWeight={900} align="center">
-          Pre-Order NUSIC DAO Governance NFT
+          Get Notified when Governance NFTs are available
         </Typography>
       </Box>
       <Typography align="center">
-        Submit your details here to secure your NUSIC DAO Governance NFT
+        Submit your details here to join the waitlist
       </Typography>
       <Grid container mt={6}>
         <Grid item xs={false} lg={2}></Grid>

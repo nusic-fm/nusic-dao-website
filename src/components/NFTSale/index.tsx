@@ -17,6 +17,8 @@ import useAuth from "../../hooks/useAuth";
 import useGovernance from "../../hooks/useGovernance";
 import { logFirebaseEvent } from "../../services/firebase.service";
 import ReceiptDialog from "../ReceiptDialog";
+import AddIcon from "@mui/icons-material/Add";
+import RemoveIcon from "@mui/icons-material/Remove";
 
 const reasons = [
   "Own a unique piece of NFT music history",
@@ -44,6 +46,8 @@ const useStyles = makeStyles((theme: any) => ({
   },
   inputRoot: {
     color: "black !important",
+    paddingLeft: "25%",
+    fontWeight: "600",
   },
   textFieldNotchedOutline: {
     borderWidth: "1px",
@@ -100,6 +104,12 @@ const NFTSale = () => {
     }
   };
 
+  const setInputValue = (noOfNftsEntered: number) => {
+    const maxNoAllowed = noOfNftsEntered >= 5 ? 5 : noOfNftsEntered;
+    const allowedNos = maxNoAllowed < 0 ? 0 : maxNoAllowed;
+    setSelectedNoOfNFTs(allowedNos || 1);
+  };
+
   return (
     <Box>
       <Box minHeight={"100vh"} display="flex" alignItems="center">
@@ -117,7 +127,13 @@ const NFTSale = () => {
               </Box>
               <Box mt={4} display="flex" justifyContent="center">
                 <Box width="250px" height="250px" position="relative">
-                  <video width="100%" autoPlay muted loop>
+                  <video
+                    width="100%"
+                    autoPlay
+                    muted
+                    loop
+                    style={{ borderRadius: "8px" }}
+                  >
                     <source src="/assets/NUSIC-NFT.webm" type="video/webm" />
                   </video>
                   <Box
@@ -129,6 +145,7 @@ const NFTSale = () => {
                     alignItems="center"
                     justifyContent="center"
                     top="0"
+                    borderRadius="8px"
                   >
                     <Typography
                       fontSize="h3.fontSize"
@@ -158,6 +175,7 @@ const NFTSale = () => {
                   <BorderLinearProgress
                     variant={noOfNFTsSold > 0 ? "determinate" : "indeterminate"}
                     value={noOfNFTsSold}
+                    style={{ borderRadius: "4px" }}
                   />
                 </Box>
                 <Box sx={{ minWidth: 35 }}>
@@ -175,7 +193,7 @@ const NFTSale = () => {
               >
                 <Box
                   style={{ backgroundColor: "white" }}
-                  px={{ xs: 10, sm: 10, md: 20, lg: 20 }}
+                  px={{ xs: 5, sm: 10, md: 20, lg: 20 }}
                   py={5}
                   borderRadius="4px"
                 >
@@ -202,17 +220,21 @@ const NFTSale = () => {
                     justifyContent="center"
                     mb={0.5}
                   >
+                    <Box
+                      mr={2}
+                      style={{ cursor: "pointer" }}
+                      onClick={() => {
+                        setInputValue(selectedNoOfNFTs + 1);
+                      }}
+                    >
+                      <AddIcon fontSize="small" />
+                    </Box>
                     <TextField
                       size="small"
-                      type="number"
-                      style={{ width: "150px" }}
+                      style={{ width: "80px" }}
                       value={selectedNoOfNFTs}
                       onChange={(e) => {
-                        const noOfNftsEntered = parseInt(e.target.value);
-                        const maxNoAllowed =
-                          noOfNftsEntered >= 5 ? 5 : noOfNftsEntered;
-                        const allowedNos = maxNoAllowed < 0 ? 0 : maxNoAllowed;
-                        setSelectedNoOfNFTs(allowedNos);
+                        setInputValue(parseInt(e.target.value) || 0);
                       }}
                       InputLabelProps={{
                         classes: {
@@ -228,6 +250,15 @@ const NFTSale = () => {
                         },
                       }}
                     ></TextField>
+                    <Box
+                      ml={2}
+                      style={{ cursor: "pointer" }}
+                      onClick={() => {
+                        setInputValue(selectedNoOfNFTs - 1);
+                      }}
+                    >
+                      <RemoveIcon fontSize="small" />
+                    </Box>
                   </Box>
                   <Typography
                     variant="subtitle2"
