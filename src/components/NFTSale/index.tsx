@@ -16,6 +16,7 @@ import { useState } from "react";
 import useAuth from "../../hooks/useAuth";
 import useGovernance from "../../hooks/useGovernance";
 import { logFirebaseEvent } from "../../services/firebase.service";
+import ReceiptDialog from "../ReceiptDialog";
 
 const reasons = [
   "Own a unique piece of NFT music history",
@@ -61,6 +62,10 @@ const NFTSale = () => {
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const { login } = useAuth();
 
+  const [isTxReceiptOpen, setIsTxReceiptOpen] = useState<boolean>(false);
+  const [txHash, setTxHash] = useState<string>("");
+  const [noOfNftsBought, setNoOfNftsBought] = useState<number>(0);
+
   const onMintClick = async () => {
     if (account) {
       setIsLoading(true);
@@ -69,12 +74,15 @@ const NFTSale = () => {
           noOfTokens: selectedNoOfNFTs,
           address: `wa-${account}`,
         });
+        setNoOfNftsBought(selectedNoOfNFTs);
         const receipt = await mintNFTs(selectedNoOfNFTs);
         logFirebaseEvent("mint_tx_successful", {
           noOfTokens: selectedNoOfNFTs,
           address: `wa-${account}`,
           txHash: `txh-${receipt.transactionHash}`,
         });
+        setTxHash(receipt.transactionHash);
+        setIsTxReceiptOpen(true);
         console.log({ receipt });
       } catch (e: any) {
         const errorMsg = e.data?.message || e.message;
@@ -259,12 +267,12 @@ const NFTSale = () => {
                   </Box>
                 </Box>
               </Box>
-              <Box mt={2}>
+              {/* <Box mt={2}>
                 <Typography align="center">
                   NUSIC DAO NFTs are live on the Rinkeby testnet, report a
                   critical vulnerability to recieve Ξ3
                 </Typography>
-              </Box>
+              </Box> */}
             </Box>
           </Grid>
           <Grid item xs={false} md={2}></Grid>
@@ -551,6 +559,16 @@ const NFTSale = () => {
           </Grid>
         </Grid>
       </Box>
+      <ReceiptDialog
+        isOpen={isTxReceiptOpen}
+        handleClose={() => {
+          setIsTxReceiptOpen(false);
+          setTxHash("");
+          setNoOfNftsBought(0);
+        }}
+        txHash={txHash}
+        noOfTokens={noOfNftsBought}
+      />
     </Box>
   );
 };

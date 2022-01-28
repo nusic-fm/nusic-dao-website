@@ -22,7 +22,8 @@ const useStyles = makeStyles((theme: any) => ({
   button: {
     backgroundColor: "transparent !important",
     "&:hover": {
-      backgroundColor: "rgba(0,0,0,0.3) !important",
+      backgroundColor: "rgb(255,255,255) !important",
+      color: "black !important",
     },
   },
 }));

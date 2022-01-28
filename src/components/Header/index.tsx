@@ -17,8 +17,8 @@ import { useEffect, useRef, useState } from "react";
 import { useHistory } from "react-router-dom";
 import AccountBalanceWalletTwoToneIcon from "@mui/icons-material/AccountBalanceWalletTwoTone";
 import { logFirebaseEvent } from "../../services/firebase.service";
-import axios from "axios";
-import DisclaimerDialog from "../DisclaimerDialog";
+// import axios from "axios";
+// import DisclaimerDialog from "../DisclaimerDialog";
 
 const useStyles = makeStyles({
   appBar: {
@@ -46,8 +46,8 @@ const Header = () => {
   const history = useHistory();
 
   const [isPopoverOpen, setIsPopoverOpen] = useState(false);
-  const [isDisclaimerOpen, setIsDisclaimerOpen] = useState(false);
-  const [userCountry, setUserCountry] = useState("");
+  // const [isDisclaimerOpen, setIsDisclaimerOpen] = useState(false);
+  // const [userCountry, setUserCountry] = useState("");
 
   const menuRef = useRef();
   const [anchorEl, setAnchorEl] = useState(null);
@@ -65,46 +65,54 @@ const Header = () => {
   useEffect(() => {
     if (account) {
       logFirebaseEvent("wallet_connected", { address: `wa-${account}` });
-      const isAcceptedDisclaimer = localStorage.getItem("NUSIC_DISCLAIMER");
-      if (!isAcceptedDisclaimer) {
-        fetchIpInfo();
-      }
+      // const isAcceptedDisclaimer = localStorage.getItem("NUSIC_DISCLAIMER");
+      // if (!isAcceptedDisclaimer) {
+      //   fetchIpInfo();
+      // }
     }
   }, [account]);
 
-  const fetchIpInfo = async () => {
-    try {
-      const res = await axios.get(
-        `https://ipgeolocation.abstractapi.com/v1/?api_key=${process.env.REACT_APP_IPINFO_APIKEY}`
-      );
-      setUserCountry(res.data.country);
-      setIsDisclaimerOpen(true);
-    } catch (e) {
-      console.error(e);
-    }
-  };
+  // const fetchIpInfo = async () => {
+  //   try {
+  //     const res = await axios.get(
+  //       `https://ipgeolocation.abstractapi.com/v1/?api_key=${process.env.REACT_APP_IPINFO_APIKEY}`
+  //     );
+  //     setUserCountry(res.data.country);
+  //     setIsDisclaimerOpen(true);
+  //   } catch (e) {
+  //     console.error(e);
+  //   }
+  // };
 
-  const handleDisclaimerClose = () => {
-    localStorage.setItem("NUSIC_DISCLAIMER", "true");
-    setIsDisclaimerOpen(false);
-  };
+  // const handleDisclaimerClose = () => {
+  //   localStorage.setItem("NUSIC_DISCLAIMER", "true");
+  //   setIsDisclaimerOpen(false);
+  // };
 
   return (
     <AppBar className={classes.appBar}>
       <Toolbar>
         <Grid container alignItems="center">
-          <Grid item xs={4} md={4} lg={2}>
-            <Typography
-              variant="h4"
-              className={classes.title}
-              fontWeight={"1000"}
-              onClick={() => history.push("/")}
+          <Grid item xs={8} md={4} lg={2}>
+            <Box
+              display="flex"
+              alignItems="center"
               style={{ cursor: "pointer" }}
+              onClick={() => history.push("/")}
             >
-              NUSIC
-            </Typography>
+              <img src="favicon.ico" alt="nusic" width="24px" />
+              <Box ml={1}>
+                <Typography
+                  variant="h4"
+                  className={classes.title}
+                  fontWeight={"1000"}
+                >
+                  NUSIC DAO
+                </Typography>
+              </Box>
+            </Box>
           </Grid>
-          <Grid item xs={8} md={8} lg={10}>
+          <Grid item xs={4} md={8} lg={10}>
             <Box
               display="flex"
               justifyContent="flex-end"
@@ -158,7 +166,7 @@ const Header = () => {
                     Join NUSIC DAO Now
                   </a>
                 </Typography>
-                <Typography
+                {/* <Typography
                   sx={{ p: 2 }}
                   color="#D1D1D5"
                   onClick={() => {
@@ -179,7 +187,7 @@ const Header = () => {
                   style={{ cursor: "pointer" }}
                 >
                   Disclaimers and Legal
-                </Typography>
+                </Typography> */}
                 <Typography sx={{ p: 2 }} color="#D1D1D5">
                   <a
                     href="https://rinkeby.nusic.fm/"
@@ -195,11 +203,11 @@ const Header = () => {
           </Grid>
         </Grid>
       </Toolbar>
-      <DisclaimerDialog
+      {/* <DisclaimerDialog
         isOpen={isDisclaimerOpen}
         handleClose={handleDisclaimerClose}
         country={userCountry}
-      />
+      /> */}
     </AppBar>
   );
 };

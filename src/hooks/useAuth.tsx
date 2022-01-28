@@ -15,7 +15,7 @@ const useAuth = () => {
       });
       if (error.name === "UnsupportedChainIdError") {
         alert(
-          "Unsupported chain, Please connect Etheruem Mainnet to continue."
+          "Unsupported chain, Please connect Rinkeby Test Network to continue."
         );
       } else {
         alert(error.message);
