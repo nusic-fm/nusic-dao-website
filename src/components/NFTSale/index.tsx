@@ -19,6 +19,7 @@ import { logFirebaseEvent } from "../../services/firebase.service";
 import ReceiptDialog from "../ReceiptDialog";
 import AddIcon from "@mui/icons-material/Add";
 import RemoveIcon from "@mui/icons-material/Remove";
+import { openSnackbarComp } from "../AppSnackbar";
 
 const reasons = [
   "Own a unique piece of NFT music history",
@@ -89,14 +90,26 @@ const NFTSale = () => {
         setIsTxReceiptOpen(true);
         console.log({ receipt });
       } catch (e: any) {
-        const errorMsg = e.data?.message || e.message;
-        alert(errorMsg);
-        console.error(e);
+        const errorMsg = e.code || e.data?.message || e.message;
         logFirebaseEvent("mint_tx_failed", {
           noOfTokens: selectedNoOfNFTs,
           address: `wa-${account}`,
           errorMsg,
         });
+        if (e.code === "INSUFFICIENT_FUNDS") {
+          openSnackbarComp(
+            "error",
+            "Insufficient funds available to make this transaction"
+          );
+        } else {
+          openSnackbarComp("error", errorMsg);
+          console.error(e);
+          logFirebaseEvent("mint_tx_failed", {
+            noOfTokens: selectedNoOfNFTs,
+            address: `wa-${account}`,
+            errorMsg,
+          });
+        }
       }
       setIsLoading(false);
     } else {

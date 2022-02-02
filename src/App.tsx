@@ -4,6 +4,7 @@ import Header from "./components/Header";
 import Legal from "./pages/Legal";
 import Home from "./pages/Home";
 import ArtWork from "./pages/Artwork";
+import AppSnackbar from "./components/AppSnackbar";
 
 const App = () => {
   return (
@@ -20,6 +21,7 @@ const App = () => {
           <ArtWork />
         </Route>
       </Switch>
+      <AppSnackbar />
     </Box>
   );
 };

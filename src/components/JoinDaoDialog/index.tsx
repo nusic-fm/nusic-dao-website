@@ -1,6 +1,7 @@
 import { Box, Button, Grid, TextField, Typography } from "@mui/material";
 import axios from "axios";
 import { useState } from "react";
+import { openSnackbarComp } from "../AppSnackbar";
 
 const JoinDaoDialog = () => {
   const [firstName, setFirstName] = useState<string>("");
@@ -22,7 +23,10 @@ const JoinDaoDialog = () => {
       setIsEmailError(false);
     }
     if (!firstName || !email) {
-      alert("Kindly fill in first name and email fields!");
+      openSnackbarComp(
+        "warning",
+        "Kindly fill in first name and email fields!"
+      );
       return;
     }
     const data = {
@@ -35,11 +39,12 @@ const JoinDaoDialog = () => {
         "https://chainlink-spotify-adaptor-ynfarb57wa-uc.a.run.app/add_subscriber",
         data
       );
-      alert("Thanks for joining the waitlist.");
+      openSnackbarComp("success", "Thanks for joining the waitlist");
     } catch (e) {
       console.error(e);
-      alert(
-        "Something went wrong! Please check your inbox if already joined or try again in sometime."
+      openSnackbarComp(
+        "error",
+        "Something went wrong! Please check your inbox if already joined or try again in sometime"
       );
     }
   };
