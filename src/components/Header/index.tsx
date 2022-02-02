@@ -156,6 +156,16 @@ const Header = () => {
               elevation={100}
             >
               <Box style={{ backgroundColor: "#2E2E44" }}>
+                <Typography sx={{ p: 2 }} color="#D1D1D5">
+                  <a
+                    href="https://docsend.com/view/58rkhdf2iapsjuah"
+                    style={{ color: "#D1D1D5", textDecoration: "none" }}
+                    target={"_blank"}
+                    rel="noreferrer"
+                  >
+                    Check our Deck
+                  </a>
+                </Typography>
                 <Typography sx={{ p: 2, cursor: "pointer" }} color="#D1D1D5">
                   <a
                     href="https://discord.gg/auPBu4dAHe"
