@@ -1,9 +1,6 @@
 import { Box, Button, Grid, TextField, Typography } from "@mui/material";
-// import axios from "axios";
+import axios from "axios";
 import { useState } from "react";
-import { logFirebaseEvent } from "../../services/firebase.service";
-
-// const REVUE_BASE_URL = "https://www.getrevue.co/api/v2/subscribers";
 
 const JoinDaoDialog = () => {
   const [firstName, setFirstName] = useState<string>("");
@@ -33,19 +30,18 @@ const JoinDaoDialog = () => {
       firstName,
       lastName,
     };
-    logFirebaseEvent("revue_subscribers", data);
-    alert("Thank you!");
-
-    // const headers = {
-    //   "Content-Type": "application/json",
-    //   Authorization: `Token ${process.env.REACT_APP_REVUE_API_TOKEN}`,
-    // };
-    // try {
-    //   await axios.post(REVUE_BASE_URL, data, { headers });
-    // } catch (e) {
-    //   console.error(e);
-    //   alert("Something went wrong! Please try again in sometime");
-    // }
+    try {
+      await axios.post(
+        "https://chainlink-spotify-adaptor-ynfarb57wa-uc.a.run.app/add_subscriber",
+        data
+      );
+      alert("Thanks for joining the waitlist.");
+    } catch (e) {
+      console.error(e);
+      alert(
+        "Something went wrong! Please check your inbox if already joined or try again in sometime."
+      );
+    }
   };
 
   return (
