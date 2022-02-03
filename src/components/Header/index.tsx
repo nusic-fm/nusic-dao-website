@@ -163,7 +163,7 @@ const Header = () => {
                     target={"_blank"}
                     rel="noreferrer"
                   >
-                    Check our Deck
+                    Check the Deck
                   </a>
                 </Typography>
                 <Typography sx={{ p: 2, cursor: "pointer" }} color="#D1D1D5">
