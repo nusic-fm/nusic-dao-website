@@ -160,8 +160,8 @@ const Home = () => {
               <Typography variant="h6">
                 Join NUSIC DAO today through pro-active contribution and
                 participate in governance with NUSIC DAO NFTs - a series of
-                unique artworks that grant voting power over the direction of
-                NUSIC DAO and its protocols.
+                unique artworks and generative music pieces that grant voting
+                power over the direction of NUSIC DAO and its protocols.
               </Typography>
             </Box>
           </Box>
@@ -213,7 +213,7 @@ const Home = () => {
           </Box>
           <Box>
             <a
-              href="https://twitter.com/nusic_protocol"
+              href="https://twitter.com/nusicDAO"
               target="_blank"
               rel="noreferrer"
               style={{ color: "white" }}
