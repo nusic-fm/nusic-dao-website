@@ -12,7 +12,7 @@ import {
 } from "@mui/material";
 import { makeStyles } from "@mui/styles";
 import { useWeb3React } from "@web3-react/core";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import useAuth from "../../hooks/useAuth";
 import useGovernance from "../../hooks/useGovernance";
 import { logFirebaseEvent } from "../../services/firebase.service";
@@ -71,6 +71,22 @@ const NFTSale = () => {
   const [txHash, setTxHash] = useState<string>("");
   const [noOfNftsBought, setNoOfNftsBought] = useState<number>(0);
 
+  const loadBlockpassWidget = (userAccountAddress: string) => {
+    const blockpass = new (window as any).BlockpassKYCConnect(
+      "nusic", // service client_id from the admin console
+      {
+        refId: userAccountAddress, // assign the local user_id of the connected user
+      }
+    );
+
+    blockpass.startKYCConnect();
+
+    blockpass.on("KYCConnectSuccess", () => {
+      alert("Congrats!!!");
+      //add code that will trigger when data have been sent.
+    });
+  };
+
   const onMintClick = async () => {
     if (account) {
       setIsLoading(true);
@@ -116,6 +132,12 @@ const NFTSale = () => {
       login();
     }
   };
+
+  useEffect(() => {
+    if (account) {
+      loadBlockpassWidget(account);
+    }
+  }, [account]);
 
   const setInputValue = (noOfNftsEntered: number) => {
     const maxNoAllowed = noOfNftsEntered >= 5 ? 5 : noOfNftsEntered;
@@ -323,27 +345,46 @@ const NFTSale = () => {
                     alignItems="center"
                     justifyContent="center"
                   >
-                    <Button
-                      size="large"
-                      variant="contained"
-                      onClick={onMintClick}
-                      disabled={isLoading}
-                      style={{
-                        fontWeight: "bold",
-                        borderRadius: "50px",
-                        padding: "10px 20px",
-                      }}
-                    >
-                      {isLoading ? (
-                        <CircularProgress />
-                      ) : account ? (
-                        `Mint ${selectedNoOfNFTs} for ${(
-                          selectedNoOfNFTs * NFT_PRICE
-                        ).toFixed(2)} ETH`
-                      ) : (
-                        "Connect Wallet"
-                      )}
-                    </Button>
+                    {!account ? (
+                      <Button
+                        size="large"
+                        variant="contained"
+                        onClick={onMintClick}
+                        disabled={isLoading}
+                        style={{
+                          fontWeight: "bold",
+                          borderRadius: "50px",
+                          padding: "10px 20px",
+                        }}
+                      >
+                        {isLoading ? (
+                          <CircularProgress />
+                        ) : account ? (
+                          `Mint ${selectedNoOfNFTs} for ${(
+                            selectedNoOfNFTs * NFT_PRICE
+                          ).toFixed(2)} ETH`
+                        ) : (
+                          "Connect Wallet"
+                        )}
+                      </Button>
+                    ) : (
+                      <button
+                        id="blockpass-kyc-connect"
+                        style={{
+                          color: "white",
+                          padding: "10px 20px",
+                          border: "0px",
+                          borderRadius: "50px",
+                          background: "#5B21D4",
+                          cursor: "pointer",
+                          fontWeight: "bold",
+                          fontSize: "1rem",
+                          fontFamily: '"Nunito",sans-serif',
+                        }}
+                      >
+                        Verify with Blockpass
+                      </button>
+                    )}
                   </Box>
                 </Box>
               </Box>
