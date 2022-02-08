@@ -7,8 +7,8 @@ import {
   styled,
   TextField,
   Button,
-  CircularProgress,
   Chip,
+  CircularProgress,
 } from "@mui/material";
 import { makeStyles } from "@mui/styles";
 import { useWeb3React } from "@web3-react/core";
@@ -20,6 +20,8 @@ import ReceiptDialog from "../ReceiptDialog";
 import AddIcon from "@mui/icons-material/Add";
 import RemoveIcon from "@mui/icons-material/Remove";
 import { openSnackbarComp } from "../AppSnackbar";
+import KycVerificationDialog from "../KycVerificationDialog";
+import axios from "axios";
 
 const reasons = [
   "Own a unique piece of NFT music history",
@@ -71,24 +73,35 @@ const NFTSale = () => {
   const [txHash, setTxHash] = useState<string>("");
   const [noOfNftsBought, setNoOfNftsBought] = useState<number>(0);
 
-  const loadBlockpassWidget = (userAccountAddress: string) => {
-    const blockpass = new (window as any).BlockpassKYCConnect(
-      "nusic", // service client_id from the admin console
+  const [isKycOpen, setIsKycOpen] = useState(false);
+  const [isKycVerified, setIsKycVerified] = useState(false);
+
+  const fetchKycInformation = async () => {
+    setIsLoading(true);
+    const res = await axios.get(
+      "https://kyc.blockpass.org/kyc/1.0/connect/nusic/applicants",
       {
-        refId: userAccountAddress, // assign the local user_id of the connected user
+        headers: { Authorization: "8535b94e3fc78219ccb462d6fb33f8af" },
       }
     );
-
-    blockpass.startKYCConnect();
-
-    blockpass.on("KYCConnectSuccess", () => {
-      alert("Congrats!!!");
-      //add code that will trigger when data have been sent.
-    });
+    const userData = (res.data.data.records as { refId: string }[]).filter(
+      ({ refId }) => refId === account
+    );
+    if (userData.length) {
+      setIsKycVerified(true);
+    }
+    setIsLoading(false);
   };
 
-  const onMintClick = async () => {
+  useEffect(() => {
     if (account) {
+      fetchKycInformation();
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [account]);
+
+  const onMintClick = async () => {
+    if (account && isKycVerified) {
       setIsLoading(true);
       try {
         logFirebaseEvent("mint_tx_initiated", {
@@ -128,21 +141,24 @@ const NFTSale = () => {
         }
       }
       setIsLoading(false);
+    } else if (account) {
+      checkKycAndOpen();
     } else {
       login();
     }
   };
 
-  useEffect(() => {
-    if (account) {
-      loadBlockpassWidget(account);
-    }
-  }, [account]);
-
   const setInputValue = (noOfNftsEntered: number) => {
     const maxNoAllowed = noOfNftsEntered >= 5 ? 5 : noOfNftsEntered;
     const allowedNos = maxNoAllowed < 0 ? 0 : maxNoAllowed;
     setSelectedNoOfNFTs(allowedNos || 1);
+  };
+
+  const checkKycAndOpen = () => {
+    setIsKycOpen(true);
+  };
+  const onKycClose = () => {
+    setIsKycOpen(false);
   };
 
   return (
@@ -345,46 +361,31 @@ const NFTSale = () => {
                     alignItems="center"
                     justifyContent="center"
                   >
-                    {!account ? (
-                      <Button
-                        size="large"
-                        variant="contained"
-                        onClick={onMintClick}
-                        disabled={isLoading}
-                        style={{
-                          fontWeight: "bold",
-                          borderRadius: "50px",
-                          padding: "10px 20px",
-                        }}
-                      >
-                        {isLoading ? (
-                          <CircularProgress />
-                        ) : account ? (
+                    <Button
+                      size="large"
+                      variant="contained"
+                      onClick={onMintClick}
+                      disabled={isLoading}
+                      style={{
+                        fontWeight: "bold",
+                        borderRadius: "50px",
+                        padding: "10px 20px",
+                      }}
+                    >
+                      {isLoading ? (
+                        <CircularProgress />
+                      ) : account ? (
+                        isKycVerified ? (
                           `Mint ${selectedNoOfNFTs} for ${(
                             selectedNoOfNFTs * NFT_PRICE
                           ).toFixed(2)} ETH`
                         ) : (
-                          "Connect Wallet"
-                        )}
-                      </Button>
-                    ) : (
-                      <button
-                        id="blockpass-kyc-connect"
-                        style={{
-                          color: "white",
-                          padding: "10px 20px",
-                          border: "0px",
-                          borderRadius: "50px",
-                          background: "#5B21D4",
-                          cursor: "pointer",
-                          fontWeight: "bold",
-                          fontSize: "1rem",
-                          fontFamily: '"Nunito",sans-serif',
-                        }}
-                      >
-                        Verify with Blockpass
-                      </button>
-                    )}
+                          "Onboard as Investor"
+                        )
+                      ) : (
+                        "Connect Wallet"
+                      )}
+                    </Button>
                   </Box>
                 </Box>
               </Box>
@@ -690,6 +691,7 @@ const NFTSale = () => {
         txHash={txHash}
         noOfTokens={noOfNftsBought}
       />
+      <KycVerificationDialog isOpen={isKycOpen} onClose={onKycClose} />
     </Box>
   );
 };
