@@ -12,31 +12,34 @@ import {
 import { useWeb3React } from "@web3-react/core";
 import { useEffect, useState } from "react";
 import useAuth from "../../hooks/useAuth";
+import { KycStatus } from "../NFTSale";
 
 const steps = [
   {
     label: "Connect Wallet",
-    description: `Connect your metamask wallet to which the kyc verification will be configured to.`,
+    description: `This wallet address will be linked to the KYC process in step 2. If you want to connect a different wallet address, switch to that address now otherwise you would have to complete the KYC process again.`,
   },
   {
     label: "Verify KYC",
     description:
-      "Verify KYC using blockpass, Clicking the below button will take you to the blockpass site.",
+      "NUSIC DAO utilises Blockpass to verify KYC in order to maintain integrity of the NUSIC protocol. This is also to keep all involved parties covered and to futureproof our governance NFT in the case of possible legislation changes. You will be directed to the KYC process once you click the button below.",
   },
   {
     label: "NFT Whitlist",
-    description: `Waiting for the NFT whitlisting from the NUSIC team... This will typically take 4 hours`,
+    description: `Waiting for the NFT whitlisting from the NUSIC team... This will typically take 2 to 4 hours`,
   },
 ];
 
 const KycVerificationDialog = (props: {
   isOpen: boolean;
   onClose: () => void;
+  kycStatus: KycStatus;
 }) => {
+  const { isOpen, onClose, kycStatus } = props;
+
   const [activeStep, setActiveStep] = useState(0);
   const { login } = useAuth();
   const { account } = useWeb3React();
-  const { isOpen, onClose } = props;
 
   const [isReadyForKyc, setIsReadyForKyc] = useState(false);
 
@@ -62,6 +65,17 @@ const KycVerificationDialog = (props: {
       alert("Congrats!!!");
       //add code that will trigger when data have been sent.
     });
+    blockpass.on("KYCConnectClose", () => {
+      //add code that will trigger when the workflow is finished. ex:
+      //alert('Finished!')
+    });
+    blockpass.on("KYCConnectCancel", () => {
+      //add code that will trigger when the workflow is aborted. ex:
+      //alert('Cancelled!')
+    });
+    blockpass.on("KYCConnectLoad", () => {
+      setIsReadyForKyc(true);
+    });
     setIsReadyForKyc(true);
   };
 
@@ -78,6 +92,14 @@ const KycVerificationDialog = (props: {
       }, 1000);
     }
   }, [account, activeStep]);
+
+  useEffect(() => {
+    if (kycStatus === "Not Submitted") {
+      setActiveStep(0);
+    } else if (kycStatus === "Pending") {
+      setActiveStep(2);
+    }
+  }, [kycStatus]);
 
   const hanldeClose = () => {
     onClose();
@@ -114,7 +136,7 @@ const KycVerificationDialog = (props: {
                           disabled={activeStep === 2}
                           onClick={onNextStepClick}
                         >
-                          {activeStep === 0 ? "Connect Wallet" : "Mint"}
+                          {activeStep === 0 ? "Continue" : "Back to Mint page"}
                         </Button>
                       ) : (
                         <button

@@ -61,6 +61,8 @@ const useStyles = makeStyles((theme: any) => ({
 
 const NFT_PRICE = Number(process.env.REACT_APP_NFT_PRICE || "0.01");
 
+export type KycStatus = "Not Submitted" | "Pending" | "Verified";
+
 const NFTSale = () => {
   const classes = useStyles();
   const [selectedNoOfNFTs, setSelectedNoOfNFTs] = useState<number>(1);
@@ -74,21 +76,25 @@ const NFTSale = () => {
   const [noOfNftsBought, setNoOfNftsBought] = useState<number>(0);
 
   const [isKycOpen, setIsKycOpen] = useState(false);
-  const [isKycVerified, setIsKycVerified] = useState(false);
+  const [kycStatus, setKycStatus] = useState<KycStatus>("Not Submitted");
 
   const fetchKycInformation = async () => {
     setIsLoading(true);
-    const res = await axios.get(
-      "https://kyc.blockpass.org/kyc/1.0/connect/nusic/applicants",
-      {
-        headers: { Authorization: "8535b94e3fc78219ccb462d6fb33f8af" },
+    try {
+      const res = await axios.get(
+        `https://kyc.blockpass.org/kyc/1.0/connect/nusic/refId/${account}`,
+        {
+          headers: { Authorization: "8535b94e3fc78219ccb462d6fb33f8af" },
+        }
+      );
+      const status = res.data.data.status;
+      if (status === "approved") {
+        setKycStatus("Verified");
+      } else {
+        setKycStatus("Pending");
       }
-    );
-    const userData = (res.data.data.records as { refId: string }[]).filter(
-      ({ refId }) => refId === account
-    );
-    if (userData.length) {
-      setIsKycVerified(true);
+    } catch (e) {
+      setKycStatus("Not Submitted");
     }
     setIsLoading(false);
   };
@@ -101,7 +107,7 @@ const NFTSale = () => {
   }, [account]);
 
   const onMintClick = async () => {
-    if (account && isKycVerified) {
+    if (account && kycStatus === "Verified") {
       setIsLoading(true);
       try {
         logFirebaseEvent("mint_tx_initiated", {
@@ -375,7 +381,7 @@ const NFTSale = () => {
                       {isLoading ? (
                         <CircularProgress />
                       ) : account ? (
-                        isKycVerified ? (
+                        kycStatus === "Verified" ? (
                           `Mint ${selectedNoOfNFTs} for ${(
                             selectedNoOfNFTs * NFT_PRICE
                           ).toFixed(2)} ETH`
@@ -691,7 +697,11 @@ const NFTSale = () => {
         txHash={txHash}
         noOfTokens={noOfNftsBought}
       />
-      <KycVerificationDialog isOpen={isKycOpen} onClose={onKycClose} />
+      <KycVerificationDialog
+        isOpen={isKycOpen}
+        onClose={onKycClose}
+        kycStatus={kycStatus}
+      />
     </Box>
   );
 };
