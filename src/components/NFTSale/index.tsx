@@ -7,12 +7,12 @@ import {
   styled,
   TextField,
   Button,
-  CircularProgress,
   Chip,
+  CircularProgress,
 } from "@mui/material";
 import { makeStyles } from "@mui/styles";
 import { useWeb3React } from "@web3-react/core";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import useAuth from "../../hooks/useAuth";
 import useGovernance from "../../hooks/useGovernance";
 import { logFirebaseEvent } from "../../services/firebase.service";
@@ -20,6 +20,8 @@ import ReceiptDialog from "../ReceiptDialog";
 import AddIcon from "@mui/icons-material/Add";
 import RemoveIcon from "@mui/icons-material/Remove";
 import { openSnackbarComp } from "../AppSnackbar";
+import KycVerificationDialog from "../KycVerificationDialog";
+import axios from "axios";
 
 const reasons = [
   "Own a unique piece of NFT music history",
@@ -59,6 +61,8 @@ const useStyles = makeStyles((theme: any) => ({
 
 const NFT_PRICE = Number(process.env.REACT_APP_NFT_PRICE || "0.01");
 
+export type KycStatus = "Not Submitted" | "Pending" | "Verified";
+
 const NFTSale = () => {
   const classes = useStyles();
   const [selectedNoOfNFTs, setSelectedNoOfNFTs] = useState<number>(1);
@@ -71,8 +75,42 @@ const NFTSale = () => {
   const [txHash, setTxHash] = useState<string>("");
   const [noOfNftsBought, setNoOfNftsBought] = useState<number>(0);
 
-  const onMintClick = async () => {
+  const [isKycOpen, setIsKycOpen] = useState(false);
+  const [kycStatus, setKycStatus] = useState<KycStatus>("Not Submitted");
+
+  const fetchKycInformation = async () => {
+    setIsLoading(true);
+    try {
+      // TODO: move to proxy server
+      const res = await axios.get(
+        `https://kyc.blockpass.org/kyc/1.0/connect/${process.env.REACT_APP_CLIENT_ID}/refId/${account}`,
+        {
+          headers: {
+            Authorization: process.env.REACT_APP_BLOCKPASS_APIKEY as string,
+          },
+        }
+      );
+      const status = res.data.data.status;
+      if (status === "approved") {
+        setKycStatus("Verified");
+      } else {
+        setKycStatus("Pending");
+      }
+    } catch (e) {
+      setKycStatus("Not Submitted");
+    }
+    setIsLoading(false);
+  };
+
+  useEffect(() => {
     if (account) {
+      fetchKycInformation();
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [account]);
+
+  const onMintClick = async () => {
+    if (account && kycStatus === "Verified") {
       setIsLoading(true);
       try {
         logFirebaseEvent("mint_tx_initiated", {
@@ -112,6 +150,8 @@ const NFTSale = () => {
         }
       }
       setIsLoading(false);
+    } else if (account) {
+      checkKycAndOpen();
     } else {
       login();
     }
@@ -121,6 +161,13 @@ const NFTSale = () => {
     const maxNoAllowed = noOfNftsEntered >= 5 ? 5 : noOfNftsEntered;
     const allowedNos = maxNoAllowed < 0 ? 0 : maxNoAllowed;
     setSelectedNoOfNFTs(allowedNos || 1);
+  };
+
+  const checkKycAndOpen = () => {
+    setIsKycOpen(true);
+  };
+  const onKycClose = () => {
+    setIsKycOpen(false);
   };
 
   return (
@@ -337,9 +384,13 @@ const NFTSale = () => {
                       {isLoading ? (
                         <CircularProgress />
                       ) : account ? (
-                        `Mint ${selectedNoOfNFTs} for ${(
-                          selectedNoOfNFTs * NFT_PRICE
-                        ).toFixed(2)} ETH`
+                        kycStatus === "Verified" ? (
+                          `Mint ${selectedNoOfNFTs} for ${(
+                            selectedNoOfNFTs * NFT_PRICE
+                          ).toFixed(2)} ETH`
+                        ) : (
+                          "Onboard as Investor"
+                        )
                       ) : (
                         "Connect Wallet"
                       )}
@@ -648,6 +699,11 @@ const NFTSale = () => {
         }}
         txHash={txHash}
         noOfTokens={noOfNftsBought}
+      />
+      <KycVerificationDialog
+        isOpen={isKycOpen}
+        onClose={onKycClose}
+        kycStatus={kycStatus}
       />
     </Box>
   );
