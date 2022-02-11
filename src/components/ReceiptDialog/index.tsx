@@ -67,6 +67,7 @@ const ReceiptDialog = (props: {
                         `https://testnets.opensea.io/collection/nusictest`
                       );
                     }}
+                    style={{ fontWeight: "bold", borderRadius: "50px" }}
                     fullWidth
                   >
                     View on OpenSea
@@ -78,13 +79,19 @@ const ReceiptDialog = (props: {
                     onClick={() => {
                       window.open(`https://rinkeby.etherscan.io/tx/${txHash}`);
                     }}
+                    style={{ fontWeight: "bold", borderRadius: "50px" }}
                     fullWidth
                   >
                     View on Etherscan
                   </Button>
                 </Box>
                 <Box mt={{ xs: 2, md: 0 }}>
-                  <Button variant="contained" onClick={handleClose} fullWidth>
+                  <Button
+                    variant="contained"
+                    onClick={handleClose}
+                    fullWidth
+                    style={{ fontWeight: "bold", borderRadius: "50px" }}
+                  >
                     Learn NUSIC DAO
                   </Button>
                 </Box>
