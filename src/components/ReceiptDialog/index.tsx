@@ -14,7 +14,7 @@ const ReceiptDialog = (props: {
       <DialogContent style={{ backgroundColor: "#17172F" }}>
         <Box mt={4}>
           <Typography variant="h3" align="center">
-            Congratulations! You’ve minted {noOfTokens} NUSIC Governance NFT(s)!
+            Congratulations!<br />You’ve minted {noOfTokens} NUSIC Governance NFT(s)!
           </Typography>
         </Box>
 
@@ -112,6 +112,23 @@ const ReceiptDialog = (props: {
           </Grid>
           <Grid item xs={false} md={3}></Grid>
         </Grid>
+
+        <Box mt={{ xs: 2, md: 0 }}>
+          <Button
+            variant="contained"
+            onClick={handleClose}
+            fullWidth
+            style={{
+              padding: "20px 30px",
+              border: "2px solid white",
+              boxShadow: "none",
+              fontWeight: "bold",
+              borderRadius: "50px",
+            }}
+          >
+            Back to website
+          </Button>
+        </Box>
       </DialogContent>
     </Dialog>
   );
