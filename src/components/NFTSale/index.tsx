@@ -345,6 +345,26 @@ const NFTSale = () => {
                       )}
                     </Button>
                   </Box>
+                  {isLoading && (
+                    <Box mt={{ xs: 2, md: 0 }}>
+                      <Button
+                        variant="contained"
+                        onClick={() => {
+                          window.open(
+                            `https://rinkeby.etherscan.io/tx/${txHash}`
+                          );
+                        }}
+                        style={{
+                          fontWeight: "bold",
+                          borderRadius: "50px",
+                          padding: "10px 20px",
+                        }}
+                        fullWidth
+                      >
+                        View on Etherscan
+                      </Button>
+                    </Box>
+                  )}
                 </Box>
               </Box>
               {/* <Box mt={2}>
