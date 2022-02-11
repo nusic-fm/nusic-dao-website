@@ -81,10 +81,13 @@ const NFTSale = () => {
   const fetchKycInformation = async () => {
     setIsLoading(true);
     try {
+      // TODO: move to proxy server
       const res = await axios.get(
-        `https://kyc.blockpass.org/kyc/1.0/connect/nusic/refId/${account}`,
+        `https://kyc.blockpass.org/kyc/1.0/connect/${process.env.REACT_APP_CLIENT_ID}/refId/${account}`,
         {
-          headers: { Authorization: "8535b94e3fc78219ccb462d6fb33f8af" },
+          headers: {
+            Authorization: process.env.REACT_APP_BLOCKPASS_APIKEY as string,
+          },
         }
       );
       const status = res.data.data.status;
