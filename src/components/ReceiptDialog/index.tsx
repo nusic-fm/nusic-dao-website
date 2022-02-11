@@ -67,7 +67,11 @@ const ReceiptDialog = (props: {
                         `https://testnets.opensea.io/collection/nusictest`
                       );
                     }}
-                    style={{ fontWeight: "bold", borderRadius: "50px" }}
+                    style={{
+                      fontWeight: "bold",
+                      borderRadius: "50px",
+                      padding: "10px 20px",
+                    }}
                     fullWidth
                   >
                     View on OpenSea
@@ -79,7 +83,11 @@ const ReceiptDialog = (props: {
                     onClick={() => {
                       window.open(`https://rinkeby.etherscan.io/tx/${txHash}`);
                     }}
-                    style={{ fontWeight: "bold", borderRadius: "50px" }}
+                    style={{
+                      fontWeight: "bold",
+                      borderRadius: "50px",
+                      padding: "10px 20px",
+                    }}
                     fullWidth
                   >
                     View on Etherscan
@@ -90,7 +98,11 @@ const ReceiptDialog = (props: {
                     variant="contained"
                     onClick={handleClose}
                     fullWidth
-                    style={{ fontWeight: "bold", borderRadius: "50px" }}
+                    style={{
+                      fontWeight: "bold",
+                      borderRadius: "50px",
+                      padding: "10px 20px",
+                    }}
                   >
                     Learn NUSIC DAO
                   </Button>

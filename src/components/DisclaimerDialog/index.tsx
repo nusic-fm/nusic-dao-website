@@ -68,7 +68,16 @@ const DisclaimerDialog = (props: {
           </Typography>
         </Box>
         <Box display="flex" justifyContent="center">
-          <Button size="large" onClick={handleClose} variant="contained">
+          <Button
+            size="large"
+            onClick={handleClose}
+            variant="contained"
+            style={{
+              fontWeight: "bold",
+              borderRadius: "50px",
+              padding: "10px 20px",
+            }}
+          >
             Continue
           </Button>
         </Box>
