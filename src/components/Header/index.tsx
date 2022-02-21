@@ -176,7 +176,7 @@ const Header = () => {
                     Join our Discord
                   </a>
                 </Typography>
-                {/* <Typography
+                <Typography
                   sx={{ p: 2 }}
                   color="#D1D1D5"
                   onClick={() => {
@@ -187,7 +187,7 @@ const Header = () => {
                 >
                   NUSIC NFT Artwork
                 </Typography>
-                <Typography
+                {/* <Typography
                   sx={{ p: 2 }}
                   color="#D1D1D5"
                   onClick={() => {
