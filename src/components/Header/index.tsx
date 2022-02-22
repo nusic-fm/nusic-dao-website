@@ -137,7 +137,11 @@ const Header = () => {
                     color="primary"
                     size="small"
                     onClick={connect}
-                    style={{ fontWeight: "bold", borderRadius: "50px" }}
+                    style={{
+                      fontWeight: "bold",
+                      borderRadius: "50px",
+                      padding: "10px 20px",
+                    }}
                   >
                     <AccountBalanceWalletTwoToneIcon />
                   </Button>
