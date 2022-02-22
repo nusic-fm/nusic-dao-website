@@ -80,13 +80,14 @@ const NFTSale = () => {
           address: `wa-${account}`,
         });
         setNoOfNftsBought(selectedNoOfNFTs);
-        const receipt = await mintNFTs(selectedNoOfNFTs);
+        const tx = await mintNFTs(selectedNoOfNFTs);
+        setTxHash(tx.hash);
+        const receipt = await tx.wait();
         logFirebaseEvent("mint_tx_successful", {
           noOfTokens: selectedNoOfNFTs,
           address: `wa-${account}`,
           txHash: `txh-${receipt.transactionHash}`,
         });
-        setTxHash(receipt.transactionHash);
         setIsTxReceiptOpen(true);
         console.log({ receipt });
       } catch (e: any) {
@@ -101,15 +102,18 @@ const NFTSale = () => {
             "error",
             "Insufficient funds available to make this transaction"
           );
+        } else if (e.code === 4001) {
+          openSnackbarComp("error", "Transaction has been denied by the User");
         } else {
           openSnackbarComp("error", errorMsg);
           console.error(e);
-          logFirebaseEvent("mint_tx_failed", {
-            noOfTokens: selectedNoOfNFTs,
-            address: `wa-${account}`,
-            errorMsg,
-          });
         }
+
+        logFirebaseEvent("mint_tx_failed", {
+          noOfTokens: selectedNoOfNFTs,
+          address: `wa-${account}`,
+          errorMsg,
+        });
       }
       setIsLoading(false);
     } else {
@@ -345,7 +349,7 @@ const NFTSale = () => {
                       )}
                     </Button>
                   </Box>
-                  {isLoading && (
+                  {/* {isLoading && (
                     <Box mt={{ xs: 2, md: 0 }}>
                       <Button
                         variant="contained"
@@ -364,7 +368,7 @@ const NFTSale = () => {
                         View on Etherscan
                       </Button>
                     </Box>
-                  )}
+                  )} */}
                 </Box>
               </Box>
               {/* <Box mt={2}>

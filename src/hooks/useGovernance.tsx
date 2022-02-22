@@ -34,7 +34,7 @@ const useGovernance = () => {
     const tx = await governanceContract.stage1Mint(noOfTokens, {
       value,
     });
-    return tx.wait();
+    return tx;
   };
 
   useEffect(() => {
