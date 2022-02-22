@@ -28,6 +28,7 @@ const themeSettings = createTheme({
     },
     secondary: {
       main: "#000000",
+      light: "#ffffff",
     },
   },
   typography: {

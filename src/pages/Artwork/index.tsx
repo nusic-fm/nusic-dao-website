@@ -1,6 +1,18 @@
 import { Box, Button, Grid, Typography } from "@mui/material";
+import { useEffect } from "react";
+import { useHistory } from "react-router-dom";
 
 const ArtWork = () => {
+  const history = useHistory();
+
+  useEffect(() => {
+    window.scroll({
+      top: 0,
+      left: 0,
+      behavior: "smooth",
+    });
+  }, []);
+
   return (
     <Box minHeight="100vh" style={{ backgroundColor: "#17172F" }} p={2}>
       <Box></Box>
@@ -24,8 +36,22 @@ const ArtWork = () => {
             flexWrap="wrap"
             gap={4}
           >
-            <Button variant="contained">Mint governance NFT</Button>
-            <Button variant="contained">View collection on Opensea</Button>
+            <Button
+              variant="contained"
+              onClick={() => {
+                history.push("/");
+              }}
+            >
+              Mint governance NFT
+            </Button>
+            <Button
+              variant="contained"
+              onClick={() => {
+                window.open("https://opensea.io/");
+              }}
+            >
+              View collection on Opensea
+            </Button>
           </Box>
         </Box>
       </Box>
