@@ -1,6 +1,7 @@
 import { Box, Button, Grid, Typography } from "@mui/material";
 import { useEffect } from "react";
 import { useHistory } from "react-router-dom";
+import ArtworkBuilder from "../../components/ArtworkBuilder";
 
 const ArtWork = () => {
   const history = useHistory();
@@ -205,6 +206,9 @@ const ArtWork = () => {
             </Box>
           </Box>
         </Box>
+      </Box>
+      <Box>
+        <ArtworkBuilder />
       </Box>
     </Box>
   );
