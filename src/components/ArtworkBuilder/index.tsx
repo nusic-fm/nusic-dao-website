@@ -26,17 +26,47 @@ const artwork = {
     "magic",
     "lava",
   ],
+  // Filename mapping for reading from folders
   4: [1, 2, 3, 4, 5, 6],
   3: [1, 2, 3, 4, 5, 6],
   2: [1, 2, 3, 4, 5, 6],
   1: [1, 2, 3, 4, 5, 6],
 };
 
+// Filename mapping for actual names of the files
 const leyerNames = {
-  4: [],
-  3: [],
-  2: [],
-  1: [],
+  4: [
+    "CATUR-Clé-de-Fa",
+    "CATUR-Clé-de-Sol",
+    "CATUR-Croche",
+    "CATUR-Double-croche",
+    "CATUR-Double-croche-Doublet",
+    "CATUR-Soupir",
+  ],
+  3: [
+    "TRI-Achtel",
+    "TRI-Bass-schlüssel",
+    "TRI-Bass-schlüssel",
+    "TRI-Sechzehntel-Dublette",
+    "TRI-Viertelpause",
+    "TRI-Violinschlüssel",
+  ],
+  2: [
+    "DVI-Chiave-di-Basso",
+    "DVI-Chiave-di-Violino",
+    "DVI-Croma",
+    "DVI-Pausa-di-Semiminima",
+    "DVI-Semicroma",
+    "DVI-Semicroma-Doppietta",
+  ],
+  1: [
+    "EKA Treble",
+    "EKA-Bass",
+    "EKA-Eight",
+    "EKA-Quarter-Rest",
+    "EKA-Sixteenth",
+    "EKA-Sixteenth-Duplet",
+  ],
 };
 
 const Tab = styled(TabUnstyled)`
@@ -75,7 +105,6 @@ const TabPanel = styled(TabPanelUnstyled)`
 `;
 
 const TabsList = styled(TabsListUnstyled)`
-  min-width: 320px;
   background-color: rgba(255, 255, 255, 0.8);
   border-radius: 8px;
   margin-bottom: 16px;
@@ -84,6 +113,7 @@ const TabsList = styled(TabsListUnstyled)`
   justify-content: center;
   align-content: space-between;
   border-radius: 50px;
+  overflow-x: auto;
 `;
 
 const ArtworkBuilder = () => {
@@ -118,7 +148,7 @@ const ArtworkBuilder = () => {
   const drawOnCanvas = async () => {
     if (canvasRef.current) {
       const ctx = canvasRef.current.getContext("2d");
-      ctx?.clearRect(0, 0, 300, 300);
+      ctx?.clearRect(0, 0, 450, 450);
 
       const img = new Image();
       img.src = `/assets/arts-page/arts/bg/${bgFileName}.png`;
@@ -128,18 +158,12 @@ const ArtworkBuilder = () => {
           res(true);
         };
       });
-      /*
-        ctx?.drawImage(img4, 100, 100, 100, 100);
-        ctx?.drawImage(img3, 50, 50, 200, 200);
-        ctx?.drawImage(img2, 25, 25 , 250, 250);
-        ctx?.drawImage(img1, 0, 0, 300, 300);
-      */
       if (layerFourName) {
         const img4 = new Image();
         img4.src = `/assets/arts-page/arts/4/${layerFourName}.png`;
         await new Promise((res) => {
           img4.onload = function () {
-            ctx?.drawImage(img4, 0, 0, 300, 300);
+            ctx?.drawImage(img4, 0, 0, 450, 450);
             res(true);
           };
         });
@@ -149,7 +173,7 @@ const ArtworkBuilder = () => {
         img3.src = `/assets/arts-page/arts/3/${layerThreeName}.png`;
         await new Promise((res) => {
           img3.onload = function () {
-            ctx?.drawImage(img3, 25, 25, 250, 250);
+            ctx?.drawImage(img3, 0, 0, 450, 450);
             res(true);
           };
         });
@@ -159,7 +183,7 @@ const ArtworkBuilder = () => {
         img2.src = `/assets/arts-page/arts/2/${layerTwoName}.png`;
         await new Promise((res) => {
           img2.onload = function () {
-            ctx?.drawImage(img2, 50, 50, 200, 200);
+            ctx?.drawImage(img2, 0, 0, 450, 450);
             res(true);
           };
         });
@@ -169,7 +193,7 @@ const ArtworkBuilder = () => {
         img1.src = `/assets/arts-page/arts/1/${layerOneName}.png`;
         await new Promise((res) => {
           img1.onload = function () {
-            ctx?.drawImage(img1, 100, 100, 100, 100);
+            ctx?.drawImage(img1, 0, 0, 450, 450);
             res(true);
           };
         });
@@ -208,7 +232,7 @@ const ArtworkBuilder = () => {
         </Box>
       </Box>
       <Box>
-        <Box mb={8}>
+        <Box mb={5}>
           <TabsUnstyled defaultValue={0}>
             <TabsList>
               <Tab>
@@ -241,7 +265,7 @@ const ArtworkBuilder = () => {
                       color="inherit"
                       fontWeight={"bold"}
                     >
-                      1-EKA
+                      1
                     </Typography>
                   </Box>
                   <Box>
@@ -250,29 +274,7 @@ const ArtworkBuilder = () => {
                       color="inherit"
                       fontWeight={"bold"}
                     >
-                      Music Notation
-                    </Typography>
-                  </Box>
-                </Box>
-              </Tab>
-              <Tab>
-                <Box>
-                  <Box>
-                    <Typography
-                      align="center"
-                      color="inherit"
-                      fontWeight={"bold"}
-                    >
-                      2-DVI
-                    </Typography>
-                  </Box>
-                  <Box>
-                    <Typography
-                      align="center"
-                      color="inherit"
-                      fontWeight={"bold"}
-                    >
-                      Music Notation
+                      CATUR
                     </Typography>
                   </Box>
                 </Box>
@@ -285,7 +287,7 @@ const ArtworkBuilder = () => {
                       color="inherit"
                       fontWeight={"bold"}
                     >
-                      3-TRI
+                      2
                     </Typography>
                   </Box>
                   <Box>
@@ -294,7 +296,7 @@ const ArtworkBuilder = () => {
                       color="inherit"
                       fontWeight={"bold"}
                     >
-                      Music Notation
+                      TRI
                     </Typography>
                   </Box>
                 </Box>
@@ -307,7 +309,7 @@ const ArtworkBuilder = () => {
                       color="inherit"
                       fontWeight={"bold"}
                     >
-                      4-CATUR
+                      3
                     </Typography>
                   </Box>
                   <Box>
@@ -316,7 +318,29 @@ const ArtworkBuilder = () => {
                       color="inherit"
                       fontWeight={"bold"}
                     >
-                      Music Notation
+                      DVI
+                    </Typography>
+                  </Box>
+                </Box>
+              </Tab>
+              <Tab>
+                <Box>
+                  <Box>
+                    <Typography
+                      align="center"
+                      color="inherit"
+                      fontWeight={"bold"}
+                    >
+                      4
+                    </Typography>
+                  </Box>
+                  <Box>
+                    <Typography
+                      align="center"
+                      color="inherit"
+                      fontWeight={"bold"}
+                    >
+                      EKA
                     </Typography>
                   </Box>
                 </Box>
@@ -364,7 +388,9 @@ const ArtworkBuilder = () => {
                             bg === bgFileName
                               ? "2px solid white"
                               : "2px solid transparent",
+                          borderRadius: "6px",
                         }}
+                        p={1}
                         onClick={() => onLayerSelected("bg", bg)}
                       >
                         <img
@@ -403,10 +429,12 @@ const ArtworkBuilder = () => {
                           layer === layerFourName
                             ? "2px solid white"
                             : "2px solid transparent",
+                        borderRadius: "6px",
                       }}
+                      p={1}
                       onClick={() => onLayerSelected("4", layer)}
                     >
-                      <Box>
+                      <Box display="flex" justifyContent="center">
                         <img
                           src={`/assets/arts-page/arts/4/${layer}.png`}
                           alt={layer.toString()}
@@ -417,7 +445,7 @@ const ArtworkBuilder = () => {
                         align="center"
                         style={{ textTransform: "capitalize" }}
                       >
-                        {leyerNames[4][layer]}
+                        {leyerNames[4][layer - 1]}
                       </Typography>
                     </Box>
                   );
@@ -444,10 +472,12 @@ const ArtworkBuilder = () => {
                           layer === layerThreeName
                             ? "2px solid white"
                             : "2px solid transparent",
+                        borderRadius: "6px",
                       }}
+                      p={1}
                       onClick={() => onLayerSelected("3", layer)}
                     >
-                      <Box>
+                      <Box display="flex" justifyContent="center">
                         <img
                           src={`/assets/arts-page/arts/3/${layer}.png`}
                           alt={layer.toString()}
@@ -458,7 +488,7 @@ const ArtworkBuilder = () => {
                         align="center"
                         style={{ textTransform: "capitalize" }}
                       >
-                        {leyerNames[3][layer]}
+                        {leyerNames[3][layer - 1]}
                       </Typography>
                     </Box>
                   );
@@ -485,10 +515,12 @@ const ArtworkBuilder = () => {
                           layer === layerTwoName
                             ? "2px solid white"
                             : "2px solid transparent",
+                        borderRadius: "6px",
                       }}
+                      p={1}
                       onClick={() => onLayerSelected("2", layer)}
                     >
-                      <Box>
+                      <Box display="flex" justifyContent="center">
                         <img
                           src={`/assets/arts-page/arts/2/${layer}.png`}
                           alt={layer.toString()}
@@ -499,7 +531,7 @@ const ArtworkBuilder = () => {
                         align="center"
                         style={{ textTransform: "capitalize" }}
                       >
-                        {leyerNames[2][layer]}
+                        {leyerNames[2][layer - 1]}
                       </Typography>
                     </Box>
                   );
@@ -526,10 +558,12 @@ const ArtworkBuilder = () => {
                           layer === layerOneName
                             ? "2px solid white"
                             : "2px solid transparent",
+                        borderRadius: "6px",
                       }}
                       onClick={() => onLayerSelected("1", layer)}
+                      p={1}
                     >
-                      <Box>
+                      <Box display="flex" justifyContent="center">
                         <img
                           src={`/assets/arts-page/arts/1/${layer}.png`}
                           alt={layer.toString()}
@@ -540,7 +574,7 @@ const ArtworkBuilder = () => {
                         align="center"
                         style={{ textTransform: "capitalize" }}
                       >
-                        {leyerNames[1][layer]}
+                        {leyerNames[1][layer - 1]}
                       </Typography>
                     </Box>
                   );
@@ -550,7 +584,7 @@ const ArtworkBuilder = () => {
           </TabsUnstyled>
         </Box>
         <Box display="flex" justifyContent="center" alignItems="center" mb={10}>
-          <canvas ref={canvasRef} width={300} height={300} />
+          <canvas ref={canvasRef} width={450} height={450} />
         </Box>
         <Box display="flex" justifyContent="center">
           <Box
@@ -565,42 +599,50 @@ const ArtworkBuilder = () => {
             <Box mt={4} p={4}>
               <Box display="flex" justifyContent="space-between">
                 <Box>
-                  <Typography fontWeight="bold">0-color</Typography>
+                  <Typography fontWeight="bold">0-Color</Typography>
                 </Box>
                 <Box>
-                  <Typography>{bgFileName || "-"}</Typography>
-                </Box>
-              </Box>
-              <Box display="flex" justifyContent="space-between">
-                <Box>
-                  <Typography fontWeight="bold">1-EKA</Typography>
-                </Box>
-                <Box>
-                  <Typography>{layerOneName || "-"}</Typography>
+                  <Typography>{bgFileName}</Typography>
                 </Box>
               </Box>
               <Box display="flex" justifyContent="space-between">
                 <Box>
-                  <Typography fontWeight="bold">2-DVI</Typography>
+                  <Typography fontWeight="bold">1-CATUR</Typography>
                 </Box>
                 <Box>
-                  <Typography>{layerTwoName || "-"}</Typography>
-                </Box>
-              </Box>
-              <Box display="flex" justifyContent="space-between">
-                <Box>
-                  <Typography fontWeight="bold">3-TRI</Typography>
-                </Box>
-                <Box>
-                  <Typography>{layerThreeName || "-"}</Typography>
+                  <Typography>
+                    {leyerNames[4][layerFourName - 1] || "-"}
+                  </Typography>
                 </Box>
               </Box>
               <Box display="flex" justifyContent="space-between">
                 <Box>
-                  <Typography fontWeight="bold">4-CATUR</Typography>
+                  <Typography fontWeight="bold">2-TRI</Typography>
                 </Box>
                 <Box>
-                  <Typography>{layerFourName || "-"}</Typography>
+                  <Typography>
+                    {leyerNames[3][layerThreeName - 1] || "-"}
+                  </Typography>
+                </Box>
+              </Box>
+              <Box display="flex" justifyContent="space-between">
+                <Box>
+                  <Typography fontWeight="bold">3-DVI</Typography>
+                </Box>
+                <Box>
+                  <Typography>
+                    {leyerNames[2][layerTwoName - 1] || "-"}
+                  </Typography>
+                </Box>
+              </Box>
+              <Box display="flex" justifyContent="space-between">
+                <Box>
+                  <Typography fontWeight="bold">4-EKA</Typography>
+                </Box>
+                <Box>
+                  <Typography>
+                    {leyerNames[1][layerOneName - 1] || "-"}
+                  </Typography>
                 </Box>
               </Box>
             </Box>
