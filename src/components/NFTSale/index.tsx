@@ -9,6 +9,7 @@ import {
   Button,
   Chip,
   CircularProgress,
+  Link,
 } from "@mui/material";
 import { makeStyles } from "@mui/styles";
 import { useWeb3React } from "@web3-react/core";
@@ -22,6 +23,7 @@ import RemoveIcon from "@mui/icons-material/Remove";
 import { openSnackbarComp } from "../AppSnackbar";
 import KycVerificationDialog from "../KycVerificationDialog";
 import axios from "axios";
+import { useHistory } from "react-router-dom";
 
 const reasons = [
   "Own a unique piece of NFT music history",
@@ -70,6 +72,7 @@ const NFTSale = () => {
   const { account } = useWeb3React();
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const { login } = useAuth();
+  const history = useHistory();
 
   const [isTxReceiptOpen, setIsTxReceiptOpen] = useState<boolean>(false);
   const [txHash, setTxHash] = useState<string>("");
@@ -421,6 +424,20 @@ const NFTSale = () => {
                     </Box>
                   )} */}
                 </Box>
+              </Box>
+              <Box mt={1}>
+                <Typography align="center">
+                  <Link
+                    component="button"
+                    variant="caption"
+                    onClick={() => {
+                      history.push("/artwork");
+                    }}
+                    color="secondary.light"
+                  >
+                    Learn more about NFT artwork
+                  </Link>
+                </Typography>
               </Box>
               {/* <Box mt={2}>
                 <Typography align="center">
