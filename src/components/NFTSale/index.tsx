@@ -13,7 +13,7 @@ import {
 } from "@mui/material";
 import { makeStyles } from "@mui/styles";
 import { useWeb3React } from "@web3-react/core";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import useAuth from "../../hooks/useAuth";
 import useGovernance from "../../hooks/useGovernance";
 import { logFirebaseEvent } from "../../services/firebase.service";
@@ -21,8 +21,8 @@ import ReceiptDialog from "../ReceiptDialog";
 import AddIcon from "@mui/icons-material/Add";
 import RemoveIcon from "@mui/icons-material/Remove";
 import { openSnackbarComp } from "../AppSnackbar";
-import KycVerificationDialog from "../KycVerificationDialog";
-import axios from "axios";
+// import KycVerificationDialog from "../KycVerificationDialog";
+// import axios from "axios";
 import { useHistory } from "react-router-dom";
 
 const reasons = [
@@ -78,42 +78,43 @@ const NFTSale = () => {
   const [txHash, setTxHash] = useState<string>("");
   const [noOfNftsBought, setNoOfNftsBought] = useState<number>(0);
 
-  const [isKycOpen, setIsKycOpen] = useState(false);
-  const [kycStatus, setKycStatus] = useState<KycStatus>("Not Submitted");
+  // const [isKycOpen, setIsKycOpen] = useState(false);
+  // const [kycStatus, setKycStatus] = useState<KycStatus>("Not Submitted");
 
-  const fetchKycInformation = async () => {
-    setIsLoading(true);
-    try {
-      // TODO: move to proxy server
-      const res = await axios.get(
-        `https://kyc.blockpass.org/kyc/1.0/connect/${process.env.REACT_APP_CLIENT_ID}/refId/${account}`,
-        {
-          headers: {
-            Authorization: process.env.REACT_APP_BLOCKPASS_APIKEY as string,
-          },
-        }
-      );
-      const status = res.data.data.status;
-      if (status === "approved") {
-        setKycStatus("Verified");
-      } else {
-        setKycStatus("Pending");
-      }
-    } catch (e) {
-      setKycStatus("Not Submitted");
-    }
-    setIsLoading(false);
-  };
+  // const fetchKycInformation = async () => {
+  //   setIsLoading(true);
+  //   try {
+  //     // TODO: move to proxy server
+  //     const res = await axios.get(
+  //       `https://kyc.blockpass.org/kyc/1.0/connect/${process.env.REACT_APP_CLIENT_ID}/refId/${account}`,
+  //       {
+  //         headers: {
+  //           Authorization: process.env.REACT_APP_BLOCKPASS_APIKEY as string,
+  //         },
+  //       }
+  //     );
+  //     const status = res.data.data.status;
+  //     if (status === "approved") {
+  //       setKycStatus("Verified");
+  //     } else {
+  //       setKycStatus("Pending");
+  //     }
+  //   } catch (e) {
+  //     setKycStatus("Not Submitted");
+  //   }
+  //   setIsLoading(false);
+  // };
 
-  useEffect(() => {
-    if (account) {
-      fetchKycInformation();
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [account]);
+  // useEffect(() => {
+  //   if (account) {
+  //     fetchKycInformation();
+  //   }
+  //   // eslint-disable-next-line react-hooks/exhaustive-deps
+  // }, [account]);
 
   const onMintClick = async () => {
-    if (account && kycStatus === "Verified") {
+    // if (account && kycStatus === "Verified") {
+    if (account) {
       setIsLoading(true);
       try {
         logFirebaseEvent("mint_tx_initiated", {
@@ -158,7 +159,7 @@ const NFTSale = () => {
       }
       setIsLoading(false);
     } else if (account) {
-      checkKycAndOpen();
+      // checkKycAndOpen();
     } else {
       login();
     }
@@ -170,12 +171,12 @@ const NFTSale = () => {
     setSelectedNoOfNFTs(allowedNos || 1);
   };
 
-  const checkKycAndOpen = () => {
-    setIsKycOpen(true);
-  };
-  const onKycClose = () => {
-    setIsKycOpen(false);
-  };
+  // const checkKycAndOpen = () => {
+  //   setIsKycOpen(true);
+  // };
+  // const onKycClose = () => {
+  //   setIsKycOpen(false);
+  // };
 
   return (
     <Box>
@@ -188,9 +189,9 @@ const NFTSale = () => {
                 <Typography variant="h4" align="center" fontWeight="bold">
                   NUSIC Governance NFT
                 </Typography>
-                <Box ml={1}>
+                {/* <Box ml={1}>
                   <Chip label="TESTNET" color="primary" size="small" />
-                </Box>
+                </Box> */}
               </Box>
               <Box mt={4} display="flex" justifyContent="center">
                 <Box width="250px" height="250px" position="relative">
@@ -309,12 +310,12 @@ const NFTSale = () => {
                       fontWeight="bold"
                       color="primary.light"
                     >
-                      {/* {NFT_PRICE} ETH */}
-                      Try on Testnet
+                      {NFT_PRICE} ETH
+                      {/* Try on Testnet */}
                     </Typography>
-                    {/* <Box ml={2}>
+                    <Box ml={2}>
                       <Typography color="primary.light">per NFT</Typography>
-                    </Box> */}
+                    </Box>
                   </Box>
                   <Box
                     mt={4}
@@ -327,10 +328,10 @@ const NFTSale = () => {
                       mr={2}
                       style={{ cursor: "pointer" }}
                       onClick={() => {
-                        setInputValue(selectedNoOfNFTs + 1);
+                        setInputValue(selectedNoOfNFTs - 1);
                       }}
                     >
-                      <AddIcon fontSize="small" />
+                      <RemoveIcon fontSize="small" />
                     </Box>
                     <TextField
                       size="small"
@@ -357,10 +358,10 @@ const NFTSale = () => {
                       ml={2}
                       style={{ cursor: "pointer" }}
                       onClick={() => {
-                        setInputValue(selectedNoOfNFTs - 1);
+                        setInputValue(selectedNoOfNFTs + 1);
                       }}
                     >
-                      <RemoveIcon fontSize="small" />
+                      <AddIcon fontSize="small" />
                     </Box>
                   </Box>
                   <Typography
@@ -388,19 +389,23 @@ const NFTSale = () => {
                         padding: "10px 20px",
                       }}
                     >
-                      {isLoading ? (
-                        <CircularProgress />
-                      ) : account ? (
-                        kycStatus === "Verified" ? (
+                      {
+                        isLoading ? (
+                          <CircularProgress />
+                        ) : // ) : (
+                        account ? (
+                          //   kycStatus === "Verified" ? (
                           `Mint ${selectedNoOfNFTs} for ${(
                             selectedNoOfNFTs * NFT_PRICE
                           ).toFixed(2)} ETH`
                         ) : (
-                          "Onboard as Investor"
+                          //   ) : (
+                          //     "Onboard as Investor"
+                          //   )
+                          "Connect Wallet"
                         )
-                      ) : (
-                        "Connect Wallet"
-                      )}
+                        // )
+                      }
                     </Button>
                   </Box>
                   {/* {isLoading && (
@@ -741,11 +746,11 @@ const NFTSale = () => {
         txHash={txHash}
         noOfTokens={noOfNftsBought}
       />
-      <KycVerificationDialog
+      {/* <KycVerificationDialog
         isOpen={isKycOpen}
         onClose={onKycClose}
         kycStatus={kycStatus}
-      />
+      /> */}
     </Box>
   );
 };
