@@ -8,7 +8,7 @@ import {
   responsiveFontSizes,
 } from "@mui/material/styles";
 import WebFont from "webfontloader";
-import { BrowserRouter as Router } from "react-router-dom";
+import { HashRouter as Router } from "react-router-dom";
 import { getLibrary } from "./utils/web3React";
 import { Web3ReactProvider } from "@web3-react/core";
 import App from "./App";

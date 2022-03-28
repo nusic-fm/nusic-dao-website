@@ -345,28 +345,6 @@ const ArtworkBuilder = () => {
                   </Box>
                 </Box>
               </Tab>
-              <Tab>
-                <Box>
-                  <Box>
-                    <Typography
-                      align="center"
-                      color="inherit"
-                      fontWeight={"bold"}
-                    >
-                      5
-                    </Typography>
-                  </Box>
-                  <Box>
-                    <Typography
-                      align="center"
-                      color="inherit"
-                      fontWeight={"bold"}
-                    >
-                      Sound
-                    </Typography>
-                  </Box>
-                </Box>
-              </Tab>
             </TabsList>
             <TabPanel value={0}>
               <Box
