@@ -11,12 +11,13 @@ import {
 } from "@mui/material";
 import { makeStyles } from "@mui/styles";
 import { useWeb3React } from "@web3-react/core";
-import useAuth from "../../hooks/useAuth";
+// import useAuth from "../../hooks/useAuth";
 import MenuIcon from "@mui/icons-material/Menu";
 import { useEffect, useRef, useState } from "react";
 import { useHistory } from "react-router-dom";
 import AccountBalanceWalletTwoToneIcon from "@mui/icons-material/AccountBalanceWalletTwoTone";
 import { logFirebaseEvent } from "../../services/firebase.service";
+import { openWalletsModal } from "../WalletsModal";
 // import axios from "axios";
 // import DisclaimerDialog from "../DisclaimerDialog";
 
@@ -40,9 +41,8 @@ const useStyles = makeStyles({
 
 const Header = () => {
   const classes = useStyles();
-  const { login } = useAuth();
+  // const { login } = useAuth();
   const { account } = useWeb3React();
-
   const history = useHistory();
 
   const [isPopoverOpen, setIsPopoverOpen] = useState(false);
@@ -59,7 +59,7 @@ const Header = () => {
   }, [menuRef]);
 
   const connect = async () => {
-    login();
+    openWalletsModal();
   };
 
   useEffect(() => {

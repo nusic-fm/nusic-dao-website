@@ -5,6 +5,7 @@ import Legal from "./pages/Legal";
 import Home from "./pages/Home";
 import ArtWork from "./pages/Artwork";
 import AppSnackbar from "./components/AppSnackbar";
+import WalletsModal from "./components/WalletsModal";
 
 const App = () => {
   return (
@@ -22,6 +23,7 @@ const App = () => {
         </Route>
       </Switch>
       <AppSnackbar />
+      <WalletsModal />
     </Box>
   );
 };

@@ -7,14 +7,12 @@ import {
   styled,
   TextField,
   Button,
-  Chip,
   CircularProgress,
   Link,
 } from "@mui/material";
 import { makeStyles } from "@mui/styles";
 import { useWeb3React } from "@web3-react/core";
 import { useState } from "react";
-import useAuth from "../../hooks/useAuth";
 import useGovernance from "../../hooks/useGovernance";
 import { logFirebaseEvent } from "../../services/firebase.service";
 import ReceiptDialog from "../ReceiptDialog";
@@ -24,6 +22,7 @@ import { openSnackbarComp } from "../AppSnackbar";
 // import KycVerificationDialog from "../KycVerificationDialog";
 // import axios from "axios";
 import { useHistory } from "react-router-dom";
+import { openWalletsModal } from "../WalletsModal";
 
 const reasons = [
   "Own a unique piece of NFT music history",
@@ -71,7 +70,6 @@ const NFTSale = () => {
   const { totalSupply: noOfNFTsSold, mintNFTs } = useGovernance();
   const { account } = useWeb3React();
   const [isLoading, setIsLoading] = useState<boolean>(false);
-  const { login } = useAuth();
   const history = useHistory();
 
   const [isTxReceiptOpen, setIsTxReceiptOpen] = useState<boolean>(false);
@@ -161,7 +159,7 @@ const NFTSale = () => {
     } else if (account) {
       // checkKycAndOpen();
     } else {
-      login();
+      openWalletsModal();
     }
   };
 
