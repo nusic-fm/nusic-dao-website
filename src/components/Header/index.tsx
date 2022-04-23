@@ -12,11 +12,11 @@ import {
 import { makeStyles } from "@mui/styles";
 import { useWeb3React } from "@web3-react/core";
 import useAuth from "../../hooks/useAuth";
-import MenuIcon from "@mui/icons-material/Menu";
+// import MenuIcon from "@mui/icons-material/Menu";
 import { useEffect, useRef, useState } from "react";
 import { useHistory } from "react-router-dom";
-import AccountBalanceWalletTwoToneIcon from "@mui/icons-material/AccountBalanceWalletTwoTone";
-import { logFirebaseEvent } from "../../services/firebase.service";
+// import AccountBalanceWalletTwoToneIcon from "@mui/icons-material/AccountBalanceWalletTwoTone";
+// import { logFirebaseEvent } from "../../services/firebase.service";
 // import axios from "axios";
 // import DisclaimerDialog from "../DisclaimerDialog";
 
@@ -24,7 +24,8 @@ const useStyles = makeStyles({
   appBar: {
     boxShadow: "unset !important",
     backgroundImage: "unset !important",
-    backgroundColor: "black !important",
+    backgroundColor: "unset !important",
+    paddingTop: "30px",
   },
   title: {
     flexGrow: 1,
@@ -62,15 +63,15 @@ const Header = () => {
     login();
   };
 
-  useEffect(() => {
-    if (account) {
-      logFirebaseEvent("wallet_connected", { address: `wa-${account}` });
-      // const isAcceptedDisclaimer = localStorage.getItem("NUSIC_DISCLAIMER");
-      // if (!isAcceptedDisclaimer) {
-      //   fetchIpInfo();
-      // }
-    }
-  }, [account]);
+  // useEffect(() => {
+  //   if (account) {
+  //     // logFirebaseEvent("wallet_connected", { address: `wa-${account}` });
+  //     // const isAcceptedDisclaimer = localStorage.getItem("NUSIC_DISCLAIMER");
+  //     // if (!isAcceptedDisclaimer) {
+  //     //   fetchIpInfo();
+  //     // }
+  //   }
+  // }, [account]);
 
   // const fetchIpInfo = async () => {
   //   try {
@@ -91,6 +92,9 @@ const Header = () => {
 
   return (
     <AppBar className={classes.appBar}>
+      <Box position="absolute" right={0} top={"-20px"}>
+        <img src="/assets/bg-top.svg" alt="" width="400px" />
+      </Box>
       <Toolbar>
         <Grid container alignItems="center">
           <Grid item xs={8} md={4} lg={2}>
@@ -100,14 +104,14 @@ const Header = () => {
               style={{ cursor: "pointer" }}
               onClick={() => history.push("/")}
             >
-              <img src="/assets/NUSIC-Logo.webp" alt="nusic" height="40px" />
+              <img src="/assets/NUSIC-Logo.webp" alt="nusic" height="30px" />
               <Box>
                 <Typography
-                  variant="h4"
+                  variant="h6"
                   className={classes.title}
                   fontWeight={"1000"}
                 >
-                  NUSIC DAO
+                  NUSIC
                 </Typography>
               </Box>
             </Box>
@@ -138,16 +142,16 @@ const Header = () => {
                     size="small"
                     onClick={connect}
                     style={{
-                      fontWeight: "bold",
-                      borderRadius: "50px",
-                      padding: "10px 20px",
+                      textTransform: "capitalize",
                     }}
+                    disabled
                   >
-                    <AccountBalanceWalletTwoToneIcon />
+                    {/* <AccountBalanceWalletTwoToneIcon /> */}
+                    Connect Wallet
                   </Button>
                 )}
               </Box>
-              <MenuIcon onClick={() => setIsPopoverOpen(true)} />
+              {/* <MenuIcon onClick={() => setIsPopoverOpen(true)} /> */}
             </Box>
             <Popover
               open={isPopoverOpen}

@@ -15,7 +15,7 @@ import App from "./App";
 
 WebFont.load({
   google: {
-    families: ["Nunito"],
+    families: ["Tenor Sans"],
   },
 });
 
@@ -23,19 +23,22 @@ const themeSettings = createTheme({
   palette: {
     mode: "dark",
     primary: {
-      main: "#5B21D4",
+      main: "#573FC8",
       light: "#000000",
     },
     secondary: {
-      main: "#000000",
-      light: "#ffffff",
+      main: "#ffffff",
     },
+    info: {
+      main: "#A794FF",
+    },
+    background: { paper: "#16162A" },
   },
   typography: {
     allVariants: {
       color: "#ffffff",
     },
-    fontFamily: `"Nunito" , sans-serif`,
+    fontFamily: `"Tenor Sans" , sans-serif`,
   },
 });
 const theme = responsiveFontSizes(themeSettings);

@@ -8,7 +8,7 @@ import AppSnackbar from "./components/AppSnackbar";
 
 const App = () => {
   return (
-    <Box>
+    <Box sx={{ bgcolor: "background.paper" }}>
       <Header />
       <Switch>
         <Route exact path="/">
