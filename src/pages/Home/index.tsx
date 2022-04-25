@@ -15,8 +15,8 @@ const Home = () => {
 
   return (
     <Box pb={10}>
-      <Box position="absolute" left={0} top={0}>
-        <img src="/assets/bg-left.svg" alt="" width="800px" />
+      <Box position="absolute" left={0} top={0} zIndex={9999} width="40%">
+        <img src="/assets/bg-left.svg" alt="" width="100%" />
       </Box>
       <Box
         height="100vh"
@@ -46,8 +46,14 @@ const Home = () => {
             >
               Learn more
             </Button>
-            <Box position="absolute" right={0}>
-              <img src="/assets/bg.svg" alt="" width="800px" />
+            <Box
+              position="absolute"
+              right={0}
+              display="flex"
+              justifyContent="end"
+              width="40%"
+            >
+              <img src="/assets/bg.svg" alt="" width="100%" />
             </Box>
           </Box>
           <Box pt={15} display="flex" justifyContent="center">
@@ -78,8 +84,8 @@ const Home = () => {
           </Box>
         </Box>
       </Box>
-      <Box pt={10} ref={infoRef}>
-        <Box>
+      <Box pt={15} ref={infoRef}>
+        <Box p={2}>
           <Box display="flex" justifyContent="center">
             <Typography
               variant="h3"
@@ -139,7 +145,7 @@ const Home = () => {
         <Box pt={10} display="flex" justifyContent="center" alignItems="center">
           <Box
             width="80%"
-            sx={{ p: 10 }}
+            sx={{ p: 5 }}
             style={{ backgroundColor: "#2A2A43", borderRadius: "24px" }}
           >
             <Box>

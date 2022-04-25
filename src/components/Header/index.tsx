@@ -24,7 +24,7 @@ const useStyles = makeStyles({
   appBar: {
     boxShadow: "unset !important",
     backgroundImage: "unset !important",
-    backgroundColor: "unset !important",
+    // backgroundColor: "unset !important",
     paddingTop: "30px",
   },
   title: {
@@ -92,8 +92,14 @@ const Header = () => {
 
   return (
     <AppBar className={classes.appBar}>
-      <Box position="absolute" right={0} top={"-20px"}>
-        <img src="/assets/bg-top.svg" alt="" width="400px" />
+      <Box
+        position="absolute"
+        right={0}
+        top={"-20px"}
+        display="flex"
+        justifyContent="end"
+      >
+        <img src="/assets/bg-top.svg" alt="" width="50%" />
       </Box>
       <Toolbar>
         <Grid container alignItems="center">
