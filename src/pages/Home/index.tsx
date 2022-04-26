@@ -20,9 +20,8 @@ const Home = () => {
       </Box>
       <Box
         height="100vh"
-        pt={7}
+        sx={{ paddingTop: "94px" }}
         display="flex"
-        flexDirection="column"
         alignItems="center"
         justifyContent="center"
       >
@@ -56,32 +55,29 @@ const Home = () => {
               <img src="/assets/bg.svg" alt="" width="100%" />
             </Box>
           </Box>
-          <Box pt={15} display="flex" justifyContent="center">
-            <img src="/assets/chainlink-logo.png" alt="logo" width="60px" />
+          <Box sx={{ paddingTop: "4%" }} display="flex" justifyContent="center">
+            <a
+              href="https://devpost.com/software/nusic-nft-music-oracle"
+              target="_blank"
+              rel="noreferrer"
+            >
+              <img src="/assets/chainlink-logo.png" alt="logo" width="60px" />
+            </a>
           </Box>
           <Box pt={2} display="flex" justifyContent="center">
             <Typography
               align="center"
               style={{ width: "300px", textTransform: "uppercase" }}
             >
-              Grand Prize Winning{" "}
-              <a
-                href="https://devpost.com/software/nusic-nft-music-oracle"
-                style={{ color: "white" }}
-                target="_blank"
-                rel="noreferrer"
-              >
-                Project
-              </a>{" "}
-              Chainlink Fall Hackathon 2021
+              Grand Prize Winning Project Chainlink Fall Hackathon 2021
             </Typography>
           </Box>
         </Box>
-        <Box position="absolute" bottom="50px">
-          <Typography>Scroll Down</Typography>
-          <Box display="flex" justifyContent="center">
-            <KeyboardArrowDownIcon color="secondary" />
-          </Box>
+      </Box>
+      <Box position="absolute" bottom="2%" width="100%" textAlign="center">
+        <Typography>Scroll Down</Typography>
+        <Box display="flex" justifyContent="center">
+          <KeyboardArrowDownIcon color="secondary" />
         </Box>
       </Box>
       <Box pt={15} ref={infoRef}>
