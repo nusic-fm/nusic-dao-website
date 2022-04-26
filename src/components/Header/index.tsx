@@ -182,7 +182,7 @@ const Header = () => {
                 </Typography>
                 <Typography sx={{ p: 2, cursor: "pointer" }} color="#D1D1D5">
                   <a
-                    href="https://discord.gg/auPBu4dAHe"
+                    href="https://discord.gg/cwcdyf234t"
                     style={{ color: "#D1D1D5", textDecoration: "none" }}
                     target={"_blank"}
                     rel="noreferrer"
