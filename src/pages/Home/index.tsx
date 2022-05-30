@@ -32,7 +32,7 @@ const Home = () => {
               align="center"
               style={{ width: "60%", textTransform: "uppercase" }}
             >
-              Enhanced Monetization for Streaming Music Assets
+              FROM DIGITAL MUSIC RIGHTS TO DIGITAL MUSIC ASSETS
             </Typography>
           </Box>
           <Box pt={4} display="flex" justifyContent="center">
@@ -65,10 +65,7 @@ const Home = () => {
             </a>
           </Box>
           <Box pt={2} display="flex" justifyContent="center">
-            <Typography
-              align="center"
-              style={{ width: "300px", textTransform: "uppercase" }}
-            >
+            <Typography align="center" style={{ width: "300px" }}>
               Grand Prize Winning Project Chainlink Fall Hackathon 2021
             </Typography>
           </Box>
@@ -93,8 +90,8 @@ const Home = () => {
           </Box>
           <Box pt={4} display="flex" justifyContent="center">
             <Typography variant="h6" align="center">
-              Decentralized financial technology that enhances the monetization
-              of streaming music assets.
+              Decentralized infrastructure to power the next generation of music
+              on Web 3.0
             </Typography>
           </Box>
           <Box pt={10} display="flex" justifyContent="center">
@@ -108,8 +105,8 @@ const Home = () => {
                 <img alt="logo" src="/assets/unlock.png" width="40px" />
                 <Box width="80%" pt={4}>
                   <Typography align="center">
-                    Unlock capital without sacrificing ownership of intellectual
-                    property
+                    Unlock powerful new revenue streams without sacrificing
+                    music rights ownership
                   </Typography>
                 </Box>
               </Box>
@@ -121,8 +118,8 @@ const Home = () => {
                 />
                 <Box width="70%" pt={4}>
                   <Typography align="center">
-                    Leverage streaming assets only, leaving all other income
-                    streams and sales options open
+                    Monetize engaged communities with Metaverse activiations and
+                    one-of-a-kind events
                   </Typography>
                 </Box>
               </Box>
@@ -130,8 +127,8 @@ const Home = () => {
                 <img alt="logo" src="/assets/crypto-assets.png" width="40px" />
                 <Box width="70%" pt={4}>
                   <Typography align="center">
-                    Unlock the advantages of Crypto Assets, Decentralized
-                    Finance and Web 3.0
+                    Secure Intellectual Property through Proof of Creation, your
+                    music on Web 3.0
                   </Typography>
                 </Box>
               </Box>
@@ -159,27 +156,29 @@ const Home = () => {
               </Typography>
             </Box>
             <Box pt={4}>
-              <Typography align="center">
-                <Box
-                  display={"flex"}
-                  alignItems="center"
-                  justifyContent="center"
+              <Box
+                display="flex"
+                justifyContent="center"
+                gap={5}
+                flexWrap="wrap"
+              >
+                <Button
+                  href="https://docsend.com/view/58rkhdf2iapsjuah"
+                  target="_blank"
+                  style={{ color: "#A794FF", fontWeight: "bold" }}
+                  endIcon={<ArrowForwardIcon fontSize="small" color="info" />}
                 >
-                  <a
-                    href="https://discord.gg/z9jQZfJ6Rq"
-                    target="_blank"
-                    rel="noreferrer"
-                    style={{
-                      color: "#A794FF",
-                      fontWeight: "bold",
-                      textDecoration: "none",
-                    }}
-                  >
-                    NUSIC Discord
-                  </a>
-                  <ArrowForwardIcon fontSize="small" color="info" />
-                </Box>
-              </Typography>
+                  Check the Deck
+                </Button>
+                <Button
+                  href="https://discord.gg/z9jQZfJ6Rq"
+                  target="_blank"
+                  style={{ color: "#A794FF", fontWeight: "bold" }}
+                  endIcon={<ArrowForwardIcon fontSize="small" color="info" />}
+                >
+                  NUSIC Discord
+                </Button>
+              </Box>
             </Box>
           </Box>
         </Box>
