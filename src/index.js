@@ -11,7 +11,7 @@ import WebFont from "webfontloader";
 import { HashRouter as Router } from "react-router-dom";
 import { getLibrary } from "./utils/web3React";
 import { Web3ReactProvider } from "@web3-react/core";
-import App from "./App";
+// import App from "./App";
 import Pfp from "./pages/Pfp";
 
 WebFont.load({
