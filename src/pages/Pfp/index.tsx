@@ -14,8 +14,8 @@ const widths = ["40%", "34%", "40%", "26%", "30%"];
 
 const Pfp = () => {
   const [isImageRendered, setIsImageRendered] = useState(false);
-  const [imageUrl, setImageUrl] = useState(images[4]);
-  const [imageIdx, setImageIdx] = useState(4);
+  const [imageUrl, setImageUrl] = useState(images[0]);
+  const [imageIdx, setImageIdx] = useState(0);
 
   useEffect(() => {
     if (isImageRendered) {
