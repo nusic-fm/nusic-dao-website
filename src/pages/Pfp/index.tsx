@@ -1,7 +1,35 @@
 import { Box, Button, Typography } from "@mui/material";
+import { useEffect, useState } from "react";
 import FadeIn from "react-fade-in";
 
+const images = [
+  "EDM-Isolated.svg",
+  "Country-Isolated.svg",
+  "Metal-Isolated.svg",
+  "Pop-Isolated.svg",
+  "Hip-Hop-Isolated.svg",
+];
+let interval: number;
+const widths = ["40%", "34%", "40%", "26%", "30%"];
+
 const Pfp = () => {
+  const [isImageRendered, setIsImageRendered] = useState(false);
+  const [imageUrl, setImageUrl] = useState(images[4]);
+  const [imageIdx, setImageIdx] = useState(4);
+
+  useEffect(() => {
+    if (isImageRendered) {
+      if (interval) {
+        clearInterval(interval);
+      }
+      interval = window.setInterval(() => {
+        const newIndex = imageIdx + 1 === 5 ? 0 : imageIdx + 1;
+        setImageUrl(images[newIndex]);
+        setImageIdx(newIndex);
+      }, 5000);
+    }
+  }, [isImageRendered, imageIdx]);
+
   return (
     <Box>
       {/* <Box style={{ backgroundUrl: "/pfp/v1.mov" }}></Box> */}
@@ -26,19 +54,101 @@ const Pfp = () => {
         </FadeIn>
       </Box>
       <Box position="absolute" width="100%" bottom={0}>
-        <FadeIn delay={4000} transitionDuration={2500}>
-          <Box
-            display="flex"
-            justifyContent="center"
-            width="100%"
-            // bottom={0}
-            // zIndex={100}
+        {imageIdx === 0 && (
+          <FadeIn
+            delay={isImageRendered ? 0 : 4000}
+            transitionDuration={2500}
+            onComplete={() => {
+              setIsImageRendered(true);
+            }}
           >
-            <img
-              src="/assets/pfp/EDM-Isolated.svg"
-              alt="avatar"
-              width="40%"
-            ></img>
+            <Box
+              display="flex"
+              justifyContent="center"
+              width="100%"
+              // bottom={0}
+              // zIndex={100}
+            >
+              <img
+                src={`/assets/pfp/${imageUrl}`}
+                alt="avatar"
+                width={widths[imageIdx]}
+              ></img>
+            </Box>
+          </FadeIn>
+        )}
+        {imageIdx === 1 && (
+          <FadeIn transitionDuration={2500}>
+            <Box
+              display="flex"
+              justifyContent="center"
+              width="100%"
+              // bottom={0}
+              // zIndex={100}
+            >
+              <img
+                src={`/assets/pfp/${imageUrl}`}
+                alt="avatar"
+                width={widths[imageIdx]}
+              ></img>
+            </Box>
+          </FadeIn>
+        )}
+        {imageIdx === 2 && (
+          <FadeIn transitionDuration={2500}>
+            <Box
+              display="flex"
+              justifyContent="center"
+              width="100%"
+              // bottom={0}
+              // zIndex={100}
+            >
+              <img
+                src={`/assets/pfp/${imageUrl}`}
+                alt="avatar"
+                width={widths[imageIdx]}
+              ></img>
+            </Box>
+          </FadeIn>
+        )}
+        {imageIdx === 3 && (
+          <FadeIn transitionDuration={2500}>
+            <Box
+              display="flex"
+              justifyContent="center"
+              width="100%"
+              // bottom={0}
+              // zIndex={100}
+            >
+              <img
+                src={`/assets/pfp/${imageUrl}`}
+                alt="avatar"
+                width={widths[imageIdx]}
+              ></img>
+            </Box>
+          </FadeIn>
+        )}
+        {imageIdx === 4 && (
+          <FadeIn transitionDuration={2500}>
+            <Box
+              display="flex"
+              justifyContent="center"
+              width="100%"
+              // bottom={0}
+              // zIndex={100}
+            >
+              <img
+                src={`/assets/pfp/${imageUrl}`}
+                alt="avatar"
+                width={widths[imageIdx]}
+              ></img>
+            </Box>
+          </FadeIn>
+        )}
+      </Box>
+      <Box position="absolute" width="100%" bottom={70}>
+        <FadeIn delay={4000} transitionDuration={2500}>
+          <Box display="flex" justifyContent="center" width="100%">
             <Box
               position="absolute"
               top="90%"
