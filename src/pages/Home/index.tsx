@@ -32,7 +32,12 @@ const Home = () => {
               align="center"
               style={{ width: "60%", textTransform: "uppercase" }}
             >
-              FROM DIGITAL MUSIC RIGHTS TO DIGITAL MUSIC ASSETS
+              GET YOUR MUSIC ON THE BLOCKCHAIN
+            </Typography>
+          </Box>
+          <Box pt={2}>
+            <Typography variant="body1" align="center">
+              From Digital Rights to Digital Assets
             </Typography>
           </Box>
           <Box pt={4} display="flex" justifyContent="center">
@@ -55,7 +60,71 @@ const Home = () => {
               <img src="/assets/bg.svg" alt="" width="100%" />
             </Box>
           </Box>
-          <Box sx={{ paddingTop: "4%" }} display="flex" justifyContent="center">
+          <Box
+            sx={{ paddingTop: "4%" }}
+            display="flex"
+            justifyContent="center"
+            flexWrap="wrap"
+            gap={4}
+          >
+            <Box>
+              <Box display="flex" justifyContent="center">
+                <a
+                  href="https://devpost.com/software/nusic-nft-music-oracle"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  <img
+                    src="/assets/chainlink-logo.png"
+                    alt="logo"
+                    width="60px"
+                  />
+                </a>
+              </Box>
+              <Box>
+                <Typography align="center" style={{ width: "300px" }}>
+                  Grand Prize Winning Project Chainlink Fall Hackathon 2021
+                </Typography>
+              </Box>
+            </Box>
+            <Box>
+              <Box display="flex" justifyContent="center">
+                <a
+                  href="https://devpost.com/software/nusic-layer-1-for-music"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  <img src="/assets/filecoin.png" alt="logo" width="60px" />
+                </a>
+              </Box>
+              <Box>
+                <Typography align="center" style={{ width: "300px" }}>
+                  Filecoin StorageWizard Chainlink Spring Hackathon 2022
+                </Typography>
+              </Box>
+            </Box>
+            <Box>
+              <Box display="flex" justifyContent="center">
+                <a
+                  href="https://devpost.com/software/nusic-layer-1-for-music"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  <img
+                    src="/assets/chainlink-logo.png"
+                    alt="logo"
+                    width="60px"
+                  />
+                </a>
+              </Box>
+              <Box>
+                <Typography align="center" style={{ width: "300px" }}>
+                  NFT and Gaming Prize Chainlink Spring Hackathon 2022
+                </Typography>
+              </Box>
+            </Box>
+          </Box>
+          {/* <Box sx={{ paddingTop: "4%" }} display="flex" justifyContent="center">
             <a
               href="https://devpost.com/software/nusic-nft-music-oracle"
               target="_blank"
@@ -68,7 +137,7 @@ const Home = () => {
             <Typography align="center" style={{ width: "300px" }}>
               Grand Prize Winning Project Chainlink Fall Hackathon 2021
             </Typography>
-          </Box>
+          </Box> */}
         </Box>
       </Box>
       <Box position="absolute" bottom="2%" width="100%" textAlign="center">
@@ -90,8 +159,7 @@ const Home = () => {
           </Box>
           <Box pt={4} display="flex" justifyContent="center">
             <Typography variant="h6" align="center">
-              Decentralized infrastructure to power the next generation of music
-              on Web 3.0
+              Powering the next generation of music on Web 3.0
             </Typography>
           </Box>
           <Box pt={10} display="flex" justifyContent="center">
@@ -128,7 +196,7 @@ const Home = () => {
                 <Box width="70%" pt={4}>
                   <Typography align="center">
                     Secure Intellectual Property through Proof of Creation, your
-                    music on Web 3.0
+                    music data onchain
                   </Typography>
                 </Box>
               </Box>
@@ -149,10 +217,15 @@ const Home = () => {
             <Box pt={4}>
               <Typography align="center">
                 NUSIC DAO’s mission is to unlock financial freedom for the
-                artists who make our world a better place. We believe that the
-                emergence of decentralized economies represents a historic
-                opportunity to enshrine music as a digital asset that enables
-                the preservation and appreciation of value for the medium.
+                artists who share thier creativity with the world.
+              </Typography>
+            </Box>
+            <Box pt={2}>
+              <Typography align="center">
+                We believe that decentralized data and distribution is the
+                biggest opportunity in our lifetime for musicians, artists, and
+                creators to finally own, preserve, and retain creative rights
+                for their works of art.
               </Typography>
             </Box>
             <Box pt={4}>
@@ -163,21 +236,25 @@ const Home = () => {
                 flexWrap="wrap"
               >
                 <Button
-                  href="https://docsend.com/view/58rkhdf2iapsjuah"
-                  target="_blank"
-                  style={{ color: "#A794FF", fontWeight: "bold" }}
+                  style={{
+                    color: "#A794FF",
+                    fontWeight: "bold",
+                    textTransform: "capitalize",
+                  }}
                   endIcon={<ArrowForwardIcon fontSize="small" color="info" />}
+                  href="https://forms.gle/kGtnd53EdvxxLLHh6"
+                  target="_blank"
                 >
-                  Check the Deck
+                  Waves NFTs
                 </Button>
-                <Button
+                {/* <Button
                   href="https://discord.gg/z9jQZfJ6Rq"
                   target="_blank"
                   style={{ color: "#A794FF", fontWeight: "bold" }}
                   endIcon={<ArrowForwardIcon fontSize="small" color="info" />}
                 >
                   NUSIC Discord
-                </Button>
+                </Button> */}
               </Box>
             </Box>
           </Box>

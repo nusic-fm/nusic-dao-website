@@ -59,6 +59,7 @@ const Header = () => {
     }
   }, [menuRef]);
 
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const connect = async () => {
     login();
   };
@@ -145,15 +146,20 @@ const Header = () => {
                   <Button
                     variant="contained"
                     color="primary"
-                    size="small"
-                    onClick={connect}
+                    // size="small"
+                    // onClick={connect}
+                    href="https://discord.gg/z9jQZfJ6Rq"
+                    target="_blank"
                     style={{
                       textTransform: "capitalize",
                     }}
-                    disabled
+                    startIcon={
+                      <img src="/assets/Discord-Logo.webp" alt=""></img>
+                    }
                   >
                     {/* <AccountBalanceWalletTwoToneIcon /> */}
-                    Connect Wallet
+                    {/* Connect Wallet */}
+                    Join Discord
                   </Button>
                 )}
               </Box>
