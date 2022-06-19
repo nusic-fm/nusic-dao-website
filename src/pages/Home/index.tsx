@@ -1,4 +1,10 @@
-import { Box, Button, Typography } from "@mui/material";
+import {
+  Box,
+  Button,
+  Typography,
+  useMediaQuery,
+  useTheme,
+} from "@mui/material";
 // import { makeStyles } from "@mui/styles";
 // import { useRef, useState } from "react";
 // import JoinDaoDialog from "../../components/JoinDaoDialog";
@@ -12,6 +18,11 @@ import { useRef } from "react";
 
 const Home = () => {
   const infoRef = useRef<HTMLElement>(null);
+  const theme = useTheme();
+
+  const isMobile = useMediaQuery(theme.breakpoints.down("md"));
+
+  console.log({ isMobile });
 
   return (
     <Box pb={10}>
@@ -140,12 +151,14 @@ const Home = () => {
           </Box> */}
         </Box>
       </Box>
-      <Box position="absolute" bottom="2%" width="100%" textAlign="center">
-        <Typography>Scroll Down</Typography>
-        <Box display="flex" justifyContent="center">
-          <KeyboardArrowDownIcon color="secondary" />
+      {isMobile === false && (
+        <Box position="absolute" bottom="2%" width="100%" textAlign="center">
+          <Typography>Scroll Down</Typography>
+          <Box display="flex" justifyContent="center">
+            <KeyboardArrowDownIcon color="secondary" />
+          </Box>
         </Box>
-      </Box>
+      )}
       <Box pt={15} ref={infoRef}>
         <Box p={2}>
           <Box display="flex" justifyContent="center">
