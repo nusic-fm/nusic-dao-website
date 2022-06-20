@@ -146,7 +146,7 @@ const Header = () => {
                   <Button
                     variant="contained"
                     color="primary"
-                    // size="small"
+                    size="small"
                     // onClick={connect}
                     href="https://discord.gg/z9jQZfJ6Rq"
                     target="_blank"
