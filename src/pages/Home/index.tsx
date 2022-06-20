@@ -15,6 +15,8 @@ import {
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import { useRef } from "react";
+import YouTubeIcon from "@mui/icons-material/YouTube";
+import TwitterIcon from "@mui/icons-material/Twitter";
 
 const Home = () => {
   const infoRef = useRef<HTMLElement>(null);
@@ -25,117 +27,120 @@ const Home = () => {
   console.log({ isMobile });
 
   return (
-    <Box pb={10}>
-      <Box position="absolute" left={0} top={0} zIndex={9999} width="40%">
-        <img src="/assets/bg-left.svg" alt="" width="100%" />
-      </Box>
-      <Box
-        height="100vh"
-        sx={{ paddingTop: "94px" }}
-        display="flex"
-        alignItems="center"
-        justifyContent="center"
-      >
-        <Box>
-          <Box display="flex" justifyContent="center">
-            <Typography
-              variant="h3"
-              align="center"
-              style={{ width: "60%", textTransform: "uppercase" }}
-            >
-              GET YOUR MUSIC ON THE BLOCKCHAIN
-            </Typography>
-          </Box>
-          <Box pt={2}>
-            <Typography variant="body1" align="center">
-              From Digital Rights to Digital Assets
-            </Typography>
-          </Box>
-          <Box pt={4} display="flex" justifyContent="center">
-            <Button
-              size="small"
-              variant="contained"
-              onClick={() => {
-                infoRef.current?.scrollIntoView({ behavior: "smooth" });
-              }}
-            >
-              Learn more
-            </Button>
+    <Box>
+      <Box pb={10}>
+        <Box position="absolute" left={0} top={0} zIndex={9999} width="40%">
+          <img src="/assets/bg-left.svg" alt="" width="100%" />
+        </Box>
+        <Box
+          minHeight="100vh"
+          sx={{
+            paddingTop: isMobile ? "120px" : "unset",
+          }}
+          display="flex"
+          alignItems="center"
+          justifyContent="center"
+        >
+          <Box>
+            <Box display="flex" justifyContent="center">
+              <Typography
+                variant="h3"
+                align="center"
+                style={{ width: "60%", textTransform: "uppercase" }}
+              >
+                GET YOUR MUSIC ON THE BLOCKCHAIN
+              </Typography>
+            </Box>
+            <Box pt={2}>
+              <Typography variant="body1" align="center">
+                From Digital Rights to Digital Assets
+              </Typography>
+            </Box>
+            <Box pt={4} display="flex" justifyContent="center">
+              <Button
+                size="small"
+                variant="contained"
+                onClick={() => {
+                  infoRef.current?.scrollIntoView({ behavior: "smooth" });
+                }}
+              >
+                Learn more
+              </Button>
+              <Box
+                position="absolute"
+                right={0}
+                display="flex"
+                justifyContent="end"
+                width="40%"
+              >
+                <img src="/assets/bg.svg" alt="" width="100%" />
+              </Box>
+            </Box>
             <Box
-              position="absolute"
-              right={0}
+              sx={{ paddingTop: "4%" }}
               display="flex"
-              justifyContent="end"
-              width="40%"
+              justifyContent="center"
+              flexWrap="wrap"
+              gap={4}
             >
-              <img src="/assets/bg.svg" alt="" width="100%" />
-            </Box>
-          </Box>
-          <Box
-            sx={{ paddingTop: "4%" }}
-            display="flex"
-            justifyContent="center"
-            flexWrap="wrap"
-            gap={4}
-          >
-            <Box>
-              <Box display="flex" justifyContent="center">
-                <a
-                  href="https://devpost.com/software/nusic-nft-music-oracle"
-                  target="_blank"
-                  rel="noreferrer"
-                >
-                  <img
-                    src="/assets/chainlink-logo.png"
-                    alt="logo"
-                    width="60px"
-                  />
-                </a>
+              <Box>
+                <Box display="flex" justifyContent="center">
+                  <a
+                    href="https://devpost.com/software/nusic-nft-music-oracle"
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    <img
+                      src="/assets/chainlink-logo.png"
+                      alt="logo"
+                      width="60px"
+                    />
+                  </a>
+                </Box>
+                <Box>
+                  <Typography align="center" style={{ width: "300px" }}>
+                    Grand Prize Winning Project Chainlink Fall Hackathon 2021
+                  </Typography>
+                </Box>
               </Box>
               <Box>
-                <Typography align="center" style={{ width: "300px" }}>
-                  Grand Prize Winning Project Chainlink Fall Hackathon 2021
-                </Typography>
-              </Box>
-            </Box>
-            <Box>
-              <Box display="flex" justifyContent="center">
-                <a
-                  href="https://devpost.com/software/nusic-layer-1-for-music"
-                  target="_blank"
-                  rel="noreferrer"
-                >
-                  <img src="/assets/filecoin.png" alt="logo" width="60px" />
-                </a>
-              </Box>
-              <Box>
-                <Typography align="center" style={{ width: "300px" }}>
-                  Filecoin StorageWizard Chainlink Spring Hackathon 2022
-                </Typography>
-              </Box>
-            </Box>
-            <Box>
-              <Box display="flex" justifyContent="center">
-                <a
-                  href="https://devpost.com/software/nusic-layer-1-for-music"
-                  target="_blank"
-                  rel="noreferrer"
-                >
-                  <img
-                    src="/assets/chainlink-logo.png"
-                    alt="logo"
-                    width="60px"
-                  />
-                </a>
+                <Box display="flex" justifyContent="center">
+                  <a
+                    href="https://devpost.com/software/nusic-layer-1-for-music"
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    <img src="/assets/filecoin.png" alt="logo" width="60px" />
+                  </a>
+                </Box>
+                <Box>
+                  <Typography align="center" style={{ width: "300px" }}>
+                    Filecoin StorageWizard Chainlink Spring Hackathon 2022
+                  </Typography>
+                </Box>
               </Box>
               <Box>
-                <Typography align="center" style={{ width: "300px" }}>
-                  NFT and Gaming Prize Chainlink Spring Hackathon 2022
-                </Typography>
+                <Box display="flex" justifyContent="center">
+                  <a
+                    href="https://devpost.com/software/nusic-layer-1-for-music"
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    <img
+                      src="/assets/chainlink-logo.png"
+                      alt="logo"
+                      width="60px"
+                    />
+                  </a>
+                </Box>
+                <Box>
+                  <Typography align="center" style={{ width: "300px" }}>
+                    NFT and Gaming Prize Chainlink Spring Hackathon 2022
+                  </Typography>
+                </Box>
               </Box>
             </Box>
-          </Box>
-          {/* <Box sx={{ paddingTop: "4%" }} display="flex" justifyContent="center">
+            {/* <Box sx={{ paddingTop: "4%" }} display="flex" justifyContent="center">
             <a
               href="https://devpost.com/software/nusic-nft-music-oracle"
               target="_blank"
@@ -149,118 +154,132 @@ const Home = () => {
               Grand Prize Winning Project Chainlink Fall Hackathon 2021
             </Typography>
           </Box> */}
-        </Box>
-      </Box>
-      {isMobile === false && (
-        <Box position="absolute" bottom="2%" width="100%" textAlign="center">
-          <Typography>Scroll Down</Typography>
-          <Box display="flex" justifyContent="center">
-            <KeyboardArrowDownIcon color="secondary" />
           </Box>
         </Box>
-      )}
-      <Box pt={15} ref={infoRef}>
-        <Box p={2}>
-          <Box display="flex" justifyContent="center">
-            <Typography
-              variant="h3"
-              align="center"
-              style={{ width: "60%", textTransform: "uppercase" }}
-            >
-              What is NUSIC?
-            </Typography>
-          </Box>
-          <Box pt={4} display="flex" justifyContent="center">
-            <Typography variant="h6" align="center">
-              Powering the next generation of music on Web 3.0
-            </Typography>
-          </Box>
-          <Box pt={10} display="flex" justifyContent="center">
-            <Typography variant="h5" align="center">
-              NUSIC enables creators and rightsholders to
-            </Typography>
-          </Box>
-          <Box pt={10} display="flex" justifyContent="center">
-            <Box display="flex" justifyContent="center" flexWrap="wrap" gap={2}>
-              <Box display="flex" flexDirection="column" alignItems="center">
-                <img alt="logo" src="/assets/unlock.png" width="40px" />
-                <Box width="80%" pt={4}>
-                  <Typography align="center">
-                    Unlock powerful new revenue streams without sacrificing
-                    music rights ownership
-                  </Typography>
-                </Box>
-              </Box>
-              <Box display="flex" flexDirection="column" alignItems="center">
-                <img
-                  alt="logo"
-                  src="/assets/streaming-assets.png"
-                  width="40px"
-                />
-                <Box width="70%" pt={4}>
-                  <Typography align="center">
-                    Monetize engaged communities with Metaverse activiations and
-                    one-of-a-kind events
-                  </Typography>
-                </Box>
-              </Box>
-              <Box display="flex" flexDirection="column" alignItems="center">
-                <img alt="logo" src="/assets/crypto-assets.png" width="40px" />
-                <Box width="70%" pt={4}>
-                  <Typography align="center">
-                    Secure Intellectual Property through Proof of Creation, your
-                    music data onchain
-                  </Typography>
-                </Box>
-              </Box>
+        {isMobile === false && (
+          <Box position="absolute" bottom="2%" width="100%" textAlign="center">
+            <Typography>Scroll Down</Typography>
+            <Box display="flex" justifyContent="center">
+              <KeyboardArrowDownIcon color="secondary" />
             </Box>
           </Box>
-        </Box>
-        <Box pt={10} display="flex" justifyContent="center" alignItems="center">
-          <Box
-            width="80%"
-            sx={{ p: 5 }}
-            style={{ backgroundColor: "#2A2A43", borderRadius: "24px" }}
-          >
-            <Box>
-              <Typography variant="h3" align="center">
-                NUSIC DAO
+        )}
+        <Box pt={15} ref={infoRef}>
+          <Box p={2}>
+            <Box display="flex" justifyContent="center">
+              <Typography
+                variant="h3"
+                align="center"
+                style={{ width: "60%", textTransform: "uppercase" }}
+              >
+                What is NUSIC?
               </Typography>
             </Box>
-            <Box pt={4}>
-              <Typography align="center">
-                NUSIC DAO’s mission is to unlock financial freedom for the
-                artists who share thier creativity with the world.
+            <Box pt={4} display="flex" justifyContent="center">
+              <Typography variant="h6" align="center">
+                Powering the next generation of music on Web 3.0
               </Typography>
             </Box>
-            <Box pt={2}>
-              <Typography align="center">
-                We believe that decentralized data and distribution is the
-                biggest opportunity in our lifetime for musicians, artists, and
-                creators to finally own, preserve, and retain creative rights
-                for their works of art.
+            <Box pt={10} display="flex" justifyContent="center">
+              <Typography variant="h5" align="center">
+                NUSIC enables creators and rightsholders to
               </Typography>
             </Box>
-            <Box pt={4}>
+            <Box pt={10} display="flex" justifyContent="center">
               <Box
                 display="flex"
                 justifyContent="center"
-                gap={5}
                 flexWrap="wrap"
+                gap={2}
               >
-                <Button
-                  style={{
-                    color: "#A794FF",
-                    fontWeight: "bold",
-                    textTransform: "capitalize",
-                  }}
-                  endIcon={<ArrowForwardIcon fontSize="small" color="info" />}
-                  href="https://forms.gle/kGtnd53EdvxxLLHh6"
-                  target="_blank"
+                <Box display="flex" flexDirection="column" alignItems="center">
+                  <img alt="logo" src="/assets/unlock.png" width="40px" />
+                  <Box width="80%" pt={4}>
+                    <Typography align="center">
+                      Unlock powerful new revenue streams without sacrificing
+                      music rights ownership
+                    </Typography>
+                  </Box>
+                </Box>
+                <Box display="flex" flexDirection="column" alignItems="center">
+                  <img
+                    alt="logo"
+                    src="/assets/streaming-assets.png"
+                    width="40px"
+                  />
+                  <Box width="70%" pt={4}>
+                    <Typography align="center">
+                      Monetize engaged communities with Metaverse activiations
+                      and one-of-a-kind events
+                    </Typography>
+                  </Box>
+                </Box>
+                <Box display="flex" flexDirection="column" alignItems="center">
+                  <img
+                    alt="logo"
+                    src="/assets/crypto-assets.png"
+                    width="40px"
+                  />
+                  <Box width="70%" pt={4}>
+                    <Typography align="center">
+                      Secure Intellectual Property through Proof of Creation,
+                      your music data onchain
+                    </Typography>
+                  </Box>
+                </Box>
+              </Box>
+            </Box>
+          </Box>
+          <Box
+            pt={10}
+            display="flex"
+            justifyContent="center"
+            alignItems="center"
+          >
+            <Box
+              width="80%"
+              sx={{ p: 5 }}
+              style={{ backgroundColor: "#2A2A43", borderRadius: "24px" }}
+            >
+              <Box>
+                <Typography variant="h3" align="center">
+                  NUSIC DAO
+                </Typography>
+              </Box>
+              <Box pt={4}>
+                <Typography align="center">
+                  NUSIC DAO’s mission is to unlock financial freedom for the
+                  artists who share thier creativity with the world.
+                </Typography>
+              </Box>
+              <Box pt={2}>
+                <Typography align="center">
+                  We believe that decentralized data and distribution is the
+                  biggest opportunity in our lifetime for musicians, artists,
+                  and creators to finally own, preserve, and retain creative
+                  rights for their works of art.
+                </Typography>
+              </Box>
+              <Box pt={4}>
+                <Box
+                  display="flex"
+                  justifyContent="center"
+                  gap={5}
+                  flexWrap="wrap"
                 >
-                  Waves NFTs
-                </Button>
-                {/* <Button
+                  <Button
+                    style={{
+                      color: "#A794FF",
+                      fontWeight: "bold",
+                      textTransform: "capitalize",
+                    }}
+                    endIcon={<ArrowForwardIcon fontSize="small" color="info" />}
+                    href="https://forms.gle/kGtnd53EdvxxLLHh6"
+                    target="_blank"
+                  >
+                    Waves NFTs
+                  </Button>
+                  {/* <Button
                   href="https://discord.gg/z9jQZfJ6Rq"
                   target="_blank"
                   style={{ color: "#A794FF", fontWeight: "bold" }}
@@ -268,9 +287,33 @@ const Home = () => {
                 >
                   NUSIC Discord
                 </Button> */}
+                </Box>
               </Box>
             </Box>
           </Box>
+        </Box>
+      </Box>
+      <Box width="100%" style={{ backgroundColor: "#2A2A43" }} p={5} mt={5}>
+        <Typography align="center" color="#E5E5E5">
+          Keep-up with the latest:
+        </Typography>
+        <Box display="flex" justifyContent="center" gap={2} mt={2}>
+          <a
+            href="https://www.youtube.com/channel/UCGmbDO7lX8LkGK2YsXccG9w"
+            target="_blank"
+            rel="noreferrer"
+            style={{ color: "white" }}
+          >
+            <YouTubeIcon />
+          </a>
+          <a
+            href="https://twitter.com/nusicDAO"
+            target="_blank"
+            rel="noreferrer"
+            style={{ color: "white" }}
+          >
+            <TwitterIcon />
+          </a>
         </Box>
       </Box>
     </Box>
