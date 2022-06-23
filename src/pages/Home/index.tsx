@@ -209,7 +209,7 @@ const Home = () => {
                   />
                   <Box width="70%" pt={4}>
                     <Typography align="center">
-                      Monetize engaged communities with Metaverse activiations
+                      Monetize engaged communities with Metaverse activations
                       and one-of-a-kind events
                     </Typography>
                   </Box>
