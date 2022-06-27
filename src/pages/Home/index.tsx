@@ -48,7 +48,7 @@ const Home = () => {
                 align="center"
                 style={{ width: "60%", textTransform: "uppercase" }}
               >
-                GET YOUR MUSIC ON THE BLOCKCHAIN
+                Powering the Evolution of Music
               </Typography>
             </Box>
             <Box pt={2}>
