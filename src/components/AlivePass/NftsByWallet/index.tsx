@@ -2,9 +2,7 @@ import { Button, IconButton, Stack, Tooltip, Typography } from "@mui/material";
 import { Box } from "@mui/system";
 import { useWeb3React } from "@web3-react/core";
 import { useEffect, useState } from "react";
-import axios from "axios";
 import Close from "@mui/icons-material/Close";
-import { MoralisNftData, NftDetails, SelectedNftDetails } from "../../../models";
 // import { createUrlFromCid } from "../../../helpers";
 import { getNftsMetadataByWallet } from "../../../helpers/zora";
 import { IZoraData } from "../../../models/zora";
@@ -42,7 +40,7 @@ const NftsByWallet = ({ onConnect, onInsert, onClose }: Props) => {
   const fetchAllNfts = async () => {
     // "0xA0cb079D354b66188f533A919d1c58cd67aFe398"
     if (!account) return;
-    const _tokens = await getNftsMetadataByWallet("0xA0cb079D354b66188f533A919d1c58cd67aFe398");
+    const _tokens = await getNftsMetadataByWallet(account);
     setTokens(_tokens);
   };
 
@@ -161,7 +159,8 @@ const NftsByWallet = ({ onConnect, onInsert, onClose }: Props) => {
                   size="small"
                   onClick={() => {
                     onInsert(nft);
-                    if (nft.image?.mediaEncoding?.thumbnail) setInsertUrl(nft.image?.mediaEncoding?.thumbnail);
+                    if (nft.image?.mediaEncoding?.thumbnail)
+                      setInsertUrl(nft.image?.mediaEncoding?.thumbnail);
                   }}
                 >
                   Insert
@@ -170,40 +169,40 @@ const NftsByWallet = ({ onConnect, onInsert, onClose }: Props) => {
             </Stack>
           ))}
         </Box>
-                       <Box
-                       sx={{bgcolor: '#0f0f0f'}}
-                       p={4}
-                display={"flex"}
-                justifyContent="center"
-                position={"relative"}
+        <Box
+          sx={{ bgcolor: "#0f0f0f" }}
+          p={4}
+          display={"flex"}
+          justifyContent="center"
+          position={"relative"}
+        >
+          <Box width={{ xs: "100%", md: "400px" }}>
+            <img src="/alive/new_card.png" alt="" width={"100%"} />
+          </Box>
+          {insertUrl && (
+            <Box
+              position={"absolute"}
+              width="100%"
+              height="100%"
+              display={"flex"}
+              justifyContent="center"
+              alignItems={"center"}
+            >
+              <Box
+                width={{ xs: "100px", md: "140px" }}
+                height={{ xs: "100px", md: "140px" }}
               >
-                <Box width={{ xs: "100%", md: "400px" }}>
-                  <img src="/alive/new_card.png" alt="" width={"100%"} />
-                </Box>
-                {insertUrl && (
-                  <Box
-                    position={"absolute"}
-                    width="100%"
-                    height="100%"
-                    display={"flex"}
-                    justifyContent="center"
-                    alignItems={"center"}
-                  >
-                    <Box
-                      width={{ xs: "100px", md: "140px" }}
-                      height={{ xs: "100px", md: "140px" }}
-                    >
-                      <img
-                        src={insertUrl}
-                        alt=""
-                        width={"100%"}
-                        height={"100%"}
-                        style={{ objectFit: "cover", borderRadius: "50%" }}
-                      />
-                    </Box>
-                  </Box>
-                )}
+                <img
+                  src={insertUrl}
+                  alt=""
+                  width={"100%"}
+                  height={"100%"}
+                  style={{ objectFit: "cover", borderRadius: "50%" }}
+                />
               </Box>
+            </Box>
+          )}
+        </Box>
       </Box>
     );
 };
