@@ -461,7 +461,7 @@ const Home = (props: Props) => {
                   // }}
                   // sx={{ bgcolor: "#010101" }}
                   // size="small"
-                  href="https://test-alive.vercel.app/"
+                  href="https://nusic-app.vercel.app/"
                 >
                   Launch App
                 </Button>
