@@ -1,555 +1,633 @@
-import {
-  Box,
-  Button,
-  Typography,
-  useMediaQuery,
-  useTheme,
-} from "@mui/material";
-// import { makeStyles } from "@mui/styles";
-// import { useRef, useState } from "react";
-// import JoinDaoDialog from "../../components/JoinDaoDialog";
-// import NFTSale from "../../components/NFTSale";
-// import TwitterIcon from "@mui/icons-material/Twitter";
-// import GitHubIcon from "@mui/icons-material/GitHub";
-// import { Snackbar } from "@material-ui/core";
-import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
-import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
+import { Button, Fab, Grid, Typography } from "@mui/material";
+import { Box, Stack } from "@mui/system";
+import PlayArrowIcon from "@mui/icons-material/PlayArrow";
 import { useRef } from "react";
-import YouTubeIcon from "@mui/icons-material/YouTube";
-import TwitterIcon from "@mui/icons-material/Twitter";
+import { ethers } from "ethers";
+import { InjectedConnector } from "@web3-react/injected-connector";
+import { WalletConnectConnector } from "@web3-react/walletconnect-connector";
+import { WalletLinkConnector } from "@web3-react/walletlink-connector";
+import { Injected, CoinbaseWallet } from "../../hooks/useWalletConnectors";
+import { useWeb3React } from "@web3-react/core";
+import AlivePass from "../../components/AlivePass";
 
-const Home = () => {
-  const infoRef = useRef<HTMLElement>(null);
-  const theme = useTheme();
+type Props = {};
 
-  const isMobile = useMediaQuery(theme.breakpoints.down("md"));
+const Home = (props: Props) => {
+  const buyRef = useRef(null);
+  const { account, library, activate } = useWeb3React();
 
-  console.log({ isMobile });
+  const onSignInUsingWallet = async (
+    connector: WalletConnectConnector | WalletLinkConnector | InjectedConnector
+  ) => {
+    activate(connector, async (e) => {
+      if (e.name === "t" || e.name === "UnsupportedChainIdError") {
+        // setSnackbarMessage("Please switch to Ethereum Mainnet");
+      } else {
+        // setSnackbarMessage(e.message);
+      }
+
+      console.log(e.name, e.message);
+    });
+  };
+
+  const checkAutoLogin = async () => {
+    const provider = new ethers.providers.Web3Provider(
+      (window as any).ethereum
+    );
+    const accounts = await provider.listAccounts();
+    if (accounts.length) {
+      const eth = (window as any).ethereum;
+      if (eth.isMetaMask) {
+        onSignInUsingWallet(Injected);
+      } else if (eth.isCoinbaseBrowser) {
+        onSignInUsingWallet(CoinbaseWallet);
+      }
+    }
+  };
+
+  // return <Box minHeight={'100vh'}>
+  //   <Grid container minHeight={'100vh'}>
+  //     <Grid item xs={8}
+  //       sx={{
+  //         background:
+  //           "linear-gradient(0deg, rgba(27,19,51,1) 20%, rgba(2,1,3,1) 100%)",
+  //       }}>
+  //     <Stack
+  //           gap={12}
+  //           p={{ xs: 4, md: 10 }}
+  //           // alignItems="center"
+  //           // justifyContent={"center"}
+  //         >
+  //           <Box>
+  //             <Typography
+  //               variant="h3"
+  //               fontWeight={700}
+  //               textTransform="uppercase"
+  //             >
+  //               Get More from Your Music
+  //             </Typography>
+  //             <Typography>
+  //               NUSIC is a transparent music streaming protocol which enables
+  //               you to discover & share a new universe of music
+  //             </Typography>
+  //           </Box>
+  //           <Box
+  //             display="flex"
+  //             gap={4}
+  //             flexWrap="wrap"
+  //             justifyContent={"center"}
+  //           >
+  //             <img
+  //               src="/home/r1.png"
+  //               alt=""
+  //               // borderRadius={"0%"}
+  //               // sx={{
+  //               //   background: "url(/home/r1.png)",
+  //               //   backgroundSize: "cover",
+  //               // }}
+  //               // width="301px"
+  //               // height={"523px"}
+  //             ></img>
+  //             <Stack
+  //               gap={2}
+  //               justifyContent="center"
+  //               alignItems={"center"}
+  //               flexDirection={{ xs: "row", md: "column" }}
+  //             >
+  //               <img
+  //                 src="/home/r3.png"
+  //                 alt=""
+  //                 // borderRadius={"0%"}
+  //                 //   sx={{
+  //                 //     background: "url(/home/r3.png)",
+  //                 //     backgroundSize: "cover",
+  //                 //   }}
+  //                 //   width="197px"
+  //                 //   height={"183px"}
+  //               ></img>
+  //               <img
+  //                 src="/home/r2.png"
+  //                 alt=""
+  //                 // borderRadius={"0%"}
+  //                 //   sx={{
+  //                 //     background: "url(/home/r2.png)",
+  //                 //     backgroundSize: "cover",
+  //                 //   }}
+  //                 //   width="197px"
+  //                 //   height={"303px"}
+  //               ></img>
+  //             </Stack>
+  //             <Stack gap={2} alignItems="center" justifyContent={"center"}
+  //               flexDirection={{ xs: "row", md: "column" }}>
+  //               <Stack
+  //                 sx={{
+  //                   background:
+  //                     "linear-gradient(180deg, #563FC8 -54.71%, rgba(65, 31, 86, 0.21) 107.79%)",
+  //                 }}
+  //                 borderRadius={"20%"}
+  //                 gap={1}
+  //                 width={150}
+  //                 height={150}
+  //                 justifyContent="center"
+  //                 alignItems={"center"}
+  //                 p={2}
+  //               >
+  //                 <Typography variant="h6" color={"#F1F1F1"} fontWeight={700}>
+  //                   98%
+  //                 </Typography>
+  //                 <Typography
+  //                   color={"#A8A8A8"}
+  //                   align="center"
+  //                   variant="caption"
+  //                 >
+  //                   Sorem ipsum dolor sit amet, consectetur adipiscing elit.
+  //                   Nunc{" "}
+  //                 </Typography>
+  //               </Stack>
+  //               <Stack
+  //                 sx={{
+  //                   background:
+  //                     "linear-gradient(180deg, #563FC8 -54.71%, rgba(65, 31, 86, 0.21) 107.79%)",
+  //                 }}
+  //                 borderRadius={"20%"}
+  //                 width={150}
+  //                 height={150}
+  //                 gap={1}
+  //                 justifyContent="center"
+  //                 alignItems={"center"}
+  //                 p={2}
+  //               >
+  //                 <Stack alignItems={"center"}>
+  //                   <Typography variant="h6" color={"#F1F1F1"} fontWeight={700}>
+  //                     7K Tracks
+  //                   </Typography>
+  //                 </Stack>
+  //                 <Typography
+  //                   color={"#A8A8A8"}
+  //                   align="center"
+  //                   variant="caption"
+  //                 >
+  //                   Sorem ipsum dolor sit amet, consectetur adipiscing elit.
+  //                   Nunc{" "}
+  //                 </Typography>
+  //               </Stack>
+  //             </Stack>
+  //           </Box>
+  //           </Stack>
+  //     </Grid>
+  //     <Grid item xs={4}>
+  //       <Box sx={{bgcolor: '#3A3068'}} height='100vh' position={'relative'}>
+  //         <Stack
+  //           justifyContent={"center"}
+  //           height={"100%"}
+  //           width="100%"
+  //           gap={4}
+  //           sx={{ bgcolor: "#3A3068", borderTopLeftRadius: "80px 80px" }}
+  //           position="relative"
+  //           alignItems={"center"}
+  //         >
+  //           <Stack gap={2}>
+  //             <img src="/nusic_white.png" alt="" width={200}></img>
+  //             <Typography align="center">Stream to Earn</Typography>
+  //           </Stack>
+  //           <Stack gap={2} mt={4}>
+  //             {/* <Typography align="center" fontWeight={600}>
+  //               Launch App
+  //             </Typography> */}
+  //             <Stack gap={2}>
+  //               <Button
+  //                 variant="contained"
+  //                 // onClick={() => {
+  //                 //   checkAutoLogin();
+  //                 // }}
+  //                 // sx={{ bgcolor: "#010101" }}
+  //                 // size="small"
+  //                 // href="/metadata"
+  //               >
+  //                 Launch App
+  //               </Button>
+  //             </Stack>
+  //           </Stack>
+  //           </Stack>
+  //       <Box
+  //             position={"absolute"}
+  //             bottom="0px"
+  //             width={"100%"}
+  //             display="flex"
+  //           >
+  //             <img
+  //               src="/home/band.png"
+  //               width={"100%"}
+  //               alt="band"
+  //               style={{ objectFit: "cover" }}
+  //             />
+  //           </Box>
+  //       </Box>
+  //     </Grid>
+  //   </Grid>
+  // </Box>
 
   return (
-    <Box>
-      <Box pb={10}>
-        <Box position="absolute" left={0} top={0} zIndex={9999} width="40%">
-          <img src="/assets/bg-left.svg" alt="" width="100%" />
-        </Box>
-        <Box
-          minHeight="100vh"
-          sx={{
-            paddingTop: isMobile ? "120px" : "unset",
-          }}
-          display="flex"
-          alignItems="center"
-          justifyContent="center"
-        >
-          <Box>
-            <Box display="flex" justifyContent="center">
+    <Box minHeight="100vh" position={"relative"}>
+      <img
+        src="/home/Ellipse1.png"
+        alt=""
+        style={{ position: "absolute", zIndex: 99999 }}
+        height={300}
+      ></img>
+      <Grid
+        container
+        sx={{
+          background:
+            "linear-gradient(0deg, rgba(27,19,51,1) 20%, rgba(2,1,3,1) 100%)",
+        }}
+      >
+        <Grid xs={12} md={8} item>
+          <Box minHeight={"100vh"} position="relative">
+            <Stack
+              gap={12}
+              p={{ xs: 4, md: 10 }}
+              // alignItems="center"
+              // justifyContent={"center"}
+            >
+              <Box>
+                <Typography
+                  variant="h3"
+                  fontWeight={700}
+                  textTransform="uppercase"
+                >
+                  Get More from Your Music
+                </Typography>
+                <Typography>
+                  NUSIC is a transparent music streaming protocol which enables
+                  you to discover & share a new universe of music
+                </Typography>
+              </Box>
+              {/* <Stack gap={3}>
               <Typography
-                variant="h3"
-                align="center"
-                style={{ width: "60%", textTransform: "uppercase" }}
-              >
-                Powering the Evolution of Music
-              </Typography>
-            </Box>
-            <Box pt={2}>
-              <Typography variant="body1" align="center">
-                From Digital Rights to Digital Assets
-              </Typography>
-            </Box>
-            <Box pt={4} display="flex" justifyContent="center">
-              <Button
-                size="small"
-                variant="contained"
-                onClick={() => {
-                  infoRef.current?.scrollIntoView({ behavior: "smooth" });
+                variant="h6"
+                sx={{
+                  background:
+                    "linear-gradient(91.05deg, #563FC8 -9%, rgba(75, 205, 214, 0.85) 44.26%, rgba(178, 0, 207, 0.96) 109.05%)",
+                  backgroundClip: "text",
+                  WebkitTextFillColor: "transparent",
                 }}
               >
-                Learn more
-              </Button>
-              <Box
-                position="absolute"
-                right={0}
-                display="flex"
-                justifyContent="end"
-                width="40%"
-              >
-                <img src="/assets/bg.svg" alt="" width="100%" />
-              </Box>
-            </Box>
-            <Box
-              sx={{ paddingTop: "4%" }}
-              display="flex"
-              justifyContent="center"
-              flexWrap="wrap"
-              gap={4}
-            >
-              <Box>
-                <Box display="flex" justifyContent="center">
-                  <a
-                    href="https://devpost.com/software/nusic-nft-music-oracle"
-                    target="_blank"
-                    rel="noreferrer"
-                  >
-                    <img
-                      src="/assets/chainlink-logo.png"
-                      alt="logo"
-                      width="60px"
-                    />
-                  </a>
-                </Box>
-                <Box>
-                  <Typography align="center" style={{ width: "300px" }}>
-                    Grand Prize Winning Project Chainlink Fall Hackathon 2021
-                  </Typography>
-                </Box>
-              </Box>
-              <Box>
-                <Box display="flex" justifyContent="center">
-                  <a
-                    href="https://devpost.com/software/nusic-layer-1-for-music"
-                    target="_blank"
-                    rel="noreferrer"
-                  >
-                    <img src="/assets/filecoin.png" alt="logo" width="60px" />
-                  </a>
-                </Box>
-                <Box>
-                  <Typography align="center" style={{ width: "300px" }}>
-                    Filecoin StorageWizard Chainlink Spring Hackathon 2022
-                  </Typography>
-                </Box>
-              </Box>
-              <Box>
-                <Box display="flex" justifyContent="center">
-                  <a
-                    href="https://devpost.com/software/nusic-layer-1-for-music"
-                    target="_blank"
-                    rel="noreferrer"
-                  >
-                    <img
-                      src="/assets/chainlink-logo.png"
-                      alt="logo"
-                      width="60px"
-                    />
-                  </a>
-                </Box>
-                <Box>
-                  <Typography align="center" style={{ width: "300px" }}>
-                    NFT and Gaming Prize Chainlink Spring Hackathon 2022
-                  </Typography>
-                </Box>
-              </Box>
-            </Box>
-            {/* <Box sx={{ paddingTop: "4%" }} display="flex" justifyContent="center">
-            <a
-              href="https://devpost.com/software/nusic-nft-music-oracle"
-              target="_blank"
-              rel="noreferrer"
-            >
-              <img src="/assets/chainlink-logo.png" alt="logo" width="60px" />
-            </a>
-          </Box>
-          <Box pt={2} display="flex" justifyContent="center">
-            <Typography align="center" style={{ width: "300px" }}>
-              Grand Prize Winning Project Chainlink Fall Hackathon 2021
-            </Typography>
-          </Box> */}
-          </Box>
-        </Box>
-        {isMobile === false && (
-          <Box position="absolute" bottom="2%" width="100%" textAlign="center">
-            <Typography>Scroll Down</Typography>
-            <Box display="flex" justifyContent="center">
-              <KeyboardArrowDownIcon color="secondary" />
-            </Box>
-          </Box>
-        )}
-        <Box pt={15} ref={infoRef}>
-          <Box p={2}>
-            <Box display="flex" justifyContent="center">
+                Edit your Music NFT metadata
+              </Typography>
               <Typography
-                variant="h3"
-                align="center"
-                style={{ width: "60%", textTransform: "uppercase" }}
+                variant="h6"
+                sx={{
+                  background:
+                    "linear-gradient(91.05deg, #563FC8 -9%, rgba(75, 205, 214, 0.85) 44.26%, rgba(178, 0, 207, 0.96) 109.05%)",
+                  backgroundClip: "text",
+                  WebkitTextFillColor: "transparent",
+                }}
               >
-                What is NUSIC?
+                Generate Nusic link tree to share to friends & fans
               </Typography>
-            </Box>
-            <Box pt={4} display="flex" justifyContent="center">
-              <Typography variant="h6" align="center">
-                Powering the next generation of music on Web 3.0
+              <Typography
+                variant="h6"
+                sx={{
+                  display: "block",
+                  background:
+                    "linear-gradient(91.05deg, #563FC8 -9%, rgba(75, 205, 214, 0.85) 44.26%, rgba(178, 0, 207, 0.96) 109.05%)",
+                  backgroundClip: "text",
+                  WebkitTextFillColor: "transparent",
+                }}
+              >
+                Stream Music NFTs
               </Typography>
-            </Box>
-            <Box pt={10} display="flex" justifyContent="center">
-              <Typography variant="h5" align="center">
-                NUSIC enables creators and rightsholders to
-              </Typography>
-            </Box>
-            <Box pt={10} display="flex" justifyContent="center">
+              <Box mt={6}>
+                <Button
+                  variant="outlined"
+                  color="info"
+                  onClick={() =>
+                    (buyRef.current as any).scrollIntoView({
+                      behavior: "smooth",
+                      block: "start",
+                      inline: "nearest",
+                    })
+                  }
+                >
+                  Get Access Now !!!
+                </Button>
+              </Box>
+            </Stack> */}
               <Box
                 display="flex"
-                justifyContent="center"
+                gap={4}
                 flexWrap="wrap"
-                gap={2}
+                justifyContent={"center"}
               >
-                <Box display="flex" flexDirection="column" alignItems="center">
-                  <img alt="logo" src="/assets/unlock.png" width="40px" />
-                  <Box width="80%" pt={4}>
-                    <Typography align="center">
-                      Unlock powerful new revenue streams without sacrificing
-                      music rights ownership
+                <img src="/home/r1.png" alt=""></img>
+                <Stack
+                  gap={2}
+                  justifyContent="center"
+                  alignItems={"center"}
+                  flexDirection={{ xs: "row", md: "column" }}
+                >
+                  <img src="/home/r3.png" alt=""></img>
+                  <img src="/home/r2.png" alt=""></img>
+                </Stack>
+                <Stack
+                  gap={2}
+                  alignItems="center"
+                  justifyContent={"center"}
+                  flexDirection={{ xs: "row", md: "column" }}
+                >
+                  <Stack
+                    sx={{
+                      background:
+                        "linear-gradient(180deg, #563FC8 -54.71%, rgba(65, 31, 86, 0.21) 107.79%)",
+                    }}
+                    borderRadius={"20%"}
+                    gap={1}
+                    width={150}
+                    height={150}
+                    justifyContent="center"
+                    alignItems={"center"}
+                    p={2}
+                  >
+                    <Typography variant="h6" color={"#F1F1F1"} fontWeight={700}>
+                      98%
                     </Typography>
-                  </Box>
-                </Box>
-                <Box display="flex" flexDirection="column" alignItems="center">
-                  <img
-                    alt="logo"
-                    src="/assets/streaming-assets.png"
-                    width="40px"
-                  />
-                  <Box width="70%" pt={4}>
-                    <Typography align="center">
-                      Monetize engaged communities with Metaverse activations
-                      and one-of-a-kind events
+                    <Typography
+                      color={"#A8A8A8"}
+                      align="center"
+                      variant="caption"
+                    >
+                      Sorem ipsum dolor sit amet, consectetur adipiscing elit.
+                      Nunc{" "}
                     </Typography>
-                  </Box>
-                </Box>
-                <Box display="flex" flexDirection="column" alignItems="center">
-                  <img
-                    alt="logo"
-                    src="/assets/crypto-assets.png"
-                    width="40px"
-                  />
-                  <Box width="70%" pt={4}>
-                    <Typography align="center">
-                      Secure Intellectual Property through Proof of Creation,
-                      your music data onchain
+                  </Stack>
+                  <Stack
+                    sx={{
+                      background:
+                        "linear-gradient(180deg, #563FC8 -54.71%, rgba(65, 31, 86, 0.21) 107.79%)",
+                    }}
+                    borderRadius={"20%"}
+                    width={150}
+                    height={150}
+                    gap={1}
+                    justifyContent="center"
+                    alignItems={"center"}
+                    p={2}
+                  >
+                    <Stack alignItems={"center"}>
+                      <Typography
+                        variant="h6"
+                        color={"#F1F1F1"}
+                        fontWeight={700}
+                      >
+                        7K Tracks
+                      </Typography>
+                    </Stack>
+                    <Typography
+                      color={"#A8A8A8"}
+                      align="center"
+                      variant="caption"
+                    >
+                      Sorem ipsum dolor sit amet, consectetur adipiscing elit.
+                      Nunc{" "}
                     </Typography>
-                  </Box>
-                </Box>
+                  </Stack>
+                </Stack>
               </Box>
+            </Stack>
+            <Box
+              display={"flex"}
+              alignItems="center"
+              flexWrap={"wrap"}
+              gap={2}
+              justifyContent="center"
+              p={4}
+            >
+              <img src="/home/built_icon.png" alt="" />
+              <img src="/home/arweave_icon.png" alt="" />
+              <img src="/home/phala_icon.png" alt="" />
+              <img src="/home/op_icon.png" alt="" />
+              <img src="/home/ipfs_icon.png" alt="" />
             </Box>
           </Box>
-          <Box
-            pt={10}
-            display="flex"
-            justifyContent="center"
-            alignItems="center"
+        </Grid>
+        <Grid xs={12} md={4} item>
+          <Stack
+            justifyContent={"center"}
+            height={"100vh"}
+            width="100%"
+            gap={4}
+            sx={{ bgcolor: "#3A3068", borderTopLeftRadius: "80px 80px" }}
+            position="relative"
+            alignItems={"center"}
           >
             <Box
-              width="80%"
-              sx={{ p: 5 }}
-              style={{ backgroundColor: "#2A2A43", borderRadius: "24px" }}
+              position={"absolute"}
+              bottom="10%"
+              left="-25px"
+              display={{ xs: "none", md: "unset" }}
             >
-              <Box>
-                <Typography variant="h3" align="center">
-                  NUSIC DAO
-                </Typography>
-              </Box>
-              <Box pt={4}>
-                <Typography align="center">
-                  NUSIC DAO’s mission is to unlock financial freedom for the
-                  artists who share thier creativity with the world.
-                </Typography>
-              </Box>
-              <Box pt={2}>
-                <Typography align="center">
-                  We believe that decentralized data and distribution is the
-                  biggest opportunity in our lifetime for musicians, artists,
-                  and creators to finally own, preserve, and retain creative
-                  rights for their works of art.
-                </Typography>
-              </Box>
-              <Box pt={4}>
-                <Box
-                  display="flex"
-                  justifyContent="center"
-                  gap={5}
-                  flexWrap="wrap"
-                >
-                  <Button
-                    style={{
-                      color: "#A794FF",
-                      fontWeight: "bold",
-                      textTransform: "capitalize",
-                    }}
-                    endIcon={<ArrowForwardIcon fontSize="small" color="info" />}
-                    href="https://forms.gle/kGtnd53EdvxxLLHh6"
-                    target="_blank"
-                  >
-                    Waves NFTs
-                  </Button>
-                  {/* <Button
-                  href="https://discord.gg/z9jQZfJ6Rq"
-                  target="_blank"
-                  style={{ color: "#A794FF", fontWeight: "bold" }}
-                  endIcon={<ArrowForwardIcon fontSize="small" color="info" />}
-                >
-                  NUSIC Discord
-                </Button> */}
-                </Box>
-              </Box>
+              <img
+                src="/home/btn-blend.png"
+                alt=""
+                width={56}
+                height={56}
+                style={{ position: "absolute", top: 0, left: 0, zIndex: 999 }}
+              />
+              <Fab
+                sx={{
+                  //   backgroundImage: "url(/home/btn-blend.png)",
+                  background:
+                    "linear-gradient(125.34deg, #563FC8 12.91%, #AE2FFC 156.55%)",
+                }}
+                size="large"
+              >
+                <PlayArrowIcon color="secondary" fontSize="large" />
+              </Fab>
             </Box>
+            <Stack gap={2}>
+              <img src="/nusic_white.png" alt="" width={200}></img>
+              <Typography align="center">Stream to Earn</Typography>
+            </Stack>
+            <Stack gap={2} mt={4}>
+              {/* <Typography align="center" fontWeight={600}>
+                Launch App
+              </Typography> */}
+              <Stack gap={2}>
+                <Button
+                  variant="contained"
+                  // onClick={() => {
+                  //   checkAutoLogin();
+                  // }}
+                  // sx={{ bgcolor: "#010101" }}
+                  // size="small"
+                  href="https://nusic-player-5agz3h6nf-nusic.vercel.app/"
+                >
+                  Launch App
+                </Button>
+              </Stack>
+            </Stack>
+            <Box
+              position={"absolute"}
+              bottom="0px"
+              width={"100%"}
+              display="flex"
+            >
+              <img
+                src="/home/band.png"
+                width={"100%"}
+                alt="band"
+                style={{ objectFit: "cover" }}
+              />
+            </Box>
+          </Stack>
+        </Grid>
+      </Grid>
+      <Stack
+        py={10}
+        sx={{
+          background: "#1b1433",
+        }}
+        gap={1}
+      >
+        <Typography variant="h3" align="center" fontWeight={900}>
+          Transparent Music Streaming Protocol
+        </Typography>
+        <Typography align="center" variant="h6">
+          Forget opaque back room deals, the new music industry is open
+        </Typography>
+        <Box display={"flex"} justifyContent="center" alignItems={"center"}>
+          <Button variant="outlined" color="secondary">
+            Learn More
+          </Button>
+        </Box>
+        <Box display={"flex"} justifyContent="center">
+          <img src="/home/desktop_screen.png" alt="" width={"70%"} />
+        </Box>
+        <Typography variant="h5" align="center">
+          NUSIC leverages onchain music to ensure transparency
+        </Typography>
+
+        <Typography variant="h3" align="center" fontWeight={900} sx={{ mt: 4 }}>
+          Owned by Artistes & Fans
+        </Typography>
+        <Box
+          display={"flex"}
+          gap={2}
+          mt={4}
+          flexWrap={{ xs: "wrap", md: "unset" }}
+          alignItems={"center"}
+          justifyContent="center"
+          p={2}
+        >
+          <Box
+            display={"flex"}
+            justifyContent="center"
+            alignItems={"center"}
+            minWidth="50%"
+          >
+            <img src="/home/mobile_screen.png" alt="" height={500} />
+          </Box>
+          <Box>
+            <Grid container rowGap={1}>
+              <Grid item xs={false} md={2} />
+              <Grid item xs={12} md={10}>
+                <Typography variant="h6" fontWeight={900}>
+                  Artists-first
+                </Typography>
+              </Grid>
+              <Grid item xs={false} md={2} />
+              <Grid item xs={12} md={10}>
+                <Box
+                  sx={{ background: "#A18EFF" }}
+                  borderRadius={"10px"}
+                  p={2}
+                  width={{ md: "50%" }}
+                >
+                  <Typography>
+                    Music artists receive network incentives
+                  </Typography>
+                </Box>
+              </Grid>
+              <Grid item xs={false} md={1} />
+              <Grid item xs={12} md={11}>
+                <Box
+                  sx={{
+                    background:
+                      "linear-gradient(93.61deg, #563FC8 27.66%, #9E00FF 75.36%)",
+                  }}
+                  borderRadius={"10px"}
+                  p={2}
+                  display="flex"
+                  width={{ md: "50%" }}
+                >
+                  <Typography>Share with fans & backers/collectors</Typography>
+                </Box>
+              </Grid>
+              <Grid item xs={12} md={12}>
+                <Box
+                  sx={{ background: "#A18EFF" }}
+                  borderRadius={"10px"}
+                  p={2}
+                  width={{ md: "50%" }}
+                >
+                  <Typography>Share with fans & backers/collectors</Typography>
+                </Box>
+              </Grid>
+              <Grid item md={12} mt={2}>
+                <Typography variant="h6" fontWeight={900}>
+                  Seed-to-earn
+                </Typography>
+              </Grid>
+              <Grid item md={12} xs={12}>
+                <Box
+                  sx={{
+                    background:
+                      "linear-gradient(93.61deg, #563FC8 27.66%, #9E00FF 75.36%)",
+                  }}
+                  borderRadius={"10px"}
+                  p={2}
+                  display="flex"
+                  width={{ md: "50%" }}
+                >
+                  <Typography>
+                    Peer-to-peer torrenting with economic value
+                  </Typography>
+                </Box>
+              </Grid>
+              <Grid item md={1} />
+              <Grid item xs={12} md={11}>
+                <Box
+                  sx={{ background: "#A18EFF" }}
+                  borderRadius={"10px"}
+                  p={2}
+                  width={{ md: "50%" }}
+                >
+                  <Typography>Provide music to your local network</Typography>
+                </Box>
+              </Grid>
+              <Grid item md={2} />
+              <Grid item xs={12} md={10}>
+                <Box
+                  sx={{
+                    background:
+                      "linear-gradient(93.61deg, #563FC8 27.66%, #9E00FF 75.36%)",
+                  }}
+                  borderRadius={"10px"}
+                  p={2}
+                  display="flex"
+                  width={{ md: "50%" }}
+                >
+                  <Typography>Network incentives based on usage</Typography>
+                </Box>
+              </Grid>
+            </Grid>
           </Box>
         </Box>
-      </Box>
-      <Box width="100%" style={{ backgroundColor: "#2A2A43" }} p={5} mt={5}>
-        <Typography align="center" color="#E5E5E5">
-          Keep-up with the latest:
-        </Typography>
-        <Box display="flex" justifyContent="center" gap={2} mt={2}>
-          <a
-            href="https://www.youtube.com/channel/UCGmbDO7lX8LkGK2YsXccG9w"
-            target="_blank"
-            rel="noreferrer"
-            style={{ color: "white" }}
-          >
-            <YouTubeIcon />
-          </a>
-          <a
-            href="https://twitter.com/nusicDAO"
-            target="_blank"
-            rel="noreferrer"
-            style={{ color: "white" }}
-          >
-            <TwitterIcon />
-          </a>
-        </Box>
-      </Box>
+      </Stack>
+      <AlivePass buyRef={buyRef} />
     </Box>
   );
 };
-
-// const useStyles = makeStyles((theme: any) => ({
-//   root: {
-//     height: "100vh",
-//     backgroundImage: "url(assets/NUSIC-Artwork.webp)",
-//     backgroundSize: "cover",
-//     backgroundPosition: "center center",
-
-//     boxShadow: "inset 2000px 0 0 0 rgba(0, 0, 0, 0.5)",
-//     borderColor: "rgb(23,23,47)",
-//   },
-//   rowTwo: {
-//     fontSize: "24px",
-//   },
-//   button: {
-//     backgroundColor: "transparent !important",
-//     "&:hover": {
-//       backgroundColor: "rgb(255,255,255) !important",
-//       color: "black !important",
-//     },
-//   },
-// }));
-
-// const Home = () => {
-//   const classes = useStyles();
-//   const saleElem = useRef<null | HTMLDivElement>(null);
-
-//   const [isSnackbarOpen, setIsSnackbarOpen] = useState(true);
-
-//   return (
-//     <Box style={{ backgroundColor: "#17172F" }}>
-//       <Box
-//         className={classes.root}
-//         display="flex"
-//         flexDirection="column"
-//         justifyContent="center"
-//         alignItems="center"
-//         pt={7}
-//       >
-//         <Box mb={1}>
-//           <Typography variant="h2" fontWeight={900} align="center">
-//             The Music Finance Revolution
-//           </Typography>
-//         </Box>
-//         <Box mb={3}>
-//           <Typography variant="h6" align="center">
-//             Mint your NFT membership
-//           </Typography>
-//         </Box>
-//         <Button
-//           color="primary"
-//           variant="contained"
-//           size="large"
-//           className={classes.button}
-//           style={{
-//             padding: "20px 30px",
-//             border: "2px solid white",
-//             boxShadow: "none",
-//             fontWeight: "bold",
-//             borderRadius: "50px",
-//           }}
-//           onClick={() => {
-//             saleElem.current?.scrollIntoView({ behavior: "smooth" });
-//           }}
-//         >
-//           Mint on Testnet
-//         </Button>
-//       </Box>
-//       <Box minHeight={"50vh"} display="flex" alignItems="center">
-//         <Box>
-//           <Typography variant="h4" align="center" fontWeight="bold">
-//             What is NUSIC DAO?
-//           </Typography>
-//           <Typography align="center" px={{ xs: 4, sm: 3, md: 40 }} mt={5}>
-//             NUSIC DAO’s mission is to unlock financial freedom for the artists
-//             who make our world a better place. We believe that the emergence of
-//             decentralized economies represents a historic opportunity to
-//             enshrine music as a digital asset that enables the preservation and
-//             appreciation of value for the medium.
-//           </Typography>
-//         </Box>
-//       </Box>
-//       <Grid container spacing={2} px={{ xs: 2, sm: 2, md: 20, lg: 20 }}>
-//         <Grid item xs={12} md={6}>
-//           <Box px={{ md: 10, lg: 10 }}>
-//             <img
-//               src="assets/NUSIC-Record-Sun.webp"
-//               alt="record"
-//               width={"100%"}
-//               height="100%"
-//             ></img>
-//           </Box>
-//         </Grid>
-//         <Grid item xs={12} md={6}>
-//           <Box
-//             px={{ md: 10, lg: 10 }}
-//             display="flex"
-//             justifyContent="center"
-//             flexDirection={"column"}
-//             height="100%"
-//           >
-//             <Typography variant="h3" fontWeight={900}>
-//               A new music economy
-//             </Typography>
-//             <Box marginTop={"5%"}>
-//               <Typography variant="h6" fontWeight={"600"}>
-//                 There is more money locked in DeFi than the entire music
-//                 industry made in 2021…
-//               </Typography>
-//             </Box>
-//             <Box marginTop={"5%"}>
-//               <Typography variant="h6">
-//                 The music industry is at a moment of pivotal change, while
-//                 streaming has revitalized digital music revenues, a small group
-//                 of tech intermediaries have become power brokers in the current
-//                 landscape. NUSIC DAO changes that by Open Sourcing music
-//                 financial technology and sharing ownership with a community of
-//                 makers, enablers and dream actualizers.
-//               </Typography>
-//             </Box>
-//           </Box>
-//         </Grid>
-//       </Grid>
-//       <Grid container spacing={2} px={{ xs: 2, sm: 2, md: 20, lg: 20 }} mt={20}>
-//         <Grid item xs={12} md={6} order={{ xs: 1, md: 2 }}>
-//           <Box px={{ md: 10, lg: 10 }}>
-//             <img
-//               src="assets/NUSIC-Diamond.webp"
-//               alt="record"
-//               width={"100%"}
-//               height="100%"
-//             ></img>
-//           </Box>
-//         </Grid>
-//         <Grid item xs={12} md={6} order={{ xs: 2, md: 1 }}>
-//           <Box
-//             px={{ md: 10, lg: 10 }}
-//             display="flex"
-//             justifyContent="center"
-//             flexDirection={"column"}
-//             height="100%"
-//           >
-//             <Typography variant="h3" fontWeight={900} align="left">
-//               Rights hodlers
-//             </Typography>
-//             <Box marginTop={"5%"}>
-//               <Typography variant="h6" fontWeight="600">
-//                 Get your future streaming income now
-//               </Typography>
-//             </Box>
-//             <Box marginTop={"5%"}>
-//               <Typography variant="h6">
-//                 Join NUSIC DAO today through pro-active contribution and
-//                 participate in governance with NUSIC DAO NFTs - a series of
-//                 unique artworks and generative music pieces that grant voting
-//                 power over the direction of NUSIC DAO and its protocols.
-//               </Typography>
-//             </Box>
-//           </Box>
-//         </Grid>
-//       </Grid>
-//       <Box mt={5} ref={saleElem}>
-//         <NFTSale />
-//       </Box>
-//       <Box mt={5} display="flex" alignItems="center">
-//         <Grid container p={2}>
-//           <Grid item xs={false} md={2}></Grid>
-//           <Grid item xs={12} md={8}>
-//             <JoinDaoDialog />
-//           </Grid>
-//           <Grid item xs={false} md={2}></Grid>
-//         </Grid>
-//       </Box>
-//       <Box pt={6} pb={6}>
-//         <Box
-//           p={4}
-//           display={"flex"}
-//           justifyContent={"center"}
-//           alignItems="center"
-//         >
-//           <Box mr={2}>
-//             <a
-//               href="https://discord.gg/auPBu4dAHe"
-//               target="_blank"
-//               rel="noreferrer"
-//               style={{ color: "white" }}
-//             >
-//               <img
-//                 src="/assets/Discord-Logo.webp"
-//                 alt="discord"
-//                 width={"24px"}
-//                 height={"18px"}
-//               />
-//             </a>
-//           </Box>
-//           <Box mr={2}>
-//             <a
-//               href="https://github.com/nusic-fm"
-//               target="_blank"
-//               rel="noreferrer"
-//               style={{ color: "white" }}
-//             >
-//               <GitHubIcon />
-//             </a>
-//           </Box>
-//           <Box>
-//             <a
-//               href="https://twitter.com/nusicDAO"
-//               target="_blank"
-//               rel="noreferrer"
-//               style={{ color: "white" }}
-//             >
-//               <TwitterIcon />
-//             </a>
-//           </Box>
-//         </Box>
-//       </Box>
-//       <Snackbar
-//         open={isSnackbarOpen}
-//         autoHideDuration={10000}
-//         onClose={() => {
-//           setIsSnackbarOpen(false);
-//         }}
-//       >
-//         <Alert severity="warning" elevation={6}>
-//           Currently we are live on Testnet. Please connect your wallet on
-//           Rinkeby Test Network to Mint.
-//         </Alert>
-//       </Snackbar>
-//     </Box>
-//   );
-// };
 
 export default Home;

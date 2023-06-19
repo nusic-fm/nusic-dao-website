@@ -9,13 +9,13 @@ import {
 } from "@mui/material/styles";
 import WebFont from "webfontloader";
 import { HashRouter as Router } from "react-router-dom";
-import { getLibrary } from "./utils/web3React";
 import { Web3ReactProvider } from "@web3-react/core";
 import App from "./App";
+import { Web3Provider } from "@ethersproject/providers";
 
 WebFont.load({
   google: {
-    families: ["Tenor Sans"],
+    families: ["Arimo"],
   },
 });
 
@@ -38,10 +38,14 @@ const themeSettings = createTheme({
     allVariants: {
       color: "#ffffff",
     },
-    fontFamily: `"Tenor Sans" , sans-serif`,
+    fontFamily: `Arimo , sans-serif`,
   },
 });
 const theme = responsiveFontSizes(themeSettings);
+
+export const getLibrary = (provider) => {
+  return new Web3Provider(provider);
+};
 
 ReactDOM.render(
   <React.StrictMode>
