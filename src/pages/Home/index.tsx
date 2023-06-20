@@ -25,12 +25,13 @@ const Home = (props: Props) => {
         }}
       >
         <Grid xs={12} md={8} item>
-          <Box minHeight={"100vh"} position="relative">
+          <Box height={"100vh"} position="relative">
             <Stack
-              gap={8}
+              height={"100%"}
+              // gap={4}
               p={{ xs: 4 }}
               // alignItems="center"
-              // justifyContent={"center"}
+              justifyContent={"space-between"}
             >
               <Box>
                 <Typography
