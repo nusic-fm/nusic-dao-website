@@ -107,6 +107,7 @@ const AlivePass = ({ buyRef }: Props) => {
   // const [selectedNft, setSelectedNft] = useState<SelectedNftDetails>();
   const [insertUrl, setInsertUrl] = useState<string>();
   const [showNftsDrawer, setShowNftsDrawer] = useState(false);
+  const [readyToMint, setReadyToMint] = useState(false);
 
   const onInsert = async (nft: IZoraData) => {
     if (nft.image?.mediaEncoding?.thumbnail) {
@@ -133,11 +134,17 @@ const AlivePass = ({ buyRef }: Props) => {
     setCurrentEthPrice(Number(bn.toString()) / 100000000);
   };
 
+  // useEffect(() => {
+  //   if (showNftsDrawer && !account) {
+  //     checkAutoLogin();
+  //   }
+  // }, [showNftsDrawer]);
+
   useEffect(() => {
-    if (showNftsDrawer && !account) {
-      checkAutoLogin();
+    if (account && readyToMint) {
+      onMint();
     }
-  }, [showNftsDrawer]);
+  }, [account]);
 
   useEffect(() => {
     fetchEthPrice();
@@ -155,8 +162,9 @@ const AlivePass = ({ buyRef }: Props) => {
 
   const onMint = async () => {
     if (!account) {
-      setSnackbarMessage("Please connect your wallet and try again");
-      setShowWalletConnector(true);
+      // setSnackbarMessage("Please connect your wallet and try again");
+      setReadyToMint(true);
+      checkAutoLogin();
       return;
     }
     try {
@@ -196,10 +204,35 @@ const AlivePass = ({ buyRef }: Props) => {
     }
   };
 
+  const checkConnection = async () => {
+    const provider = new ethers.providers.Web3Provider(
+      (window as any).ethereum
+    );
+    const accounts = await provider.listAccounts();
+    if (accounts.length) {
+      if (
+        (window as any).ethereum?.networkVersion !==
+        process.env.REACT_APP_CHAIN_ID
+      ) {
+        try {
+          await (window as any).ethereum.request({
+            method: "wallet_switchEthereumChain",
+            params: [
+              {
+                chainId: ethers.utils.hexValue(
+                  Number(process.env.REACT_APP_CHAIN_ID)
+                ),
+              },
+            ],
+          });
+        } catch (err) {}
+      }
+    }
+  };
   const onSignInUsingWallet = async (
     connector: WalletConnectConnector | WalletLinkConnector | InjectedConnector
   ) => {
-    // await checkConnection();
+    await checkConnection();
     activate(connector, async (e) => {
       if (e.name === "t" || e.name === "UnsupportedChainIdError") {
         setSnackbarMessage("Please switch to Ethereum Mainnet");
@@ -212,6 +245,10 @@ const AlivePass = ({ buyRef }: Props) => {
   };
 
   const checkAutoLogin = async () => {
+    if (!(window as any).ethereum) {
+      alert("Wallet is missing");
+      return;
+    }
     const newProvider = new ethers.providers.Web3Provider(
       (window as any).ethereum
     );
@@ -499,7 +536,10 @@ const AlivePass = ({ buyRef }: Props) => {
               // size="small"
               color="secondary"
               sx={{ width: "200px" }}
-              onClick={() => setShowNftsDrawer(true)}
+              onClick={() => {
+                setShowNftsDrawer(true);
+                checkAutoLogin();
+              }}
             >
               Free Trial
             </Button>

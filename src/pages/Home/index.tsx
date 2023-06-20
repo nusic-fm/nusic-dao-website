@@ -28,7 +28,7 @@ const Home = (props: Props) => {
           <Box minHeight={"100vh"} position="relative">
             <Stack
               gap={8}
-              p={{ xs: 4, md: 10 }}
+              p={{ xs: 4 }}
               // alignItems="center"
               // justifyContent={"center"}
             >
@@ -115,8 +115,8 @@ const Home = (props: Props) => {
                 flexWrap="wrap"
                 justifyContent={"center"}
               >
-                <Box width={{ xs: "50%", md: "initial" }}>
-                  <img src="/home/m1.png" alt="" width={"100%"}></img>
+                <Box width={{ xs: "50%", md: "20%" }}>
+                  <img src="/home/mmm.png" alt="" width={"100%"}></img>
                 </Box>
                 <Stack
                   gap={2}
@@ -229,7 +229,7 @@ const Home = (props: Props) => {
               variant="h5"
               align="center"
               letterSpacing={2}
-              mt={"20%"}
+              mt={"10%"}
             >
               Powering the Evolution of Music
             </Typography>
