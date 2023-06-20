@@ -58,57 +58,6 @@ const Home = (props: Props) => {
                   </Typography>
                 </Box>
               </Box>
-              {/* <Stack gap={3}>
-              <Typography
-                variant="h6"
-                sx={{
-                  background:
-                    "linear-gradient(91.05deg, #563FC8 -9%, rgba(75, 205, 214, 0.85) 44.26%, rgba(178, 0, 207, 0.96) 109.05%)",
-                  backgroundClip: "text",
-                  WebkitTextFillColor: "transparent",
-                }}
-              >
-                Edit your Music NFT metadata
-              </Typography>
-              <Typography
-                variant="h6"
-                sx={{
-                  background:
-                    "linear-gradient(91.05deg, #563FC8 -9%, rgba(75, 205, 214, 0.85) 44.26%, rgba(178, 0, 207, 0.96) 109.05%)",
-                  backgroundClip: "text",
-                  WebkitTextFillColor: "transparent",
-                }}
-              >
-                Generate Nusic link tree to share to friends & fans
-              </Typography>
-              <Typography
-                variant="h6"
-                sx={{
-                  display: "block",
-                  background:
-                    "linear-gradient(91.05deg, #563FC8 -9%, rgba(75, 205, 214, 0.85) 44.26%, rgba(178, 0, 207, 0.96) 109.05%)",
-                  backgroundClip: "text",
-                  WebkitTextFillColor: "transparent",
-                }}
-              >
-                Stream Music NFTs
-              </Typography>
-              <Box mt={6}>
-                <Button
-                  variant="outlined"
-                  color="info"
-                  onClick={() =>
-                    (buyRef.current as any).scrollIntoView({
-                      behavior: "smooth",
-                      block: "start",
-                      inline: "nearest",
-                    })
-                  }
-                >
-                  Get Access Now !!!
-                </Button>
-              </Box>
-            </Stack> */}
               <Box
                 display="flex"
                 gap={10}
@@ -116,7 +65,7 @@ const Home = (props: Props) => {
                 justifyContent={"center"}
                 alignItems="center"
               >
-                <Box width={{ xs: "50%", md: "20%" }}>
+                <Box width={{ xs: "50%", md: "30%" }}>
                   <img src="/home/1.png" alt="" width="100%"></img>
                 </Box>
                 <Stack
@@ -133,72 +82,9 @@ const Home = (props: Props) => {
                     <img src="/home/3.png" alt="" width="100%"></img>
                   </Box>
                 </Stack>
-                {/* <Stack
-                  gap={2}
-                  alignItems="center"
-                  justifyContent={"center"}
-                  flexDirection={{ xs: "row", md: "column" }}
-                >
-                  <Stack
-                    sx={{
-                      background:
-                        "linear-gradient(180deg, #563FC8 -54.71%, rgba(65, 31, 86, 0.21) 107.79%)",
-                    }}
-                    borderRadius={"20%"}
-                    gap={1}
-                    width={150}
-                    height={150}
-                    justifyContent="center"
-                    alignItems={"center"}
-                    p={2}
-                  >
-                    <Typography variant="h6" color={"#F1F1F1"} fontWeight={700}>
-                      98%
-                    </Typography>
-                    <Typography
-                      color={"#A8A8A8"}
-                      align="center"
-                      variant="caption"
-                    >
-                      Sorem ipsum dolor sit amet, consectetur adipiscing elit.
-                      Nunc{" "}
-                    </Typography>
-                  </Stack>
-                  <Stack
-                    sx={{
-                      background:
-                        "linear-gradient(180deg, #563FC8 -54.71%, rgba(65, 31, 86, 0.21) 107.79%)",
-                    }}
-                    borderRadius={"20%"}
-                    width={150}
-                    height={150}
-                    gap={1}
-                    justifyContent="center"
-                    alignItems={"center"}
-                    p={2}
-                  >
-                    <Stack alignItems={"center"}>
-                      <Typography
-                        variant="h6"
-                        color={"#F1F1F1"}
-                        fontWeight={700}
-                      >
-                        7K Tracks
-                      </Typography>
-                    </Stack>
-                    <Typography
-                      color={"#A8A8A8"}
-                      align="center"
-                      variant="caption"
-                    >
-                      Sorem ipsum dolor sit amet, consectetur adipiscing elit.
-                      Nunc{" "}
-                    </Typography>
-                  </Stack>
-                </Stack> */}
               </Box>
-              <Typography variant="h5" align="center" letterSpacing={2}>
-                On-chain Music for the next-gen internet{" "}
+              <Typography variant="h5" align="center">
+                Onchain Music for the next-gen internet{" "}
               </Typography>
             </Stack>
             {/* <Box
@@ -230,7 +116,7 @@ const Home = (props: Props) => {
             <Typography
               variant="h5"
               align="center"
-              letterSpacing={2}
+              // letterSpacing={2}
               mt={"10%"}
             >
               Powering the Evolution of Music
@@ -329,14 +215,12 @@ const Home = (props: Props) => {
           justifyContent="center"
           gap={{ xs: 10, md: 4 }}
         >
-          <Stack>
-            <Typography variant="h3" align="center" fontWeight={900}>
-              Transparent Music Streaming Protocol
-            </Typography>
-            <Typography align="center" variant="h6">
-              Forget opaque back room deals, the new music industry is open
-            </Typography>
-          </Stack>
+          <Typography variant="h3" align="center" fontWeight={900}>
+            Transparent Music Streaming Protocol
+          </Typography>
+          <Typography align="center" variant="h6">
+            Forget opaque back room deals, the new music industry is open
+          </Typography>
           {/* <Box display={"flex"} justifyContent="center" alignItems={"center"}>
             <Button variant="outlined" color="secondary">
               Learn More
@@ -348,16 +232,11 @@ const Home = (props: Props) => {
           <Typography variant="h6" align="center">
             NUSIC leverages onchain music to ensure transparency
           </Typography>
-        </Stack>
-        <Box minHeight={"100vh"}>
-          <Typography
-            variant="h3"
-            align="center"
-            fontWeight={900}
-            sx={{ mt: 4 }}
-          >
+          <Typography variant="h3" align="center" fontWeight={900}>
             Owned by Artists & Fans
           </Typography>
+        </Stack>
+        <Box>
           <Box
             display={"flex"}
             gap={2}
@@ -381,8 +260,8 @@ const Home = (props: Props) => {
               <Grid container rowGap={1}>
                 <Grid item xs={false} md={2} />
                 <Grid item xs={12} md={10}>
-                  <Typography variant="h6" fontWeight={900}>
-                    Artists-first
+                  <Typography variant="h4" fontWeight={900}>
+                    Artist First
                   </Typography>
                 </Grid>
                 <Grid item xs={false} md={2} />
@@ -391,7 +270,7 @@ const Home = (props: Props) => {
                     sx={{ background: "#A18EFF" }}
                     borderRadius={"10px"}
                     p={2}
-                    width={{ md: "50%" }}
+                    width={{ md: "70%" }}
                   >
                     <Typography>Artists receive network incentives</Typography>
                   </Box>
@@ -406,7 +285,7 @@ const Home = (props: Props) => {
                     borderRadius={"10px"}
                     p={2}
                     display="flex"
-                    width={{ md: "50%" }}
+                    width={{ md: "70%" }}
                   >
                     <Typography>
                       Share with fans & backers/collectors
@@ -418,7 +297,7 @@ const Home = (props: Props) => {
                     sx={{ background: "#A18EFF" }}
                     borderRadius={"10px"}
                     p={2}
-                    width={{ md: "50%" }}
+                    width={{ md: "70%" }}
                   >
                     <Typography>
                       Artists has full control of onchain releases
@@ -426,8 +305,8 @@ const Home = (props: Props) => {
                   </Box>
                 </Grid>
                 <Grid item md={12} mt={2}>
-                  <Typography variant="h6" fontWeight={900}>
-                    Seed-to-earn
+                  <Typography variant="h4" fontWeight={900}>
+                    Seed-to-Earn
                   </Typography>
                 </Grid>
                 <Grid item md={12} xs={12}>
@@ -439,7 +318,7 @@ const Home = (props: Props) => {
                     borderRadius={"10px"}
                     p={2}
                     display="flex"
-                    width={{ md: "50%" }}
+                    width={{ md: "70%" }}
                   >
                     <Typography>
                       Peer-to-peer torrenting with economic value
@@ -452,7 +331,7 @@ const Home = (props: Props) => {
                     sx={{ background: "#A18EFF" }}
                     borderRadius={"10px"}
                     p={2}
-                    width={{ md: "50%" }}
+                    width={{ md: "70%" }}
                   >
                     <Typography>Provide music to your local network</Typography>
                   </Box>
@@ -467,7 +346,7 @@ const Home = (props: Props) => {
                     borderRadius={"10px"}
                     p={2}
                     display="flex"
-                    width={{ md: "50%" }}
+                    width={{ md: "70%" }}
                   >
                     <Typography>Network incentives based on usage</Typography>
                   </Box>
@@ -481,24 +360,25 @@ const Home = (props: Props) => {
           justifyContent="center"
           gap={{ xs: 10, md: 4 }}
         >
-          <Box>
-            <Typography
-              variant="h3"
-              align="center"
-              fontWeight={900}
-              sx={{ mt: 10 }}
-            >
-              Music Metadata Administration
-            </Typography>
-            <Typography variant="h6" align="center">
-              Copyright registration & next gen data annotation
-            </Typography>
-          </Box>
+          <Typography
+            variant="h3"
+            align="center"
+            fontWeight={900}
+            sx={{ mt: 10 }}
+          >
+            Music Metadata Administration
+          </Typography>
+          <Typography variant="h6" align="center">
+            Copyright registration & next-gen data annotation
+          </Typography>
           <Box display={"flex"} justifyContent="center">
             <img src="/home/meta_admin.png" alt="" width={"50%"} />
           </Box>
           <Typography variant="h6" align="center">
             Track music usage and ingestion by generative AI models
+          </Typography>
+          <Typography variant="h3" align="center">
+            Future Proof Your Sound
           </Typography>
         </Stack>
       </Stack>

@@ -15,7 +15,7 @@ import { Web3Provider } from "@ethersproject/providers";
 
 WebFont.load({
   google: {
-    families: ["Arimo"],
+    families: ["Space Mono"],
   },
 });
 
@@ -38,7 +38,7 @@ const themeSettings = createTheme({
     allVariants: {
       color: "#ffffff",
     },
-    fontFamily: `Arimo , sans-serif`,
+    fontFamily: `Space Mono , sans-serif`,
   },
 });
 const theme = responsiveFontSizes(themeSettings);

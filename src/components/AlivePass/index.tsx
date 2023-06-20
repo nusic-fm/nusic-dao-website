@@ -767,6 +767,7 @@ const AlivePass = ({ buyRef }: Props) => {
                 href="https://twitter.com/nusicOfficial"
                 target={"_blank"}
                 sx={{ color: "white", textDecoration: "none" }}
+                fontFamily="Space Mono"
               >
                 Twitter
               </Link>
@@ -774,6 +775,7 @@ const AlivePass = ({ buyRef }: Props) => {
                 href="https://discord.gg/eHyRQADgQ4"
                 target={"_blank"}
                 sx={{ color: "white", textDecoration: "none" }}
+                fontFamily="Space Mono"
               >
                 Discord
               </Link>
@@ -781,6 +783,7 @@ const AlivePass = ({ buyRef }: Props) => {
                 href="https://github.com/nusic-fm"
                 target={"_blank"}
                 sx={{ color: "white", textDecoration: "none" }}
+                fontFamily="Space Mono"
               >
                 Github
               </Link>

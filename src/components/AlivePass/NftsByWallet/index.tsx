@@ -94,7 +94,7 @@ const NftsByWallet = ({ onConnect, onInsert, onClose }: Props) => {
               width={"100%"}
               my={5}
             >
-              NFT collections not found in your wallet
+              No NFTs found in your wallet
             </Typography>
           )}
           {tokens.map((nft, i) => (
