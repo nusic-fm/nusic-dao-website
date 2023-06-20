@@ -114,6 +114,7 @@ const Home = (props: Props) => {
                 gap={10}
                 flexWrap="wrap"
                 justifyContent={"center"}
+                alignItems="center"
               >
                 <Box width={{ xs: "50%", md: "20%" }}>
                   <img src="/home/mmm.png" alt="" width={"100%"}></img>
@@ -121,14 +122,25 @@ const Home = (props: Props) => {
                 <Stack
                   gap={2}
                   justifyContent="center"
+                  flexWrap={"wrap"}
                   alignItems={"center"}
-                  flexDirection={{ xs: "row", md: "column" }}
+                  // flexDirection={{ xs: "row", md: "column" }}
                 >
                   <Box width={{ xs: "45%", md: "initial" }}>
                     <img src="/home/p1.png" alt="" width="100%"></img>
                   </Box>
-                  <Box width={{ xs: "45%", md: "initial" }}>
-                    <img src="/home/p2.png" alt="" width="100%"></img>
+                  <Box
+                    display={"flex"}
+                    justifyContent="space-around"
+                    alignItems={"center"}
+                    gap={4}
+                  >
+                    <Box width={{ xs: "45%", md: "initial" }}>
+                      <img src="/home/a3.png" alt="" width="100%"></img>
+                    </Box>
+                    <Box width={{ xs: "45%", md: "initial" }}>
+                      <img src="/home/p2.png" alt="" width="100%"></img>
+                    </Box>
                   </Box>
                 </Stack>
                 {/* <Stack
@@ -254,8 +266,24 @@ const Home = (props: Props) => {
                       "linear-gradient(125.34deg, #563FC8 12.91%, #AE2FFC 156.55%)",
                   }}
                   size="large"
+                  onClick={() => {
+                    (buyRef.current as any).scrollIntoView({
+                      behavior: "smooth",
+                      block: "start",
+                      inline: "nearest",
+                    });
+                  }}
                 >
-                  <PlayArrowIcon color="secondary" fontSize="large" />
+                  <PlayArrowIcon
+                    color="secondary"
+                    fontSize="large"
+                    sx={{
+                      transition: "transform 0.5s",
+                      ":hover": {
+                        transform: "rotate(90deg)",
+                      },
+                    }}
+                  />
                 </Fab>
               </Box>
               <Stack gap={2}>
@@ -306,7 +334,11 @@ const Home = (props: Props) => {
         }}
         gap={1}
       >
-        <Stack height={"100vh"} justifyContent="center" gap={4}>
+        <Stack
+          minHeight={"100vh"}
+          justifyContent="center"
+          gap={{ xs: 10, md: 4 }}
+        >
           <Stack>
             <Typography variant="h3" align="center" fontWeight={900}>
               Transparent Music Streaming Protocol
@@ -315,11 +347,11 @@ const Home = (props: Props) => {
               Forget opaque back room deals, the new music industry is open
             </Typography>
           </Stack>
-          <Box display={"flex"} justifyContent="center" alignItems={"center"}>
+          {/* <Box display={"flex"} justifyContent="center" alignItems={"center"}>
             <Button variant="outlined" color="secondary">
               Learn More
             </Button>
-          </Box>
+          </Box> */}
           <Box display={"flex"} justifyContent="center">
             <img src="/home/desktop_screen.png" alt="" width={"50%"} />
           </Box>
@@ -327,125 +359,158 @@ const Home = (props: Props) => {
             NUSIC leverages onchain music to ensure transparency
           </Typography>
         </Stack>
-
-        <Typography variant="h3" align="center" fontWeight={900} sx={{ mt: 4 }}>
-          Owned by Artists & Fans
-        </Typography>
-        <Box
-          display={"flex"}
-          gap={2}
-          mt={4}
-          flexWrap={{ xs: "wrap", md: "unset" }}
-          alignItems={"center"}
-          justifyContent="center"
-          p={2}
-        >
+        <Box minHeight={"100vh"}>
+          <Typography
+            variant="h3"
+            align="center"
+            fontWeight={900}
+            sx={{ mt: 4 }}
+          >
+            Owned by Artists & Fans
+          </Typography>
           <Box
             display={"flex"}
-            justifyContent="center"
+            gap={2}
+            mt={4}
+            flexWrap={{ xs: "wrap", md: "unset" }}
             alignItems={"center"}
-            minWidth="50%"
+            justifyContent="center"
+            p={2}
           >
-            <Box width={{ xs: "50%", md: "initial" }}>
-              <img src="/home/m1.png" alt="" width={"100%"}></img>
+            <Box
+              display={"flex"}
+              justifyContent="center"
+              alignItems={"center"}
+              minWidth="50%"
+            >
+              <Box width={{ xs: "50%", md: "40%" }}>
+                <img src="/home/m1.png" alt="" width={"100%"}></img>
+              </Box>
+            </Box>
+            <Box>
+              <Grid container rowGap={1}>
+                <Grid item xs={false} md={2} />
+                <Grid item xs={12} md={10}>
+                  <Typography variant="h6" fontWeight={900}>
+                    Artists-first
+                  </Typography>
+                </Grid>
+                <Grid item xs={false} md={2} />
+                <Grid item xs={12} md={10}>
+                  <Box
+                    sx={{ background: "#A18EFF" }}
+                    borderRadius={"10px"}
+                    p={2}
+                    width={{ md: "50%" }}
+                  >
+                    <Typography>Artists receive network incentives</Typography>
+                  </Box>
+                </Grid>
+                <Grid item xs={false} md={1} />
+                <Grid item xs={12} md={11}>
+                  <Box
+                    sx={{
+                      background:
+                        "linear-gradient(93.61deg, #563FC8 27.66%, #9E00FF 75.36%)",
+                    }}
+                    borderRadius={"10px"}
+                    p={2}
+                    display="flex"
+                    width={{ md: "50%" }}
+                  >
+                    <Typography>
+                      Share with fans & backers/collectors
+                    </Typography>
+                  </Box>
+                </Grid>
+                <Grid item xs={12} md={12}>
+                  <Box
+                    sx={{ background: "#A18EFF" }}
+                    borderRadius={"10px"}
+                    p={2}
+                    width={{ md: "50%" }}
+                  >
+                    <Typography>
+                      Share with fans & backers/collectors
+                    </Typography>
+                  </Box>
+                </Grid>
+                <Grid item md={12} mt={2}>
+                  <Typography variant="h6" fontWeight={900}>
+                    Seed-to-earn
+                  </Typography>
+                </Grid>
+                <Grid item md={12} xs={12}>
+                  <Box
+                    sx={{
+                      background:
+                        "linear-gradient(93.61deg, #563FC8 27.66%, #9E00FF 75.36%)",
+                    }}
+                    borderRadius={"10px"}
+                    p={2}
+                    display="flex"
+                    width={{ md: "50%" }}
+                  >
+                    <Typography>
+                      Peer-to-peer torrenting with economic value
+                    </Typography>
+                  </Box>
+                </Grid>
+                <Grid item md={1} />
+                <Grid item xs={12} md={11}>
+                  <Box
+                    sx={{ background: "#A18EFF" }}
+                    borderRadius={"10px"}
+                    p={2}
+                    width={{ md: "50%" }}
+                  >
+                    <Typography>Provide music to your local network</Typography>
+                  </Box>
+                </Grid>
+                <Grid item md={2} />
+                <Grid item xs={12} md={10}>
+                  <Box
+                    sx={{
+                      background:
+                        "linear-gradient(93.61deg, #563FC8 27.66%, #9E00FF 75.36%)",
+                    }}
+                    borderRadius={"10px"}
+                    p={2}
+                    display="flex"
+                    width={{ md: "50%" }}
+                  >
+                    <Typography>Network incentives based on usage</Typography>
+                  </Box>
+                </Grid>
+              </Grid>
             </Box>
           </Box>
-          <Box>
-            <Grid container rowGap={1}>
-              <Grid item xs={false} md={2} />
-              <Grid item xs={12} md={10}>
-                <Typography variant="h6" fontWeight={900}>
-                  Artists-first
-                </Typography>
-              </Grid>
-              <Grid item xs={false} md={2} />
-              <Grid item xs={12} md={10}>
-                <Box
-                  sx={{ background: "#A18EFF" }}
-                  borderRadius={"10px"}
-                  p={2}
-                  width={{ md: "50%" }}
-                >
-                  <Typography>
-                    Music artists receive network incentives
-                  </Typography>
-                </Box>
-              </Grid>
-              <Grid item xs={false} md={1} />
-              <Grid item xs={12} md={11}>
-                <Box
-                  sx={{
-                    background:
-                      "linear-gradient(93.61deg, #563FC8 27.66%, #9E00FF 75.36%)",
-                  }}
-                  borderRadius={"10px"}
-                  p={2}
-                  display="flex"
-                  width={{ md: "50%" }}
-                >
-                  <Typography>Share with fans & backers/collectors</Typography>
-                </Box>
-              </Grid>
-              <Grid item xs={12} md={12}>
-                <Box
-                  sx={{ background: "#A18EFF" }}
-                  borderRadius={"10px"}
-                  p={2}
-                  width={{ md: "50%" }}
-                >
-                  <Typography>Share with fans & backers/collectors</Typography>
-                </Box>
-              </Grid>
-              <Grid item md={12} mt={2}>
-                <Typography variant="h6" fontWeight={900}>
-                  Seed-to-earn
-                </Typography>
-              </Grid>
-              <Grid item md={12} xs={12}>
-                <Box
-                  sx={{
-                    background:
-                      "linear-gradient(93.61deg, #563FC8 27.66%, #9E00FF 75.36%)",
-                  }}
-                  borderRadius={"10px"}
-                  p={2}
-                  display="flex"
-                  width={{ md: "50%" }}
-                >
-                  <Typography>
-                    Peer-to-peer torrenting with economic value
-                  </Typography>
-                </Box>
-              </Grid>
-              <Grid item md={1} />
-              <Grid item xs={12} md={11}>
-                <Box
-                  sx={{ background: "#A18EFF" }}
-                  borderRadius={"10px"}
-                  p={2}
-                  width={{ md: "50%" }}
-                >
-                  <Typography>Provide music to your local network</Typography>
-                </Box>
-              </Grid>
-              <Grid item md={2} />
-              <Grid item xs={12} md={10}>
-                <Box
-                  sx={{
-                    background:
-                      "linear-gradient(93.61deg, #563FC8 27.66%, #9E00FF 75.36%)",
-                  }}
-                  borderRadius={"10px"}
-                  p={2}
-                  display="flex"
-                  width={{ md: "50%" }}
-                >
-                  <Typography>Network incentives based on usage</Typography>
-                </Box>
-              </Grid>
-            </Grid>
-          </Box>
         </Box>
+        <Stack
+          minHeight={"100vh"}
+          justifyContent="center"
+          gap={{ xs: 10, md: 4 }}
+        >
+          <Box>
+            <Typography
+              variant="h3"
+              align="center"
+              fontWeight={900}
+              sx={{ mt: 10 }}
+            >
+              Music Metadata Administration
+            </Typography>
+            <Typography variant="h6" align="center">
+              Copyright registration & next gen data annotation
+            </Typography>
+          </Box>
+          <Box display={"flex"} justifyContent="center">
+            <img src="/home/meta_admin.png" alt="" width={"50%"} />
+          </Box>
+          <Typography variant="h6" align="center">
+            Track music usage and ingestion by generative AI models
+          </Typography>
+        </Stack>
       </Stack>
       <AlivePass buyRef={buyRef} />
     </Box>

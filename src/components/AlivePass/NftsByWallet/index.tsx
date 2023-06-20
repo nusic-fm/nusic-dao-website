@@ -87,8 +87,14 @@ const NftsByWallet = ({ onConnect, onInsert, onClose }: Props) => {
           mt={4}
         >
           {tokens.length === 0 && (
-            <Typography color={"yellow"} align="center" width={"100%"} my={5}>
-              NFTs not found in your wallet
+            <Typography
+              sx={{ color: "rgba(255,255,255,0.8)" }}
+              variant="subtitle1"
+              align="center"
+              width={"100%"}
+              my={5}
+            >
+              NFT collections not found in your wallet
             </Typography>
           )}
           {tokens.map((nft, i) => (
