@@ -29,7 +29,7 @@ const Home = (props: Props) => {
             <Stack
               height={"100%"}
               // gap={4}
-              p={{ xs: 4 }}
+              p={{ xs: 2 }}
               // alignItems="center"
               justifyContent={"space-between"}
             >
@@ -41,7 +41,7 @@ const Home = (props: Props) => {
                 >
                   Get More from Your Music
                 </Typography>
-                <Box display={"flex"} alignItems="center" gap={1} mt={2}>
+                <Box display={"flex"} alignItems="center" gap={1} mt={1}>
                   <Typography>
                     <Typography
                       color={"#563fc8"}
@@ -163,10 +163,10 @@ const Home = (props: Props) => {
                   />
                 </Fab>
               </Box>
-              <Stack gap={2}>
+              <Stack gap={2} alignItems="center">
                 <img src="/nusic_white.png" alt="" width={200}></img>
-                <Typography align="center" letterSpacing={1}>
-                  Stream to Earn
+                <Typography align="center">
+                  Transparent Music Streaming
                 </Typography>
               </Stack>
               <Stack gap={2} mt={4}>
