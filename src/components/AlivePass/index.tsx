@@ -468,7 +468,7 @@ const AlivePass = ({ buyRef }: Props) => {
           </Grid>
         </Box>
         <Stack mt={5} gap={1} alignItems="center" justifyContent={"center"}>
-          <Typography variant="h3" align="center" fontWeight={900}>
+          <Typography variant="h4" align="center" fontWeight={900}>
             <img
               src="/nusic_white.png"
               alt=""
@@ -477,7 +477,7 @@ const AlivePass = ({ buyRef }: Props) => {
             />
             Alive Collective - nGenesis Edition
           </Typography>
-          <Typography variant="body1" align="center" color={"gray"}>
+          <Typography variant="body2" align="center" color={"gray"}>
             Join the Movement that is Powering the Evolution of Music
           </Typography>
           {/* <Button
@@ -516,13 +516,13 @@ const AlivePass = ({ buyRef }: Props) => {
             </Typography> */}
             {/* <Typography variant="h3">How?</Typography> */}
             <Box mt={2}>
-              <Typography variant="h6" fontWeight={700}>
+              <Typography fontWeight={700}>
                 Inject your PFP into the NUSIC alive pass
               </Typography>
-              <Typography variant="body1" color={"gray"}>
+              <Typography variant="body2" color={"gray"}>
                 Connect your favorite NFT directly to your NUSIC Alive Pass
               </Typography>
-              <Typography variant="body1" color={"gray"}>
+              <Typography variant="body2" color={"gray"}>
                 Show the world what community you are part of
               </Typography>
             </Box>
@@ -541,7 +541,7 @@ const AlivePass = ({ buyRef }: Props) => {
                 checkAutoLogin();
               }}
             >
-              Free Trial
+              Preview
             </Button>
           </Box>
         </Stack>
@@ -576,7 +576,7 @@ const AlivePass = ({ buyRef }: Props) => {
             gap={2}
           >
             <img src="/alive/1.png" alt="" width={50} />
-            <Typography variant="h4" fontWeight={900}>
+            <Typography variant="h5" fontWeight={900}>
               True <br /> Transparency
             </Typography>
             <Typography>
@@ -596,7 +596,7 @@ const AlivePass = ({ buyRef }: Props) => {
             gap={2}
           >
             <img src="/alive/2.png" alt="" width={50} />
-            <Typography variant="h4" fontWeight={900}>
+            <Typography variant="h5" fontWeight={900}>
               Artist <br /> Centric
             </Typography>
             <Typography>
@@ -616,7 +616,7 @@ const AlivePass = ({ buyRef }: Props) => {
             gap={2}
           >
             <img src="/alive/3.png" alt="" width={50} />
-            <Typography variant="h4" fontWeight={900}>
+            <Typography variant="h5" fontWeight={900}>
               Evolutionary <br /> Protocol
             </Typography>
             <Typography>

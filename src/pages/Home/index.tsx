@@ -35,7 +35,7 @@ const Home = (props: Props) => {
             >
               <Box>
                 <Typography
-                  variant="h3"
+                  variant="h4"
                   fontWeight={700}
                   textTransform="uppercase"
                 >
@@ -48,7 +48,7 @@ const Home = (props: Props) => {
                       component="span"
                       fontWeight={900}
                       fontSize="13"
-                      variant="h6"
+                      // variant="h6"
                       fontStyle="italic"
                       sx={{ mr: 1 }}
                     >
@@ -84,8 +84,8 @@ const Home = (props: Props) => {
                   </Box>
                 </Stack>
               </Box>
-              <Typography variant="h5" align="center">
-                Onchain Music for the next-gen internet{" "}
+              <Typography variant="h6" align="center">
+                Onchain Music for the Next-Gen Internet{" "}
               </Typography>
             </Stack>
             {/* <Box
@@ -115,7 +115,7 @@ const Home = (props: Props) => {
             alignItems={"center"}
           >
             <Typography
-              variant="h5"
+              variant="h6"
               align="center"
               // letterSpacing={2}
               mt={"10%"}
@@ -165,7 +165,7 @@ const Home = (props: Props) => {
               </Box>
               <Stack gap={2} alignItems="center">
                 <img src="/nusic_white.png" alt="" width={200}></img>
-                <Typography align="center">
+                <Typography align="center" variant="caption">
                   Transparent Music Streaming
                 </Typography>
               </Stack>
@@ -216,10 +216,10 @@ const Home = (props: Props) => {
           justifyContent="center"
           gap={{ xs: 10, md: 4 }}
         >
-          <Typography variant="h3" align="center" fontWeight={900}>
+          <Typography variant="h4" align="center" fontWeight={900}>
             Transparent Music Streaming Protocol
           </Typography>
-          <Typography align="center" variant="h6">
+          <Typography align="center">
             Forget opaque back room deals, the new music industry is open
           </Typography>
           {/* <Box display={"flex"} justifyContent="center" alignItems={"center"}>
@@ -228,12 +228,12 @@ const Home = (props: Props) => {
             </Button>
           </Box> */}
           <Box display={"flex"} justifyContent="center">
-            <img src="/home/desktop_screen.png" alt="" width={"50%"} />
+            <img src="/home/desktop_screen.png" alt="" width={"40%"} />
           </Box>
-          <Typography variant="h6" align="center">
+          <Typography align="center">
             NUSIC leverages onchain music to ensure transparency
           </Typography>
-          <Typography variant="h3" align="center" fontWeight={900}>
+          <Typography variant="h4" align="center" fontWeight={900}>
             Owned by Artists & Fans
           </Typography>
         </Stack>
@@ -261,7 +261,7 @@ const Home = (props: Props) => {
               <Grid container rowGap={1}>
                 <Grid item xs={false} md={2} />
                 <Grid item xs={12} md={10}>
-                  <Typography variant="h4" fontWeight={900}>
+                  <Typography variant="h5" fontWeight={900}>
                     Artist First
                   </Typography>
                 </Grid>
@@ -271,7 +271,7 @@ const Home = (props: Props) => {
                     sx={{ background: "#A18EFF" }}
                     borderRadius={"10px"}
                     p={2}
-                    width={{ md: "70%" }}
+                    width={{ md: "80%" }}
                   >
                     <Typography>Artists receive network incentives</Typography>
                   </Box>
@@ -286,7 +286,7 @@ const Home = (props: Props) => {
                     borderRadius={"10px"}
                     p={2}
                     display="flex"
-                    width={{ md: "70%" }}
+                    width={{ md: "80%" }}
                   >
                     <Typography>
                       Share with fans & backers/collectors
@@ -298,7 +298,7 @@ const Home = (props: Props) => {
                     sx={{ background: "#A18EFF" }}
                     borderRadius={"10px"}
                     p={2}
-                    width={{ md: "70%" }}
+                    width={{ md: "80%" }}
                   >
                     <Typography>
                       Artists has full control of onchain releases
@@ -306,7 +306,7 @@ const Home = (props: Props) => {
                   </Box>
                 </Grid>
                 <Grid item md={12} mt={2}>
-                  <Typography variant="h4" fontWeight={900}>
+                  <Typography variant="h5" fontWeight={900}>
                     Seed-to-Earn
                   </Typography>
                 </Grid>
@@ -319,7 +319,7 @@ const Home = (props: Props) => {
                     borderRadius={"10px"}
                     p={2}
                     display="flex"
-                    width={{ md: "70%" }}
+                    width={{ md: "80%" }}
                   >
                     <Typography>
                       Peer-to-peer torrenting with economic value
@@ -332,7 +332,7 @@ const Home = (props: Props) => {
                     sx={{ background: "#A18EFF" }}
                     borderRadius={"10px"}
                     p={2}
-                    width={{ md: "70%" }}
+                    width={{ md: "80%" }}
                   >
                     <Typography>Provide music to your local network</Typography>
                   </Box>
@@ -347,7 +347,7 @@ const Home = (props: Props) => {
                     borderRadius={"10px"}
                     p={2}
                     display="flex"
-                    width={{ md: "70%" }}
+                    width={{ md: "80%" }}
                   >
                     <Typography>Network incentives based on usage</Typography>
                   </Box>
@@ -362,23 +362,23 @@ const Home = (props: Props) => {
           gap={{ xs: 10, md: 4 }}
         >
           <Typography
-            variant="h3"
+            variant="h4"
             align="center"
             fontWeight={900}
             sx={{ mt: 10 }}
           >
             Music Metadata Administration
           </Typography>
-          <Typography variant="h6" align="center">
+          <Typography align="center">
             Copyright registration & next-gen data annotation
           </Typography>
           <Box display={"flex"} justifyContent="center">
-            <img src="/home/meta_admin.png" alt="" width={"50%"} />
+            <img src="/home/meta_admin.png" alt="" width={"40%"} />
           </Box>
-          <Typography variant="h6" align="center">
+          <Typography align="center">
             Track music usage and ingestion by generative AI models
           </Typography>
-          <Typography variant="h3" align="center">
+          <Typography variant="h4" align="center">
             Future Proof Your Sound
           </Typography>
         </Stack>
