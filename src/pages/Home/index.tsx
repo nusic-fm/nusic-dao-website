@@ -117,30 +117,20 @@ const Home = (props: Props) => {
                 alignItems="center"
               >
                 <Box width={{ xs: "50%", md: "20%" }}>
-                  <img src="/home/mmm.png" alt="" width={"100%"}></img>
+                  <img src="/home/1.png" alt="" width="100%"></img>
                 </Box>
                 <Stack
                   gap={2}
                   justifyContent="center"
                   flexWrap={"wrap"}
                   alignItems={"center"}
-                  // flexDirection={{ xs: "row", md: "column" }}
+                  flexDirection={{ xs: "row", md: "column" }}
                 >
                   <Box width={{ xs: "45%", md: "initial" }}>
-                    <img src="/home/p1.png" alt="" width="100%"></img>
+                    <img src="/home/2.png" alt="" width="100%"></img>
                   </Box>
-                  <Box
-                    display={"flex"}
-                    justifyContent="space-around"
-                    alignItems={"center"}
-                    gap={4}
-                  >
-                    <Box width={{ xs: "45%", md: "initial" }}>
-                      <img src="/home/a3.png" alt="" width="100%"></img>
-                    </Box>
-                    <Box width={{ xs: "45%", md: "initial" }}>
-                      <img src="/home/p2.png" alt="" width="100%"></img>
-                    </Box>
+                  <Box width={{ xs: "45%", md: "initial" }}>
+                    <img src="/home/3.png" alt="" width="100%"></img>
                   </Box>
                 </Stack>
                 {/* <Stack
@@ -431,7 +421,7 @@ const Home = (props: Props) => {
                     width={{ md: "50%" }}
                   >
                     <Typography>
-                      Share with fans & backers/collectors
+                      Artists has full control of onchain releases
                     </Typography>
                   </Box>
                 </Grid>
