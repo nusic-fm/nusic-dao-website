@@ -46,7 +46,7 @@ import { IZoraData } from "../../models/zora";
 
 const getEthValue = (price: number): BigNumber => {
   // 0000000000000000000000
-  return ethers.utils.parseEther((0).toString());
+  return ethers.utils.parseEther(price.toString());
 };
 
 const getEtherForQuantity = (price: number, quantity: number): string => {
@@ -92,7 +92,7 @@ const AlivePass = ({ buyRef }: Props) => {
 
   // const [crossmint, setCrossmint] = useState(1);
   // const [crypto, setCrypto] = useState(1);
-  const [tokenPrice] = useState(Number(process.env.NEXT_PUBLIC_TOKEN_PRICE));
+  const [tokenPrice] = useState(Number(process.env.REACT_APP_TOKEN_PRICE));
   const [currentEthPrice, setCurrentEthPrice] = useState(0);
   const [showWalletConnector, setShowWalletConnector] = useState(false);
   const [timerObj, setTimerObj] = useState<{
@@ -117,7 +117,7 @@ const AlivePass = ({ buyRef }: Props) => {
 
   const fetchEthPrice = async () => {
     const pricingContract = new ethers.Contract(
-      process.env.NEXT_PUBLIC_Price_Feed as string,
+      process.env.REACT_APP_Price_Feed as string,
       [
         {
           inputs: [],
@@ -140,7 +140,7 @@ const AlivePass = ({ buyRef }: Props) => {
   }, [showNftsDrawer]);
 
   useEffect(() => {
-    // fetchEthPrice();
+    fetchEthPrice();
   }, []);
 
   useEffect(() => {
@@ -162,7 +162,7 @@ const AlivePass = ({ buyRef }: Props) => {
     try {
       setIsLoading(true);
       const nftContract = new ethers.Contract(
-        process.env.NEXT_PUBLIC_ETH_CONTRACT_ADDRESS as string,
+        process.env.REACT_APP_ETH_CONTRACT_ADDRESS as string,
         [
           {
             inputs: [
@@ -413,6 +413,7 @@ const AlivePass = ({ buyRef }: Props) => {
                       hideBackdrop
                       open
                       onClose={() => setShowNftsDrawer(false)}
+                      sx={{ background: "rgba(0,0,0,0.8)" }}
                     >
                       <NftsByWallet
                         onConnect={() => setShowWalletConnector(true)}
