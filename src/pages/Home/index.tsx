@@ -11,12 +11,12 @@ const Home = (props: Props) => {
 
   return (
     <Box minHeight="100vh" position={"relative"}>
-      <img
-        src="/home/Ellipse1.png"
-        alt=""
+      <Box
+        height={{ xs: "150px", md: "300px" }}
         style={{ position: "absolute", zIndex: 99999 }}
-        height={300}
-      ></img>
+      >
+        <img src="/home/Ellipse1.png" alt="" height={"100%"}></img>
+      </Box>
       <Grid
         container
         sx={{
@@ -61,7 +61,7 @@ const Home = (props: Props) => {
               </Box>
               <Box
                 display="flex"
-                gap={10}
+                gap={{ md: 10 }}
                 flexWrap="wrap"
                 justifyContent={"center"}
                 alignItems="center"
@@ -88,20 +88,6 @@ const Home = (props: Props) => {
                 Onchain Music for the Next-Gen Internet{" "}
               </Typography>
             </Stack>
-            {/* <Box
-              display={"flex"}
-              alignItems="center"
-              flexWrap={"wrap"}
-              gap={2}
-              justifyContent="center"
-              p={4}
-            >
-              <img src="/home/built_icon.png" alt="" />
-              <img src="/home/arweave_icon.png" alt="" />
-              <img src="/home/phala_icon.png" alt="" />
-              <img src="/home/op_icon.png" alt="" />
-              <img src="/home/ipfs_icon.png" alt="" />
-            </Box> */}
           </Box>
         </Grid>
         <Grid xs={12} md={4} item>
@@ -118,7 +104,7 @@ const Home = (props: Props) => {
               variant="h6"
               align="center"
               // letterSpacing={2}
-              mt={"10%"}
+              mt={{ xs: "25%", md: "10%" }}
             >
               Powering the Evolution of Music
             </Typography>
@@ -214,7 +200,7 @@ const Home = (props: Props) => {
         <Stack
           minHeight={"100vh"}
           justifyContent="center"
-          gap={{ xs: 10, md: 4 }}
+          gap={{ xs: 5, md: 4 }}
         >
           <Typography variant="h4" align="center" fontWeight={900}>
             Transparent Music Streaming Protocol
@@ -228,7 +214,9 @@ const Home = (props: Props) => {
             </Button>
           </Box> */}
           <Box display={"flex"} justifyContent="center">
-            <img src="/home/desktop_screen.png" alt="" width={"40%"} />
+            <Box width={{ xs: "70%", md: "40%" }}>
+              <img src="/home/desktop_screen.png" alt="" width={"100%"} />
+            </Box>
           </Box>
           <Typography align="center">
             NUSIC leverages onchain music to ensure transparency
@@ -359,7 +347,7 @@ const Home = (props: Props) => {
         <Stack
           minHeight={"100vh"}
           justifyContent="center"
-          gap={{ xs: 10, md: 4 }}
+          gap={{ xs: 5, md: 4 }}
         >
           <Typography
             variant="h4"
@@ -373,7 +361,9 @@ const Home = (props: Props) => {
             Copyright registration & next-gen data annotation
           </Typography>
           <Box display={"flex"} justifyContent="center">
-            <img src="/home/meta_admin.png" alt="" width={"40%"} />
+            <Box width={{ xs: "70%", md: "40%" }}>
+              <img src="/home/meta_admin.png" alt="" width={"100%"} />
+            </Box>
           </Box>
           <Typography align="center">
             Track music usage and ingestion by generative AI models

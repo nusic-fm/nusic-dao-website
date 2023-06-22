@@ -283,34 +283,6 @@ const AlivePass = ({ buyRef }: Props) => {
       }}
     >
       <Box p={2}>
-        <Box>
-          {/* <Box position={"relative"} mt={5}>
-            <Box display={"flex"} justifyContent="center">
-              <Box
-                width={280}
-                height={280}
-                sx={{
-                  background: "url(/alive/vis.gif)",
-                  borderRadius: "50%",
-                  backgroundSize: "cover",
-                  backgroundPosition: "center",
-                  boxShadow: "0 0 30px 30px #1b1333 inset",
-                }}
-              ></Box>
-            </Box>
-            <Stack
-              position="absolute"
-              width="100%"
-              height={"100%"}
-              justifyContent="center"
-              top={0}
-            >
-              <Typography variant="h4" align="center" fontWeight={900}>
-                It&apos;s Alive !!!
-              </Typography>
-            </Stack>
-          </Box> */}
-        </Box>
         <Box mt={"180px"} pb={6}>
           <Grid container>
             <Grid item md={3}></Grid>
@@ -336,11 +308,7 @@ const AlivePass = ({ buyRef }: Props) => {
                 }}
                 borderRadius="6px"
               >
-                <Box mb={3}>
-                  {/* <Typography align="center" color={"gray"} fontStyle="italic">
-                    Price per card: {tokenPrice} ETH
-                  </Typography> */}
-                </Box>
+                <Box mb={3}></Box>
                 <Box
                   display={"flex"}
                   justifyContent="space-between"
@@ -426,24 +394,6 @@ const AlivePass = ({ buyRef }: Props) => {
                       Tweet
                     </a> */}
                   </Box>
-                  <Box
-                    position={"absolute"}
-                    bottom={20}
-                    right={20}
-                    // display="flex"
-                    // alignItems="center"
-                  >
-                    <Button
-                      endIcon={<ArrowForwardIcon />}
-                      color="info"
-                      size="small"
-                      href="//alive.nusic.fm"
-                      target={"_blank"}
-                      // onClick={() => setShowNftsDrawer(true)}
-                    >
-                      Learn More
-                    </Button>
-                  </Box>
                   {showNftsDrawer && account && (
                     <Drawer
                       anchor={"right"}
@@ -480,19 +430,6 @@ const AlivePass = ({ buyRef }: Props) => {
           <Typography variant="body2" align="center" color={"gray"}>
             Join the Movement that is Powering the Evolution of Music
           </Typography>
-          {/* <Button
-            size="small"
-            sx={{ mt: 1 }}
-            onClick={() => {
-              (stackRef.current as any).scrollIntoView({
-                behavior: "smooth",
-                block: "start",
-                inline: "nearest",
-              });
-            }}
-          >
-            Learn More
-          </Button> */}
         </Stack>
         <Stack
           // mt={10}
@@ -504,17 +441,7 @@ const AlivePass = ({ buyRef }: Props) => {
           //     "rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset",
           // }}
         >
-          {/* <Typography align="center" variant="h4" fontWeight={700}>
-            Customize Your Membership NFT
-          </Typography> */}
           <Box mt={1} borderRadius={"6px"}>
-            {/* <Typography variant="h5" align="center">
-              Inject your PFP into the NUSIC alive pass
-            </Typography>
-            <Typography align="center" color={"gray"}>
-              Connect your favorite NFT directly to your NUSIC Alive Pass
-            </Typography> */}
-            {/* <Typography variant="h3">How?</Typography> */}
             <Box mt={2}>
               <Typography fontWeight={700}>
                 Inject your PFP into the NUSIC alive pass
@@ -625,131 +552,13 @@ const AlivePass = ({ buyRef }: Props) => {
             </Typography>
           </Stack>
         </Stack>
-        {/* <Box display={"flex"} justifyContent="center">
-          <Stack
-            mt={5}
-            width={{
-              xs: "100%",
-              md: "calc(94% + 32px)",
-              lg: "calc(75% + 32px)",
-              xl: "calc(60% + 32px)",
-            }}
-          >
-            <Box p={2} border="1px solid gray" borderRadius={"6px"}>
-              <Typography variant="h5" align="center">
-                Powering the Evolution of Music
-              </Typography>
-              <Typography align="center" color={"gray"}>
-                Web3 metadata infrastructure for music rights holders
-              </Typography>
-            </Box>
-          </Stack>
-        </Box> */}
-        {/* Placeholder */}
-        {/* <Box mt={10}>
-          <Typography variant="h4" align="center" fontWeight={700}>
-            Priority Access For 3 Years
-          </Typography>
-          <Box mt={4}>
-            {timerObj && <Typography align="center">Countdown</Typography>}
-            {timerObj && (
-              <Box
-                display="flex"
-                flexWrap="wrap"
-                justifyContent="center"
-                gap={4}
-              >
-                <Box
-                  // mr={2}
-                  mt={2}
-                  p={2}
-                  sx={{ border: "2px solid gray", borderRadius: "6px" }}
-                  // width="35px"
-                >
-                  <Typography variant="h4" align="center">
-                    {timerObj.days}
-                  </Typography>
-                  <Typography
-                    variant="body2"
-                    align="center"
-                    fontFamily="BenchNine"
-                  >
-                    days
-                  </Typography>
-                </Box>
-                <Box
-                  // mr={2}
-                  mt={2}
-                  p={2}
-                  sx={{ border: "2px solid gray", borderRadius: "6px" }}
-                  // width="35px"
-                >
-                  <Typography variant="h4" align="center">
-                    {timerObj.hours}
-                  </Typography>
-                  <Typography
-                    variant="body2"
-                    align="center"
-                    fontFamily="BenchNine"
-                  >
-                    hrs
-                  </Typography>
-                </Box>
-                <Box
-                  // mr={2}
-                  mt={2}
-                  p={2}
-                  sx={{ border: "2px solid gray", borderRadius: "6px" }}
-                  // width="35px"
-                >
-                  <Typography variant="h4" align="center">
-                    {timerObj.minutes}
-                  </Typography>
-                  <Typography
-                    variant="body2"
-                    align="center"
-                    fontFamily="BenchNine"
-                  >
-                    min
-                  </Typography>
-                </Box>
-                <Box
-                  mt={2}
-                  p={2}
-                  sx={{ border: "2px solid gray", borderRadius: "6px" }}
-                  // width="35px"
-                >
-                  <Typography variant="h4" align="center">
-                    {timerObj.seconds}
-                  </Typography>
-                  <Typography
-                    variant="body2"
-                    align="center"
-                    fontFamily="BenchNine"
-                  >
-                    sec
-                  </Typography>
-                </Box>
-              </Box>
-            )}
-            <Typography align="center" sx={{ mt: 2 }}>
-              Wednesday, June 21st 2023 - Friday, June 20th 2026
-            </Typography>
-          </Box>
-        </Box> */}
       </Box>
 
       <Box mt={20}>
-        {/* <Typography variant="h5" align="center" fontFamily="monospace">
-          Powered By
-        </Typography> */}
-        {/* <Typography variant="h3" align="center">
-          NUSIC
-        </Typography> */}
         <Box
           display="flex"
           justifyContent={"space-between"}
-          alignItems="start"
+          alignItems="end"
           py={2}
           sx={{
             background:
@@ -758,11 +567,34 @@ const AlivePass = ({ buyRef }: Props) => {
           flexWrap="wrap"
           p={2}
         >
-          <Button href="//nusic.fm" target="_blank">
-            <img src="/nusic_white.png" alt="nusic" width="120px"></img>
-          </Button>
-          <Box mr={{ md: 10 }}>
-            <Stack gap={3} mt={3} direction="row">
+          <Stack alignItems={"start"} gap={2}>
+            <Button href="//nusic.fm" target="_blank">
+              <img src="/nusic_white.png" alt="nusic" width="120px"></img>
+            </Button>
+            <Box
+              width={"100%"}
+              display={"flex"}
+              alignItems="center"
+              flexWrap={"wrap"}
+              gap={2}
+              justifyContent="center"
+              ml={0.5}
+            >
+              <img src="/home/built_icon.png" alt="" />
+              <img src="/home/arweave_icon.png" alt="" />
+              <img src="/home/phala_icon.png" alt="" />
+              <img src="/home/op_icon.png" alt="" />
+              <img src="/home/ipfs_icon.png" alt="" />
+            </Box>
+          </Stack>
+          <Box mr={{ md: 10 }} width={{ xs: "100%", md: "initial" }}>
+            <Stack
+              gap={3}
+              mt={3}
+              direction="row"
+              justifyContent={"center"}
+              alignItems="center"
+            >
               <Link
                 href="https://twitter.com/nusicOfficial"
                 target={"_blank"}
