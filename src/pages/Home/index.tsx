@@ -62,24 +62,26 @@ const Home = (props: Props) => {
               <Box
                 display="flex"
                 gap={{ md: 10 }}
-                flexWrap="wrap"
+                // flexWrap="wrap"
                 justifyContent={"center"}
                 alignItems="center"
               >
-                <Box width={{ xs: "50%", md: "30%" }}>
-                  <img src="/home/1.png" alt="" width="100%"></img>
+                <Box>
+                  <Box width={{ xs: "70%", md: "initial" }}>
+                    <img src="/home/1.png" alt="" width="100%"></img>
+                  </Box>
                 </Box>
                 <Stack
                   gap={2}
                   justifyContent="center"
-                  flexWrap={"wrap"}
+                  // flexWrap={"wrap"}
                   alignItems={"center"}
-                  flexDirection={{ xs: "row", md: "column" }}
+                  // flexDirection={{ xs: "row", md: "column" }}
                 >
-                  <Box width={{ xs: "45%", md: "initial" }}>
+                  <Box width={{ xs: "70%", md: "initial" }}>
                     <img src="/home/2.png" alt="" width="100%"></img>
                   </Box>
-                  <Box width={{ xs: "45%", md: "initial" }}>
+                  <Box width={{ xs: "70%", md: "initial" }}>
                     <img src="/home/3.png" alt="" width="100%"></img>
                   </Box>
                 </Stack>
