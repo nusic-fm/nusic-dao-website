@@ -291,7 +291,7 @@ const Home = (props: Props) => {
                     width={{ md: "80%" }}
                   >
                     <Typography>
-                      Artists has full control of onchain releases
+                      Artists have full control of onchain releases
                     </Typography>
                   </Box>
                 </Grid>
