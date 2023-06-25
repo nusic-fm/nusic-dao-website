@@ -67,7 +67,7 @@ const Home = (props: Props) => {
                 alignItems="center"
               >
                 <Box>
-                  <Box width={{ xs: "70%", md: "initial" }}>
+                  <Box width={{ xs: "90%", md: "initial" }}>
                     <img src="/home/1.png" alt="" width="100%"></img>
                   </Box>
                 </Box>
@@ -78,10 +78,10 @@ const Home = (props: Props) => {
                   alignItems={"center"}
                   // flexDirection={{ xs: "row", md: "column" }}
                 >
-                  <Box width={{ xs: "70%", md: "initial" }}>
+                  <Box width={{ xs: "90%", md: "initial" }}>
                     <img src="/home/2.png" alt="" width="100%"></img>
                   </Box>
-                  <Box width={{ xs: "70%", md: "initial" }}>
+                  <Box width={{ xs: "90%", md: "initial" }}>
                     <img src="/home/3.png" alt="" width="100%"></img>
                   </Box>
                 </Stack>
