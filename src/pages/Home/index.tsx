@@ -86,8 +86,39 @@ const Home = (props: Props) => {
                   </Box>
                 </Stack>
               </Box>
+              <Box display={{ xs: "flex", md: "none" }} justifyContent="center">
+                <Fab
+                  sx={{
+                    backgroundImage: "url(/home/btn-blend.png)",
+                    background:
+                      "linear-gradient(125.34deg, #563FC8 12.91%, #AE2FFC 156.55%)",
+                    backgroundSize: "cover",
+                    width: 52,
+                    height: 52,
+                  }}
+                  size="large"
+                  onClick={() => {
+                    (buyRef.current as any).scrollIntoView({
+                      behavior: "smooth",
+                      block: "start",
+                      inline: "nearest",
+                    });
+                  }}
+                >
+                  <PlayArrowIcon
+                    color="secondary"
+                    fontSize="large"
+                    sx={{
+                      transition: "transform 0.5s",
+                      ":hover": {
+                        transform: "rotate(90deg)",
+                      },
+                    }}
+                  />
+                </Fab>
+              </Box>
               <Typography variant="h6" align="center">
-                Onchain Music for the Next-Gen Internet{" "}
+                Onchain Music for the Next-Gen Internet
               </Typography>
             </Stack>
           </Box>
