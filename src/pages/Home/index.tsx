@@ -1,13 +1,15 @@
 import { Button, Fab, Grid, Typography } from "@mui/material";
 import { Box, Stack } from "@mui/system";
 import PlayArrowIcon from "@mui/icons-material/PlayArrow";
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import AlivePass from "../../components/AlivePass";
+import JoinForm from "../../components/AlivePass/JoinForm/Index";
 
 type Props = {};
 
 const Home = (props: Props) => {
   const buyRef = useRef(null);
+  const [openForm, setOpenForm] = useState(false);
 
   return (
     <Box minHeight="100vh" position={"relative"}>
@@ -203,6 +205,13 @@ const Home = (props: Props) => {
                     href="https://app.nusic.fm/"
                   >
                     Launch App
+                  </Button>
+                  <Button
+                    variant="outlined"
+                    color="info"
+                    onClick={() => setOpenForm(true)}
+                  >
+                    Join
                   </Button>
                 </Stack>
               </Stack>
@@ -407,6 +416,7 @@ const Home = (props: Props) => {
         </Stack>
       </Stack>
       <AlivePass buyRef={buyRef} />
+      <JoinForm open={openForm} onClose={() => setOpenForm(false)} />
     </Box>
   );
 };
