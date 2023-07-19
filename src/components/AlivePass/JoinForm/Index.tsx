@@ -22,23 +22,30 @@ const JoinForm = ({ open, onClose }: Props) => {
 
   const onSubmit = async () => {
     setLoading(true);
-    const auth = {
-      username: process.env.REACT_APP_MJ_APIKEY_PUBLIC,
-      password: process.env.REACT_APP_MJ_APIKEY_PRIVATE,
-    } as any;
-    const data = {
-      FromEmail: "logesh@nusic.fm",
-      FromName: "Mailjet Pilot",
-      Subject: "Join Registration - NUSIC",
-      "Text-part": `Name: ${name}, \n Mobile: ${mobile}, \n Email: ${email} \n, Industry Type: ${industryType}`,
-      Recipients: [{ Email: "logesh@nusic.fm" }, { Email: "dev@nusic.fm" }],
-    };
+    // const auth = {
+    //   username: process.env.REACT_APP_MJ_APIKEY_PUBLIC,
+    //   password: process.env.REACT_APP_MJ_APIKEY_PRIVATE,
+    // } as any;
+    // const data = {
+    //   FromEmail: "logesh@nusic.fm",
+    //   FromName: "Mailjet Pilot",
+    //   Subject: "Join Registration - NUSIC",
+    //   "Text-part": `Name: ${name}, \n Mobile: ${mobile}, \n Email: ${email} \n, Industry Type: ${industryType}`,
+    //   Recipients: [{ Email: "logesh@nusic.fm" }, { Email: "team@nusic.fm" }],
+    // };
     try {
-      await axios.post("https://api.mailjet.com/v3/send", data, {
-        headers: {
-          "Content-Type": "application/json",
-        },
-        auth,
+      //   await axios.post("https://api.mailjet.com/v3/send", data, {
+      //     headers: {
+      //       "Content-Type": "application/json",
+      //     },
+      //     auth,
+      //   });
+      await (window as any).Email.send({
+        SecureToken: process.env.REACT_APP_SECURITY,
+        To: ["logesh@nusic.fm", "team@nusic.fm"],
+        From: "logesh@nusic.fm",
+        Subject: "Join Registration",
+        Body: `Name: ${name}, \n Mobile: ${mobile}, \n Email: ${email} \n, Industry Type: ${industryType}`,
       });
     } catch (e) {
     } finally {
