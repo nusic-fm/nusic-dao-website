@@ -56,8 +56,8 @@ const Home = (props: Props) => {
                     >
                       NUSIC
                     </Typography>
-                    is a transparent music streaming protocol which enables you
-                    to discover & share a new universe of music
+                    provides next generation metadata tooling to help you
+                    capture more value from your music
                   </Typography>
                 </Box>
               </Box>
@@ -120,7 +120,7 @@ const Home = (props: Props) => {
                 </Fab>
               </Box>
               <Typography variant="h6" align="center">
-                Onchain Music for the Next-Gen Internet
+                Music Copyright Protection for GenAI
               </Typography>
             </Stack>
           </Box>
@@ -186,9 +186,9 @@ const Home = (props: Props) => {
               </Box>
               <Stack gap={2} alignItems="center">
                 <img src="/nusic_white.png" alt="" width={200}></img>
-                <Typography align="center" variant="caption">
+                {/* <Typography align="center" variant="caption">
                   Transparent Music Streaming
-                </Typography>
+                </Typography> */}
               </Stack>
               <Stack gap={2} mt={4}>
                 {/* <Typography align="center" fontWeight={600}>
@@ -245,10 +245,11 @@ const Home = (props: Props) => {
           gap={{ xs: 5, md: 4 }}
         >
           <Typography variant="h4" align="center" fontWeight={900}>
-            Transparent Music Streaming Protocol
+            Receive Perpetual Income From Your Music
           </Typography>
           <Typography align="center">
-            Forget opaque back room deals, the new music industry is open
+            Ensure your music is registered, tracked and paid for throughout
+            GenAI
           </Typography>
           {/* <Box display={"flex"} justifyContent="center" alignItems={"center"}>
             <Button variant="outlined" color="secondary">
@@ -261,10 +262,10 @@ const Home = (props: Props) => {
             </Box>
           </Box>
           <Typography align="center">
-            NUSIC leverages onchain music to ensure transparency
+            Analytics for content ingestion and delivery
           </Typography>
           <Typography variant="h4" align="center" fontWeight={900}>
-            Owned by Artists & Fans
+            Instant Payments on Monetization
           </Typography>
         </Stack>
         <Box>
@@ -292,7 +293,7 @@ const Home = (props: Props) => {
                 <Grid item xs={false} md={2} />
                 <Grid item xs={12} md={10}>
                   <Typography variant="h5" fontWeight={900}>
-                    Artist First
+                    Creator First
                   </Typography>
                 </Grid>
                 <Grid item xs={false} md={2} />
@@ -303,7 +304,9 @@ const Home = (props: Props) => {
                     p={2}
                     width={{ md: "80%" }}
                   >
-                    <Typography>Artists receive network incentives</Typography>
+                    <Typography>
+                      Music metadata included with music files
+                    </Typography>
                   </Box>
                 </Grid>
                 <Grid item xs={false} md={1} />
@@ -319,7 +322,7 @@ const Home = (props: Props) => {
                     width={{ md: "80%" }}
                   >
                     <Typography>
-                      Share with fans & backers/collectors
+                      Omnidirectional music metadata protection
                     </Typography>
                   </Box>
                 </Grid>
@@ -331,13 +334,13 @@ const Home = (props: Props) => {
                     width={{ md: "80%" }}
                   >
                     <Typography>
-                      Artists have full control of onchain releases
+                      Metadata provenance and attribution engine
                     </Typography>
                   </Box>
                 </Grid>
                 <Grid item md={12} mt={2}>
                   <Typography variant="h5" fontWeight={900}>
-                    Seed-to-Earn
+                    Onchain Data
                   </Typography>
                 </Grid>
                 <Grid item md={12} xs={12}>
@@ -352,7 +355,7 @@ const Home = (props: Props) => {
                     width={{ md: "80%" }}
                   >
                     <Typography>
-                      Peer-to-peer torrenting with economic value
+                      Chain-agnostic version control for music releases
                     </Typography>
                   </Box>
                 </Grid>
@@ -364,7 +367,9 @@ const Home = (props: Props) => {
                     p={2}
                     width={{ md: "80%" }}
                   >
-                    <Typography>Provide music to your local network</Typography>
+                    <Typography>
+                      Standards above and beyond industry benchmarks
+                    </Typography>
                   </Box>
                 </Grid>
                 <Grid item md={2} />
@@ -379,7 +384,7 @@ const Home = (props: Props) => {
                     display="flex"
                     width={{ md: "80%" }}
                   >
-                    <Typography>Network incentives based on usage</Typography>
+                    <Typography>Music NFT metadata and permissions</Typography>
                   </Box>
                 </Grid>
               </Grid>

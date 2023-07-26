@@ -3,7 +3,7 @@ import { CrossmintPayButton } from "@crossmint/client-sdk-react-ui";
 import {
   Button,
   ButtonGroup,
-  Chip,
+  // Chip,
   Dialog,
   DialogActions,
   DialogContent,
@@ -16,7 +16,7 @@ import {
   Snackbar,
   Stack,
   TextField,
-  Tooltip,
+  // Tooltip,
   Typography,
 } from "@mui/material";
 import { Box } from "@mui/system";
@@ -36,9 +36,9 @@ import CloseIcon from "@mui/icons-material/Close";
 import NftsByWallet from "./NftsByWallet";
 // import ArrowRight from "@mui/icons-material/ArrowRight";
 // import KeyboardDoubleArrowRightIcon from "@mui/icons-material/KeyboardDoubleArrowRight";
-import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
+// import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import { CoinbaseWallet, Injected } from "../../hooks/useWalletConnectors";
-import { MoralisNftData, SelectedNftDetails } from "../../models";
+// import { MoralisNftData, SelectedNftDetails } from "../../models";
 import { IZoraData } from "../../models/zora";
 // import { CoinbaseWallet, Injected } from "./hooks/useWalletConnectors";
 // import { Injected } from "./hooks/useWalletConnectors";
@@ -56,29 +56,29 @@ const getEtherForQuantity = (price: number, quantity: number): string => {
   );
 };
 
-const getTimerObj = () => {
-  const revealDate = "Wed, 21 Jun 2023 00:00:00 GMT";
-  const countDownDate = new Date(revealDate).getTime();
-  const timeleft = countDownDate - Date.now();
-  if (timeleft <= 0) {
-    return { isRevealed: true };
-  }
-  const days = Math.floor(timeleft / (1000 * 60 * 60 * 24))
-    .toString()
-    .padStart(2, "0");
-  const hours = Math.floor(
-    (timeleft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
-  )
-    .toString()
-    .padStart(2, "0");
-  const minutes = Math.floor((timeleft % (1000 * 60 * 60)) / (1000 * 60))
-    .toString()
-    .padStart(2, "0");
-  var seconds = Math.floor((timeleft % (1000 * 60)) / 1000)
-    .toString()
-    .padStart(2, "0");
-  return { days, hours, minutes, seconds, isRevealed: false };
-};
+// const getTimerObj = () => {
+//   const revealDate = "Wed, 21 Jun 2023 00:00:00 GMT";
+//   const countDownDate = new Date(revealDate).getTime();
+//   const timeleft = countDownDate - Date.now();
+//   if (timeleft <= 0) {
+//     return { isRevealed: true };
+//   }
+//   const days = Math.floor(timeleft / (1000 * 60 * 60 * 24))
+//     .toString()
+//     .padStart(2, "0");
+//   const hours = Math.floor(
+//     (timeleft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
+//   )
+//     .toString()
+//     .padStart(2, "0");
+//   const minutes = Math.floor((timeleft % (1000 * 60 * 60)) / (1000 * 60))
+//     .toString()
+//     .padStart(2, "0");
+//   var seconds = Math.floor((timeleft % (1000 * 60)) / 1000)
+//     .toString()
+//     .padStart(2, "0");
+//   return { days, hours, minutes, seconds, isRevealed: false };
+// };
 
 type Props = { buyRef: any };
 
@@ -95,7 +95,7 @@ const AlivePass = ({ buyRef }: Props) => {
   const [tokenPrice] = useState(Number(process.env.REACT_APP_TOKEN_PRICE));
   const [currentEthPrice, setCurrentEthPrice] = useState(0);
   const [showWalletConnector, setShowWalletConnector] = useState(false);
-  const [timerObj, setTimerObj] = useState<{
+  const [timerObj] = useState<{
     days: string;
     hours: string;
     minutes: string;
@@ -105,7 +105,7 @@ const AlivePass = ({ buyRef }: Props) => {
   const [txInfo, setTxInfo] = useState<{ hash: string }>();
   // const cardRef = useRef(null);
   // const [selectedNft, setSelectedNft] = useState<SelectedNftDetails>();
-  const [insertUrl, setInsertUrl] = useState<string>();
+  const [, setInsertUrl] = useState<string>();
   const [showNftsDrawer, setShowNftsDrawer] = useState(false);
   const [readyToMint, setReadyToMint] = useState(false);
 
@@ -507,8 +507,7 @@ const AlivePass = ({ buyRef }: Props) => {
               True <br /> Transparency
             </Typography>
             <Typography>
-              Cryptographic rails ensure that all non-confidential data is
-              publicly available
+              Cryptographic rails ensure immutability and censorship resistance
             </Typography>
           </Stack>
           <Stack
@@ -527,8 +526,8 @@ const AlivePass = ({ buyRef }: Props) => {
               Artist <br /> Centric
             </Typography>
             <Typography>
-              Artists have full control to administer metadata in collaboration
-              with fanbase
+              Copyright owners have full control over music metadata and GenAI
+              permissions
             </Typography>
           </Stack>
           <Stack
@@ -547,7 +546,7 @@ const AlivePass = ({ buyRef }: Props) => {
               Evolutionary <br /> Protocol
             </Typography>
             <Typography>
-              Leverages exising infrastructure as solution to music&apos;s big
+              Leverages emerging infrastructure as solution to music's big
               problem
             </Typography>
           </Stack>
@@ -573,6 +572,7 @@ const AlivePass = ({ buyRef }: Props) => {
             </Button>
             <Box
               width={"100%"}
+              height={20}
               display={"flex"}
               alignItems="center"
               flexWrap={"wrap"}
@@ -580,14 +580,39 @@ const AlivePass = ({ buyRef }: Props) => {
               justifyContent="center"
               ml={0.5}
             >
-              <img src="/home/built_icon.png" alt="" />
-              <img src="/home/arweave_icon.png" alt="" />
-              <img src="/home/phala_icon.png" alt="" />
-              <img src="/home/op_icon.png" alt="" />
-              <img src="/home/ipfs_icon.png" alt="" />
+              <img
+                src="/home/built_icon.png"
+                alt=""
+                height={"100%"}
+                style={{ objectFit: "cover" }}
+              />
+              <img
+                src="/home/ethereum.png"
+                alt=""
+                height={"100%"}
+                style={{ objectFit: "cover" }}
+              />
+              <img
+                src="/home/optimism.webp"
+                alt=""
+                height={"60%"}
+                style={{ objectFit: "cover" }}
+              />
+              <img
+                src="/home/filecoin.png"
+                alt=""
+                height={"100%"}
+                style={{ objectFit: "cover" }}
+              />
+              <img
+                src="/home/ipfs_icon.png"
+                alt=""
+                height={"100%"}
+                style={{ objectFit: "cover" }}
+              />
             </Box>
           </Stack>
-          <Box mr={{ md: 10 }} width={{ xs: "100%", md: "initial" }}>
+          <Box mr={{ md: 10 }} width={{ xs: "100%", md: "initial" }} mt={2}>
             <Stack
               gap={3}
               mt={3}
