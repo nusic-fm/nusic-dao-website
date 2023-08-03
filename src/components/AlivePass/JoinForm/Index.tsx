@@ -49,7 +49,7 @@ const JoinForm = ({ open, onClose }: Props) => {
       //   });
       await (window as any).Email.send({
         SecureToken: process.env.REACT_APP_SECURITY,
-        To: ["logesh@nusic.fm", "team@nusic.fm"],
+        To: ["team@nusic.fm"],
         From: "logesh@nusic.fm",
         Subject: "Join Registration",
         Body: `Name: ${name}, \n Mobile: (${countryCode?.name} - ${countryCode?.dial_code}}) ${mobile}, \n Email: ${email} \n, Industry Type: ${industryType}`,
