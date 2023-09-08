@@ -354,7 +354,7 @@ const AlivePass = ({ buyRef }: Props) => {
                     Mint With ETH
                   </LoadingButton>
                   {/* <Tooltip title="Connect your Wallet to receive the NFT directly into your address"> */}
-                  <Button
+                  {/* <Button
                     component="label"
                     variant="outlined"
                     sx={{ width: { xs: "100%", md: "50%", color: "white" } }}
@@ -373,11 +373,11 @@ const AlivePass = ({ buyRef }: Props) => {
                       mintTo={account ?? undefined}
                     />
                     Mint with CARD
-                  </Button>
-                  <Typography align="center" variant="caption">
+                  </Button> */}
+                  {/* <Typography align="center" variant="caption">
                     Connect your Wallet to receive the NFT directly into your
                     address when using Card Payment
-                  </Typography>
+                  </Typography> */}
                   {/* </Tooltip> */}
                   <Box mt={4}>
                     {/* <a
