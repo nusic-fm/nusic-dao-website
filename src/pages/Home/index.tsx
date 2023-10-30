@@ -2,7 +2,7 @@ import { Button, Fab, Grid, Typography } from "@mui/material";
 import { Box, Stack } from "@mui/system";
 import PlayArrowIcon from "@mui/icons-material/PlayArrow";
 import { useRef, useState } from "react";
-import AlivePass from "../../components/AlivePass";
+// import AlivePass from "../../components/AlivePass";
 import JoinForm from "../../components/AlivePass/JoinForm/Index";
 
 type Props = {};
