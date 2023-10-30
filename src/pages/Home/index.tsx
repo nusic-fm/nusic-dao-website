@@ -389,7 +389,7 @@ const Home = (props: Props) => {
               </Button>
               <Button
                 color="secondary"
-                href="https://goddess.numix.ai/privacy-policy.pdf"
+                href="https://goddess.numix.ai/terms-of-service.pdf"
                 target={"_blank"}
               >
                 Terms of Service
