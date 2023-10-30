@@ -35,59 +35,24 @@ const Home = (props: Props) => {
               // alignItems="center"
               justifyContent={"space-between"}
             >
-              <Box>
-                <Typography
-                  variant="h4"
-                  fontWeight={700}
-                  textTransform="uppercase"
-                >
-                  Get More from Your Music
-                </Typography>
-                <Box display={"flex"} alignItems="center" gap={1} mt={1}>
-                  <Typography>
-                    <Typography
-                      color={"#563fc8"}
-                      component="span"
-                      fontWeight={900}
-                      fontSize="13"
-                      // variant="h6"
-                      fontStyle="italic"
-                      sx={{ mr: 1 }}
-                    >
-                      NUSIC
-                    </Typography>
-                    provides next generation metadata tooling to help you
-                    capture more value from your music
-                  </Typography>
-                </Box>
-              </Box>
-              <Box
-                display="flex"
-                gap={{ md: 10 }}
-                // flexWrap="wrap"
-                justifyContent={"center"}
-                alignItems="center"
+              <Stack
+                // minHeight={"100vh"}
+                justifyContent="center"
+                // alignItems={"center"}
+                gap={{ xs: 5, md: 4 }}
+                px={{ xs: 2, md: 6 }}
+                height="100%"
               >
-                <Box>
-                  <Box width={{ xs: "90%", md: "initial" }}>
-                    <img src="/home/1.png" alt="" width="100%"></img>
-                  </Box>
-                </Box>
-                <Stack
-                  gap={2}
-                  justifyContent="center"
-                  // flexWrap={"wrap"}
-                  alignItems={"center"}
-                  // flexDirection={{ xs: "row", md: "column" }}
-                >
-                  <Box width={{ xs: "90%", md: "initial" }}>
-                    <img src="/home/2.png" alt="" width="100%"></img>
-                  </Box>
-                  <Box width={{ xs: "90%", md: "initial" }}>
-                    <img src="/home/3.png" alt="" width="100%"></img>
-                  </Box>
-                </Stack>
-              </Box>
+                <Typography variant="h2" fontWeight={900}>
+                  NUMIX
+                </Typography>
+                <Typography width={{ md: "60%" }} variant="h5">
+                  Discover brand new music, create original remixes and share
+                  with the world. Demonstrate you are a tastemaker and go viral
+                  to unlock rewards directly from the artist. Be part of the
+                  next generation of music, and prove you were first.
+                </Typography>
+              </Stack>
               <Box display={{ xs: "flex", md: "none" }} justifyContent="center">
                 <Fab
                   sx={{
@@ -120,7 +85,7 @@ const Home = (props: Props) => {
                 </Fab>
               </Box>
               <Typography variant="h6" align="center">
-                Music Copyright Protection for GenAI
+                {/* Music Copyright Protection for GenAI */}
               </Typography>
             </Stack>
           </Box>
@@ -136,12 +101,13 @@ const Home = (props: Props) => {
             alignItems={"center"}
           >
             <Typography
-              variant="h6"
+              variant="h4"
               align="center"
               // letterSpacing={2}
               mt={{ xs: "25%", md: "10%" }}
             >
-              Powering the Evolution of Music
+              {/* Powering the Evolution of Music */}
+              Create Unique of the freshest sounds
             </Typography>
             <Stack mt="40%">
               <Box
@@ -185,7 +151,7 @@ const Home = (props: Props) => {
                 </Fab>
               </Box>
               <Stack gap={2} alignItems="center">
-                <img src="/nusic_white.png" alt="" width={200}></img>
+                <img src="/NUMIX.png" alt="" width={200}></img>
                 {/* <Typography align="center" variant="caption">
                   Transparent Music Streaming
                 </Typography> */}
@@ -202,7 +168,8 @@ const Home = (props: Props) => {
                     // }}
                     // sx={{ bgcolor: "#010101" }}
                     // size="small"
-                    href="https://app.nusic.fm/"
+                    target={"_blank"}
+                    href="https://goddess.numix.ai/"
                   >
                     Launch App
                   </Button>
@@ -239,35 +206,6 @@ const Home = (props: Props) => {
         }}
         gap={1}
       >
-        <Stack
-          minHeight={"100vh"}
-          justifyContent="center"
-          gap={{ xs: 5, md: 4 }}
-        >
-          <Typography variant="h4" align="center" fontWeight={900}>
-            Receive Perpetual Income From Your Music
-          </Typography>
-          <Typography align="center">
-            Ensure your music is registered, tracked and paid for throughout
-            GenAI
-          </Typography>
-          {/* <Box display={"flex"} justifyContent="center" alignItems={"center"}>
-            <Button variant="outlined" color="secondary">
-              Learn More
-            </Button>
-          </Box> */}
-          <Box display={"flex"} justifyContent="center">
-            <Box width={{ xs: "70%", md: "40%" }}>
-              <img src="/home/desktop_screen.png" alt="" width={"100%"} />
-            </Box>
-          </Box>
-          <Typography align="center">
-            Analytics for content ingestion and delivery
-          </Typography>
-          <Typography variant="h4" align="center" fontWeight={900}>
-            Instant Payments on Monetization
-          </Typography>
-        </Stack>
         <Box>
           <Box
             display={"flex"}
@@ -284,16 +222,16 @@ const Home = (props: Props) => {
               alignItems={"center"}
               minWidth="50%"
             >
-              <Box width={{ xs: "50%", md: "40%" }}>
-                <img src="/home/m1.png" alt="" width={"100%"}></img>
+              <Box width={{ xs: "80%", md: "40%" }}>
+                <img src="/homescreen.png" alt="" width={"100%"}></img>
               </Box>
             </Box>
-            <Box>
+            <Box ref={buyRef}>
               <Grid container rowGap={1}>
                 <Grid item xs={false} md={2} />
                 <Grid item xs={12} md={10}>
                   <Typography variant="h5" fontWeight={900}>
-                    Creator First
+                    FEATURES HIGHLIGHTS
                   </Typography>
                 </Grid>
                 <Grid item xs={false} md={2} />
@@ -304,8 +242,11 @@ const Home = (props: Props) => {
                     p={2}
                     width={{ md: "80%" }}
                   >
+                    <Typography fontWeight={900} variant="h6">
+                      Fresh Remixes
+                    </Typography>
                     <Typography>
-                      Music metadata included with music files
+                      Make your own original remix of the latest releases
                     </Typography>
                   </Box>
                 </Grid>
@@ -318,11 +259,15 @@ const Home = (props: Props) => {
                     }}
                     borderRadius={"10px"}
                     p={2}
-                    display="flex"
+                    // display="flex"
                     width={{ md: "80%" }}
                   >
+                    <Typography fontWeight={900} variant="h6">
+                      Share with the World
+                    </Typography>
                     <Typography>
-                      Omnidirectional music metadata protection
+                      With nuMix you have full rights to publish the music on
+                      your socials!
                     </Typography>
                   </Box>
                 </Grid>
@@ -333,17 +278,21 @@ const Home = (props: Props) => {
                     p={2}
                     width={{ md: "80%" }}
                   >
+                    <Typography fontWeight={900} variant="h6">
+                      Win Dope Merch
+                    </Typography>
                     <Typography>
-                      Metadata provenance and attribution engine
+                      Level-up your nuMix and go viral, to winexclusive merch
+                      direct from the artist
                     </Typography>
                   </Box>
                 </Grid>
-                <Grid item md={12} mt={2}>
+                {/* <Grid item md={12} mt={2}>
                   <Typography variant="h5" fontWeight={900}>
                     Onchain Data
                   </Typography>
-                </Grid>
-                <Grid item md={12} xs={12}>
+                </Grid> */}
+                {/* <Grid item md={12} xs={12}>
                   <Box
                     sx={{
                       background:
@@ -358,8 +307,8 @@ const Home = (props: Props) => {
                       Chain-agnostic version control for music releases
                     </Typography>
                   </Box>
-                </Grid>
-                <Grid item md={1} />
+                </Grid> */}
+                {/* <Grid item md={1} />
                 <Grid item xs={12} md={11}>
                   <Box
                     sx={{ background: "#A18EFF" }}
@@ -386,12 +335,12 @@ const Home = (props: Props) => {
                   >
                     <Typography>Music NFT metadata and permissions</Typography>
                   </Box>
-                </Grid>
+                </Grid> */}
               </Grid>
             </Box>
           </Box>
         </Box>
-        <Stack
+        {/* <Stack
           minHeight={"100vh"}
           justifyContent="center"
           gap={{ xs: 5, md: 4 }}
@@ -418,9 +367,38 @@ const Home = (props: Props) => {
           <Typography variant="h4" align="center">
             Future Proof Your Sound
           </Typography>
-        </Stack>
+        </Stack> */}
+        <Box mt={10} display="flex" justifyContent={"center"}>
+          {/* <img src="" alt="" /> */}
+          <Stack alignItems={"start"} justifyContent="center">
+            <Typography
+              sx={{ px: 1, mb: 2 }}
+              variant="h3"
+              align="center"
+              width={"100%"}
+            >
+              NUMIX
+            </Typography>
+            <Box display={"flex"}>
+              <Button
+                color="secondary"
+                href="https://goddess.numix.ai/privacy-policy.pdf"
+                target={"_blank"}
+              >
+                Privacy Policy
+              </Button>
+              <Button
+                color="secondary"
+                href="https://goddess.numix.ai/privacy-policy.pdf"
+                target={"_blank"}
+              >
+                Terms of Service
+              </Button>
+            </Box>
+          </Stack>
+        </Box>
       </Stack>
-      <AlivePass buyRef={buyRef} />
+      {/* <AlivePass buyRef={buyRef} /> */}
       <JoinForm open={openForm} onClose={() => setOpenForm(false)} />
     </Box>
   );
