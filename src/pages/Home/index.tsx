@@ -382,14 +382,14 @@ const Home = (props: Props) => {
             <Box display={"flex"}>
               <Button
                 color="secondary"
-                href="https://goddess.numix.ai/privacy-policy.pdf"
+                href="/privacy-policy.pdf"
                 target={"_blank"}
               >
                 Privacy Policy
               </Button>
               <Button
                 color="secondary"
-                href="https://goddess.numix.ai/terms-of-service.pdf"
+                href="/terms-of-service.pdf"
                 target={"_blank"}
               >
                 Terms of Service
