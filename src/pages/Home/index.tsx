@@ -28,9 +28,29 @@ const Home = (props: Props) => {
             "linear-gradient(0deg, rgba(27,19,51,1) 20%, rgba(2,1,3,1) 100%)",
         }}
       >
-        <Grid xs={12} md={8} item>
-          <Box height={"100vh"} position="relative">
-            <Stack
+        <Grid xs={12} item>
+          <Stack height={"100vh"} justifyContent={"center"} alignItems="center">
+            <Typography
+              variant="h2"
+              fontWeight={700}
+              textTransform="uppercase"
+              align="center"
+              sx={{
+                background:
+                  "radial-gradient(10495.71% 262.76% at 44.99% 0.6%, #5432FF 0%, #45BFDA 46.15%, #9000E9 100%)",
+                backgroundClip: "text",
+                WebkitTextFillColor: "transparent",
+              }}
+            >
+              NEXT GEN MUSIC PROTOCOL
+            </Typography>
+            <Typography align="center" width={{ md: "50%" }} sx={{ mt: 3 }}>
+              Unlocking the true value of music through trackable, interoperable
+              metadata, end-to-end cryptographic settlement and supercharged,
+              superfan engagement
+            </Typography>
+          </Stack>
+          {/* <Stack
               height={"100%"}
               // gap={4}
               p={{ xs: 2 }}
@@ -114,10 +134,9 @@ const Home = (props: Props) => {
               <Typography variant="h6" align="center">
                 Music Copyright Protection for GenAI
               </Typography>
-            </Stack>
-          </Box>
+            </Stack> */}
         </Grid>
-        <Grid xs={12} md={4} item>
+        {/* <Grid xs={12} md={4} item>
           <Stack
             // justifyContent={"center"}
             height={"100vh"}
@@ -177,15 +196,8 @@ const Home = (props: Props) => {
                 </Fab>
               </Box>
               <Stack gap={2} alignItems="center">
-                <img src="/nusic_white.png" alt="" width={200}></img>
-                {/* <Typography align="center" variant="caption">
-                  Transparent Music Streaming
-                </Typography> */}
               </Stack>
               <Stack gap={2} mt={4}>
-                {/* <Typography align="center" fontWeight={600}>
-                Launch App
-              </Typography> */}
                 <Stack gap={2}>
                   <Button
                     variant="contained"
@@ -222,7 +234,7 @@ const Home = (props: Props) => {
               />
             </Box>
           </Stack>
-        </Grid>
+        </Grid> */}
       </Grid>
       <Box
         py={10}

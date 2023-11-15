@@ -279,11 +279,11 @@ const AlivePass = ({ buyRef }: Props) => {
       sx={{
         background:
           "linear-gradient(0deg, rgb(0,0,0) 0%, rgba(27,19,51,1) 70%)",
-        minHeight: "100vh",
+        // minHeight: "100vh",
       }}
     >
       <Box p={2}>
-        <Box mt={"180px"} pb={6}>
+        {/* <Box mt={"180px"} pb={6}>
           <Grid container>
             <Grid item md={3}></Grid>
             <Grid item xs={12} md={6} position="relative">
@@ -353,47 +353,7 @@ const AlivePass = ({ buyRef }: Props) => {
                   >
                     Mint With ETH
                   </LoadingButton>
-                  {/* <Tooltip title="Connect your Wallet to receive the NFT directly into your address"> */}
-                  {/* <Button
-                    component="label"
-                    variant="outlined"
-                    sx={{ width: { xs: "100%", md: "50%", color: "white" } }}
-                    // endIcon={<InfoOutlinedIcon />}
-                    // ref={cardRef}
-                  >
-                    <CrossmintPayButton
-                      style={{ display: "none" }}
-                      clientId="0c4a330a-7286-4e0d-9d79-43ab7a03db65"
-                      mintConfig={{
-                        type: "erc-721",
-                        totalPrice: (tokenPrice * quantity).toFixed(2),
-                        tokenQuantity: quantity,
-                      }}
-                      // environment="staging"
-                      mintTo={account ?? undefined}
-                    />
-                    Mint with CARD
-                  </Button> */}
-                  {/* <Typography align="center" variant="caption">
-                    Connect your Wallet to receive the NFT directly into your
-                    address when using Card Payment
-                  </Typography> */}
-                  {/* </Tooltip> */}
-                  <Box mt={4}>
-                    {/* <a
-                      className="twitter-share-button"
-                      // href="https://twitter.com/intent/tweet?text=NUSIC%20Alive%20Collective%20passes%20are%20now%20available%20at%20alive.nusic.fm%20via%20%40nusicOfficial%20%0A%0AJoin%20the%20Movement%20Powering%20the%20Evolution%20of%20Music%0A%0A%23NUSIC"
-                      href={`https://twitter.com/intent/tweet?text=NUSIC%20Alive%20Collective%20passes%20are%20now%20available%20via%20%40nusicOfficial%0A`}
-                      // data-url="opensea.io/collection/nusic-alive-collective"
-                      // href="https://twitter.com/share"
-                      // data-text={`NUSIC Alive Collective passes are now available\n\nJoin the Movement Powering the Evolution of Music\n`}
-                      data-url="alive.nusic.fm"
-                      // data-via="nusicOfficial"
-                      // data-hashtags="NUSIC"
-                    >
-                      Tweet
-                    </a> */}
-                  </Box>
+                  <Box mt={4}></Box>
                   {showNftsDrawer && account && (
                     <Drawer
                       anchor={"right"}
@@ -416,8 +376,8 @@ const AlivePass = ({ buyRef }: Props) => {
             </Grid>
             <Grid item md={3}></Grid>
           </Grid>
-        </Box>
-        <Stack mt={5} gap={1} alignItems="center" justifyContent={"center"}>
+        </Box> */}
+        {/* <Stack mt={5} gap={1} alignItems="center" justifyContent={"center"}>
           <Typography variant="h4" align="center" fontWeight={900}>
             <img
               src="/nusic_white.png"
@@ -430,8 +390,8 @@ const AlivePass = ({ buyRef }: Props) => {
           <Typography variant="body2" align="center" color={"gray"}>
             Join the Movement that is Powering the Evolution of Music
           </Typography>
-        </Stack>
-        <Stack
+        </Stack> */}
+        {/* <Stack
           // mt={10}
           mx={{ md: "20%" }}
           p={2}
@@ -471,7 +431,7 @@ const AlivePass = ({ buyRef }: Props) => {
               Preview
             </Button>
           </Box>
-        </Stack>
+        </Stack> */}
         {/* <Stack mt={5} pt={4} gap={1} alignItems="center" ref={stackRef}>
           <Typography variant="h4" align="center" fontWeight={700}>
             <img
