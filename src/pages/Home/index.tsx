@@ -4,6 +4,8 @@ import PlayArrowIcon from "@mui/icons-material/PlayArrow";
 import { useRef, useState } from "react";
 import AlivePass from "../../components/AlivePass";
 import JoinForm from "../../components/AlivePass/JoinForm/Index";
+import CodeIcon from "@mui/icons-material/Code";
+import MobileScreenShareIcon from "@mui/icons-material/MobileScreenShare";
 
 type Props = {};
 
@@ -41,23 +43,13 @@ const Home = (props: Props) => {
                   fontWeight={700}
                   textTransform="uppercase"
                 >
-                  Get More from Your Music
+                  NEXT GEN MUSIC PROTOCOL
                 </Typography>
                 <Box display={"flex"} alignItems="center" gap={1} mt={1}>
                   <Typography>
-                    <Typography
-                      color={"#563fc8"}
-                      component="span"
-                      fontWeight={900}
-                      fontSize="13"
-                      // variant="h6"
-                      fontStyle="italic"
-                      sx={{ mr: 1 }}
-                    >
-                      NUSIC
-                    </Typography>
-                    provides next generation metadata tooling to help you
-                    capture more value from your music
+                    Unlocking the true value of music through trackable,
+                    interoperable metadata, end-to-end cryptographic settlement
+                    and supercharged, superfan engagement
                   </Typography>
                 </Box>
               </Box>
@@ -232,6 +224,89 @@ const Home = (props: Props) => {
           </Stack>
         </Grid>
       </Grid>
+      <Box
+        py={10}
+        sx={{
+          background: "#1b1433",
+        }}
+        gap={1}
+        minHeight="100vh"
+        display={"flex"}
+        alignItems="center"
+      >
+        <Stack
+          mt={10}
+          direction="row"
+          // alignItems="center"
+          justifyContent={"center"}
+          gap={2}
+          flexWrap="wrap"
+        >
+          <Stack
+            width={{ xs: "100%", md: "30%", lg: "25%", xl: "20%" }}
+            sx={{
+              background:
+                "radial-gradient(circle, rgba(0,149,130,1) 0%, rgba(154,69,179,1) 48%, rgba(94,16,117,1) 100%)",
+              backgroundAttachment: "fixed",
+            }}
+            p={4}
+            borderRadius="6px"
+            gap={2}
+          >
+            {/* <img src="/alive/1.png" alt="" width={50} /> */}
+            <CodeIcon color="secondary" sx={{ fontSize: 50 }} />
+            <Typography variant="h5" fontWeight={900}>
+              SYNC LEDGER
+            </Typography>
+            <Typography>
+              Metadata administration protocol that enables synchronization
+              throughout next generation internet and AI infrastructure
+            </Typography>
+          </Stack>
+          <Stack
+            width={{ xs: "100%", md: "34%", lg: "25%", xl: "20%" }}
+            sx={{
+              background:
+                "radial-gradient(71.89% 71.89% at 68.2% 28.11%, #3D8494 0%, #66198A 55.04%, #4E4192 100%)",
+              backgroundAttachment: "fixed",
+            }}
+            p={4}
+            borderRadius="6px"
+            gap={2}
+          >
+            {/* <img src="/alive/2.png" alt="" width={50} /> */}
+            <MobileScreenShareIcon color="secondary" sx={{ fontSize: 50 }} />
+            <Typography variant="h5" fontWeight={900}>
+              NUMIX APP
+            </Typography>
+            <Typography>
+              Direct to Consumer application that unlocks powerful superfan
+              engagement through GenAI powered remixes and contests
+            </Typography>
+          </Stack>
+          <Stack
+            width={{ xs: "100%", md: "30%", lg: "25%", xl: "20%" }}
+            sx={{
+              background:
+                "radial-gradient(circle, rgba(58,180,164,1) 0%, rgba(70,40,144,1) 48%, rgba(154,69,179,1) 100%)",
+              backgroundAttachment: "fixed",
+            }}
+            p={4}
+            borderRadius="6px"
+            gap={2}
+          >
+            {/* <img src="/alive/3.png" alt="" width={50} /> */}
+            <img src="/alive/2.png" alt="" width={50} />
+            <Typography variant="h5" fontWeight={900}>
+              ONCHAIN INDEXER
+            </Typography>
+            <Typography>
+              Aggregating the entire onchain music ecosystem, from Music NFTs to
+              Web 3.0 gaming to immutable music file storage and compute
+            </Typography>
+          </Stack>
+        </Stack>
+      </Box>
       <Stack
         py={10}
         sx={{
@@ -239,36 +314,53 @@ const Home = (props: Props) => {
         }}
         gap={1}
       >
-        <Stack
-          minHeight={"100vh"}
-          justifyContent="center"
-          gap={{ xs: 5, md: 4 }}
-        >
-          <Typography variant="h4" align="center" fontWeight={900}>
-            Receive Perpetual Income From Your Music
-          </Typography>
-          <Typography align="center">
-            Ensure your music is registered, tracked and paid for throughout
-            GenAI
-          </Typography>
-          {/* <Box display={"flex"} justifyContent="center" alignItems={"center"}>
-            <Button variant="outlined" color="secondary">
-              Learn More
-            </Button>
-          </Box> */}
-          <Box display={"flex"} justifyContent="center">
-            <Box width={{ xs: "70%", md: "40%" }}>
-              <img src="/home/desktop_screen.png" alt="" width={"100%"} />
-            </Box>
-          </Box>
-          <Typography align="center">
-            Analytics for content ingestion and delivery
-          </Typography>
-          <Typography variant="h4" align="center" fontWeight={900}>
-            Instant Payments on Monetization
-          </Typography>
-        </Stack>
         <Box>
+          <Stack
+            minHeight={"100vh"}
+            justifyContent="center"
+            gap={{ xs: 5, md: 4 }}
+          >
+            <Typography
+              variant="h4"
+              align="center"
+              fontWeight={900}
+              sx={{ mt: 10 }}
+            >
+              SYNC LEDGER
+            </Typography>
+            <Typography align="center">
+              Immutable music metadata that future proofs your sound for the
+              next generation of music consumption
+            </Typography>
+            <Box display={"flex"} justifyContent="center">
+              <Box width={{ xs: "70%", md: "40%" }}>
+                <img src="/home/meta_admin.png" alt="" width={"100%"} />
+              </Box>
+            </Box>
+            <Typography align="center">
+              Toolkit for annotating granular, trackable data for recurring,
+              near realtime payments and transparent accounting
+            </Typography>
+            <Typography variant="h4" align="center">
+              Protect & Manage Copyright in new models
+            </Typography>
+          </Stack>
+          <Typography
+            variant="h4"
+            align="center"
+            fontWeight={900}
+            sx={{ mt: 10 }}
+          >
+            NUMIX APP
+          </Typography>
+          {/* <Box
+            sx={{ mt: 10 }}
+            display={"flex"}
+            justifyContent="center"
+            alignItems={"center"}
+          >
+            <img src="numix_logo.png" width={150} alt="" />
+          </Box> */}
           <Box
             display={"flex"}
             gap={2}
@@ -285,17 +377,17 @@ const Home = (props: Props) => {
               minWidth="50%"
             >
               <Box width={{ xs: "50%", md: "40%" }}>
-                <img src="/home/m1.png" alt="" width={"100%"}></img>
+                <img src="/numix_app.png" alt="" width={"100%"}></img>
               </Box>
             </Box>
             <Box>
               <Grid container rowGap={1}>
-                <Grid item xs={false} md={2} />
-                <Grid item xs={12} md={10}>
+                {/* <Grid item xs={false} md={2} /> */}
+                {/* <Grid item xs={12} md={10}>
                   <Typography variant="h5" fontWeight={900}>
                     Creator First
                   </Typography>
-                </Grid>
+                </Grid> */}
                 <Grid item xs={false} md={2} />
                 <Grid item xs={12} md={10}>
                   <Box
@@ -305,7 +397,8 @@ const Home = (props: Props) => {
                     width={{ md: "80%" }}
                   >
                     <Typography>
-                      Music metadata included with music files
+                      Engage with superfans and fans through powerful
+                      activations which unlock the value of your audience
                     </Typography>
                   </Box>
                 </Grid>
@@ -322,7 +415,8 @@ const Home = (props: Props) => {
                     width={{ md: "80%" }}
                   >
                     <Typography>
-                      Omnidirectional music metadata protection
+                      Infinitely scalable AI-powered remixes that empower your
+                      fans to engage with the process of music creation
                     </Typography>
                   </Box>
                 </Grid>
@@ -334,11 +428,12 @@ const Home = (props: Props) => {
                     width={{ md: "80%" }}
                   >
                     <Typography>
-                      Metadata provenance and attribution engine
+                      Contests which bring your fans closer to you while
+                      catapulting your music to a brand new audience
                     </Typography>
                   </Box>
                 </Grid>
-                <Grid item md={12} mt={2}>
+                {/* <Grid item md={12} mt={2}>
                   <Typography variant="h5" fontWeight={900}>
                     Onchain Data
                   </Typography>
@@ -386,7 +481,7 @@ const Home = (props: Props) => {
                   >
                     <Typography>Music NFT metadata and permissions</Typography>
                   </Box>
-                </Grid>
+                </Grid> */}
               </Grid>
             </Box>
           </Box>
@@ -396,27 +491,24 @@ const Home = (props: Props) => {
           justifyContent="center"
           gap={{ xs: 5, md: 4 }}
         >
-          <Typography
-            variant="h4"
-            align="center"
-            fontWeight={900}
-            sx={{ mt: 10 }}
-          >
-            Music Metadata Administration
+          <Typography variant="h4" align="center" fontWeight={900}>
+            ONCHAIN INDEXER
           </Typography>
           <Typography align="center">
-            Copyright registration & next-gen data annotation
+            Listen to every Music NFT instantiated onchain with trackable
+            playback and access to metadata administration
           </Typography>
           <Box display={"flex"} justifyContent="center">
             <Box width={{ xs: "70%", md: "40%" }}>
-              <img src="/home/meta_admin.png" alt="" width={"100%"} />
+              <img src="/dream_os.png" alt="" width={"100%"} />
             </Box>
           </Box>
           <Typography align="center">
-            Track music usage and ingestion by generative AI models
+            Enable permissions to make your Music NFTs available inside Web 3.0
+            games based on rules you determine
           </Typography>
-          <Typography variant="h4" align="center">
-            Future Proof Your Sound
+          <Typography variant="h4" align="center" fontWeight={900}>
+            Reach new audiences and Unlock new revenue
           </Typography>
         </Stack>
       </Stack>

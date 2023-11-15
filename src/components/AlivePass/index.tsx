@@ -1,5 +1,5 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import { CrossmintPayButton } from "@crossmint/client-sdk-react-ui";
+// import { CrossmintPayButton } from "@crossmint/client-sdk-react-ui";
 import {
   Button,
   ButtonGroup,
@@ -23,7 +23,7 @@ import { Box } from "@mui/system";
 import { useWeb3React } from "@web3-react/core";
 import { BigNumber, ethers } from "ethers";
 import { LoadingButton } from "@mui/lab";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import RemoveIcon from "@mui/icons-material/Remove";
 import AddIcon from "@mui/icons-material/Add";
 import { provider } from "../../helpers/provider";
@@ -85,7 +85,7 @@ type Props = { buyRef: any };
 const AlivePass = ({ buyRef }: Props) => {
   const { account, library, activate } = useWeb3React();
 
-  const stackRef = useRef(null);
+  // const stackRef = useRef(null);
   const [snackbarMessage, setSnackbarMessage] = useState("");
   const [quantity, setQuantity] = useState(1);
   const [isLoading, setIsLoading] = useState(false);
@@ -472,7 +472,7 @@ const AlivePass = ({ buyRef }: Props) => {
             </Button>
           </Box>
         </Stack>
-        <Stack mt={5} pt={4} gap={1} alignItems="center" ref={stackRef}>
+        {/* <Stack mt={5} pt={4} gap={1} alignItems="center" ref={stackRef}>
           <Typography variant="h4" align="center" fontWeight={700}>
             <img
               src="/nusic_white.png"
@@ -482,8 +482,8 @@ const AlivePass = ({ buyRef }: Props) => {
             />
             Core Values
           </Typography>
-        </Stack>
-        <Stack
+        </Stack> */}
+        {/* <Stack
           mt={10}
           direction="row"
           // alignItems="center"
@@ -504,10 +504,11 @@ const AlivePass = ({ buyRef }: Props) => {
           >
             <img src="/alive/1.png" alt="" width={50} />
             <Typography variant="h5" fontWeight={900}>
-              True <br /> Transparency
+              SYNC LEDGER
             </Typography>
             <Typography>
-              Cryptographic rails ensure immutability and censorship resistance
+              Metadata administration protocol that enables synchronization
+              throughout next generation internet and AI infrastructure
             </Typography>
           </Stack>
           <Stack
@@ -523,11 +524,11 @@ const AlivePass = ({ buyRef }: Props) => {
           >
             <img src="/alive/2.png" alt="" width={50} />
             <Typography variant="h5" fontWeight={900}>
-              Artist <br /> Centric
+              NUMIX APP
             </Typography>
             <Typography>
-              Copyright owners have full control over music metadata and GenAI
-              permissions
+              Direct to Consumer application that unlocks powerful superfan
+              engagement through GenAI powered remixes and contests
             </Typography>
           </Stack>
           <Stack
@@ -543,14 +544,14 @@ const AlivePass = ({ buyRef }: Props) => {
           >
             <img src="/alive/3.png" alt="" width={50} />
             <Typography variant="h5" fontWeight={900}>
-              Evolutionary <br /> Protocol
+              ONCHAIN INDEXER
             </Typography>
             <Typography>
-              Leverages emerging infrastructure as solution to music's big
-              problem
+              Aggregating the entire onchain music ecosystem, from Music NFTs to
+              Web 3.0 gaming to immutable music file storage and compute
             </Typography>
           </Stack>
-        </Stack>
+        </Stack> */}
       </Box>
 
       <Box mt={20}>
