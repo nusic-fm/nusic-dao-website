@@ -107,7 +107,7 @@ const Home = (props: Props) => {
               mt={{ xs: "25%", md: "10%" }}
             >
               {/* Powering the Evolution of Music */}
-              Create Unique of the freshest sounds
+              Create Unique Remixes of the Freshest Sounds
             </Typography>
             <Stack mt="40%">
               <Box
