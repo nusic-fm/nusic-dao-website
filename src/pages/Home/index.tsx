@@ -21,221 +21,44 @@ const Home = (props: Props) => {
       >
         <img src="/home/Ellipse1.png" alt="" height={"100%"}></img>
       </Box>
-      <Grid
-        container
+      <Box
         sx={{
           background:
             "linear-gradient(0deg, rgba(27,19,51,1) 20%, rgba(2,1,3,1) 100%)",
         }}
+        position="relative"
       >
-        <Grid xs={12} item>
-          <Stack height={"100vh"} justifyContent={"center"} alignItems="center">
-            <Typography
-              variant="h2"
-              fontWeight={700}
-              textTransform="uppercase"
-              align="center"
-              sx={{
-                background:
-                  "radial-gradient(10495.71% 262.76% at 44.99% 0.6%, #5432FF 0%, #45BFDA 46.15%, #9000E9 100%)",
-                backgroundClip: "text",
-                WebkitTextFillColor: "transparent",
-              }}
-            >
-              NEXT GEN MUSIC PROTOCOL
-            </Typography>
-            <Typography align="center" width={{ md: "50%" }} sx={{ mt: 3 }}>
-              Unlocking the true value of music through trackable, interoperable
-              metadata, end-to-end cryptographic settlement and supercharged,
-              superfan engagement
-            </Typography>
-          </Stack>
-          {/* <Stack
-              height={"100%"}
-              // gap={4}
-              p={{ xs: 2 }}
-              // alignItems="center"
-              justifyContent={"space-between"}
-            >
-              <Box>
-                <Typography
-                  variant="h4"
-                  fontWeight={700}
-                  textTransform="uppercase"
-                >
-                  NEXT GEN MUSIC PROTOCOL
-                </Typography>
-                <Box display={"flex"} alignItems="center" gap={1} mt={1}>
-                  <Typography>
-                    Unlocking the true value of music through trackable,
-                    interoperable metadata, end-to-end cryptographic settlement
-                    and supercharged, superfan engagement
-                  </Typography>
-                </Box>
-              </Box>
-              <Box
-                display="flex"
-                gap={{ md: 10 }}
-                // flexWrap="wrap"
-                justifyContent={"center"}
-                alignItems="center"
-              >
-                <Box>
-                  <Box width={{ xs: "90%", md: "initial" }}>
-                    <img src="/home/1.png" alt="" width="100%"></img>
-                  </Box>
-                </Box>
-                <Stack
-                  gap={2}
-                  justifyContent="center"
-                  // flexWrap={"wrap"}
-                  alignItems={"center"}
-                  // flexDirection={{ xs: "row", md: "column" }}
-                >
-                  <Box width={{ xs: "90%", md: "initial" }}>
-                    <img src="/home/2.png" alt="" width="100%"></img>
-                  </Box>
-                  <Box width={{ xs: "90%", md: "initial" }}>
-                    <img src="/home/3.png" alt="" width="100%"></img>
-                  </Box>
-                </Stack>
-              </Box>
-              <Box display={{ xs: "flex", md: "none" }} justifyContent="center">
-                <Fab
-                  sx={{
-                    backgroundImage: "url(/home/btn-blend.png)",
-                    background:
-                      "linear-gradient(125.34deg, #563FC8 12.91%, #AE2FFC 156.55%)",
-                    backgroundSize: "cover",
-                    width: 52,
-                    height: 52,
-                  }}
-                  size="large"
-                  onClick={() => {
-                    (buyRef.current as any).scrollIntoView({
-                      behavior: "smooth",
-                      block: "start",
-                      inline: "nearest",
-                    });
-                  }}
-                >
-                  <PlayArrowIcon
-                    color="secondary"
-                    fontSize="large"
-                    sx={{
-                      transition: "transform 0.5s",
-                      ":hover": {
-                        transform: "rotate(90deg)",
-                      },
-                    }}
-                  />
-                </Fab>
-              </Box>
-              <Typography variant="h6" align="center">
-                Music Copyright Protection for GenAI
-              </Typography>
-            </Stack> */}
-        </Grid>
-        {/* <Grid xs={12} md={4} item>
-          <Stack
-            // justifyContent={"center"}
-            height={"100vh"}
-            width="100%"
-            // gap={20}
-            sx={{ bgcolor: "#3A3068", borderTopLeftRadius: "80px 80px" }}
-            position="relative"
-            alignItems={"center"}
+        <Box
+          position={"absolute"}
+          width="100%"
+          display={"flex"}
+          justifyContent="center"
+          py={2}
+        >
+          <img src="/nusic_white.png" alt="" width={100} />
+        </Box>
+        <Stack height={"100vh"} justifyContent={"center"} alignItems="center">
+          <Typography
+            variant="h2"
+            fontWeight={700}
+            textTransform="uppercase"
+            align="center"
+            sx={{
+              background:
+                "radial-gradient(10495.71% 262.76% at 44.99% 0.6%, #5432FF 0%, #45BFDA 46.15%, #9000E9 100%)",
+              backgroundClip: "text",
+              WebkitTextFillColor: "transparent",
+            }}
           >
-            <Typography
-              variant="h6"
-              align="center"
-              // letterSpacing={2}
-              mt={{ xs: "25%", md: "10%" }}
-            >
-              Powering the Evolution of Music
-            </Typography>
-            <Stack mt="40%">
-              <Box
-                position={"absolute"}
-                bottom="10%"
-                left="-25px"
-                display={{ xs: "none", md: "unset" }}
-              >
-                <img
-                  src="/home/btn-blend.png"
-                  alt=""
-                  width={56}
-                  height={56}
-                  style={{ position: "absolute", top: 0, left: 0, zIndex: 999 }}
-                />
-                <Fab
-                  sx={{
-                    //   backgroundImage: "url(/home/btn-blend.png)",
-                    background:
-                      "linear-gradient(125.34deg, #563FC8 12.91%, #AE2FFC 156.55%)",
-                  }}
-                  size="large"
-                  onClick={() => {
-                    (buyRef.current as any).scrollIntoView({
-                      behavior: "smooth",
-                      block: "start",
-                      inline: "nearest",
-                    });
-                  }}
-                >
-                  <PlayArrowIcon
-                    color="secondary"
-                    fontSize="large"
-                    sx={{
-                      transition: "transform 0.5s",
-                      ":hover": {
-                        transform: "rotate(90deg)",
-                      },
-                    }}
-                  />
-                </Fab>
-              </Box>
-              <Stack gap={2} alignItems="center">
-              </Stack>
-              <Stack gap={2} mt={4}>
-                <Stack gap={2}>
-                  <Button
-                    variant="contained"
-                    // onClick={() => {
-                    //   checkAutoLogin();
-                    // }}
-                    // sx={{ bgcolor: "#010101" }}
-                    // size="small"
-                    href="https://app.nusic.fm/"
-                  >
-                    Launch App
-                  </Button>
-                  <Button
-                    variant="outlined"
-                    color="info"
-                    onClick={() => setOpenForm(true)}
-                  >
-                    Join
-                  </Button>
-                </Stack>
-              </Stack>
-            </Stack>
-            <Box
-              position={"absolute"}
-              bottom="0px"
-              width={"100%"}
-              display="flex"
-            >
-              <img
-                src="/home/band.png"
-                width={"100%"}
-                alt="band"
-                style={{ objectFit: "cover" }}
-              />
-            </Box>
-          </Stack>
-        </Grid> */}
-      </Grid>
+            NEXT GEN MUSIC PROTOCOL
+          </Typography>
+          <Typography align="center" width={{ md: "50%" }} sx={{ mt: 3 }}>
+            Unlocking the true value of music through trackable, interoperable
+            metadata, end-to-end cryptographic settlement and supercharged,
+            superfan engagement
+          </Typography>
+        </Stack>
+      </Box>
       <Box
         py={10}
         sx={{
