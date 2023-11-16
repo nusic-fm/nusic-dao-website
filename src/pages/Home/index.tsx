@@ -1,6 +1,6 @@
-import { Button, Fab, Grid, Typography } from "@mui/material";
+import { Grid, Typography } from "@mui/material";
 import { Box, Stack } from "@mui/system";
-import PlayArrowIcon from "@mui/icons-material/PlayArrow";
+// import PlayArrowIcon from "@mui/icons-material/PlayArrow";
 import { useEffect, useRef, useState } from "react";
 import AlivePass from "../../components/AlivePass";
 import JoinForm from "../../components/AlivePass/JoinForm/Index";
@@ -197,7 +197,7 @@ const Home = (props: Props) => {
                   "radial-gradient(circle, rgba(0,149,130,1) 0%, rgba(154,69,179,1) 48%, rgba(94,16,117,1) 100%)",
                 backgroundAttachment: "fixed",
               }}
-              p={4}
+              p={{ xs: 2, md: 4 }}
               borderRadius="6px"
               gap={2}
             >
@@ -218,7 +218,7 @@ const Home = (props: Props) => {
                   "radial-gradient(71.89% 71.89% at 68.2% 28.11%, #3D8494 0%, #66198A 55.04%, #4E4192 100%)",
                 backgroundAttachment: "fixed",
               }}
-              p={4}
+              p={{ xs: 2, md: 4 }}
               borderRadius="6px"
               gap={2}
             >
@@ -239,7 +239,7 @@ const Home = (props: Props) => {
                   "radial-gradient(circle, rgba(58,180,164,1) 0%, rgba(70,40,144,1) 48%, rgba(154,69,179,1) 100%)",
                 backgroundAttachment: "fixed",
               }}
-              p={4}
+              p={{ xs: 2, md: 4 }}
               borderRadius="6px"
               gap={2}
             >
@@ -255,50 +255,47 @@ const Home = (props: Props) => {
             </Stack>
           </Stack>
         </Box>
+        {/* <Divider /> */}
         <Stack
-          py={10}
+          justifyContent="center"
+          gap={{ xs: 5, md: 4 }}
           sx={{
             background: "#1b1433",
           }}
-          gap={1}
-          minHeight={"100vh"}
+          height={"100vh"}
         >
-          <Box>
-            <Stack justifyContent="center" gap={{ xs: 5, md: 4 }}>
-              <Typography
-                variant="h4"
-                align="center"
-                fontWeight={900}
-                sx={{ mt: 10 }}
-              >
-                SYNC LEDGER
-              </Typography>
-              <Typography align="center">
-                Immutable music metadata that future proofs your sound for the
-                next generation of music consumption
-              </Typography>
-              <Box display={"flex"} justifyContent="center">
-                <Box width={{ xs: "70%", md: "40%" }}>
-                  <img src="/home/meta_admin.png" alt="" width={"100%"} />
-                </Box>
-              </Box>
-              <Typography align="center">
-                Toolkit for annotating granular, trackable data for recurring,
-                near realtime payments and transparent accounting
-              </Typography>
-              <Typography variant="h4" align="center">
-                Protect & Manage Copyright in new models
-              </Typography>
-            </Stack>
-            <Typography
-              variant="h4"
-              align="center"
-              fontWeight={900}
-              sx={{ mt: 10 }}
-            >
-              NUMIX APP
-            </Typography>
-            {/* <Box
+          <Typography variant="h4" align="center" fontWeight={900}>
+            SYNC LEDGER
+          </Typography>
+          <Typography align="center">
+            Immutable music metadata that future proofs your sound for the next
+            generation of music consumption
+          </Typography>
+          <Box display={"flex"} justifyContent="center">
+            <Box width={{ xs: "70%", md: "40%" }}>
+              <img src="/home/meta_admin.png" alt="" width={"100%"} />
+            </Box>
+          </Box>
+          <Typography align="center">
+            Toolkit for annotating granular, trackable data for recurring, near
+            realtime payments and transparent accounting
+          </Typography>
+          <Typography variant="h4" align="center">
+            Protect & Manage Copyright in new models
+          </Typography>
+        </Stack>
+        {/* <Divider /> */}
+        <Stack
+          minHeight={"100vh"}
+          justifyContent="center"
+          sx={{
+            background: "#1b1433",
+          }}
+        >
+          <Typography variant="h4" align="center" fontWeight={900}>
+            NUMIX APP
+          </Typography>
+          {/* <Box
             sx={{ mt: 10 }}
             display={"flex"}
             justifyContent="center"
@@ -306,101 +303,34 @@ const Home = (props: Props) => {
           >
             <img src="numix_logo.png" width={150} alt="" />
           </Box> */}
+          <Box
+            display={"flex"}
+            gap={2}
+            flexWrap={{ xs: "wrap", md: "unset" }}
+            alignItems={"center"}
+            justifyContent="center"
+            p={2}
+          >
             <Box
               display={"flex"}
-              gap={2}
-              mt={4}
-              flexWrap={{ xs: "wrap", md: "unset" }}
-              alignItems={"center"}
               justifyContent="center"
-              p={2}
+              alignItems={"center"}
+              minWidth="50%"
             >
-              <Box
-                display={"flex"}
-                justifyContent="center"
-                alignItems={"center"}
-                minWidth="50%"
-              >
-                <Box width={{ xs: "50%", md: "40%" }}>
-                  <img src="/numix_app.png" alt="" width={"100%"}></img>
-                </Box>
+              <Box width={{ xs: "50%", md: "40%" }}>
+                <img src="/numix_app.png" alt="" width={"100%"}></img>
               </Box>
-              <Box>
-                <Grid container rowGap={1}>
-                  {/* <Grid item xs={false} md={2} /> */}
-                  {/* <Grid item xs={12} md={10}>
+            </Box>
+            <Box>
+              <Grid container rowGap={1}>
+                {/* <Grid item xs={false} md={2} /> */}
+                {/* <Grid item xs={12} md={10}>
                   <Typography variant="h5" fontWeight={900}>
                     Creator First
                   </Typography>
                 </Grid> */}
-                  <Grid item xs={false} md={2} />
-                  <Grid item xs={12} md={10}>
-                    <Box
-                      sx={{ background: "#A18EFF" }}
-                      borderRadius={"10px"}
-                      p={2}
-                      width={{ md: "80%" }}
-                    >
-                      <Typography>
-                        Engage with superfans and fans through powerful
-                        activations which unlock the value of your audience
-                      </Typography>
-                    </Box>
-                  </Grid>
-                  <Grid item xs={false} md={1} />
-                  <Grid item xs={12} md={11}>
-                    <Box
-                      sx={{
-                        background:
-                          "linear-gradient(93.61deg, #563FC8 27.66%, #9E00FF 75.36%)",
-                      }}
-                      borderRadius={"10px"}
-                      p={2}
-                      display="flex"
-                      width={{ md: "80%" }}
-                    >
-                      <Typography>
-                        Infinitely scalable AI-powered remixes that empower your
-                        fans to engage with the process of music creation
-                      </Typography>
-                    </Box>
-                  </Grid>
-                  <Grid item xs={12} md={12}>
-                    <Box
-                      sx={{ background: "#A18EFF" }}
-                      borderRadius={"10px"}
-                      p={2}
-                      width={{ md: "80%" }}
-                    >
-                      <Typography>
-                        Contests which bring your fans closer to you while
-                        catapulting your music to a brand new audience
-                      </Typography>
-                    </Box>
-                  </Grid>
-                  {/* <Grid item md={12} mt={2}>
-                  <Typography variant="h5" fontWeight={900}>
-                    Onchain Data
-                  </Typography>
-                </Grid>
-                <Grid item md={12} xs={12}>
-                  <Box
-                    sx={{
-                      background:
-                        "linear-gradient(93.61deg, #563FC8 27.66%, #9E00FF 75.36%)",
-                    }}
-                    borderRadius={"10px"}
-                    p={2}
-                    display="flex"
-                    width={{ md: "80%" }}
-                  >
-                    <Typography>
-                      Chain-agnostic version control for music releases
-                    </Typography>
-                  </Box>
-                </Grid>
-                <Grid item md={1} />
-                <Grid item xs={12} md={11}>
+                <Grid item xs={false} md={2} />
+                <Grid item xs={12} md={10}>
                   <Box
                     sx={{ background: "#A18EFF" }}
                     borderRadius={"10px"}
@@ -408,12 +338,13 @@ const Home = (props: Props) => {
                     width={{ md: "80%" }}
                   >
                     <Typography>
-                      Standards above and beyond industry benchmarks
+                      Engage with superfans and fans through powerful
+                      activations which unlock the value of your audience
                     </Typography>
                   </Box>
                 </Grid>
-                <Grid item md={2} />
-                <Grid item xs={12} md={10}>
+                <Grid item xs={false} md={1} />
+                <Grid item xs={12} md={11}>
                   <Box
                     sx={{
                       background:
@@ -424,13 +355,37 @@ const Home = (props: Props) => {
                     display="flex"
                     width={{ md: "80%" }}
                   >
-                    <Typography>Music NFT metadata and permissions</Typography>
+                    <Typography>
+                      Infinitely scalable AI-powered remixes that empower your
+                      fans to engage with the process of music creation
+                    </Typography>
                   </Box>
-                </Grid> */}
                 </Grid>
-              </Box>
+                <Grid item xs={12} md={12}>
+                  <Box
+                    sx={{ background: "#A18EFF" }}
+                    borderRadius={"10px"}
+                    p={2}
+                    width={{ md: "80%" }}
+                  >
+                    <Typography>
+                      Contests which bring your fans closer to you while
+                      catapulting your music to a brand new audience
+                    </Typography>
+                  </Box>
+                </Grid>
+              </Grid>
             </Box>
           </Box>
+        </Stack>
+        {/* <Divider /> */}
+        <Stack
+          sx={{
+            background: "#1b1433",
+          }}
+          gap={1}
+          minHeight={"100vh"}
+        >
           <Stack
             minHeight={"100vh"}
             justifyContent="center"
