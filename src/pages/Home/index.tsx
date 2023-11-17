@@ -1,4 +1,4 @@
-import { Grid, Typography } from "@mui/material";
+import { Grid, Typography, useMediaQuery } from "@mui/material";
 import { Box, Stack } from "@mui/system";
 // import PlayArrowIcon from "@mui/icons-material/PlayArrow";
 import { useEffect, useRef, useState } from "react";
@@ -63,7 +63,7 @@ const Code = () => {
     const stepCount = _.round((window.innerWidth - 20) / SYMBOL_WIDTH);
     const xPosition = _.random(0, stepCount) * SYMBOL_WIDTH;
     // We divide by the scale ratio because if it is small it is probably far => thus slower :)
-    const transition = `top linear ${_.random(10, 15) / scaleRatio}s`; // Different speed
+    const transition = `top linear ${_.random(20, 30) / scaleRatio}s`; // Different speed
     const transform = `scale(${scaleRatio})`;
 
     setCodeLength(codeLength);
@@ -123,7 +123,11 @@ const Code = () => {
 // }}
 
 const Matrix = () => {
-  const CODE_LINES_COUNT = 100;
+  // Using the 'sm' (small) breakpoint
+  const isUnderSmall = useMediaQuery("(max-width:600px)");
+
+  const CODE_LINES_COUNT = isUnderSmall ? 40 : 100;
+  console.log(CODE_LINES_COUNT);
   const codes = _.times(CODE_LINES_COUNT).map((x, i) => <Code key={i} />);
   return <div className="Matrix">{codes}</div>;
 };
@@ -135,12 +139,6 @@ const Home = (props: Props) => {
   return (
     <Box>
       <Box minHeight="100vh" position={"relative"} zIndex={99999}>
-        <Box
-          height={{ xs: "150px", md: "300px" }}
-          style={{ position: "absolute" }}
-        >
-          <img src="/home/Ellipse1.png" alt="" height={"100%"}></img>
-        </Box>
         <Box position="relative">
           <Box
             position={"absolute"}
@@ -153,21 +151,27 @@ const Home = (props: Props) => {
             <img src="/nusic_white.png" alt="" width={100} />
           </Box>
           <Stack height={"100vh"} justifyContent={"center"} alignItems="center">
+            <Box sx={{ bgcolor: "#000" }}>
+              <Typography
+                variant="h2"
+                fontWeight={700}
+                textTransform="uppercase"
+                align="center"
+                sx={{
+                  background:
+                    "radial-gradient(10495.71% 262.76% at 44.99% 0.6%, #5432FF 0%, #45BFDA 46.15%, #9000E9 100%)",
+                  backgroundClip: "text",
+                  WebkitTextFillColor: "transparent",
+                }}
+              >
+                NEXT GEN MUSIC PROTOCOL
+              </Typography>
+            </Box>
             <Typography
-              variant="h2"
-              fontWeight={700}
-              textTransform="uppercase"
               align="center"
-              sx={{
-                background:
-                  "radial-gradient(10495.71% 262.76% at 44.99% 0.6%, #5432FF 0%, #45BFDA 46.15%, #9000E9 100%)",
-                backgroundClip: "text",
-                WebkitTextFillColor: "transparent",
-              }}
+              width={{ md: "50%" }}
+              sx={{ mt: 3, bgcolor: "#000" }}
             >
-              NEXT GEN MUSIC PROTOCOL
-            </Typography>
-            <Typography align="center" width={{ md: "50%" }} sx={{ mt: 3 }}>
               Unlocking the true value of music through trackable, interoperable
               metadata, end-to-end cryptographic settlement and supercharged,
               superfan engagement
