@@ -1,9 +1,11 @@
-import { Button, Typography, useMediaQuery } from "@mui/material";
+import { Fab, Typography, useMediaQuery } from "@mui/material";
 import { Box, Stack } from "@mui/system";
 // import PlayArrowIcon from "@mui/icons-material/PlayArrow";
 import { useEffect, useState } from "react";
 import _ from "lodash";
 import EastRoundedIcon from "@mui/icons-material/EastRounded";
+import KeyboardDoubleArrowDownRoundedIcon from "@mui/icons-material/KeyboardDoubleArrowDownRounded";
+import JoinForm from "../../components/AlivePass/JoinForm/Index";
 
 type Props = {};
 
@@ -163,14 +165,34 @@ const Home = (props: Props) => {
             </Box>
             <Typography
               align="center"
-              width={{ md: "50%" }}
+              width={{ xs: "85%", md: "50%" }}
               sx={{ mt: 3, bgcolor: "#000" }}
+              fontWeight={700}
             >
               Unlocking the true value of music through trackable, interoperable
               metadata, end-to-end cryptographic settlement and supercharged,
               superfan engagement
             </Typography>
           </Stack>
+          <Box
+            position={"absolute"}
+            width="100%"
+            display={"flex"}
+            justifyContent="center"
+            p={2}
+            bottom={0}
+          >
+            <Fab
+              size="small"
+              sx={{
+                background: "rgba(67, 67, 67, 0.48)",
+                backdropFilter: "blur(7.675280570983887px)",
+              }}
+              disabled
+            >
+              <KeyboardDoubleArrowDownRoundedIcon color="secondary" />
+            </Fab>
+          </Box>
         </Box>
         {/* <Divider /> */}
         <Box
@@ -187,101 +209,6 @@ const Home = (props: Props) => {
             justifyContent={"center"}
             py={10}
           >
-            {/* <Grid container>
-              <Grid
-                xs={12}
-                md={4}
-                container
-                item
-                p={1.5}
-                sx={{
-                  background:
-                    "linear-gradient(338deg, #161616 8.13%, rgba(22, 22, 22, 0.00) 111.55%)",
-                  borderRadius: "24px",
-                }}
-              >
-                <Grid item xs={4} md={12}>
-                  <Box height={{ xs: 80, md: 220 }} width={{ xs: 80, md: 220 }}>
-                    <img src="/sections/syncledger.png" alt="" width={"100%"} />
-                  </Box>
-                </Grid>
-                <Grid item xs={8} md={12}>
-                  <Typography
-                    // variant="h5"
-                    fontWeight={900}
-                    sx={{ color: "#8C76FD" }}
-                  >
-                    SYNC LEDGER
-                  </Typography>
-                  <Typography>
-                    Metadata administration protocol that enables synchronization
-                    throughout next generation internet and AI infrastructure
-                  </Typography>
-                </Grid>
-              </Grid>
-              <Grid
-                xs={12}
-                md={4}
-                container
-                item
-                p={1.5}
-                sx={{
-                  background:
-                    "linear-gradient(338deg, #161616 8.13%, rgba(22, 22, 22, 0.00) 111.55%)",
-                  borderRadius: "24px",
-                }}
-              >
-                <Grid item xs={4} md={12}>
-                  <Box height={{ xs: 80, md: 220 }} width={{ xs: 80, md: 220 }}>
-                    <img src="/sections/numix.png" alt="" height={"100%"} />
-                  </Box>
-                </Grid>
-                <Grid item xs={8} md={12}>
-                  <Typography
-                    // variant="h5"
-                    fontWeight={900}
-                    sx={{ color: "#8C76FD" }}
-                  >
-                    NUMIX APP
-                  </Typography>
-                  <Typography>
-                    Direct to Consumer application that unlocks powerful superfan
-                    engagement through GenAI powered remixes and contests
-                  </Typography>
-                </Grid>
-              </Grid>
-              <Grid
-                xs={12}
-                md={4}
-                container
-                item
-                p={1.5}
-                sx={{
-                  background:
-                    "linear-gradient(338deg, #161616 8.13%, rgba(22, 22, 22, 0.00) 111.55%)",
-                  borderRadius: "24px",
-                }}
-              >
-                <Grid item xs={4} md={12}>
-                  <Box height={{ xs: 80, md: 220 }} width={{ xs: 80, md: 220 }}>
-                    <img src="/sections/numix.png" alt="" height={"100%"} />
-                  </Box>
-                </Grid>
-                <Grid item xs={8} md={12}>
-                  <Typography
-                    // variant="h5"
-                    fontWeight={900}
-                    sx={{ color: "#8C76FD" }}
-                  >
-                    NUMIX APP
-                  </Typography>
-                  <Typography>
-                    Direct to Consumer application that unlocks powerful superfan
-                    engagement through GenAI powered remixes and contests
-                  </Typography>
-                </Grid>
-              </Grid>
-            </Grid> */}
             <Stack
               direction="row"
               // alignItems="center"
@@ -299,27 +226,31 @@ const Home = (props: Props) => {
                 }}
                 p={{ xs: 2, md: 4 }}
                 borderRadius="6px"
-                gap={2}
+                gap={{ sm: 2 }}
                 direction="row"
                 flexWrap={"wrap"}
               >
                 <Box height={{ xs: 80, md: 220 }} width={{ xs: 80, md: 220 }}>
                   <img src="/sections/syncledger.png" alt="" width={"100%"} />
                 </Box>
-                <Box>
+                <Stack
+                  gap={2}
+                  width={{ xs: "calc(100% - 80px)", sm: "100%" }}
+                  pl={1}
+                >
                   <Typography
                     // variant="h5"
                     fontWeight={900}
                     sx={{ color: "#8C76FD" }}
                   >
-                    SYNC LEDGER
+                    Sync Ledger
                   </Typography>
                   <Typography>
                     Metadata administration protocol that enables
                     synchronization throughout next generation internet and AI
                     infrastructure
                   </Typography>
-                </Box>
+                </Stack>
 
                 <Box display={"flex"} justifyContent="end" width={"100%"}>
                   <EastRoundedIcon color="secondary" />
@@ -334,27 +265,31 @@ const Home = (props: Props) => {
                 }}
                 p={{ xs: 2, md: 4 }}
                 borderRadius="6px"
-                gap={2}
+                gap={{ sm: 2 }}
                 direction="row"
                 flexWrap={"wrap"}
               >
                 <Box height={{ xs: 80, md: 220 }} width={{ xs: 80, md: 220 }}>
                   <img src="/sections/numix.png" alt="" height={"100%"} />
                 </Box>
-                <Box>
+                <Stack
+                  gap={2}
+                  width={{ xs: "calc(100% - 80px)", sm: "100%" }}
+                  pl={1}
+                >
                   <Typography
                     // variant="h5"
                     fontWeight={900}
                     sx={{ color: "#8C76FD" }}
                   >
-                    NUMIX APP
+                    NUMIX App
                   </Typography>
                   <Typography>
                     Direct to Consumer application that unlocks powerful
                     superfan engagement through GenAI powered remixes and
                     contests
                   </Typography>
-                </Box>
+                </Stack>
 
                 <Box display={"flex"} justifyContent="end" width={"100%"}>
                   <EastRoundedIcon color="secondary" />
@@ -369,27 +304,35 @@ const Home = (props: Props) => {
                 }}
                 p={{ xs: 2, md: 4 }}
                 borderRadius="6px"
-                gap={2}
+                gap={{ sm: 2 }}
                 direction="row"
                 flexWrap={"wrap"}
               >
                 <Box height={{ xs: 80, md: 220 }} width={{ xs: 80, md: 220 }}>
-                  <img src="/sections/syncledger.png" alt="" width={"100%"} />
+                  <img
+                    src="/sections/onchain_indexer.png"
+                    alt=""
+                    width={"100%"}
+                  />
                 </Box>
-                <Box>
+                <Stack
+                  gap={2}
+                  width={{ xs: "calc(100% - 80px)", sm: "100%" }}
+                  pl={1}
+                >
                   <Typography
                     // variant="h5"
                     fontWeight={900}
                     sx={{ color: "#8C76FD" }}
                   >
-                    ONCHAIN INDEXER
+                    On-chain Indexer
                   </Typography>
                   <Typography>
                     Aggregating the entire onchain music ecosystem, from Music
                     NFTs to Web 3.0 gaming to immutable music file storage and
                     compute
                   </Typography>
-                </Box>
+                </Stack>
 
                 <Box display={"flex"} justifyContent="end" width={"100%"}>
                   <EastRoundedIcon color="secondary" />
@@ -454,14 +397,21 @@ const Home = (props: Props) => {
               flexBasis={{ xs: "100%", md: "50%" }}
               display="flex"
               alignItems={"center"}
+              justifyContent="center"
             >
-              <img src="/sections/syncledger_app.png" alt="" width={"100%"} />
+              <Box width={{ xs: 300, sm: 400, lg: 600 }}>
+                <img
+                  src="/sections/syncledger_app_old.png"
+                  alt=""
+                  width={"100%"}
+                />
+              </Box>
             </Box>
-            <Box pl={{ md: 4 }}>
+            {/* <Box pl={{ md: 4 }}>
               <Button variant="contained" size="small">
                 Learn More
               </Button>
-            </Box>
+            </Box> */}
           </Box>
           <Box
             sx={{
@@ -488,7 +438,26 @@ const Home = (props: Props) => {
                 </Typography>
                 <Box>
                   <Typography variant="h2" fontWeight={900}>
-                    NUMIX <br /> App
+                    NUMIX
+                  </Typography>
+                  <Typography
+                    variant="h2"
+                    fontWeight={900}
+                    position="relative"
+                    zIndex={1}
+                    display="inline"
+                  >
+                    App
+                    <Box
+                      position={"absolute"}
+                      bottom={0}
+                      left={0}
+                      width={"100%"}
+                      sx={{ background: "#A532FF" }}
+                      p={{ xs: 0.8, sm: 1, md: 1.2 }}
+                      borderRadius={60}
+                      zIndex={-1}
+                    />
                   </Typography>
                 </Box>
                 <Typography width={260}>
@@ -518,14 +487,15 @@ const Home = (props: Props) => {
                 <img src="/sections/numix_1.png" alt="" height={"100%"} />
               </Box>
             </Box>
-            <Box pl={{ md: 4 }}>
+            {/* <Box pl={{ md: 4 }}>
               <Button variant="contained" size="small">
                 Learn More
               </Button>
-            </Box>
+            </Box> */}
           </Box>
           <Box
             mt={4}
+            pb={4}
             sx={{
               background:
                 "linear-gradient(108deg, rgba(0, 0, 0, 0.51) 26.46%, rgba(63, 63, 63, 0.51) 112.26%)",
@@ -542,7 +512,7 @@ const Home = (props: Props) => {
             <Stack
               flexBasis={{ md: "45%" }}
               py={{ md: 4 }}
-              pl={8}
+              pl={4}
               justifyContent="space-between"
             >
               <Stack gap={1}>
@@ -551,7 +521,26 @@ const Home = (props: Props) => {
                 </Typography>
                 <Box>
                   <Typography variant="h2" fontWeight={900}>
-                    On-chain <br /> Indexer
+                    On-chain
+                  </Typography>
+                  <Typography
+                    variant="h2"
+                    fontWeight={900}
+                    position="relative"
+                    zIndex={1}
+                    display="inline"
+                  >
+                    Indexer
+                    <Box
+                      position={"absolute"}
+                      bottom={0}
+                      left={0}
+                      width={"100%"}
+                      sx={{ background: "#A532FF" }}
+                      p={{ xs: 0.8, sm: 1, md: 1.2 }}
+                      borderRadius={60}
+                      zIndex={-1}
+                    />
                   </Typography>
                 </Box>
                 <Typography width={260}>
@@ -572,18 +561,44 @@ const Home = (props: Props) => {
               flexBasis={{ xs: "100%", md: "50%" }}
               display="flex"
               alignItems={"center"}
+              justifyContent="end"
             >
               {/* <Box mt={6} display={{ xs: "none", sm: "inherit" }}>
                 <img src="/sections/numix_play.png" alt="" height={"120px"} />
               </Box> */}
-              <Box height={{ xs: 300, sm: 400, lg: 600 }}>
+              <Box width={{ xs: 300, sm: 400, lg: 600 }}>
                 <img src="/sections/indexer_app.png" alt="" width={"100%"} />
               </Box>
             </Box>
-            <Box pl={{ md: 8 }} pb={4}>
+            {/* <Box pl={4} pb={4}>
               <Button variant="contained" size="small">
                 Learn More
               </Button>
+            </Box> */}
+          </Box>
+          <Box mt={4} px={2}>
+            <Typography fontWeight={700} variant="h4" align="center">
+              Discover the Future of Music with NUSIC
+            </Typography>
+            <Box></Box>
+            <Box
+              mt={4}
+              display={"flex"}
+              justifyContent="space-between"
+              flexWrap={"wrap-reverse"}
+              gap={6}
+              px={{ md: 6 }}
+            >
+              <Box>
+                <img src="/nusic_purple.png" alt="" width={120} />
+                <Typography variant="h6">Next Gen Music Protocol</Typography>
+              </Box>
+              <Box width={320}>
+                <Typography sx={{ mb: 1, color: "#5E5E5E" }}>
+                  Contact Us
+                </Typography>
+                <JoinForm />
+              </Box>
             </Box>
           </Box>
         </Box>

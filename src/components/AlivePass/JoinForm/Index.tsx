@@ -2,9 +2,7 @@ import { LoadingButton } from "@mui/lab";
 import {
   Autocomplete,
   Box,
-  Dialog,
-  DialogActions,
-  DialogContent,
+  Button,
   Stack,
   TextField,
   Typography,
@@ -12,9 +10,7 @@ import {
 import { useState } from "react";
 import CountryCodes from "./CountryCodes.json";
 
-type Props = { open: boolean; onClose: () => void };
-
-const JoinForm = ({ open, onClose }: Props) => {
+const JoinForm = () => {
   const [loading, setLoading] = useState(false);
 
   const [name, setName] = useState<string>();
@@ -57,100 +53,104 @@ const JoinForm = ({ open, onClose }: Props) => {
     } catch (e) {
     } finally {
       setLoading(false);
-      onClose();
     }
   };
 
   return (
-    <Dialog open={open} onClose={onClose} fullWidth>
-      <DialogContent>
-        <Stack spacing={2}>
-          <TextField
-            label="Name"
-            color="info"
-            onChange={(e) => {
-              setName(e.target.value);
-            }}
-          ></TextField>
-          <Stack direction={"row"} spacing={1}>
-            <Autocomplete
-              sx={{ width: 150 }}
-              color="info"
-              options={CountryCodes}
-              renderInput={(params) => (
-                <TextField {...params} label="Country" color="info" />
-              )}
-              onChange={(e, newValue) => {
-                if (newValue) {
-                  setCountryCode(newValue);
-                }
-              }}
-              getOptionLabel={(option) => {
-                return option.code;
-              }}
-            />
-            <TextField
-              label="Mobile"
-              color="info"
-              value={mobile}
-              onChange={(e) => {
-                if (
-                  !isNaN(Number(e.target.value)) &&
-                  e.target.value.length <= 10
-                ) {
-                  setMobile(e.target.value);
-                }
-              }}
-              InputProps={{
-                startAdornment: (
-                  <Typography mr={2}>
-                    {countryCode?.dial_code || "+"}
-                  </Typography>
-                ),
-              }}
-              type="tel"
-            />
-          </Stack>
-          <Box sx={{ width: { xs: "100%", md: "50%" } }}>
-            <TextField
-              fullWidth
-              label="email"
-              color="info"
-              onChange={(e) => {
-                setEmail(e.target.value);
-              }}
-              type="email"
-            />
-          </Box>
-          <Autocomplete
-            sx={{ width: { xs: "100%", md: "50%" } }}
-            color="info"
-            options={[
-              "Artist",
-              "Management",
-              "Label",
-              "Distributor",
-              "Platform",
-              "Other",
-            ]}
-            renderInput={(params) => (
-              <TextField {...params} label="Industry Role" color="info" />
-            )}
-            onChange={(e, newValue) => setType(newValue as string)}
-          />
-        </Stack>
-      </DialogContent>
-      <DialogActions>
+    <Stack spacing={2}>
+      <TextField
+        fullWidth
+        label="Name"
+        color="info"
+        onChange={(e) => {
+          setName(e.target.value);
+        }}
+      ></TextField>
+
+      <Stack direction={"row"} spacing={1}>
+        <Autocomplete
+          sx={{ width: 150 }}
+          color="info"
+          options={CountryCodes}
+          renderInput={(params) => (
+            <TextField {...params} label="Country" color="info" />
+          )}
+          onChange={(e, newValue) => {
+            if (newValue) {
+              setCountryCode(newValue);
+            }
+          }}
+          getOptionLabel={(option) => {
+            return option.code;
+          }}
+        />
+        <TextField
+          label="Mobile"
+          color="info"
+          value={mobile}
+          onChange={(e) => {
+            if (!isNaN(Number(e.target.value)) && e.target.value.length <= 10) {
+              setMobile(e.target.value);
+            }
+          }}
+          InputProps={{
+            startAdornment: (
+              <Typography mr={2}>{countryCode?.dial_code || "+"}</Typography>
+            ),
+          }}
+          type="tel"
+        />
+      </Stack>
+      <Box width={"100%"}>
+        <TextField
+          fullWidth
+          label="Email"
+          color="info"
+          onChange={(e) => {
+            setEmail(e.target.value);
+          }}
+          type="email"
+        />
+      </Box>
+      <Autocomplete
+        color="info"
+        options={[
+          "Artist",
+          "Management",
+          "Label",
+          "Distributor",
+          "Platform",
+          "Other",
+        ]}
+        renderInput={(params) => (
+          <TextField {...params} label="Industry Role" color="info" />
+        )}
+        onChange={(e, newValue) => setType(newValue as string)}
+      />
+
+      <Box display={"flex"} justifyContent="center" gap={2}>
         <LoadingButton
           loading={loading}
-          color="info"
+          // color="info"
           variant="contained"
           onClick={onSubmit}
+          size="small"
         >
           Submit
         </LoadingButton>
-      </DialogActions>
-    </Dialog>
+        <Button
+          variant="outlined"
+          color="secondary"
+          size="small"
+          href={`mailto:adam@nusic.fm?subject=${encodeURIComponent(
+            "Contact NUSIC"
+          )}`}
+          target="_blank"
+        >
+          Email Us
+        </Button>
+      </Box>
+    </Stack>
   );
 };
 
