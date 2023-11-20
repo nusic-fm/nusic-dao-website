@@ -45,12 +45,14 @@ const JoinForm = () => {
       //   });
       await (window as any).Email.send({
         SecureToken: process.env.REACT_APP_SECURITY,
-        To: ["team@nusic.fm"],
+        To: ["contact@nusic.fm"],
         From: "logesh@nusic.fm",
         Subject: "Join Registration",
         Body: `Name: ${name}, \n Mobile: (${countryCode?.name} - ${countryCode?.dial_code}}) ${mobile}, \n Email: ${email} \n, Industry Type: ${industryType}`,
       });
+      alert("Submitted! We will reach out to you soon. Thanks");
     } catch (e) {
+      console.log(e);
     } finally {
       setLoading(false);
     }
@@ -142,8 +144,8 @@ const JoinForm = () => {
           variant="outlined"
           color="secondary"
           size="small"
-          href={`mailto:adam@nusic.fm?subject=${encodeURIComponent(
-            "Contact NUSIC"
+          href={`mailto:contact@nusic.fm?subject=${encodeURIComponent(
+            "Hi NUSIC!"
           )}`}
           target="_blank"
         >

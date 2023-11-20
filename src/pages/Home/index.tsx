@@ -1,7 +1,13 @@
-import { Fab, Typography, useMediaQuery } from "@mui/material";
+import {
+  Button,
+  Fab,
+  IconButton,
+  Typography,
+  useMediaQuery,
+} from "@mui/material";
 import { Box, Stack } from "@mui/system";
 // import PlayArrowIcon from "@mui/icons-material/PlayArrow";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import _ from "lodash";
 import EastRoundedIcon from "@mui/icons-material/EastRounded";
 import KeyboardDoubleArrowDownRoundedIcon from "@mui/icons-material/KeyboardDoubleArrowDownRounded";
@@ -126,16 +132,21 @@ const Matrix = () => {
   const isUnderSmall = useMediaQuery("(max-width:600px)");
 
   const CODE_LINES_COUNT = isUnderSmall ? 40 : 100;
-  console.log(CODE_LINES_COUNT);
+
   const codes = _.times(CODE_LINES_COUNT).map((x, i) => <Code key={i} />);
   return <div className="Matrix">{codes}</div>;
 };
 
 const Home = (props: Props) => {
+  const firstSectionRef = useRef<HTMLDivElement>(null);
+  const syncLedgerRef = useRef<HTMLDivElement>(null);
+  const numixAppRef = useRef<HTMLDivElement>(null);
+  const indexerRef = useRef<HTMLDivElement>(null);
+
   return (
     <Box>
-      <Box position={"relative"} zIndex={99999}>
-        <Box position="relative">
+      <Box zIndex={100} position="relative">
+        <Box height={"100vh"} position="relative">
           <Box
             position={"absolute"}
             width="100%"
@@ -146,7 +157,41 @@ const Home = (props: Props) => {
           >
             <img src="/nusic_white.png" alt="" width={100} />
           </Box>
-          <Stack height={"100vh"} justifyContent={"center"} alignItems="center">
+          <Box
+            position={"absolute"}
+            width="100%"
+            display={"flex"}
+            justifyContent="end"
+            gap={2}
+            py={2}
+            pr={2}
+            zIndex={999}
+          >
+            <Fab
+              sx={{ bgcolor: "rgba(48, 48, 48, 1)" }}
+              size="small"
+              color="primary"
+              href={"https://twitter.com/nusicOfficial"}
+              target="_blank"
+            >
+              <img src="/sections/x_logo_white.png" alt="x" width={15} />
+            </Fab>
+            <Fab
+              sx={{ bgcolor: "rgba(48, 48, 48, 1)" }}
+              size="small"
+              color="primary"
+              href={"https://discord.gg/eHyRQADgQ4"}
+              target="_blank"
+            >
+              <img src="/sections/discord_logo.webp" alt="x" width={20} />
+            </Fab>
+          </Box>
+          <Stack
+            justifyContent={"center"}
+            alignItems="center"
+            position={"relative"}
+            height="100%"
+          >
             <Box sx={{ bgcolor: "#000" }}>
               <Typography
                 variant="h2"
@@ -173,6 +218,19 @@ const Home = (props: Props) => {
               metadata, end-to-end cryptographic settlement and supercharged,
               superfan engagement
             </Typography>
+            <Box my={2} display="flex" justifyContent={"center"}>
+              <Button
+                variant="contained"
+                sx={{ textTransform: "capitalize" }}
+                onClick={() =>
+                  firstSectionRef.current?.scrollIntoView({
+                    behavior: "smooth",
+                  })
+                }
+              >
+                Learn More
+              </Button>
+            </Box>
           </Stack>
           <Box
             position={"absolute"}
@@ -200,6 +258,7 @@ const Home = (props: Props) => {
             background: "#000",
           }}
           p={2}
+          ref={firstSectionRef}
         >
           <Box
             // gap={1}
@@ -253,7 +312,15 @@ const Home = (props: Props) => {
                 </Stack>
 
                 <Box display={"flex"} justifyContent="end" width={"100%"}>
-                  <EastRoundedIcon color="secondary" />
+                  <IconButton
+                    onClick={() =>
+                      syncLedgerRef.current?.scrollIntoView({
+                        behavior: "smooth",
+                      })
+                    }
+                  >
+                    <EastRoundedIcon color="secondary" />
+                  </IconButton>
                 </Box>
               </Stack>
               <Stack
@@ -292,7 +359,15 @@ const Home = (props: Props) => {
                 </Stack>
 
                 <Box display={"flex"} justifyContent="end" width={"100%"}>
-                  <EastRoundedIcon color="secondary" />
+                  <IconButton
+                    onClick={() =>
+                      numixAppRef.current?.scrollIntoView({
+                        behavior: "smooth",
+                      })
+                    }
+                  >
+                    <EastRoundedIcon color="secondary" />
+                  </IconButton>
                 </Box>
               </Stack>
               <Stack
@@ -335,13 +410,20 @@ const Home = (props: Props) => {
                 </Stack>
 
                 <Box display={"flex"} justifyContent="end" width={"100%"}>
-                  <EastRoundedIcon color="secondary" />
+                  <IconButton
+                    onClick={() =>
+                      indexerRef.current?.scrollIntoView({ behavior: "smooth" })
+                    }
+                  >
+                    <EastRoundedIcon color="secondary" />
+                  </IconButton>
                 </Box>
               </Stack>
             </Stack>
           </Box>
           {/* <Divider /> */}
           <Box
+            ref={syncLedgerRef}
             sx={{
               background:
                 "linear-gradient(111deg, rgba(35, 35, 35, 0.70) -4.7%, rgba(6, 0, 8, 0.70) 31.19%, rgba(13, 13, 13, 0.70) 64.92%)",
@@ -360,9 +442,9 @@ const Home = (props: Props) => {
               justifyContent="space-between"
             >
               <Stack gap={1}>
-                <Typography color={"primary"} variant="h4">
+                {/* <Typography color={"primary"} variant="h4">
                   nusic
-                </Typography>
+                </Typography> */}
                 <Box>
                   <Typography variant="h2" fontWeight={900}>
                     Sync
@@ -414,6 +496,7 @@ const Home = (props: Props) => {
             </Box> */}
           </Box>
           <Box
+            ref={numixAppRef}
             sx={{
               background:
                 "linear-gradient(108deg, rgba(0, 0, 0, 0.51) 26.46%, rgba(63, 63, 63, 0.51) 112.26%)",
@@ -433,9 +516,9 @@ const Home = (props: Props) => {
               justifyContent="space-between"
             >
               <Stack gap={1}>
-                <Typography color={"primary"} variant="h4">
+                {/* <Typography color={"primary"} variant="h4">
                   nusic
-                </Typography>
+                </Typography> */}
                 <Box>
                   <Typography variant="h2" fontWeight={900}>
                     NUMIX
@@ -494,31 +577,39 @@ const Home = (props: Props) => {
             </Box> */}
           </Box>
           <Box
+            ref={indexerRef}
             mt={4}
+            pt={4}
+            pl={4}
             pb={4}
             sx={{
               background:
-                "linear-gradient(108deg, rgba(0, 0, 0, 0.51) 26.46%, rgba(63, 63, 63, 0.51) 112.26%)",
+                // "red",
+                // "linear-gradient(108deg, rgba(0, 0, 0, 0.51) 26.46%, rgba(63, 63, 63, 0.51) 112.26%)",
+                {
+                  xs: "url(/sections/indexer_mb.png)",
+                  sm: "url(/sections/indexer_bg.png)",
+                },
+              backgroundSize: { xs: "cover", sm: "200%", md: "120%" },
+              backgroundPosition: { sm: "center", md: "center" },
             }}
             display={"flex"}
             flexWrap="wrap"
-            // p={4}
-            // px={"10%"}
             borderRadius="28px"
             gap={4}
-            position="relative"
+            // position="relative"
             justifyContent="space-between"
           >
             <Stack
               flexBasis={{ md: "45%" }}
-              py={{ md: 4 }}
-              pl={4}
+              // py={{ md: 4 }}
+              // pl={4}
               justifyContent="space-between"
             >
               <Stack gap={1}>
-                <Typography color={"primary"} variant="h4">
+                {/* <Typography color={"primary"} variant="h4">
                   nusic
-                </Typography>
+                </Typography> */}
                 <Box>
                   <Typography variant="h2" fontWeight={900}>
                     On-chain
@@ -578,8 +669,16 @@ const Home = (props: Props) => {
           </Box>
           <Box mt={4} px={2}>
             <Typography fontWeight={700} variant="h4" align="center">
-              Discover the Future of Music with NUSIC
+              UNLOCKING THE TRUE VALUE OF MUSIC
             </Typography>
+            <Box display={"flex"} justifyContent="center" my={2}>
+              <Box
+                width={200}
+                height={10}
+                borderRadius="28px"
+                sx={{ bgcolor: "#5432FF" }}
+              ></Box>
+            </Box>
             <Box></Box>
             <Box
               mt={4}
@@ -593,7 +692,7 @@ const Home = (props: Props) => {
                 <img src="/nusic_purple.png" alt="" width={120} />
                 <Typography variant="h6">Next Gen Music Protocol</Typography>
               </Box>
-              <Box width={320}>
+              <Box width={{ xs: "100%", md: 320 }}>
                 <Typography sx={{ mb: 1, color: "#5E5E5E" }}>
                   Contact Us
                 </Typography>
@@ -602,11 +701,11 @@ const Home = (props: Props) => {
             </Box>
           </Box>
         </Box>
-        {/* <Divider /> */}
-        {/* <AlivePass buyRef={buyRef} /> */}
-        {/* <JoinForm open={openForm} onClose={() => setOpenForm(false)} /> */}
       </Box>
       <Matrix />
+      {/* <Divider /> */}
+      {/* <AlivePass buyRef={buyRef} /> */}
+      {/* <JoinForm open={openForm} onClose={() => setOpenForm(false)} /> */}
     </Box>
   );
 };
