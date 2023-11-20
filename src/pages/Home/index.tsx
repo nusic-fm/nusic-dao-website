@@ -12,6 +12,8 @@ import _ from "lodash";
 import EastRoundedIcon from "@mui/icons-material/EastRounded";
 import KeyboardDoubleArrowDownRoundedIcon from "@mui/icons-material/KeyboardDoubleArrowDownRounded";
 import JoinForm from "../../components/AlivePass/JoinForm/Index";
+import ArrowDownwardRoundedIcon from "@mui/icons-material/ArrowDownwardRounded";
+import ArrowUpwardRoundedIcon from "@mui/icons-material/ArrowUpwardRounded";
 
 type Props = {};
 
@@ -142,6 +144,7 @@ const Home = (props: Props) => {
   const syncLedgerRef = useRef<HTMLDivElement>(null);
   const numixAppRef = useRef<HTMLDivElement>(null);
   const indexerRef = useRef<HTMLDivElement>(null);
+  const footerRef = useRef<HTMLDivElement>(null);
 
   return (
     <Box>
@@ -218,7 +221,7 @@ const Home = (props: Props) => {
               metadata, end-to-end cryptographic settlement and supercharged,
               superfan engagement
             </Typography>
-            <Box my={2} display="flex" justifyContent={"center"}>
+            <Box my={2} display="flex" justifyContent={"center"} gap={2}>
               <Button
                 variant="contained"
                 sx={{ textTransform: "capitalize" }}
@@ -229,6 +232,18 @@ const Home = (props: Props) => {
                 }
               >
                 Learn More
+              </Button>
+              <Button
+                variant="outlined"
+                sx={{ textTransform: "capitalize" }}
+                color="secondary"
+                onClick={() =>
+                  footerRef.current?.scrollIntoView({
+                    behavior: "smooth",
+                  })
+                }
+              >
+                Connect
               </Button>
             </Box>
           </Stack>
@@ -246,7 +261,12 @@ const Home = (props: Props) => {
                 background: "rgba(67, 67, 67, 0.48)",
                 backdropFilter: "blur(7.675280570983887px)",
               }}
-              disabled
+              color="primary"
+              onClick={() =>
+                firstSectionRef.current?.scrollIntoView({
+                  behavior: "smooth",
+                })
+              }
             >
               <KeyboardDoubleArrowDownRoundedIcon color="secondary" />
             </Fab>
@@ -489,11 +509,29 @@ const Home = (props: Props) => {
                 />
               </Box>
             </Box>
-            {/* <Box pl={{ md: 4 }}>
-              <Button variant="contained" size="small">
+            <Box display={"flex"} justifyContent="center" width={"100%"}>
+              <IconButton
+                onClick={() =>
+                  firstSectionRef.current?.scrollIntoView({
+                    behavior: "smooth",
+                  })
+                }
+              >
+                <ArrowUpwardRoundedIcon />
+              </IconButton>
+              <IconButton
+                onClick={() =>
+                  numixAppRef.current?.scrollIntoView({
+                    behavior: "smooth",
+                  })
+                }
+              >
+                <ArrowDownwardRoundedIcon />
+              </IconButton>
+              {/* <Button variant="contained" size="small">
                 Learn More
-              </Button>
-            </Box> */}
+              </Button> */}
+            </Box>
           </Box>
           <Box
             ref={numixAppRef}
@@ -575,6 +613,29 @@ const Home = (props: Props) => {
                 Learn More
               </Button>
             </Box> */}
+            <Box display={"flex"} justifyContent="center" width={"100%"}>
+              <IconButton
+                onClick={() =>
+                  syncLedgerRef.current?.scrollIntoView({
+                    behavior: "smooth",
+                  })
+                }
+              >
+                <ArrowUpwardRoundedIcon />
+              </IconButton>
+              <IconButton
+                onClick={() =>
+                  indexerRef.current?.scrollIntoView({
+                    behavior: "smooth",
+                  })
+                }
+              >
+                <ArrowDownwardRoundedIcon />
+              </IconButton>
+              {/* <Button variant="contained" size="small">
+                Learn More
+              </Button> */}
+            </Box>
           </Box>
           <Box
             ref={indexerRef}
@@ -666,8 +727,31 @@ const Home = (props: Props) => {
                 Learn More
               </Button>
             </Box> */}
+            <Box display={"flex"} justifyContent="center" width={"100%"}>
+              <IconButton
+                onClick={() =>
+                  numixAppRef.current?.scrollIntoView({
+                    behavior: "smooth",
+                  })
+                }
+              >
+                <ArrowUpwardRoundedIcon />
+              </IconButton>
+              {/* <IconButton
+                onClick={() =>
+                  numixAppRef.current?.scrollIntoView({
+                    behavior: "smooth",
+                  })
+                }
+              >
+                <ArrowDownwardRoundedIcon />
+              </IconButton> */}
+              {/* <Button variant="contained" size="small">
+                Learn More
+              </Button> */}
+            </Box>
           </Box>
-          <Box mt={4} px={2}>
+          <Box mt={4} px={2} ref={footerRef}>
             <Typography fontWeight={700} variant="h4" align="center">
               UNLOCKING THE TRUE VALUE OF MUSIC
             </Typography>
