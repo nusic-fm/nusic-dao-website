@@ -152,13 +152,44 @@ const Home = (props: Props) => {
         <Box height={"100vh"} position="relative">
           <Box
             position={"absolute"}
-            width="100%"
+            width="calc(100% - 16px)"
             display={"flex"}
-            justifyContent="center"
-            py={2}
+            alignItems="center"
+            justifyContent={{ md: "center" }}
+            p={2}
             zIndex={999}
           >
-            <img src="/nusic_white.png" alt="" width={100} />
+            <Box>
+              <img src="/nusic_white.png" alt="" width={100} />
+            </Box>
+            <Box
+              position={"absolute"}
+              display={"flex"}
+              width="100%"
+              justifyContent="end"
+              gap={1}
+              pr={2}
+              ml={{ md: "auto" }}
+            >
+              <Fab
+                sx={{ bgcolor: "rgba(48, 48, 48, 1)" }}
+                size="small"
+                color="primary"
+                href={"https://twitter.com/nusicOfficial"}
+                target="_blank"
+              >
+                <img src="/sections/x_logo_white.png" alt="x" width={15} />
+              </Fab>
+              <Fab
+                sx={{ bgcolor: "rgba(48, 48, 48, 1)" }}
+                size="small"
+                color="primary"
+                href={"https://discord.gg/eHyRQADgQ4"}
+                target="_blank"
+              >
+                <img src="/sections/discord_logo.webp" alt="x" width={20} />
+              </Fab>
+            </Box>
           </Box>
           <Box
             position={"absolute"}
@@ -169,26 +200,7 @@ const Home = (props: Props) => {
             py={2}
             pr={2}
             zIndex={999}
-          >
-            <Fab
-              sx={{ bgcolor: "rgba(48, 48, 48, 1)" }}
-              size="small"
-              color="primary"
-              href={"https://twitter.com/nusicOfficial"}
-              target="_blank"
-            >
-              <img src="/sections/x_logo_white.png" alt="x" width={15} />
-            </Fab>
-            <Fab
-              sx={{ bgcolor: "rgba(48, 48, 48, 1)" }}
-              size="small"
-              color="primary"
-              href={"https://discord.gg/eHyRQADgQ4"}
-              target="_blank"
-            >
-              <img src="/sections/discord_logo.webp" alt="x" width={20} />
-            </Fab>
-          </Box>
+          ></Box>
           <Stack
             justifyContent={"center"}
             alignItems="center"

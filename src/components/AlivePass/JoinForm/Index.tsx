@@ -64,6 +64,7 @@ const JoinForm = () => {
         fullWidth
         label="Name"
         color="info"
+        variant="filled"
         onChange={(e) => {
           setName(e.target.value);
         }}
@@ -75,7 +76,12 @@ const JoinForm = () => {
           color="info"
           options={CountryCodes}
           renderInput={(params) => (
-            <TextField {...params} label="Country" color="info" />
+            <TextField
+              {...params}
+              label="Country"
+              color="info"
+              variant="filled"
+            />
           )}
           onChange={(e, newValue) => {
             if (newValue) {
@@ -101,6 +107,7 @@ const JoinForm = () => {
             ),
           }}
           type="tel"
+          variant="filled"
         />
       </Stack>
       <Box width={"100%"}>
@@ -112,6 +119,7 @@ const JoinForm = () => {
             setEmail(e.target.value);
           }}
           type="email"
+          variant="filled"
         />
       </Box>
       <Autocomplete
@@ -125,7 +133,12 @@ const JoinForm = () => {
           "Other",
         ]}
         renderInput={(params) => (
-          <TextField {...params} label="Industry Role" color="info" />
+          <TextField
+            {...params}
+            label="Industry Role"
+            color="info"
+            variant="filled"
+          />
         )}
         onChange={(e, newValue) => setType(newValue as string)}
       />
