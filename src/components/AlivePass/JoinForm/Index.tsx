@@ -68,6 +68,7 @@ const JoinForm = () => {
         onChange={(e) => {
           setName(e.target.value);
         }}
+        sx={{ ".MuiFormLabel-root": { color: "#878787" } }}
       ></TextField>
 
       <Stack direction={"row"} spacing={1}>
@@ -81,6 +82,7 @@ const JoinForm = () => {
               label="Country"
               color="info"
               variant="filled"
+              sx={{ ".MuiFormLabel-root": { color: "#878787" } }}
             />
           )}
           onChange={(e, newValue) => {
@@ -103,11 +105,14 @@ const JoinForm = () => {
           }}
           InputProps={{
             startAdornment: (
-              <Typography mr={2}>{countryCode?.dial_code || "+"}</Typography>
+              <Typography mr={2} sx={{ color: "#878787" }}>
+                {countryCode?.dial_code || "+"}
+              </Typography>
             ),
           }}
           type="tel"
           variant="filled"
+          sx={{ ".MuiFormLabel-root": { color: "#878787" } }}
         />
       </Stack>
       <Box width={"100%"}>
@@ -120,6 +125,7 @@ const JoinForm = () => {
           }}
           type="email"
           variant="filled"
+          sx={{ ".MuiFormLabel-root": { color: "#878787" } }}
         />
       </Box>
       <Autocomplete
@@ -138,10 +144,18 @@ const JoinForm = () => {
             label="Industry Role"
             color="info"
             variant="filled"
+            sx={{ ".MuiFormLabel-root": { color: "#878787" } }}
           />
         )}
         onChange={(e, newValue) => setType(newValue as string)}
       />
+      <TextField
+        label="How can we help?"
+        multiline
+        minRows={2}
+        variant="filled"
+        sx={{ ".MuiFormLabel-root": { color: "#878787" } }}
+      ></TextField>
 
       <Box display={"flex"} justifyContent="center" gap={2}>
         <LoadingButton
