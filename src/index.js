@@ -23,7 +23,7 @@ const themeSettings = createTheme({
   palette: {
     mode: "dark",
     primary: {
-      main: "#573FC8",
+      main: "#5432FF",
       light: "#000000",
     },
     secondary: {
@@ -38,7 +38,7 @@ const themeSettings = createTheme({
     allVariants: {
       color: "#ffffff",
     },
-    fontFamily: `Space Mono , sans-serif`,
+    fontFamily: `Arimo , sans-serif`,
   },
 });
 const theme = responsiveFontSizes(themeSettings);
