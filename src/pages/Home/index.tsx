@@ -278,7 +278,6 @@ const Home = (props: Props) => {
             background: "#000",
           }}
           p={2}
-          ref={firstSectionRef}
         >
           <Box
             // gap={1}
@@ -286,7 +285,9 @@ const Home = (props: Props) => {
             display={"flex"}
             alignItems="center"
             justifyContent={"center"}
-            py={10}
+            my={6}
+            py={2}
+            ref={firstSectionRef}
           >
             <Stack
               direction="row"
