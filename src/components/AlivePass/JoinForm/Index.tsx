@@ -22,6 +22,7 @@ const JoinForm = () => {
     dial_code: string;
     code: string;
   }>();
+  const [query, setQuery] = useState<string>();
 
   const onSubmit = async () => {
     setLoading(true);
@@ -48,7 +49,7 @@ const JoinForm = () => {
         To: ["contact@nusic.fm"],
         From: "logesh@nusic.fm",
         Subject: "Join Registration",
-        Body: `Name: ${name}, \n Mobile: (${countryCode?.name} - ${countryCode?.dial_code}}) ${mobile}, \n Email: ${email} \n, Industry Type: ${industryType}`,
+        Body: `Name: ${name}, \n Mobile: (${countryCode?.name} - ${countryCode?.dial_code}}) ${mobile}, \n Email: ${email} \n, Industry Type: ${industryType}, Query: ${query}`,
       });
       alert("Submitted! We will reach out to you soon. Thanks");
     } catch (e) {
@@ -155,6 +156,7 @@ const JoinForm = () => {
         minRows={2}
         variant="filled"
         sx={{ ".MuiFormLabel-root": { color: "#878787" } }}
+        onChange={(e) => setQuery(e.target.value)}
       ></TextField>
 
       <Box display={"flex"} justifyContent="center" gap={2}>
