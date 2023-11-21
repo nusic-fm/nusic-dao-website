@@ -175,19 +175,19 @@ const Home = (props: Props) => {
                 sx={{ bgcolor: "rgba(48, 48, 48, 1)" }}
                 size="small"
                 color="primary"
-                href={"https://twitter.com/nusicOfficial"}
+                href={"https://discord.gg/eHyRQADgQ4"}
                 target="_blank"
               >
-                <img src="/sections/x_logo_white.png" alt="x" width={15} />
+                <img src="/sections/discord_logo.webp" alt="x" width={20} />
               </Fab>
               <Fab
                 sx={{ bgcolor: "rgba(48, 48, 48, 1)" }}
                 size="small"
                 color="primary"
-                href={"https://discord.gg/eHyRQADgQ4"}
+                href={"https://twitter.com/nusicOfficial"}
                 target="_blank"
               >
-                <img src="/sections/discord_logo.webp" alt="x" width={20} />
+                <img src="/sections/x_logo_white.png" alt="x" width={15} />
               </Fab>
             </Box>
           </Box>
