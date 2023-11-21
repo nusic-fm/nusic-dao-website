@@ -470,7 +470,7 @@ const Home = (props: Props) => {
             position="relative"
           >
             <Stack
-              flexBasis={{ md: "45%" }}
+              flexBasis={{ md: "40%" }}
               p={{ md: 4 }}
               justifyContent="space-between"
             >
@@ -502,14 +502,22 @@ const Home = (props: Props) => {
                     />
                   </Typography>
                 </Box>
-                <Typography width={260}>
+                <Typography width={260} sx={{ mt: 2 }} fontWeight={700}>
                   Immutable music metadata that future proofs your sound for the
                   next generation of music consumption
+                </Typography>
+                <Typography width={260} sx={{ mt: 2 }} fontWeight={700}>
+                  Toolkit for annotating granular, trackable data for recurring,
+                  near realtime payments and transparent accounting
+                </Typography>
+                <Typography width={260} sx={{ mt: 2 }} fontWeight={700}>
+                  Easy-to-use and manage service designed around musical
+                  standards that protects and manage copyright in new models
                 </Typography>
               </Stack>
             </Stack>
             <Box
-              flexBasis={{ xs: "100%", md: "50%" }}
+              flexBasis={{ xs: "100%", md: "55%" }}
               display="flex"
               alignItems={"center"}
               justifyContent="center"
@@ -594,18 +602,18 @@ const Home = (props: Props) => {
                     />
                   </Typography>
                 </Box>
-                <Typography width={260}>
+                <Typography width={260} sx={{ mt: 2 }} fontWeight={700}>
                   Engage with superfans and fans through powerful activations
                   which unlock the value of your audience
                 </Typography>
-                {/* <Typography width={260}>
+                <Typography width={260} sx={{ mt: 2 }} fontWeight={700}>
                   Infinitely scalable AI-powered remixes that empower your fans
                   to engage with the process of music creation
                 </Typography>
-                <Typography width={260}>
+                <Typography width={260} sx={{ mt: 2 }} fontWeight={700}>
                   Contests which bring your fans closer to you while catapulting
                   your music to a brand new audience
-                </Typography> */}
+                </Typography>
               </Stack>
             </Stack>
             <Box
@@ -664,8 +672,8 @@ const Home = (props: Props) => {
                   xs: "url(/sections/indexer_mb.png)",
                   sm: "url(/sections/indexer_bg.png)",
                 },
-              backgroundSize: { xs: "cover", sm: "200%", md: "120%" },
-              backgroundPosition: { sm: "center", md: "center" },
+              backgroundSize: { xs: "cover", sm: "400%", md: "140%" },
+              backgroundPosition: { sm: "bottom", md: "center" },
             }}
             display={"flex"}
             flexWrap="wrap"
@@ -675,9 +683,9 @@ const Home = (props: Props) => {
             justifyContent="space-between"
           >
             <Stack
-              flexBasis={{ md: "45%" }}
+              flexBasis={{ md: "40%" }}
               // py={{ md: 4 }}
-              // pl={4}
+              pl={4}
               justifyContent="space-between"
             >
               <Stack gap={1}>
@@ -708,22 +716,22 @@ const Home = (props: Props) => {
                     />
                   </Typography>
                 </Box>
-                <Typography width={260}>
+                <Typography width={260} sx={{ mt: 2 }} fontWeight={700}>
                   Listen to every Music NFT instantiated onchain with trackable
                   playback and access to metadata administration
                 </Typography>
-                {/* <Typography width={260}>
-                  Infinitely scalable AI-powered remixes that empower your fans
-                  to engage with the process of music creation
+                <Typography width={260} sx={{ mt: 2 }} fontWeight={700}>
+                  Enable permissions to make your Music NFTs available inside
+                  Web 3.0 games based on rules you determine.
                 </Typography>
-                <Typography width={260}>
-                  Contests which bring your fans closer to you while catapulting
-                  your music to a brand new audience
-                </Typography> */}
+                <Typography width={260} sx={{ mt: 2 }} fontWeight={700}>
+                  Leverage the power of composable internet infrastructure to
+                  reach new audiences and unlock new revenue.
+                </Typography>
               </Stack>
             </Stack>
             <Box
-              flexBasis={{ xs: "100%", md: "50%" }}
+              flexBasis={{ xs: "100%", md: "55%" }}
               display="flex"
               alignItems={"center"}
               justifyContent="end"
@@ -731,7 +739,7 @@ const Home = (props: Props) => {
               {/* <Box mt={6} display={{ xs: "none", sm: "inherit" }}>
                 <img src="/sections/numix_play.png" alt="" height={"120px"} />
               </Box> */}
-              <Box width={{ xs: 300, sm: 400, lg: 600 }}>
+              <Box width={{ xs: 300, sm: "70%", md: "90%" }}>
                 <img src="/sections/indexer_app.png" alt="" width={"100%"} />
               </Box>
             </Box>
