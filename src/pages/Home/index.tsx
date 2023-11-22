@@ -14,6 +14,7 @@ import KeyboardDoubleArrowDownRoundedIcon from "@mui/icons-material/KeyboardDoub
 import JoinForm from "../../components/AlivePass/JoinForm/Index";
 import ArrowDownwardRoundedIcon from "@mui/icons-material/ArrowDownwardRounded";
 import ArrowUpwardRoundedIcon from "@mui/icons-material/ArrowUpwardRounded";
+import HomeRoundedIcon from "@mui/icons-material/HomeRounded";
 
 type Props = {};
 
@@ -140,6 +141,7 @@ const Matrix = () => {
 };
 
 const Home = (props: Props) => {
+  const headerRef = useRef<HTMLDivElement>(null);
   const firstSectionRef = useRef<HTMLDivElement>(null);
   const syncLedgerRef = useRef<HTMLDivElement>(null);
   const numixAppRef = useRef<HTMLDivElement>(null);
@@ -148,7 +150,7 @@ const Home = (props: Props) => {
 
   return (
     <Box>
-      <Box zIndex={100} position="relative">
+      <Box zIndex={100} position="relative" ref={headerRef}>
         <Box height={"100vh"} position="relative">
           <Box
             position={"absolute"}
@@ -433,7 +435,7 @@ const Home = (props: Props) => {
                     fontWeight={900}
                     sx={{ color: "#8C76FD" }}
                   >
-                    On-chain Indexer
+                    Onchain Indexer
                   </Typography>
                   <Typography>
                     Aggregating the entire onchain music ecosystem, from Music
@@ -626,7 +628,7 @@ const Home = (props: Props) => {
                 <img src="/sections/numix_play.png" alt="" height={"120px"} />
               </Box>
               <Box height={{ xs: 300, sm: 400, lg: 600 }}>
-                <img src="/sections/numix_1.png" alt="" height={"100%"} />
+                <img src="/sections/numix_screens.png" alt="" height={"100%"} />
               </Box>
             </Box>
             {/* <Box pl={{ md: 4 }}>
@@ -694,7 +696,7 @@ const Home = (props: Props) => {
                 </Typography> */}
                 <Box>
                   <Typography variant="h2" fontWeight={900}>
-                    On-chain
+                    Onchain
                   </Typography>
                   <Typography
                     variant="h2"
@@ -758,15 +760,15 @@ const Home = (props: Props) => {
               >
                 <ArrowUpwardRoundedIcon />
               </IconButton>
-              {/* <IconButton
+              <IconButton
                 onClick={() =>
-                  numixAppRef.current?.scrollIntoView({
+                  footerRef.current?.scrollIntoView({
                     behavior: "smooth",
                   })
                 }
               >
                 <ArrowDownwardRoundedIcon />
-              </IconButton> */}
+              </IconButton>
               {/* <Button variant="contained" size="small">
                 Learn More
               </Button> */}
@@ -803,6 +805,17 @@ const Home = (props: Props) => {
                 </Typography>
                 <JoinForm />
               </Box>
+            </Box>
+            <Box display={"flex"} justifyContent="center" p={2}>
+              <IconButton
+                onClick={() =>
+                  headerRef.current?.scrollIntoView({
+                    behavior: "smooth",
+                  })
+                }
+              >
+                <HomeRoundedIcon />
+              </IconButton>
             </Box>
           </Box>
         </Box>
