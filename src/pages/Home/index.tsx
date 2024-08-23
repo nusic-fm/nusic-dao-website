@@ -222,7 +222,7 @@ const Home = (props: Props) => {
                   WebkitTextFillColor: "transparent",
                 }}
               >
-                NEXT GEN MUSIC PROTOCOL
+                ENCRYPTED MUSIC COPYRIGHT
               </Typography>
             </Box>
             <Typography
@@ -231,33 +231,33 @@ const Home = (props: Props) => {
               sx={{ mt: 3, bgcolor: "#000" }}
               fontWeight={700}
             >
-              Unlocking the true value of music through trackable, interoperable
-              metadata, end-to-end cryptographic settlement and supercharged,
-              superfan engagement
+              Audio encoding for the age of AI: trackable, interoperable
+              metadata, end-to-end cryptographic settlement that enables
+              supercharged, superfan engagement
             </Typography>
             <Box my={2} display="flex" justifyContent={"center"} gap={2}>
               <Button
                 variant="contained"
                 sx={{ textTransform: "capitalize" }}
-                onClick={() =>
-                  firstSectionRef.current?.scrollIntoView({
-                    behavior: "smooth",
-                  })
-                }
+                href={"https://nusic-marble.netlify.app/"}
+                target="_blank"
               >
-                Learn More
+                Play Test
               </Button>
               <Button
                 variant="outlined"
                 sx={{ textTransform: "capitalize" }}
                 color="secondary"
                 onClick={() =>
-                  footerRef.current?.scrollIntoView({
+                  // footerRef.current?.scrollIntoView({
+                  //   behavior: "smooth",
+                  // })
+                  firstSectionRef.current?.scrollIntoView({
                     behavior: "smooth",
                   })
                 }
               >
-                Connect
+                Learn More
               </Button>
             </Box>
           </Stack>
@@ -325,7 +325,11 @@ const Home = (props: Props) => {
                 flexWrap={"wrap"}
               >
                 <Box height={{ xs: 80, md: 220 }} width={{ xs: 80, md: 220 }}>
-                  <img src="/sections/syncledger.png" alt="" width={"100%"} />
+                  <img
+                    src="/sections/torrent_monetization.png"
+                    alt=""
+                    width={"100%"}
+                  />
                 </Box>
                 <Stack
                   gap={2}
@@ -337,12 +341,12 @@ const Home = (props: Props) => {
                     fontWeight={900}
                     sx={{ color: "#8C76FD" }}
                   >
-                    Sync Ledger
+                    Torrent Monetization
                   </Typography>
                   <Typography>
-                    Metadata administration protocol that enables
-                    synchronization throughout next generation internet and AI
-                    infrastructure
+                    The next generation of torrenting, micropayment integration
+                    ensures rights holders are compensated when their music is
+                    torrented.
                   </Typography>
                 </Stack>
 
@@ -372,7 +376,7 @@ const Home = (props: Props) => {
                 flexWrap={"wrap"}
               >
                 <Box height={{ xs: 80, md: 220 }} width={{ xs: 80, md: 220 }}>
-                  <img src="/sections/numix.png" alt="" height={"100%"} />
+                  <img src="/sections/apps_games.png" alt="" height={"100%"} />
                 </Box>
                 <Stack
                   gap={2}
@@ -384,12 +388,12 @@ const Home = (props: Props) => {
                     fontWeight={900}
                     sx={{ color: "#8C76FD" }}
                   >
-                    NUMIX App
+                    Apps & Games
                   </Typography>
                   <Typography>
-                    Direct to Consumer application that unlocks powerful
-                    superfan engagement through GenAI powered remixes and
-                    contests
+                    Customizable musical experiences that facilitate fan
+                    engagement through multi-channel audio encoding for realtime
+                    interaction.
                   </Typography>
                 </Stack>
 
@@ -420,7 +424,7 @@ const Home = (props: Props) => {
               >
                 <Box height={{ xs: 80, md: 220 }} width={{ xs: 80, md: 220 }}>
                   <img
-                    src="/sections/onchain_indexer.png"
+                    src="/sections/training_data.png"
                     alt=""
                     width={"100%"}
                   />
@@ -435,12 +439,12 @@ const Home = (props: Props) => {
                     fontWeight={900}
                     sx={{ color: "#8C76FD" }}
                   >
-                    Onchain Indexer
+                    AI Training Data
                   </Typography>
                   <Typography>
-                    Aggregating the entire onchain music ecosystem, from Music
-                    NFTs to Web 3.0 gaming to immutable music file storage and
-                    compute
+                    Machine-readable musical metadata for AI model training,
+                    including attribution, analytics and encrypted instant
+                    remittence engine.
                   </Typography>
                 </Stack>
 
@@ -482,7 +486,7 @@ const Home = (props: Props) => {
                 </Typography> */}
                 <Box>
                   <Typography variant="h2" fontWeight={900}>
-                    Sync
+                    Torrent
                   </Typography>
                   <Typography
                     variant="h2"
@@ -491,7 +495,7 @@ const Home = (props: Props) => {
                     zIndex={1}
                     display="inline"
                   >
-                    Ledger
+                    Monetization
                     <Box
                       position={"absolute"}
                       bottom={0}
@@ -506,15 +510,15 @@ const Home = (props: Props) => {
                 </Box>
                 <Typography width={260} sx={{ mt: 2 }} fontWeight={700}>
                   Immutable music metadata that future proofs your sound for the
-                  next generation of music consumption
+                  next generation of music consumption.
                 </Typography>
                 <Typography width={260} sx={{ mt: 2 }} fontWeight={700}>
                   Toolkit for annotating granular, trackable data for recurring,
-                  near realtime payments and transparent accounting
+                  near realtime payments and transparent accounting.
                 </Typography>
                 <Typography width={260} sx={{ mt: 2 }} fontWeight={700}>
                   Easy-to-use and manage service designed around musical
-                  standards that protects and manage copyright in new models
+                  standards that protects and manage copyright in new models.
                 </Typography>
               </Stack>
             </Stack>
@@ -582,7 +586,7 @@ const Home = (props: Props) => {
                 </Typography> */}
                 <Box>
                   <Typography variant="h2" fontWeight={900}>
-                    NUMIX
+                    Apps &
                   </Typography>
                   <Typography
                     variant="h2"
@@ -591,7 +595,7 @@ const Home = (props: Props) => {
                     zIndex={1}
                     display="inline"
                   >
-                    App
+                    Games
                     <Box
                       position={"absolute"}
                       bottom={0}
@@ -606,15 +610,15 @@ const Home = (props: Props) => {
                 </Box>
                 <Typography width={260} sx={{ mt: 2 }} fontWeight={700}>
                   Engage with superfans and fans through powerful activations
-                  which unlock the value of your audience
+                  which unlock the value of your audience.
                 </Typography>
                 <Typography width={260} sx={{ mt: 2 }} fontWeight={700}>
                   Infinitely scalable AI-powered remixes that empower your fans
-                  to engage with the process of music creation
+                  to engage with the process of music creation.
                 </Typography>
                 <Typography width={260} sx={{ mt: 2 }} fontWeight={700}>
                   Contests which bring your fans closer to you while catapulting
-                  your music to a brand new audience
+                  your music to a brand new audience.
                 </Typography>
               </Stack>
             </Stack>
@@ -696,7 +700,7 @@ const Home = (props: Props) => {
                 </Typography> */}
                 <Box>
                   <Typography variant="h2" fontWeight={900}>
-                    Onchain
+                    AI Training
                   </Typography>
                   <Typography
                     variant="h2"
@@ -705,7 +709,7 @@ const Home = (props: Props) => {
                     zIndex={1}
                     display="inline"
                   >
-                    Indexer
+                    Data
                     <Box
                       position={"absolute"}
                       bottom={0}
@@ -720,7 +724,7 @@ const Home = (props: Props) => {
                 </Box>
                 <Typography width={260} sx={{ mt: 2 }} fontWeight={700}>
                   Listen to every Music NFT instantiated onchain with trackable
-                  playback and access to metadata administration
+                  playback and access to metadata administration.
                 </Typography>
                 <Typography width={260} sx={{ mt: 2 }} fontWeight={700}>
                   Enable permissions to make your Music NFTs available inside
@@ -776,7 +780,7 @@ const Home = (props: Props) => {
           </Box>
           <Box mt={4} px={2} ref={footerRef}>
             <Typography fontWeight={700} variant="h4" align="center">
-              UNLOCKING THE TRUE VALUE OF MUSIC
+              Discover the Future of Music with NUSIC
             </Typography>
             <Box display={"flex"} justifyContent="center" my={2}>
               <Box
@@ -797,7 +801,9 @@ const Home = (props: Props) => {
             >
               <Box>
                 <img src="/nusic_purple.png" alt="" width={120} />
-                <Typography variant="h6">Next Gen Music Protocol</Typography>
+                <Typography variant="subtitle1">
+                  ENCRYPTED MUSIC COPYRIGHT
+                </Typography>
               </Box>
               <Box width={{ xs: "100%", md: 320 }}>
                 <Typography sx={{ mb: 1, color: "#5E5E5E" }}>
