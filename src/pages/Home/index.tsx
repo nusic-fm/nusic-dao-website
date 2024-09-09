@@ -509,16 +509,16 @@ const Home = (props: Props) => {
                   </Typography>
                 </Box>
                 <Typography width={260} sx={{ mt: 2 }} fontWeight={700}>
-                  Immutable music metadata that future proofs your sound for the
-                  next generation of music consumption.
+                  Of the millions of music files available on Torrent protocols,
+                  many are never monetized.
                 </Typography>
                 <Typography width={260} sx={{ mt: 2 }} fontWeight={700}>
-                  Toolkit for annotating granular, trackable data for recurring,
-                  near realtime payments and transparent accounting.
+                  The Tributary extension introduces monetization to Torrent
+                  networks, including full attribution data.
                 </Typography>
                 <Typography width={260} sx={{ mt: 2 }} fontWeight={700}>
-                  Easy-to-use and manage service designed around musical
-                  standards that protects and manage copyright in new models.
+                  Designed around musical standards that track consumption for
+                  settlement on the internet of value.
                 </Typography>
               </Stack>
             </Stack>
