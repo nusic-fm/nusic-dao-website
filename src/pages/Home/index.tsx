@@ -15,6 +15,8 @@ import JoinForm from "../../components/AlivePass/JoinForm/Index";
 import ArrowDownwardRoundedIcon from "@mui/icons-material/ArrowDownwardRounded";
 import ArrowUpwardRoundedIcon from "@mui/icons-material/ArrowUpwardRounded";
 import HomeRoundedIcon from "@mui/icons-material/HomeRounded";
+import { getValue } from "firebase/remote-config";
+import { remoteConfig } from "../../services/firebase.service";
 
 type Props = {};
 
@@ -148,6 +150,18 @@ const Home = (props: Props) => {
   const indexerRef = useRef<HTMLDivElement>(null);
   const footerRef = useRef<HTMLDivElement>(null);
 
+  const title = getValue(remoteConfig, "title").asString();
+  const subTitle = getValue(remoteConfig, "subTitle").asString();
+  const headerOne = getValue(remoteConfig, "headerOne").asString();
+  const subContentOne = getValue(remoteConfig, "subContentOne").asString();
+  const contentOne = getValue(remoteConfig, "contentOne").asString();
+  const headerTwo = getValue(remoteConfig, "headerTwo").asString();
+  const subContentTwo = getValue(remoteConfig, "subContentTwo").asString();
+  const contentTwo = getValue(remoteConfig, "contentTwo").asString();
+  const headerThree = getValue(remoteConfig, "headerThree").asString();
+  const subContentThree = getValue(remoteConfig, "subContentThree").asString();
+  const contentThree = getValue(remoteConfig, "contentThree").asString();
+
   return (
     <Box>
       <Box zIndex={100} position="relative" ref={headerRef}>
@@ -222,7 +236,7 @@ const Home = (props: Props) => {
                   WebkitTextFillColor: "transparent",
                 }}
               >
-                ENCRYPTED MUSIC COPYRIGHT
+                {title}
               </Typography>
             </Box>
             <Typography
@@ -231,9 +245,7 @@ const Home = (props: Props) => {
               sx={{ mt: 3, bgcolor: "#000" }}
               fontWeight={700}
             >
-              A multidimensional approach to audio encoding and metadata
-              enciphering for the age of AI, enabling supercharged, superfan
-              engagement
+              {subTitle}
             </Typography>
             <Box my={2} display="flex" justifyContent={"center"} gap={2}>
               <Button
@@ -292,16 +304,38 @@ const Home = (props: Props) => {
             background: "#000",
           }}
           p={2}
+          ref={firstSectionRef}
         >
+          <Box display={"flex"} justifyContent="center">
+            <Typography
+              variant="h4"
+              fontWeight={900}
+              position="relative"
+              zIndex={1}
+              display="inline"
+              // sx={{ textTransform: "uppercase" }}
+            >
+              Use Cases
+              <Box
+                position={"absolute"}
+                bottom={0}
+                left={0}
+                width={"100%"}
+                sx={{ background: "#A532FF" }}
+                p={{ xs: 0.4, sm: 0.6, md: 0.8 }}
+                borderRadius={30}
+                zIndex={-1}
+              />
+            </Typography>
+          </Box>
           <Box
             // gap={1}
             // height="100vh"
             display={"flex"}
             alignItems="center"
             justifyContent={"center"}
-            my={6}
+            my={4}
             py={2}
-            ref={firstSectionRef}
           >
             <Stack
               direction="row"
@@ -341,13 +375,9 @@ const Home = (props: Props) => {
                     fontWeight={900}
                     sx={{ color: "#8C76FD" }}
                   >
-                    Torrent Monetization
+                    {headerOne}
                   </Typography>
-                  <Typography>
-                    The next generation of torrenting, micropayment integration
-                    ensures rights holders are compensated when their music is
-                    torrented.
-                  </Typography>
+                  <Typography>{subContentOne}</Typography>
                 </Stack>
 
                 <Box display={"flex"} justifyContent="end" width={"100%"}>
@@ -388,13 +418,9 @@ const Home = (props: Props) => {
                     fontWeight={900}
                     sx={{ color: "#8C76FD" }}
                   >
-                    Apps & Games
+                    {headerTwo}
                   </Typography>
-                  <Typography>
-                    Customizable musical experiences that facilitate fan
-                    engagement through multi-channel audio encoding for realtime
-                    interaction.
-                  </Typography>
+                  <Typography>{subContentTwo}</Typography>
                 </Stack>
 
                 <Box display={"flex"} justifyContent="end" width={"100%"}>
@@ -439,13 +465,9 @@ const Home = (props: Props) => {
                     fontWeight={900}
                     sx={{ color: "#8C76FD" }}
                   >
-                    AI Training Data
+                    {headerThree}
                   </Typography>
-                  <Typography>
-                    Machine-readable musical metadata for AI model training,
-                    including attribution, analytics and encrypted instant
-                    remittence engine.
-                  </Typography>
+                  <Typography>{subContentThree}</Typography>
                 </Stack>
 
                 <Box display={"flex"} justifyContent="end" width={"100%"}>
@@ -486,7 +508,7 @@ const Home = (props: Props) => {
                 </Typography> */}
                 <Box>
                   <Typography variant="h2" fontWeight={900}>
-                    Torrent
+                    {headerOne.split(" ")[0]}
                   </Typography>
                   <Typography
                     variant="h2"
@@ -495,7 +517,7 @@ const Home = (props: Props) => {
                     zIndex={1}
                     display="inline"
                   >
-                    Monetization
+                    {headerOne.split(" ").at(-1)}
                     <Box
                       position={"absolute"}
                       bottom={0}
@@ -509,16 +531,13 @@ const Home = (props: Props) => {
                   </Typography>
                 </Box>
                 <Typography width={260} sx={{ mt: 2 }} fontWeight={700}>
-                  Of the millions of music files available on Torrent protocols,
-                  many are never monetized.
+                  {contentOne.split(".")[0]}.
                 </Typography>
                 <Typography width={260} sx={{ mt: 2 }} fontWeight={700}>
-                  The Tributary extension introduces monetization to Torrent
-                  networks, including full attribution data.
+                  {contentOne.split(".")[1]}.
                 </Typography>
                 <Typography width={260} sx={{ mt: 2 }} fontWeight={700}>
-                  Designed around musical standards that track consumption for
-                  settlement on the internet of value.
+                  {contentOne.split(".")[2]}.
                 </Typography>
               </Stack>
             </Stack>
@@ -582,7 +601,7 @@ const Home = (props: Props) => {
                 </Typography> */}
                 <Box>
                   <Typography variant="h2" fontWeight={900}>
-                    Apps &
+                    {headerTwo.split(" ").slice(0, 2).join(" ")}
                   </Typography>
                   <Typography
                     variant="h2"
@@ -591,7 +610,7 @@ const Home = (props: Props) => {
                     zIndex={1}
                     display="inline"
                   >
-                    Games
+                    {headerTwo.split(" ").at(-1)}
                     <Box
                       position={"absolute"}
                       bottom={0}
@@ -605,16 +624,13 @@ const Home = (props: Props) => {
                   </Typography>
                 </Box>
                 <Typography width={260} sx={{ mt: 2 }} fontWeight={700}>
-                  Music is customizable, just like a photo or video edit, anyone
-                  now has the power to create a custom remix.
+                  {contentTwo.split(".")[0]}.
                 </Typography>
                 <Typography width={260} sx={{ mt: 2 }} fontWeight={700}>
-                  Deepening fan engagement, and unlocking powerful new economic
-                  models around music creativity.
+                  {contentTwo.split(".")[1]}.
                 </Typography>
                 <Typography width={260} sx={{ mt: 2 }} fontWeight={700}>
-                  Serve music upstream to an ecosystem enabling collaboration
-                  between artists and fans alike.
+                  {contentTwo.split(".")[2]}.
                 </Typography>
               </Stack>
             </Stack>
@@ -696,7 +712,7 @@ const Home = (props: Props) => {
                 </Typography> */}
                 <Box>
                   <Typography variant="h2" fontWeight={900}>
-                    AI Training
+                    {headerThree.split(" ").slice(0, 2).join(" ")}
                   </Typography>
                   <Typography
                     variant="h2"
@@ -705,7 +721,7 @@ const Home = (props: Props) => {
                     zIndex={1}
                     display="inline"
                   >
-                    Data
+                    {headerThree.split(" ").at(-1)}
                     <Box
                       position={"absolute"}
                       bottom={0}
@@ -719,16 +735,13 @@ const Home = (props: Props) => {
                   </Typography>
                 </Box>
                 <Typography width={260} sx={{ mt: 2 }} fontWeight={700}>
-                  AI is training on publicly available music! It’s no secret
-                  that AI requires masses of data to create outputs.
+                  {contentThree.split(".")[0]}.
                 </Typography>
                 <Typography width={260} sx={{ mt: 2 }} fontWeight={700}>
-                  Predictably enough, this has led to some blockbuster lawsuits,
-                  however it doesn’t have to be this way...
+                  {contentThree.split(".")[1]}.
                 </Typography>
                 <Typography width={260} sx={{ mt: 2 }} fontWeight={700}>
-                  By coupling music metadata with source audio, new distribution
-                  rails enable consensual AI training.
+                  {contentThree.split(".")[2]}.
                 </Typography>
               </Stack>
             </Stack>
@@ -801,9 +814,7 @@ const Home = (props: Props) => {
             >
               <Box>
                 <img src="/nusic_purple.png" alt="" width={120} />
-                <Typography variant="subtitle1">
-                  ENCRYPTED MUSIC COPYRIGHT
-                </Typography>
+                <Typography variant="subtitle1">{title}</Typography>
               </Box>
               <Box width={{ xs: "100%", md: 320 }}>
                 <Typography sx={{ mb: 1, color: "#5E5E5E" }}>
