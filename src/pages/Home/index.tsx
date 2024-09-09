@@ -231,9 +231,9 @@ const Home = (props: Props) => {
               sx={{ mt: 3, bgcolor: "#000" }}
               fontWeight={700}
             >
-              Audio encoding for the age of AI: trackable, interoperable
-              metadata, end-to-end cryptographic settlement that enables
-              supercharged, superfan engagement
+              A multidimensional approach to audio encoding and metadata
+              enciphering for the age of AI, enabling supercharged, superfan
+              engagement
             </Typography>
             <Box my={2} display="flex" justifyContent={"center"} gap={2}>
               <Button
@@ -529,11 +529,7 @@ const Home = (props: Props) => {
               justifyContent="center"
             >
               <Box width={{ xs: 300, sm: 400, lg: 600 }}>
-                <img
-                  src="/sections/syncledger_app_old.png"
-                  alt=""
-                  width={"100%"}
-                />
+                <img src="/sections/syncledger_app.png" alt="" width={"100%"} />
               </Box>
             </Box>
             <Box display={"flex"} justifyContent="center" width={"100%"}>
@@ -609,16 +605,16 @@ const Home = (props: Props) => {
                   </Typography>
                 </Box>
                 <Typography width={260} sx={{ mt: 2 }} fontWeight={700}>
-                  Engage with superfans and fans through powerful activations
-                  which unlock the value of your audience.
+                  Music is customizable, just like a photo or video edit, anyone
+                  now has the power to create a custom remix.
                 </Typography>
                 <Typography width={260} sx={{ mt: 2 }} fontWeight={700}>
-                  Infinitely scalable AI-powered remixes that empower your fans
-                  to engage with the process of music creation.
+                  Deepening fan engagement, and unlocking powerful new economic
+                  models around music creativity.
                 </Typography>
                 <Typography width={260} sx={{ mt: 2 }} fontWeight={700}>
-                  Contests which bring your fans closer to you while catapulting
-                  your music to a brand new audience.
+                  Serve music upstream to an ecosystem enabling collaboration
+                  between artists and fans alike.
                 </Typography>
               </Stack>
             </Stack>
@@ -723,16 +719,16 @@ const Home = (props: Props) => {
                   </Typography>
                 </Box>
                 <Typography width={260} sx={{ mt: 2 }} fontWeight={700}>
-                  Listen to every Music NFT instantiated onchain with trackable
-                  playback and access to metadata administration.
+                  AI is training on publicly available music! It’s no secret
+                  that AI requires masses of data to create outputs.
                 </Typography>
                 <Typography width={260} sx={{ mt: 2 }} fontWeight={700}>
-                  Enable permissions to make your Music NFTs available inside
-                  Web 3.0 games based on rules you determine.
+                  Predictably enough, this has led to some blockbuster lawsuits,
+                  however it doesn’t have to be this way...
                 </Typography>
                 <Typography width={260} sx={{ mt: 2 }} fontWeight={700}>
-                  Leverage the power of composable internet infrastructure to
-                  reach new audiences and unlock new revenue.
+                  By coupling music metadata with source audio, new distribution
+                  rails enable consensual AI training.
                 </Typography>
               </Stack>
             </Stack>
@@ -746,7 +742,11 @@ const Home = (props: Props) => {
                 <img src="/sections/numix_play.png" alt="" height={"120px"} />
               </Box> */}
               <Box width={{ xs: 300, sm: "70%", md: "90%" }}>
-                <img src="/sections/indexer_app.png" alt="" width={"100%"} />
+                <img
+                  src="/sections/ai_training_data.png"
+                  alt=""
+                  width={"100%"}
+                />
               </Box>
             </Box>
             {/* <Box pl={4} pb={4}>
