@@ -251,7 +251,7 @@ const Home = (props: Props) => {
               <Button
                 variant="contained"
                 sx={{ textTransform: "capitalize" }}
-                href={"https://nusic-marble.netlify.app/"}
+                href={"https://marblerace.ai/"}
                 target="_blank"
               >
                 Play Test
