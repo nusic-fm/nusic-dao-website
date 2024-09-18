@@ -483,6 +483,26 @@ const Home = (props: Props) => {
             </Stack>
           </Box>
           {/* <Divider /> */}
+          <Box display={"flex"} justifyContent="center" width={"100%"} mb={4}>
+            <IconButton
+              onClick={() =>
+                headerRef.current?.scrollIntoView({
+                  behavior: "smooth",
+                })
+              }
+            >
+              <ArrowUpwardRoundedIcon />
+            </IconButton>
+            <IconButton
+              onClick={() =>
+                syncLedgerRef.current?.scrollIntoView({
+                  behavior: "smooth",
+                })
+              }
+            >
+              <ArrowDownwardRoundedIcon />
+            </IconButton>
+          </Box>
           <Box
             ref={syncLedgerRef}
             sx={{
@@ -570,9 +590,6 @@ const Home = (props: Props) => {
               >
                 <ArrowDownwardRoundedIcon />
               </IconButton>
-              {/* <Button variant="contained" size="small">
-                Learn More
-              </Button> */}
             </Box>
           </Box>
           <Box
