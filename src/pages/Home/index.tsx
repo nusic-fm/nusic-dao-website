@@ -251,7 +251,7 @@ const Home = (props: Props) => {
               <Button
                 variant="contained"
                 sx={{ textTransform: "capitalize" }}
-                href={"https://marblerace.ai/"}
+                href={"https://t.me/tunedash_bot?startapp"}
                 target="_blank"
               >
                 Play Test
